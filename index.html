@@ -2383,7 +2383,7 @@ function setupQuoteUI({byId,escape,getSelected,scopeNames,heading,money,notify,r
 <div id="qb-uc"></div></section>
 </div>
 </div>
-<div class="qb-go"><label class="qb-template">Bộ mẫu <select id="qb-template" aria-label="Bộ mẫu báo giá"><option value="consultative">Đề xuất tư vấn</option><option value="commercial">Báo giá thương mại gọn</option></select></label><button type="button" class="primary" id="qb-build">Tạo báo giá HTML →</button><span class="small" id="qb-build-status"></span></div>
+<div class="qb-go"><label class="qb-template">Bộ mẫu <select id="qb-template" aria-label="Bộ mẫu báo giá"><option value="consultative">Đề xuất tư vấn</option><option value="commercial">Báo giá thương mại gọn</option></select></label><button type="button" class="primary" id="qb-studio" title="Mở trình soạn theo trang: sửa trực tiếp, kéo thả, chọn bố cục">Mở trong Quote Studio ↗</button><button type="button" id="qb-build">Bản xem nhanh</button><span class="small" id="qb-build-status"></span></div>
 <section class="qb-preview" id="qb-preview" hidden>
 <div class="qb-toolbar"><div class="qb-toolbar-title"><strong>Bản báo giá</strong><span id="qb-save-status" class="small" aria-live="polite">Tự lưu trên trình duyệt này.</span></div><div class="qb-row"><button type="button" id="qb-edit" aria-pressed="false">Sửa nội dung</button><button type="button" id="qb-undo" hidden disabled aria-label="Hoàn tác">↶</button><button type="button" id="qb-redo" hidden disabled aria-label="Làm lại">↷</button><button type="button" id="qb-reflow">Cân trang</button><button type="button" class="primary" id="qb-pdf">Xuất PDF</button><details class="qb-more"><summary>Thêm</summary><div><button type="button" id="qb-prices-update">Cập nhật số liệu</button><button type="button" id="qb-regen">Tạo lại từ dữ liệu</button><button type="button" id="qb-html">↓ File HTML</button></div></details></div></div>
 <div id="qb-banner"></div>
@@ -2463,11 +2463,29 @@ function setupQuoteUI({byId,escape,getSelected,scopeNames,heading,money,notify,r
     saveLib();renderUseCases();changed();notify(`Đã thêm ${added} file use-case vào thư viện`);
   }
 
+  // Quote Studio (dist/studio.html): gửi dữ liệu đã chọn qua postMessage, kèm bản dự phòng trong localStorage cùng nguồn.
+  function studioPayload(){
+    const {options,rec,deal:d}=inputs();
+    return {kind:'quote-studio-data',version:1,sentAt:Date.now(),deal:d,recommendedId:rec,useCases:selectedUseCases(),scopeNames,policy:{effective:POLICY.effective},mode:st.mode||'consultative',
+      options:options.map(o=>({id:o.id,label:o.label,solves:o.solves,valueYear:o.valueYear,valueCash:o.valueCash,why:o.why,r:o.r}))};
+  }
+  function openStudio(){
+    const {options,deal:d}=inputs();
+    if(!options.length||!d||d.errors.length){notify('Cần chọn phương án và tải hồ sơ khách hàng hợp lệ trước.');return;}
+    const payload=studioPayload();
+    try{localStorage.setItem('quote-studio-inbox',JSON.stringify(payload));}catch{}
+    const w=window.open(new URL('studio.html',location.href).href,'quote-studio');
+    if(!w){download(JSON.stringify(payload),'application/json','du-lieu-quote-studio.json');notify('Trình duyệt chặn cửa sổ mới. Đã tải file dữ liệu; mở studio.html rồi chọn Tệp → Mở file dự án.');return;}
+    const onMsg=e=>{if(e.source===w&&e.data?.kind==='quote-studio-ready'){w.postMessage(payload,'*');window.removeEventListener('message',onMsg);}};
+    window.addEventListener('message',onMsg);setTimeout(()=>window.removeEventListener('message',onMsg),60000);
+    try{w.postMessage(payload,'*');}catch{}
+    notify('Đã gửi phương án và hồ sơ sang Quote Studio.');
+  }
   function updateBuildState(){
     const {options,deal:d}=inputs(),missing=[];
     if(!options.length)missing.push('chọn ít nhất một phương án');
     if(!d)missing.push('tải lên hồ sơ khách hàng');else if(d.errors.length)missing.push('sửa lỗi trong hồ sơ');
-    byId('qb-build').disabled=missing.length>0;
+    byId('qb-build').disabled=missing.length>0;byId('qb-studio').disabled=missing.length>0;
     byId('qb-build-status').textContent=missing.length?'Cần '+missing.join(' và ')+'.':st.edited?'Có bản đã sửa tay; bấm để mở lại bản đó.':'Sẵn sàng tạo báo giá.';
   }
   function changed(){
@@ -2718,6 +2736,7 @@ function setupQuoteUI({byId,escape,getSelected,scopeNames,heading,money,notify,r
     byId('qb-clear').addEventListener('click',()=>{if(st.fileText&&!confirm('Bỏ hồ sơ khách hàng đang dùng?'))return;st.fileText='';st.fileName='';persist();renderParsed();changed();});
     byId('qb-read').addEventListener('click',()=>{st.fileText=byId('qb-text').value;st.fileName=st.fileName||'Nội dung đã dán';persist();renderParsed();changed();notify('Đã đọc nội dung hồ sơ');});
     byId('qb-build').addEventListener('click',()=>show(true));
+    byId('qb-studio').addEventListener('click',openStudio);
     byId('qb-edit').addEventListener('click',()=>{setEditing(!editing);layoutStatus();fit();});
     byId('qb-page').addEventListener('change',e=>pickPage(e.target.value));
     byId('qb-template').value=st.mode||'consultative';
