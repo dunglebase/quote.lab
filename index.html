@@ -1179,7 +1179,7 @@ const QD_CSS=`
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f-display)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f-display);overflow-wrap:anywhere}
 .wrap{position:relative;z-index:1;max-width:1120px;margin-inline:auto;padding-inline:var(--gutter)}
 section,.block{padding-block:clamp(56px,8vw,96px)}
 p{margin:0}
@@ -1251,12 +1251,12 @@ h3{font-weight:700;font-size:19px;line-height:1.3}
 
 /* Bảng */
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.tbl{width:100%;border-collapse:collapse;font:500 14.5px/1.45 var(--f-ui);color:var(--ui-ink)}
+.tbl{width:100%;border-collapse:collapse;font:500 14.5px/1.45 var(--f-ui);color:var(--ui-ink);overflow-wrap:break-word}
 .scroll .tbl{min-width:600px}
 .scroll .tbl.lines{min-width:720px}
 .tbl th{text-align:left;font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ui-mute);padding:12px 14px;border-bottom:1px solid var(--ui-line);white-space:nowrap}
 .tbl td{padding:13px 14px;border-bottom:1px solid var(--ui-line);vertical-align:top}
-.tbl .r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl .r{text-align:right;font-variant-numeric:tabular-nums;overflow-wrap:normal}
 .tbl tr.total td{font-weight:700;border-bottom:0;border-top:2px solid var(--ui-ink)}
 .tbl tr.group td{padding-top:20px;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ui-mute)}
 .tbl td.m{color:var(--ui-mute)}
@@ -1354,7 +1354,8 @@ h3{font-weight:700;font-size:19px;line-height:1.3}
 .opt dl{display:grid;gap:10px;align-content:start}
 .opt dl div{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;line-height:1.4}
 .opt dt{color:var(--ink-2)}
-.opt dd{font-weight:700;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.opt dt{flex:1 1 auto;min-width:0}
+.opt dd{flex:0 0 auto;max-width:65%;font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
 .opt dd small{font-weight:500;color:var(--ink-2);font-size:12.5px}
 .rec-tag{position:absolute;top:-13px;right:22px;padding:6px 12px;border-radius:var(--r-pill);background:var(--accent);color:var(--on-accent);font:800 11.5px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase}
 .why{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
@@ -1375,14 +1376,15 @@ h3{font-weight:700;font-size:19px;line-height:1.3}
 .uc-k{font:700 10.5px/1.3 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--ui-accent)}
 .uc-b p{font-size:14.5px;line-height:1.55}
 .uc-res{border-top:1px solid var(--ui-line)}
-.uc-res li{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:9px 0;border-bottom:1px solid var(--ui-line);font:500 13.5px/1.45 var(--f-ui)}
-.uc-ba{display:flex;align-items:baseline;gap:8px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.uc-res li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);align-items:baseline;gap:4px 16px;padding:9px 0;border-bottom:1px solid var(--ui-line);font:500 13.5px/1.45 var(--f-ui)}
+.uc-res li > .uc-m:only-child{grid-column:1 / -1}
+.uc-ba{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:baseline;gap:2px 8px;min-width:0;text-align:right;font-variant-numeric:tabular-nums}
 .uc-before,.uc-arrow{color:var(--ui-mute)}
 .uc-after{color:var(--chip-ok-ink);font-weight:800}
 .uc-q{margin:0;padding:14px 16px;border-radius:var(--r-ui);background:var(--ctx-bg);border:1px solid var(--ctx-line)}
 .uc-q p{font-weight:600;font-size:15px;line-height:1.45}
 .uc-q cite{display:block;margin-top:6px;font:500 12.5px/1.4 var(--f-ui);font-style:normal;color:var(--ui-mute)}
-.uc-ref{font:500 12px/1.5 var(--f-ui);color:var(--ui-mute)}
+.uc-ref{font:500 12px/1.5 var(--f-ui);color:var(--ui-mute);overflow-wrap:anywhere}
 
 /* Bằng chứng */
 .ctx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -1432,7 +1434,7 @@ h3{font-weight:700;font-size:19px;line-height:1.3}
 .notes summary{cursor:pointer;padding:18px 0;font:700 13px/1.3 var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--warn)}
 .notes .in{display:grid;gap:18px;padding-bottom:24px;font:400 14.5px/1.6 var(--f-ui);color:var(--ink-2)}
 .notes h3{font-size:15px;color:var(--ink)}
-.ntbl{width:100%;border-collapse:collapse;font:400 14px/1.5 var(--f-ui);min-width:640px}
+.ntbl{width:100%;border-collapse:collapse;font:400 14px/1.5 var(--f-ui);min-width:640px;overflow-wrap:break-word}
 .ntbl th{text-align:left;font-weight:700;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:10px 12px;border-bottom:1px solid var(--line)}
 .ntbl td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
 .ntbl td:first-child{color:var(--ink)}
@@ -1448,10 +1450,17 @@ footer{padding-block:28px;border-top:1px solid var(--line);font:500 13px/1.5 var
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
 
 /* Chế độ sửa */
-body.editing [data-ed]{cursor:text;border-radius:3px}
+body.editing [data-ed]{cursor:text;border-radius:3px;overflow-wrap:anywhere}
+body.editing .tbl [data-ed]{overflow-wrap:break-word}
 body.editing [data-ed]:hover{outline:1px dashed var(--accent);outline-offset:2px}
 body.editing [data-ed]:focus{outline:2px solid var(--accent);outline-offset:2px}
 body.editing .grad{caret-color:var(--ink)}
+body.editing [data-sel]{outline:2px solid var(--accent)!important;outline-offset:4px}
+.qd-tools{position:absolute;z-index:50;display:flex;align-items:center;gap:2px;padding:3px;border-radius:9px;background:#101741;border:1px solid rgba(255,255,255,.2);box-shadow:0 8px 24px rgba(0,0,0,.35);font:600 12px/1 var(--f-ui);color:#fff;white-space:nowrap}
+.qd-tools span{padding:6px 8px;color:#C9D3FF}
+.qd-tools button{appearance:none;border:0;margin:0;background:transparent;font:inherit;color:#fff;cursor:pointer;padding:7px 9px;border-radius:6px}
+.qd-tools button:hover{background:rgba(91,140,255,.4)}
+.qd-tools button:disabled{opacity:.35;cursor:default;background:transparent}
 
 /* Màn hình hẹp */
 @media screen and (max-width:900px){
@@ -1467,7 +1476,8 @@ body.editing .grad{caret-color:var(--ink)}
 }
 @media screen and (max-width:720px){
   .quotes,.why,.gates,.ctx-grid,.terms,.parties,.sign,.hero-meta,.ucs,.ucs.n1{grid-template-columns:minmax(0,1fr)}
-  .uc-res li{flex-direction:column;gap:2px}
+  .uc-res li{grid-template-columns:minmax(0,1fr);gap:2px}
+  .uc-ba{justify-content:flex-start;text-align:left}
   .sum > div{grid-template-columns:minmax(0,1fr);gap:4px}
   .g-row{grid-template-columns:minmax(0,1fr)}
   .g-scale-row .g-name{display:none}
@@ -1541,6 +1551,7 @@ body.editing .grad{caret-color:var(--ink)}
 @page{size:A4;margin:0}
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none!important}
+  .qd-tools{display:none!important}
   html{scroll-behavior:auto}
   body{background:var(--ui-card);font-size:13.5px}
   .notes,footer{display:none!important}
@@ -1707,6 +1718,9 @@ const QD_APP_KIND=[['proc','Quy trình',['BPM','Workflow','E-Office','Automation
 // Những phần chữ sửa được trên bản HTML; phần tử nằm trong một phần tử sửa được khác thì đi theo phần tử ngoài.
 const QUOTE_EDITABLE=['.eyebrow','.topbar .meta','.tag','h1','h2','h3','.lead','.note','.hero-meta dt','.hero-meta dd','.tile-k','.tile-v','.tile-s','.sum dt','.sum dd','.q-text','.q-who','.q-fact','.tbl th','.tbl td','.ntbl th','.ntbl td','.ax-name b','.ax-name span','.ax-window span','.map-h span','.map-p p','.map-s p','.chip','.map-o','.callout','.g-name b','.g-name span','.list li','.gate .d','.gate p','.opt-no','.opt-solves','.opt-apps span','.opt-price b','.opt-price span','.opt dt','.opt dd','.rec-tag','.why h3','.why p','.ctx b','.ctx span','.terms dt','.terms dd','.after','.nexts b','.nexts .who','.nexts time','.signoff','.doc-h dt','.doc-h dd','.parties p','.words','.sign b','.sign span','.uc-h h3','.uc-meta','.uc-k','.uc-b p','.uc-res li','.uc-q p','.uc-q cite','.uc-ref','.notes li','footer span'].join(',');
 
+// Khối thêm/bớt/đổi thứ tự được khi sửa: các phần lặp lại và cả mục. Mọi phần tử sửa chữ được cũng xoá/nhân bản được.
+const QUOTE_BLOCKS=['section','.tile','.sum > div','.hero-meta > div','.q','.sheet','.axis-card','.tbl tbody tr','.ntbl tbody tr','.map-r','.chip','.uc','.uc-b','.uc-res li','.uc-q','.uc-ref','.g-row:not(.g-scale-row)','.box','.list li','.gate','.opt','.opt-apps span','.opt dl > div','.why > div','.ctx','.terms > div','.nexts li','.callout','.parties > div'].join(',');
+
 // Số tiền thành chữ tiếng Việt: 250740000 → "Hai trăm năm mươi triệu bảy trăm bốn mươi nghìn đồng".
 function qdWords(value){
   let n=Math.round(Math.abs(value));if(!n)return 'Không đồng';
@@ -1727,10 +1741,10 @@ function qdWords(value){
 function buildQuoteDocument({deal,options,recommendedId,useCases=[],scopeNames={},policy={}}){
   const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const nf=(n,digits=2)=>new Intl.NumberFormat('vi-VN',{maximumFractionDigits:digits}).format(n);
-  const money=n=>nf(Math.round(n),0)+' đ';
+  const money=n=>nf(Math.round(n),0)+'\u00a0đ';
   const big=n=>Math.abs(n)>=1e9?nf(n/1e9,2)+' tỷ đồng':nf(n/1e6,1)+' triệu đồng';
-  const bigCell=n=>Math.abs(n)>=1e9?nf(n/1e9,2)+' tỷ đ':nf(n/1e6,1)+' triệu đ';
-  const bigShort=n=>Math.abs(n)>=1e9?nf(n/1e9,2)+' tỷ đ':nf(n/1e6,1)+' tr đ';
+  const bigCell=n=>Math.abs(n)>=1e9?nf(n/1e9,2)+'\u00a0tỷ\u00a0đ':nf(n/1e6,1)+'\u00a0triệu\u00a0đ';
+  const bigShort=n=>Math.abs(n)>=1e9?nf(n/1e9,2)+'\u00a0tỷ\u00a0đ':nf(n/1e6,1)+'\u00a0tr\u00a0đ';
   const lcFirst=s=>String(s).charAt(0).toLowerCase()+String(s).slice(1);
   const d=deal||{},q=d.quote||{},c=d.customer||{},prep=d.preparer||{},msg=d.message||{};
   const short=c.short||c.name||'khách hàng';
@@ -1883,7 +1897,10 @@ function buildQuoteDocument({deal,options,recommendedId,useCases=[],scopeNames={
   if(costSum)tiles.push(['Cái giá mỗi năm của cách làm hiện tại',bigShort(costSum),'v-bad',cashSum?`trong đó ${big(cashSum)} là tiền mặt`:`ước tính từ số liệu của ${short}`]);
   tiles.push([`Đầu tư ${years} năm, thanh toán trước`,bigShort(rec.r.total),'',`phần mềm ${money(rec.r.monthly)} mỗi tháng${psOf(rec.r)?.gross?', cộng dịch vụ triển khai':''}`]);
   if(pb)tiles.push([valCash(rec)?'Hoàn vốn, chỉ tính tiền mặt':'Hoàn vốn ước tính',`~${pb} tháng`,'v-ok',`hiệu quả khoảng ${big(valYear(rec)||valCash(rec))} mỗi năm`]);
-  if(tiles.length<3){const seats=rec.r.lines.filter(l=>!l.addon&&!['usage','hiring'].includes(l.scope)).reduce((s,l)=>s+l.seats,0);if(seats)tiles.push(['Tài khoản phần mềm',nf(seats,0)+' TK','',`theo phương án ${rec.label}`]);}
+  // Số người, không phải tổng tài khoản: một người dùng cả Work và HRM mua rời có 2 tài khoản nhưng vẫn là 1 người.
+  // Chỉ biết số người khi nhập theo nhóm nhân viên; nhập tài khoản trực tiếp thì không cộng.
+  const staff=(rec.r.staff||[]).filter(g=>g.count>0),people=staff.reduce((s,g)=>s+g.count,0);
+  if(tiles.length<3&&people)tiles.push(['Người dùng',nf(people,0)+' người','',staff.map(g=>`${g.name} ${nf(g.count,0)}`).join(' · ')]);
   if(tiles.length<3)tiles.push(['Kỳ hạn',`${years} năm`,'','thanh toán trước toàn bộ']);
   const rows=[];
   if(c.context)rows.push(['Bối cảnh',c.context]);
@@ -1902,7 +1919,7 @@ function buildQuoteDocument({deal,options,recommendedId,useCases=[],scopeNames={
   const ps=psOf(r);
   if(ps){
     tail+=`<tr class="sum-row group"><td class="idx"></td><td colspan="5" class="t">Dịch vụ triển khai (Professional Service) · tính một lần</td></tr>`;
-    tail+=ps.items.map((x,i)=>`<tr><td class="idx num">${r.lines.length+i+1}</td><td class="t">${E(x.name)}${x.scope?.length?`<br><span class="m">${E(x.scope.slice(0,3).join(' · '))}</span>`:x.pack?`<br><span class="m">Mỗi gói: ${E(x.pack)}</span>`:''}</td><td class="num" data-label="Số lượng">${E(x.qty?nf(x.qty,0)+' gói':x.sessions?x.sessions+' buổi':'1 gói')}</td><td class="r" data-label="Đơn giá (đ)">${x.waived?'Miễn phí':nf(x.unit||x.net,0)}</td><td class="r" data-label="Số tháng">Một lần</td><td class="r" data-label="Thành tiền (đ)">${x.waived?'0':nf(x.net,0)}</td></tr>`).join('');
+    tail+=ps.items.map((x,i)=>`<tr><td class="idx num">${r.lines.length+i+1}</td><td class="t">${E(x.name)}${x.scope?.length?`<br><span class="m">${E(x.scope.slice(0,3).join(' · '))}</span>`:x.pack?`<br><span class="m">Mỗi gói: ${E(x.pack)}</span>`:''}</td><td class="num" data-label="Số lượng">${E(x.qty?nf(x.qty,0)+' gói':x.sessions?x.sessions+' buổi':'1 gói')}</td><td class="r" data-label="Đơn giá (đ)">${x.waived?'Miễn phí':nf(x.unit||x.net,0)}</td><td class="r" data-label="Số tháng">Một&nbsp;lần</td><td class="r" data-label="Thành tiền (đ)">${x.waived?'0':nf(x.net,0)}</td></tr>`).join('');
     tail+=sumRow('Cộng dịch vụ triển khai trước VAT',nf(ps.net,0));
     if(ps.vat)tail+=sumRow(`VAT ${nf(ps.vat/ps.net*100,0)}% dịch vụ triển khai`,nf(ps.vat,0));
   }
@@ -1945,7 +1962,7 @@ function setupQuoteUI({byId,escape,getSelected,scopeNames,heading,money,notify,r
   let st=readStorage(KEY);
   if(!st||typeof st!=='object'||Array.isArray(st))st={};
   if(!st.opts||typeof st.opts!=='object')st.opts={};
-  let built=false,frame=null,editing=false,saveTimer=null,refreshTimer=null,current=null,observer=null;
+  let built=false,frame=null,editing=false,saveTimer=null,refreshTimer=null,current=null,observer=null,sel=null,undo=[];
   const persist=()=>saveStorage(KEY,st);
   const hash=s=>{let h=5381;for(let i=0;i<s.length;i++)h=((h*33)^s.charCodeAt(i))>>>0;return h.toString(36);};
   const slug=s=>qfFold(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'khach-hang';
@@ -1985,7 +2002,7 @@ function setupQuoteUI({byId,escape,getSelected,scopeNames,heading,money,notify,r
 </div>
 <div class="qb-go"><button type="button" class="primary" id="qb-build">Tạo báo giá HTML →</button><span class="small" id="qb-build-status"></span></div>
 <section class="qb-preview" id="qb-preview" hidden>
-<div class="qb-toolbar"><div class="qb-toolbar-title"><span class="step">4</span><div><strong>Bản báo giá</strong><span class="small" id="qb-save-status">Bấm “Sửa chữ” để chỉnh trực tiếp trên bản dưới đây.</span></div></div><div class="qb-row"><button type="button" id="qb-edit" aria-pressed="false">Sửa chữ</button><button type="button" id="qb-regen">Tạo lại từ dữ liệu</button><button type="button" id="qb-html">↓ File HTML</button><button type="button" class="primary" id="qb-pdf">Xuất PDF</button></div></div>
+<div class="qb-toolbar"><div class="qb-toolbar-title"><span class="step">4</span><div><strong>Bản báo giá</strong><span class="small" id="qb-save-status">Bấm “Sửa chữ” để chỉnh trực tiếp trên bản dưới đây.</span></div></div><div class="qb-row"><button type="button" id="qb-edit" aria-pressed="false">Sửa chữ</button><button type="button" id="qb-undo" hidden disabled>↶ Hoàn tác</button><button type="button" id="qb-regen">Tạo lại từ dữ liệu</button><button type="button" id="qb-html">↓ File HTML</button><button type="button" class="primary" id="qb-pdf">Xuất PDF</button></div></div>
 <div id="qb-banner"></div>
 <iframe id="qb-frame" title="Bản xem báo giá"></iframe>
 </section>
@@ -2069,9 +2086,19 @@ function setupQuoteUI({byId,escape,getSelected,scopeNames,heading,money,notify,r
     fit();doc.fonts?.ready?.then(fit).catch(()=>{});
     observer?.disconnect();if(window.ResizeObserver){observer=new ResizeObserver(fit);observer.observe(doc.body);}
     doc.addEventListener('input',()=>{clearTimeout(saveTimer);byId('qb-save-status').textContent='Đang lưu…';saveTimer=setTimeout(saveEdit,600);});
-    doc.addEventListener('keydown',e=>{if(!editing)return;if(e.key==='Enter'&&!e.shiftKey)e.preventDefault();});
-    doc.addEventListener('paste',e=>{if(!editing)return;e.preventDefault();doc.execCommand('insertText',false,(e.clipboardData?.getData('text/plain')??'').replace(/\s*\n\s*/g,' '));});
+    // Enter xuống dòng trong cùng một khối; dán chữ giữ nguyên các dòng.
+    doc.addEventListener('keydown',e=>{if(!editing)return;if(e.key==='Enter'){e.preventDefault();doc.execCommand('insertLineBreak');}});
+    doc.addEventListener('paste',e=>{if(!editing)return;e.preventDefault();(e.clipboardData?.getData('text/plain')??'').replace(/\r/g,'').split('\n').forEach((line,i)=>{if(i)doc.execCommand('insertLineBreak');if(line)doc.execCommand('insertText',false,line);});});
     doc.addEventListener('drop',e=>{if(editing)e.preventDefault();});
+    doc.addEventListener('mousedown',e=>{if(editing&&e.target.closest?.('#qd-tools'))e.preventDefault();});
+    doc.addEventListener('click',e=>{
+      if(!editing)return;
+      const a=e.target.closest?.('#qd-tools button');
+      if(a){e.preventDefault();if(!a.disabled)act(a.dataset.act);return;}
+      if(e.target.closest?.('#qd-tools'))return;
+      select(blockOf(e.target));
+    });
+    sel=null;undo=[];
     setEditing(editing);
   }
   function editables(doc){
@@ -2079,18 +2106,69 @@ function setupQuoteUI({byId,escape,getSelected,scopeNames,heading,money,notify,r
     const all=[...root.querySelectorAll(QUOTE_EDITABLE)],set=new Set(all);
     return all.filter(el=>{for(let p=el.parentElement;p&&p!==root;p=p.parentElement)if(set.has(p))return false;return true;});
   }
+  // Khối: bấm vào để chọn; thanh công cụ nhỏ trong khung báo giá cho lên/xuống, nhân bản, xoá, chọn khối ngoài.
+  const BLOCK_SEL=QUOTE_BLOCKS+',[data-ed]';
+  function blockOf(el){
+    const root=frame?.contentDocument?.getElementById('doc');
+    for(let p=el;p&&p!==root&&p.nodeType===1;p=p.parentElement)if(p.matches(BLOCK_SEL))return p;
+    return null;
+  }
+  function blockName(b){
+    if(b.matches('section'))return 'Cả mục';
+    if(b.matches('tr'))return 'Dòng bảng';
+    if(b.matches('.opt'))return 'Phương án';
+    if(b.matches('.uc'))return 'Use-case';
+    if(b.matches('.q,.tile,.box,.gate,.ctx,.sheet,.axis-card,.why > div'))return 'Thẻ';
+    if(b.matches('li,.sum > div,.terms > div,.opt dl > div,.hero-meta > div,.map-r,.g-row,.uc-b,.parties > div'))return 'Dòng';
+    if(b.matches('.chip,.opt-apps span'))return 'Nhãn';
+    return 'Đoạn chữ';
+  }
+  const isBlock=x=>!!x&&x.matches(BLOCK_SEL);
+  function select(b){
+    const doc=frame?.contentDocument;if(!doc?.body)return;
+    doc.querySelectorAll('[data-sel]').forEach(x=>x.removeAttribute('data-sel'));
+    sel=b||null;
+    let box=doc.getElementById('qd-tools');
+    if(!sel){box?.remove();return;}
+    if(!box){box=doc.createElement('div');box.id='qd-tools';box.className='qd-tools';box.setAttribute('contenteditable','false');doc.body.append(box);}
+    sel.setAttribute('data-sel','');
+    box.innerHTML=`<span>${blockName(sel)}</span><button type="button" data-act="up" title="Lên trên"${isBlock(sel.previousElementSibling)?'':' disabled'}>↑</button><button type="button" data-act="down" title="Xuống dưới"${isBlock(sel.nextElementSibling)?'':' disabled'}>↓</button><button type="button" data-act="dup" title="Thêm một bản ngay bên dưới">⧉ Nhân bản</button><button type="button" data-act="del" title="Xoá khối này">✕ Xoá</button><button type="button" data-act="out" title="Chọn khối lớn hơn chứa khối này"${blockOf(sel.parentElement)?'':' disabled'}>⤒ Khối ngoài</button>`;
+    const r=sel.getBoundingClientRect(),w=doc.defaultView,bw=box.offsetWidth;
+    box.style.top=Math.max(0,r.top+w.scrollY-box.offsetHeight-10)+'px';
+    box.style.left=Math.max(4,Math.min(r.right+w.scrollX-bw,doc.documentElement.clientWidth-bw-4))+'px';
+  }
+  // Đánh lại số mục 01, 02… sau khi xoá, nhân bản hoặc đổi thứ tự mục.
+  function renumber(doc){let i=0;doc.querySelectorAll('#doc .eyebrow > b').forEach(b=>{b.textContent=String(++i).padStart(2,'0');});}
+  function snapshot(){const root=frame?.contentDocument?.getElementById('doc');if(!root)return;undo.push(root.innerHTML.replace(/ data-sel=""/g,''));if(undo.length>30)undo.shift();}
+  function updateUndo(){const b=byId('qb-undo');b.hidden=!editing;b.disabled=!undo.length;}
+  function act(kind){
+    const doc=frame?.contentDocument,b=sel;if(!doc||!b)return;
+    if(kind==='out'){select(blockOf(b.parentElement));return;}
+    snapshot();
+    if(kind==='del'){b.remove();select(null);}
+    else if(kind==='dup'){const c=b.cloneNode(true);c.removeAttribute('data-sel');c.removeAttribute('id');c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));b.after(c);select(c);}
+    else if(kind==='up'){b.previousElementSibling.before(b);select(b);}
+    else if(kind==='down'){b.nextElementSibling.after(b);select(b);}
+    renumber(doc);saveEdit();updateUndo();
+  }
+  function undoLast(){
+    const root=frame?.contentDocument?.getElementById('doc');if(!root||!undo.length)return;
+    root.innerHTML=undo.pop();select(null);setEditing(true);saveEdit();updateUndo();
+  }
   function setEditing(on){
     editing=on;const btn=byId('qb-edit'),doc=frame?.contentDocument;
     btn.setAttribute('aria-pressed',String(on));btn.textContent=on?'Xong, thôi sửa':'Sửa chữ';btn.classList.toggle('active',on);
+    updateUndo();
+    if(!on)select(null);
     if(!doc?.body)return;
     doc.body.classList.toggle('editing',on);
     for(const el of editables(doc)){if(on){el.setAttribute('contenteditable','true');el.setAttribute('data-ed','');el.spellcheck=false;}else{el.removeAttribute('contenteditable');el.removeAttribute('data-ed');el.removeAttribute('spellcheck');}}
-    if(on)byId('qb-save-status').textContent='Bấm vào chữ bất kỳ để sửa. Shift + Enter để xuống dòng. Tự lưu trên trình duyệt này.';
+    if(on)byId('qb-save-status').textContent='Bấm vào chữ để sửa, Enter để xuống dòng. Khối đang chọn có thanh nhỏ để nhân bản, xoá, đổi thứ tự; “Khối ngoài” chọn cả thẻ hoặc cả mục. Tự lưu trên trình duyệt này.';
   }
   function saveEdit(){
     const root=frame?.contentDocument?.getElementById('doc');if(!root)return;
     const clone=root.cloneNode(true);
-    clone.querySelectorAll('[contenteditable],[data-ed],[spellcheck]').forEach(el=>{el.removeAttribute('contenteditable');el.removeAttribute('data-ed');el.removeAttribute('spellcheck');});
+    clone.querySelectorAll('[contenteditable],[data-ed],[spellcheck],[data-sel]').forEach(el=>{el.removeAttribute('contenteditable');el.removeAttribute('data-ed');el.removeAttribute('spellcheck');el.removeAttribute('data-sel');});
     st.edited={body:clone.innerHTML,sig:st.edited?.sig??current?.sig??signature(),at:Date.now()};persist();showBanner();updateBuildState();
     byId('qb-save-status').textContent='Đã lưu bản sửa lúc '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})+' trên trình duyệt này.';
   }
@@ -2148,6 +2226,7 @@ function setupQuoteUI({byId,escape,getSelected,scopeNames,heading,money,notify,r
     byId('qb-read').addEventListener('click',()=>{st.fileText=byId('qb-text').value;st.fileName=st.fileName||'Nội dung đã dán';persist();renderParsed();changed();notify('Đã đọc nội dung hồ sơ');});
     byId('qb-build').addEventListener('click',()=>show(true));
     byId('qb-edit').addEventListener('click',()=>setEditing(!editing));
+    byId('qb-undo').addEventListener('click',undoLast);
     byId('qb-regen').addEventListener('click',regenerate);
     byId('qb-html').addEventListener('click',downloadHTML);
     byId('qb-pdf').addEventListener('click',exportPDF);
