@@ -7,29 +7,42 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link id="st-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
 <style id="st-css">/* Quote Studio — phần trang (dùng cả cho file HTML xuất ra). */
-:root{--st-accent:#5B8CFF;--st-accent-2:#8FB0FF;--st-ok:#22C55E;--st-bad:#F0565B;--st-warn:#F5A524;--f-display:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',sans-serif;--f-ui:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+:root{--st-gap-in:2mm;--st-gap-group:5mm;--st-gap-section:9mm;--st-accent:#5B8CFF;--st-accent-2:#8FB0FF;--st-ok:#22C55E;--st-bad:#F0565B;--st-warn:#F5A524;--f-display:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',sans-serif;--f-ui:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
 .st-page{position:relative;width:210mm;margin:0 auto 36px}
 .st-sheet{position:relative;box-sizing:border-box;width:210mm;min-height:297mm;padding:11mm 14mm 9mm;display:flex;flex-direction:column;font:400 13px/1.55 var(--f-ui);overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
 .st-page[data-bg="dark"] .st-sheet{color:#EEF1FF;background:radial-gradient(130mm 95mm at 88% 4%,rgba(91,140,255,.26),transparent 70%),radial-gradient(110mm 80mm at 0% 100%,rgba(91,140,255,.12),transparent 70%),linear-gradient(165deg,#141C50 0%,#0B1030 55%,#070B1D 100%);--ink:#EEF1FF;--ink-2:#BCC4E8;--ink-3:#8C95BA;--line:rgba(255,255,255,.15);--card:rgba(255,255,255,.06);--card-line:rgba(255,255,255,.15);--soft:rgba(255,255,255,.05);--hl:#8FB0FF;--accent-bg:linear-gradient(160deg,rgba(91,140,255,.30),rgba(91,140,255,.10));--accent-line:rgba(143,176,255,.6)}
 .st-page[data-bg="light"] .st-sheet{color:#0E1430;background:#fff;--ink:#0E1430;--ink-2:#454E70;--ink-3:#6B7393;--line:#E3E7F1;--card:#F5F7FC;--card-line:#E3E7F1;--soft:#F7F8FC;--hl:#3563E9;--accent-bg:#EEF3FF;--accent-line:#BFD0FF}
-.st-ph{display:flex;justify-content:space-between;gap:8mm;height:8mm;margin-bottom:5mm;font:700 9.5px/1.3 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.st-pf{display:flex;justify-content:space-between;align-items:flex-end;gap:8mm;height:5mm;margin-top:5mm;font:500 9.5px/1.3 var(--f-ui);color:var(--ink-3)}
-.st-grid{--grid-h:254mm;position:relative;min-height:var(--grid-h);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:5mm;align-content:start}
+.st-ph{display:flex;justify-content:space-between;gap:8mm;height:8mm;margin-bottom:var(--st-gap-group);font:700 9.5px/1.3 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.st-pf{display:flex;justify-content:space-between;align-items:flex-end;gap:8mm;height:5mm;margin-top:var(--st-gap-group);font:500 9.5px/1.3 var(--f-ui);color:var(--ink-3)}
+.st-grid{--grid-h:254mm;position:relative;min-height:var(--grid-h);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--st-gap-group);align-content:start}
 .st-page[data-nochrome] .st-grid{--grid-h:277mm}
 .st-b{grid-column:span var(--w,12);min-height:var(--h,auto);position:relative;min-width:0;display:flex;flex-direction:column;container-type:inline-size;border-radius:3.5mm;box-sizing:border-box}
 .st-c{flex:1;min-width:0;outline:none;display:flex;flex-direction:column}
 .st-c > *{margin:0}
-.st-c > * + *{margin-top:2.4mm}
+.st-c > * + *{margin-top:var(--st-gap-in)}
 /* Kiểu khối: chỉ đổi nền/viền/đệm, không đổi nội dung */
-.st-s-card{background:var(--card);border:1px solid var(--card-line);padding:5mm}
-.st-s-white{background:#fff;color:#0E1430;padding:5mm;border:1px solid #E3E7F1;--ink:#0E1430;--ink-2:#454E70;--ink-3:#6B7393;--line:#E3E7F1;--card:#F5F7FC;--soft:#F7F8FC;--hl:#3563E9}
+.st-s-card{background:var(--card);border:1px solid var(--card-line);padding:var(--st-gap-group)}
+.st-s-white{background:#fff;color:#0E1430;padding:var(--st-gap-group);border:1px solid #E3E7F1;--ink:#0E1430;--ink-2:#454E70;--ink-3:#6B7393;--line:#E3E7F1;--card:#F5F7FC;--soft:#F7F8FC;--hl:#3563E9}
 .st-page[data-bg="light"] .st-s-white{box-shadow:0 1.5mm 5mm rgba(14,20,48,.08)}
-.st-s-accent{background:var(--accent-bg);border:1px solid var(--accent-line);padding:5mm}
+.st-s-accent{background:var(--accent-bg);border:1px solid var(--accent-line);padding:var(--st-gap-group)}
 .st-s-line{border-left:3px solid var(--st-accent);padding:1mm 0 1mm 4.5mm;border-radius:0}
+/* Tiêu đề gần nội dung phía dưới hơn nhóm phía trên. */
+.st-t-heading{margin-bottom:calc(var(--st-gap-in)*2 - var(--st-gap-group))}
+.st-t-heading:not(:first-child){margin-top:calc(var(--st-gap-section) - var(--st-gap-group))}
+/* Tiêu điểm: giữ HTML, chỉ tăng phân cấp và đổi nền/viền của khối. */
+.st-b.is-focus{background:var(--accent-bg);border:1px solid var(--accent-line);padding:var(--st-gap-group)}
+.st-b.is-focus.st-s-white{--accent-bg:#EEF3FF;--accent-line:#AFC4FF}
+.st-b.is-focus.st-s-line{border-left:3px solid var(--st-accent);border-radius:3.5mm}
 /* Chữ trong khối; số lớn co giãn theo độ rộng khối (container query) */
 .st-c h1{font:800 clamp(26px,7.4cqw,50px)/1.08 var(--f-display);letter-spacing:-.02em}
 .st-c h2{font:800 clamp(18px,4.3cqw,29px)/1.2 var(--f-display);letter-spacing:-.01em}
 .st-c h3{font:700 clamp(13px,3.2cqw,15.5px)/1.35 var(--f-display)}
+.st-b.is-focus .st-c{font-size:14px}
+.st-b.is-focus .st-c table{font-size:12.5px}
+.st-b.is-focus .st-c h2{font-size:clamp(21px,4.8cqw,33px)}
+.st-b.is-focus .st-c h3{font-size:clamp(15px,3.7cqw,18px)}
+.st-b.is-focus .st-c .v{font-size:clamp(21px,12.5cqw,43px)}
+.st-b.is-focus .st-c .q{font-size:16px}
 .st-c .eyebrow{font:700 10.5px/1.3 var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--hl)}
 .st-c .lead{font-size:15px;line-height:1.55;color:var(--ink-2)}
 .st-c .hl{color:var(--hl)}
@@ -43,21 +56,21 @@
 .st-c b,.st-c strong{font-weight:700}
 .st-c ul{list-style:none;padding:0}
 .st-c ul li{position:relative;padding-left:4.5mm}
-.st-c ul li + li{margin-top:1.4mm}
+.st-c ul li + li{margin-top:var(--st-gap-in)}
 .st-c ul li::before{content:'';position:absolute;left:0;top:.62em;width:1.6mm;height:1.6mm;border-radius:50%;background:var(--st-accent)}
 .st-c ol{padding-left:5mm}
 .st-c ol.steps{list-style:none;padding:0;counter-reset:st}
-.st-c ol.steps li{counter-increment:st;position:relative;padding:2.6mm 0 2.6mm 11mm;border-bottom:1px solid var(--line)}
+.st-c ol.steps li{counter-increment:st;position:relative;padding:var(--st-gap-in) 0 var(--st-gap-in) 11mm;border-bottom:1px solid var(--line)}
 .st-c ol.steps li::before{content:counter(st);position:absolute;left:0;top:2mm;width:7.5mm;height:7.5mm;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);font:800 12px/1 var(--f-display)}
 .st-c ol.steps li.key::before{background:var(--st-accent);border-color:var(--st-accent);color:#fff}
 .st-c ol.steps li .s{display:block}
-.st-c .chips{display:flex;flex-wrap:wrap;gap:1.5mm}
+.st-c .chips{display:flex;flex-wrap:wrap;gap:var(--st-gap-in)}
 .st-c .chip{display:inline-block;padding:.5mm 2.4mm;border-radius:99px;border:1px solid var(--line);font:600 10.5px/1.6 var(--f-ui);white-space:nowrap}
 .st-c .tag{display:inline-block;padding:.6mm 2.6mm;border-radius:99px;background:var(--st-accent);color:#fff;font:700 9.5px/1.6 var(--f-display);letter-spacing:.1em;text-transform:uppercase}
 .st-c hr{border:0;border-top:1px solid var(--line);margin:1mm 0}
 .st-c table{width:100%;border-collapse:collapse;font-size:11.5px;line-height:1.45;overflow-wrap:break-word}
 .st-c th{text-align:left;padding:1.8mm 2mm;border-bottom:1px solid var(--line);font:700 9px/1.3 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);vertical-align:bottom}
-.st-c td{padding:2mm;border-bottom:1px solid var(--line);vertical-align:top}
+.st-c td{padding:var(--st-gap-in);border-bottom:1px solid var(--line);vertical-align:top}
 .st-c .num{text-align:right;font-variant-numeric:tabular-nums}
 .st-c td.num{white-space:nowrap}
 .st-c table.kv th{width:28%;text-transform:none;letter-spacing:0;font:600 11.5px/1.45 var(--f-ui);vertical-align:top}
@@ -84,7 +97,7 @@
 .st-a4line,.st-ptools,.st-handle,.st-rw,.st-rh,.st-mini,.st-emptyhint{display:none}
 body.st-export{margin:0;background:#E9ECF4}
 body.st-export .st-page{margin:24px auto}
-body.st-export .st-sheet{height:297mm;overflow:hidden;box-shadow:0 10px 40px rgba(14,20,48,.18)}
+body.st-export .st-sheet{height:297mm;overflow:visible;box-shadow:0 10px 40px rgba(14,20,48,.18)}
 body.st-export .img.is-empty{display:none}
 @page{size:A4;margin:0}
 @media print{
@@ -92,7 +105,7 @@ body.st-export .img.is-empty{display:none}
   html,body{margin:0;background:none!important}
   .st-page{margin:0!important;break-after:page;page-break-after:always}
   .st-page:last-child{break-after:auto;page-break-after:auto}
-  .st-sheet{height:297mm!important;min-height:0!important;overflow:hidden!important;box-shadow:none!important}
+  .st-sheet{height:297mm!important;min-height:0!important;overflow:visible!important;box-shadow:none!important}
   .img.is-empty{display:none!important}
 }
 /* == EDITOR == */
@@ -232,8 +245,8 @@ body.st-preview .st-left,body.st-preview .st-right,body.st-preview .st-ptools,bo
 body.st-preview .st-b{outline:none!important}
 body.st-preview .st-t-spacer .st-c{background:none}
 body.st-preview .img.is-empty{visibility:hidden}
-@media (max-width:1180px){#st-app{grid-template-columns:0 minmax(0,1fr) 300px}.st-left{display:none}}
-@media (max-width:860px){#st-app{grid-template-columns:minmax(0,1fr);grid-template-rows:56px minmax(0,1fr) 42vh}#st-canvas{grid-column:1}.st-right{grid-column:1;grid-row:3;border-left:0;border-top:1px solid #E1E4EE}#st-canvas{padding:24px 8px 80px}.st-page,.st-addpage{zoom:.5}#st-title{display:none}}
+@media screen and (max-width:1180px){#st-app{grid-template-columns:0 minmax(0,1fr) 300px}.st-left{display:none}}
+@media screen and (max-width:860px){#st-app{grid-template-columns:minmax(0,1fr);grid-template-rows:56px minmax(0,1fr) 42vh}#st-canvas{grid-column:1}.st-right{grid-column:1;grid-row:3;border-left:0;border-top:1px solid #E1E4EE}#st-canvas{padding:24px 8px 80px}.st-page,.st-addpage{zoom:.5}#st-title{display:none}}
 @media print{
   #st-app{display:block;height:auto}
   .st-top,.st-left,.st-right,.st-ptools,.st-handle,.st-rw,.st-rh,.st-mini,.st-a4line,.st-emptyhint,.st-addpage,#st-dialog,#st-toast,#st-drop,#st-ghost,#st-tip{display:none!important}
@@ -242,6 +255,15 @@ body.st-preview .img.is-empty{visibility:hidden}
   .st-t-spacer .st-c{background:none!important}
   body.st-preview #st-app{display:block}
 }
+
+/* Kiểm tra Pha 1: lỗi / cảnh báo / gợi ý; công cụ không in. */
+.st-focus-controls{display:grid;gap:7px;margin-top:12px}.st-focus-controls button[aria-pressed=true]{border-color:var(--st-accent);background:#EEF3FF;color:#3563E9}
+.st-check-summary{font-size:12px;color:#454E70;margin:0 0 12px}.st-check-group{margin-top:12px}.st-check-group>h5{font:700 11px/1.3 var(--f-display);margin:0 0 7px;color:#454E70}
+.st-checks li.suggestion{background:#F4F6FB;border-color:#E3E7F1}.st-checks li.warning{background:#FFF8EB;border-color:#F7DFAE}
+.st-checks li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px;align-items:start}
+.st-check-link{background:none!important;border:0!important;padding:0!important;color:inherit;text-align:left;font:inherit;line-height:1.45}
+.st-check-link .st-check-level{display:block;font-size:10.5px;font-weight:700;margin-bottom:2px}
+.st-dismiss{padding:2px 5px;font-size:10.5px;white-space:nowrap}.st-check-options{margin-top:10px;font-size:11px;color:#6B7393}.st-check-options button{padding:4px 7px;font-size:11px}
 </style>
 </head>
 <body>
@@ -573,16 +595,116 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     ],{role:'appendix'});
   }
 
+  for(const page of pages){page.role=stInferRole(page);stSeedFocus(page);}
+
   return {
     id:stId('d'),version:1,created:Date.now(),updated:Date.now(),
     title:`Báo giá ${short}${q.no?' · '+q.no:''}`,
     header:{left:'BASE.VN · ĐỀ XUẤT GIẢI PHÁP VÀ BÁO GIÁ',right:[q.no,q.dateText].filter(Boolean).join(' · ')},
     footer:{left:`Base 2.0 · Đề xuất giải pháp và báo giá cho ${c.name||short}`},
-    assets,pages,notes:stNotes(payload),dealKey:stDealKey(payload),data:payload,
+    assets,pages,dismissed:[],notes:stNotes(payload),dealKey:stDealKey(payload),data:payload,
   };
 }
 
 const stDealKey=p=>[p?.deal?.quote?.no||'',p?.deal?.customer?.name||''].join('|');
+
+// Pha 1: dữ liệu kiểm tra và tiêu điểm độc lập với DOM.
+const ST_ROLE_NAMES={cover:'Bìa',summary:'Tóm tắt',problem:'Hiện trạng',goals:'Mục tiêu',solution:'Giải pháp',plan:'Triển khai',proof:'Bằng chứng',investment:'Đầu tư',terms:'Điều kiện',action:'Bước tiếp theo',appendix:'Phụ lục',custom:'Nội dung'};
+function stText(html){
+  return String(html??'').replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<[^>]+>/g,' ').replace(/&#(x[\da-f]+|\d+);/gi,(_,n)=>{const v=n[0].toLowerCase()==='x'?parseInt(n.slice(1),16):+n;return v>0&&v<=0x10ffff?String.fromCodePoint(v):' ';}).replace(/&(nbsp|amp|lt|gt|quot|apos);/gi,(_,n)=>({nbsp:' ',amp:'&',lt:'<',gt:'>',quot:'"',apos:"'"})[n.toLowerCase()]).replace(/\s+/g,' ').trim();
+}
+const stFold=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();
+function stInferRole(page){
+  if(page.role)return page.role;
+  if((page.blocks||[]).some(b=>b.type==='cover'))return 'cover';
+  const first=(page.blocks||[]).find(b=>b.type==='heading')||(page.blocks||[]).find(b=>/class=["'][^"']*\beyebrow\b/.test(b.html)),eyebrow=first?.html.match(/<[^>]*class=["'][^"']*\beyebrow\b[^"']*["'][^>]*>([\s\S]*?)<\/[^>]+>/i)?.[1],name=stFold(stText(eyebrow||''));
+  if(/tom tat/.test(name))return 'summary';if(/hien trang|boi canh/.test(name))return 'problem';
+  if(/muc tieu|tieu chi/.test(name))return 'goals';if(/giai phap/.test(name))return 'solution';
+  if(/doanh nghiep da|bang chung|use.case/.test(name))return 'proof';if(/phuong an|dau tu/.test(name))return 'investment';
+  if(/lo trinh|pham vi|doi ngu/.test(name))return 'plan';if(/dieu khoan|dieu kien/.test(name))return 'terms';
+  if(/buoc tiep|hanh dong/.test(name))return 'action';
+  if((page.blocks||[]).some(b=>b.src==='price')||/bao gia dich vu/i.test(stFold(stText(first?.html))))return 'appendix';
+  return 'custom';
+}
+function stPrepareDoc(doc){
+  doc.dismissed??=[];
+  for(const p of doc.pages||[]){p.role=stInferRole(p);for(const b of p.blocks||[])if(b.focus!==undefined)b.focus=b.focus===true;}
+  return doc;
+}
+function stFocusPage(page,bid){
+  if(!(page.blocks||[]).some(b=>b.id===bid))return false;
+  for(const b of page.blocks){if(b.id!==bid&&b.focus&&b.style==='accent')b.style='card';b.focus=b.id===bid;}
+  return true;
+}
+function stSeedFocus(page){
+  if(['cover','appendix'].includes(stInferRole(page)))return;
+  const blocks=page.blocks||[];if(!blocks.length)return;
+  const current=blocks.find(b=>b.focus),accent=blocks.find(b=>b.style==='accent');
+  const preferred={summary:b=>b.src==='summary-rows',problem:b=>b.type==='quote'||/class=["'][^"']*\bq\b/.test(b.html),goals:b=>b.type==='table',solution:b=>b.type==='table',plan:b=>b.type==='table'||b.type==='steps',proof:b=>b.type==='card',investment:b=>b.src?.startsWith('option:'),terms:b=>b.type==='card',action:b=>b.type==='steps'}[stInferRole(page)];
+  const chosen=current||accent||(preferred&&blocks.find(preferred))||blocks.find(b=>!['heading','spacer','divider','logo'].includes(b.type))||blocks.find(b=>b.type==='heading');
+  if(chosen)stFocusPage(page,chosen.id);
+}
+function stApplyTypeStyle(doc,type,style){
+  if(!ST_STYLES.some(([s])=>s===style))return 0;
+  let changed=0;for(const p of doc.pages||[])for(const b of p.blocks||[])if(b.type===type&&!b.focus&&b.style!==style){b.style=style;changed++;}
+  return changed;
+}
+function stRows(blocks){
+  const rows=[];let row=[],used=0;
+  for(const b of blocks||[]){const w=Math.max(1,Math.min(12,+b.w||12));if(used+w>12&&row.length){rows.push(row);row=[];used=0;}row.push(b);used+=w;if(used===12){rows.push(row);row=[];used=0;}}
+  if(row.length)rows.push(row);return rows;
+}
+const stHasDate=t=>[...String(t).matchAll(/\b(\d{1,2})[/-](\d{1,2})(?:[/-](\d{2,4}))?\b/g)].some(m=>+m[1]>=1&&+m[1]<=31&&+m[2]>=1&&+m[2]<=12);
+const stContact=t=>/[\w.+-]+@[\w.-]+\.[a-z]{2,}/i.test(t)||/(?:\+?84|0)[\d\s().-]{7,}\d/.test(t);
+const stEvidence=html=>{
+  const text=stText(html).replace(/\[[^\]]*\]/g,'');
+  if(/(?:nguồn|ước tính|đã xác nhận)\s*:?[\s\S]{3,}/i.test(text))return true;
+  const sources=[...String(html).matchAll(/<[^>]*class=["'][^"']*\bs\b[^"']*["'][^>]*>([\s\S]*?)<\/[^>]+>/gi)].map(m=>stText(m[1]).replace(/\[[^\]]*\]/g,'')).join(' ');
+  return /khách(?: hàng)?/i.test(sources);
+};
+
+// measures[pageId] = { overflow, overflowMm?, units?: [[blockId,...],...] }.
+// Chỉ tràn trang là lỗi chặn xuất; các quy tắc nội dung hỗ trợ người soạn rà lại.
+function stLint(doc,measures={}){
+  const items=[],pages=doc?.pages||[],add=(code,level,group,message,p,b,extra={})=>items.push({id:`${code}:${p?.id||'doc'}:${b?.id||extra.key||''}`,code,level,group,message,...(p?{pid:p.id}:{}),...(b?{bid:b.id}:{}),...extra});
+  const typeStyles=new Map();
+  for(const p of pages){
+    const blocks=p.blocks||[],role=stInferRole(p),number=pages.indexOf(p)+1,m=measures[p.id]||{};
+    if(m.overflow)add('L-over','error','layout',`Trang ${number} tràn A4${m.overflowMm?` khoảng ${m.overflowMm} mm`:''}. Chuyển phần tràn sang trang mới.`,p);
+    const highlights=blocks.filter(b=>b.focus||b.style==='accent');
+    if(!['cover','appendix'].includes(role)&&blocks.length&&!highlights.length)add('L-focus','suggestion','layout',`Trang ${number} chưa có tiêu điểm. Chọn một khối quan trọng nhất.`,p);
+    if(highlights.length>1)add('L-focus','warning','layout',`Trang ${number} có ${highlights.length} khối tiêu điểm / nổi bật. Giữ một điểm nhấn chính.`,p,highlights[1]);
+    const rows=Array.isArray(m.units)?m.units.map(row=>row.map(id=>blocks.find(b=>b.id===id)).filter(Boolean)):stRows(blocks);
+    rows.slice(0,-1).forEach((row,i)=>{const sum=row.reduce((n,b)=>n+(+b.w||12),0);if(row.length&&sum<12)add('L-row','suggestion','layout',`Trang ${number}, hàng ${i+1} dùng ${sum}/12 cột. Thử bố cục cân bằng hoặc tăng độ rộng.`,p,row[0],{key:'row-'+i});});
+    const meaningful=blocks.filter(b=>!['spacer','divider','logo'].includes(b.type)),last=meaningful.at(-1);
+    if(last?.type==='heading')add('L-orphan','warning','layout',`Trang ${number} kết thúc bằng tiêu đề chưa có nội dung đi cùng.`,p,last);
+    if(blocks.filter(b=>b.type==='spacer').length>2)add('L-spacer','suggestion','layout',`Trang ${number} có hơn hai khối khoảng trống. Ưu tiên dùng thang khoảng cách.`,p,blocks.find(b=>b.type==='spacer'));
+    for(const b of blocks){
+      const text=stText(b.html),ph=text.match(/\[[^\]\n]{1,60}\]/g);
+      if(ph)add('C-ph','warning','content',`Trang ${number}: còn ${ph.length} chỗ giữ chỗ ${ph[0]}${ph.length>1?'…':''}.`,p,b);
+      if(['solution','goals'].includes(role)&&/(?:\d+(?:[.,]\d+)?\s?%|(?:giảm|tăng)\s+\d+)/i.test(text)&&!stEvidence(b.html))add('C-promise','warning','content',`Trang ${number}: kết quả định lượng chưa có nguồn hoặc giả định. Ghi nguồn / “Ước tính” trước khi gửi.`,p,b);
+      const titles=[...String(b.html||'').matchAll(/<h[12]\b[^>]*>([\s\S]*?)<\/h[12]>/gi)].map(x=>stFold(stText(x[1])));
+      if(role==='investment'&&titles.some(t=>/\b(?:gia|chi phi|phi)\b/.test(t)))add('C-word','suggestion','content',`Trang ${number}: cân nhắc dùng “đầu tư” ở tiêu đề thay cho giá / chi phí.`,p,b);
+      const images=[...String(b.html||'').matchAll(/<img\b([^>]*)>/gi)],empty=images.some(([,attrs])=>{const asset=attrs.match(/\bdata-asset\s*=\s*["']([^"']*)["']/i),src=attrs.match(/\bsrc\s*=\s*["']([^"']*)["']/i);return !(asset?String(doc.assets?.[asset[1]]||'').trim():src?.[1]?.trim());});
+      const qr=String(b.html||'').match(/<[^>]*class=["'][^"']*\bqr\b[^"']*["'][^>]*>([\s\S]*?)<\/[^>]+>/i);
+      if(empty||(qr&&!stText(qr[1])&&!/\b(?:src|href|data-asset)\s*=\s*["'][^"']+/.test(qr[0])))add('L-empty','warning','layout',`Trang ${number}: ảnh, logo hoặc QR chưa có nguồn. Khung trống không được in.`,p,b);
+      if(!b.focus){if(!typeStyles.has(b.type))typeStyles.set(b.type,{styles:new Set(),p,b});typeStyles.get(b.type).styles.add(b.style||'plain');}
+    }
+  }
+  for(const [type,x] of typeStyles)if(x.styles.size>=3)add('L-style','suggestion','layout',`Khối ${ST_TYPES[type]?.name||type} đang dùng ${x.styles.size} kiểu. Có thể áp một kiểu chung theo loại.`,x.p,x.b,{key:type});
+  const content=pages.filter(p=>!['cover','appendix'].includes(stInferRole(p))&&p.blocks?.length),last=content.at(-1),actions=pages.filter(p=>stInferRole(p)==='action');
+  const cta=last?.blocks.find(b=>b.type==='cta'&&stText(b.html).replace(/\[[^\]]*\]/g,'').trim()||b.type==='steps'&&stHasDate(stText(b.html)));
+  if(!cta)add('C-cta','warning','content','Cuối đề xuất chưa có một hành động tiếp theo có ngày (trước phụ lục).',last||pages.at(-1));
+  if(!actions.some(p=>p.blocks.some(b=>stContact(stText(b.html)))))add('C-contact','warning','content','Trang bước tiếp theo chưa có điện thoại hoặc email của người lập.',actions.at(-1)||last);
+  const visibleValidity=pages.some(p=>p.blocks.some(b=>{const t=stText(b.html),m=t.match(/hiệu lực[\s\S]{0,90}/i);return m&&stHasDate(m[0]);}));
+  if(!visibleValidity)add('C-validity','warning','content','Chưa có hạn hiệu lực báo giá đã xác nhận.',pages.find(p=>stInferRole(p)==='terms')||last);
+  for(const [i,note] of (doc?.notes||[]).entries()){
+    const match=note.match(/Phương án (\d+)/),option=match&&doc.data?.options?.[+match[1]-1];let target=null;
+    if(option)for(const p of pages){const b=p.blocks.find(b=>b.src==='option:'+option.id);if(b){target={p,b};break;}}
+    add('N-source','warning','source',note,target?.p,target?.b,{key:String(i)});
+  }
+  return items;
+}
 
 // Cập nhật các block lấy số liệu (chỉ số tóm tắt, thẻ phương án, PS, bảng giá); giữ chữ đã sửa ở các block khác.
 function stRefreshDoc(doc,payload){
@@ -655,7 +777,7 @@ function stSanitize(html){
   return t.innerHTML;
 }
 
-let stDoc=null,stSel=null,stHist={undo:[],redo:[],last:null},stTyping=0,stSaveT=0,stMeasureT=0,stCell=null,stImgTarget=null,stDrag=null;
+let stDoc=null,stSel=null,stHist={undo:[],redo:[],last:null},stTyping=0,stSaveT=0,stMeasureT=0,stCell=null,stImgTarget=null,stDrag=null,stMeasurements={};
 const stHandled=new Set();
 const stPage=pid=>stDoc.pages.find(p=>p.id===pid);
 function stFind(bid){for(const p of stDoc.pages){const i=p.blocks.findIndex(b=>b.id===bid);if(i>=0)return {p,i,b:p.blocks[i]};}return null;}
@@ -666,7 +788,7 @@ function stToast(msg){const t=st$('#st-toast');t.textContent=msg;t.hidden=false;
 function stDialog(title,html,buttons){return new Promise(res=>{const d=st$('#st-dialog');d.innerHTML=`<div class="st-dlg" role="dialog" aria-modal="true"><h3>${title}</h3><div class="st-dlg-body">${html}</div><div class="st-dlg-b">${buttons.map((b,i)=>`<button type="button" data-i="${i}" class="${b.primary?'primary':''}${b.danger?' danger':''}">${b.label}</button>`).join('')}</div></div>`;d.hidden=false;d.onclick=e=>{const b=e.target.closest('[data-i]');if(b||e.target===d){d.hidden=true;d.onclick=null;res(b?buttons[+b.dataset.i].value:null);}};});}
 
 // ---------- Lịch sử: chụp trạng thái sau mỗi thao tác; gõ chữ gom theo nhịp nghỉ. ----------
-const stSnap=()=>JSON.stringify({title:stDoc.title,header:stDoc.header,footer:stDoc.footer,pages:stDoc.pages});
+const stSnap=()=>JSON.stringify({title:stDoc.title,header:stDoc.header,footer:stDoc.footer,pages:stDoc.pages,dismissed:stDoc.dismissed||[]});
 function stHistReset(){stHist={undo:[],redo:[],last:stDoc?stSnap():null};stHistUI();}
 function stCommit(){clearTimeout(stTyping);stTyping=0;if(!stDoc)return;const s=stSnap();if(s===stHist.last)return;stHist.undo.push(stHist.last);if(stHist.undo.length>120)stHist.undo.shift();stHist.redo=[];stHist.last=s;stHistUI();stScheduleSave();}
 function stTypingCommit(){clearTimeout(stTyping);stTyping=setTimeout(stCommit,700);}
@@ -684,11 +806,11 @@ async function stSaveNow(){clearTimeout(stSaveT);if(!stDoc)return;stDoc.updated=
 // ---------- Vẽ ----------
 function stBlockHTML(b){
   const editable=!['spacer','divider'].includes(b.type);
-  return `<div class="st-b st-t-${b.type} st-s-${b.style}${stSel?.bid===b.id?' is-sel':''}" data-bid="${b.id}" style="--w:${b.w}${b.h?`;--h:${b.h}mm`:''}"><div class="st-c"${editable?' contenteditable="true"':''} spellcheck="false">${b.html}</div><button type="button" class="st-handle" title="Kéo để di chuyển khối" aria-label="Kéo để di chuyển khối" tabindex="-1">⠿</button><span class="st-rw" title="Kéo để đổi độ rộng"></span><span class="st-rh" title="Kéo để đổi chiều cao · bấm đúp để về tự động"></span><div class="st-mini"><button type="button" data-act="dup" title="Nhân bản khối" tabindex="-1">⧉</button><button type="button" data-act="del" title="Xoá khối" tabindex="-1">✕</button></div></div>`;
+  return `<div class="st-b st-t-${b.type} st-s-${b.style}${stSel?.bid===b.id?' is-sel':''}${b.focus?' is-focus':''}" data-bid="${b.id}" style="--w:${b.w}${b.h?`;--h:${b.h}mm`:''}"><div class="st-c"${editable?' contenteditable="true"':''} spellcheck="false">${b.html}</div><button type="button" class="st-handle" title="Kéo để di chuyển khối" aria-label="Kéo để di chuyển khối" tabindex="-1">⠿</button><span class="st-rw" title="Kéo để đổi độ rộng"></span><span class="st-rh" title="Kéo để đổi chiều cao · bấm đúp để về tự động"></span><div class="st-mini"><button type="button" data-act="dup" title="Nhân bản khối" tabindex="-1">⧉</button><button type="button" data-act="del" title="Xoá khối" tabindex="-1">✕</button></div></div>`;
 }
 function stPageHTML(p,i){
   const n=stDoc.pages.length,chrome=p.chrome!==false;
-  return `<section class="st-page${stSel?.pid===p.id&&!stSel.bid?' is-sel':''}" data-pid="${p.id}" data-bg="${p.bg}"${chrome?'':' data-nochrome'}><div class="st-ptools"><span class="st-plabel">Trang ${i+1}</span><span class="st-over" hidden></span><button type="button" class="st-fix" data-act="fix" hidden>Chuyển phần tràn sang trang mới</button></div><div class="st-sheet">${chrome?`<div class="st-ph"><span>${stEsc(stDoc.header.left)}</span><span>${stEsc(stDoc.header.right)}</span></div>`:''}<div class="st-grid">${p.blocks.map(stBlockHTML).join('')}${p.blocks.length?'':'<div class="st-emptyhint">Trang trống · kéo khối từ bảng bên phải vào đây, hoặc bấm một khối để thêm.</div>'}</div>${chrome?`<div class="st-pf"><span>${stEsc(stDoc.footer.left)}</span><span>Trang ${i+1} / ${n}</span></div>`:''}<div class="st-a4line"><span>Hết khổ A4 · phần dưới vạch sẽ không in</span><button type="button" data-act="fix">Chuyển phần tràn sang trang mới</button></div></div></section>`;
+  return `<section class="st-page${stSel?.pid===p.id&&!stSel.bid?' is-sel':''}" data-pid="${p.id}" data-bg="${p.bg}" data-role="${stEsc(p.role||'custom')}"${chrome?'':' data-nochrome'}><div class="st-ptools"><span class="st-plabel">Trang ${i+1}</span><span class="st-over" hidden></span><button type="button" class="st-fix" data-act="fix" hidden>Chuyển phần tràn sang trang mới</button></div><div class="st-sheet">${chrome?`<div class="st-ph"><span>${stEsc(stDoc.header.left)}</span><span>${stEsc(stDoc.header.right)}</span></div>`:''}<div class="st-grid">${p.blocks.map(stBlockHTML).join('')}${p.blocks.length?'':'<div class="st-emptyhint">Trang trống · kéo khối từ bảng bên phải vào đây, hoặc bấm một khối để thêm.</div>'}</div>${chrome?`<div class="st-pf"><span>${stEsc(stDoc.footer.left)}</span><span>Trang ${i+1} / ${n}</span></div>`:''}<div class="st-a4line"><span>Hết khổ A4 · phần dưới vạch sẽ không in</span><button type="button" data-act="fix">Chuyển phần tràn sang trang mới</button></div></div></section>`;
 }
 function stHydrate(root){
   root.querySelectorAll('img[data-asset]').forEach(img=>{const src=stDoc.assets?.[img.dataset.asset]||'';if(src)img.src=src;else img.removeAttribute('src');img.closest('.img')?.classList.toggle('is-empty',!src);});
@@ -733,6 +855,7 @@ function stPanel(){
     h+=`<section class="st-sec"><h4>${stEsc(ST_TYPES[b.type]?.name||'Khối')} <span class="st-muted">trang ${stDoc.pages.indexOf(r.p)+1}</span></h4>
 <p class="st-lbl">Độ rộng <span class="st-muted">· hoặc kéo cạnh phải của khối</span></p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${b.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div>
 <p class="st-lbl">Kiểu khối</p><div class="st-styles">${ST_STYLES.map(([s,l])=>`<button type="button" data-style="${s}" class="${b.style===s?'on':''}"><i class="st-swatch" data-bg="${bg}"><b class="st-s-${s}"></b></i><span>${l}</span></button>`).join('')}</div>
+<div class="st-focus-controls"><button type="button" data-act="focus" aria-pressed="${!!b.focus}">${b.focus?'Đang là tiêu điểm · bỏ tiêu điểm':'Đặt làm tiêu điểm trang'}</button><button type="button" data-act="style-all">Áp kiểu này cho mọi khối ${stEsc(ST_TYPES[b.type]?.name||b.type)}</button></div>
 <p class="st-lbl">Chiều cao</p><div class="st-row">${b.h?`<span>${b.h} mm</span><button type="button" data-act="h-auto">Về tự động</button>`:'<span class="st-muted">Tự động theo nội dung · kéo cạnh dưới để đặt</span>'}</div>
 <p class="st-lbl">Chữ <span class="st-muted">· bôi đen rồi bấm</span></p><div class="st-fmt"><button type="button" data-cmd="bold" title="Đậm"><b>B</b></button><button type="button" data-cmd="italic" title="Nghiêng"><i>I</i></button><button type="button" data-cmd="underline" title="Gạch chân"><u>U</u></button><button type="button" data-cmd="hl" title="Màu nhấn"><span class="st-hlbtn">A</span></button><button type="button" data-cmd="insertUnorderedList" title="Danh sách chấm">•≡</button><button type="button" data-cmd="insertOrderedList" title="Danh sách số">1≡</button><button type="button" data-cmd="justifyLeft" title="Căn trái">⇤</button><button type="button" data-cmd="justifyCenter" title="Căn giữa">↔</button><button type="button" data-cmd="justifyRight" title="Căn phải">⇥</button><button type="button" data-cmd="removeFormat" title="Bỏ định dạng">⌫</button></div>
 ${hasTable?`<p class="st-lbl">Bảng <span class="st-muted">· đặt con trỏ vào một ô</span></p><div class="st-row"><button type="button" data-act="row-add">＋ Dòng</button><button type="button" data-act="col-add">＋ Cột</button><button type="button" data-act="row-del">− Dòng</button><button type="button" data-act="col-del">− Cột</button></div>`:''}
@@ -755,14 +878,23 @@ ${b.src?'<p class="st-hint">Khối lấy số liệu từ Quote Lab. Gửi lại
   h+=`<section class="st-sec" id="st-checks"></section>`;
   el.innerHTML=h;stChecks();
 }
-// Việc cần xem trước khi gửi: ghi chú từ Quote Lab, trang tràn, chỗ giữ chỗ [..] còn trống, ảnh trống.
+// Kiểm tra thuần nhận dữ liệu và số đo; giao diện chỉ hiển thị và dẫn tới nội dung.
 function stChecks(){
   const el=st$('#st-checks');if(!el||!stDoc)return;
-  const items=[];
-  st$$('.st-page.is-over').forEach(p=>items.push({t:`Trang ${stDoc.pages.findIndex(x=>x.id===p.dataset.pid)+1} tràn khổ A4.`,pid:p.dataset.pid,bad:true}));
-  stDoc.pages.forEach((p,i)=>{for(const b of p.blocks){const tx=b.html.replace(/<[^>]+>/g,' ');const m=tx.match(/\[[^\]\n]{1,60}\]/g);if(m)items.push({t:`Trang ${i+1}: còn ${m.length} chỗ giữ chỗ ${stEsc(m[0])}${m.length>1?'…':''}`,bid:b.id});}});
-  for(const n of stDoc.notes||[])items.push({t:stEsc(n)});
-  el.innerHTML=`<h4>Kiểm tra trước khi gửi <span class="st-muted">${items.length}</span></h4>${items.length?`<ul class="st-checks">${items.map(x=>`<li class="${x.bad?'bad':''}"${x.pid?` data-goto-page="${x.pid}"`:''}${x.bid?` data-goto-block="${x.bid}"`:''}>${x.t}</li>`).join('')}</ul>`:'<p class="st-hint">Không có gì cần xem thêm.</p>'}`;
+  const all=stLint(stDoc,stMeasurements),dismissed=new Set(stDoc.dismissed||[]),visible=all.filter(x=>x.level!=='suggestion'||!dismissed.has(x.id));
+  const counts={error:0,warning:0,suggestion:0};visible.forEach(x=>counts[x.level]++);
+  const groups=[['layout','Bố cục'],['content','Nội dung'],['source','Lưu ý từ Quote Lab']],names={error:'Lỗi',warning:'Cảnh báo',suggestion:'Gợi ý'};
+  el.innerHTML=`<h4>Kiểm tra trước khi gửi</h4><p class="st-check-summary" aria-live="polite">${counts.error} lỗi · ${counts.warning} cảnh báo · ${counts.suggestion} gợi ý</p>${groups.map(([group,name])=>{
+    const items=visible.filter(x=>x.group===group);if(!items.length)return '';
+    return `<div class="st-check-group"><h5>${name}</h5><ul class="st-checks">${items.map(x=>`<li class="${x.level==='error'?'bad':x.level}" data-check-code="${x.code}"><button type="button" class="st-check-link"${x.bid?` data-goto-block="${stEsc(x.bid)}"`:x.pid?` data-goto-page="${stEsc(x.pid)}"`:''}><span class="st-check-level">${names[x.level]}</span>${stEsc(x.message)}</button>${x.level==='suggestion'?`<button type="button" class="st-dismiss" data-dismiss="${stEsc(x.id)}" aria-label="Ẩn gợi ý">Ẩn</button>`:''}</li>`).join('')}</ul></div>`;
+  }).join('')}${visible.length?'':'<p class="st-hint">Không có gì cần xem thêm.</p>'}${all.some(x=>x.level==='suggestion'&&dismissed.has(x.id))?'<div class="st-check-options"><button type="button" data-act="checks-restore">Hiện lại gợi ý đã ẩn</button></div>':''}`;
+}
+function stSetFocus(bid){stFlush();const r=stFind(bid);if(!r)return;if(r.b.focus){r.b.focus=false;if(r.b.style==='accent')r.b.style='card';}else stFocusPage(r.p,bid);stRenderPage(r.p.id);stPanel();stCommit();}
+function stSyncTypeStyle(bid){
+  stFlush();const r=stFind(bid);if(!r)return;const changed=stApplyTypeStyle(stDoc,r.b.type,r.b.style);
+  if(!changed){stToast('Các khối cùng loại đã dùng kiểu này; tiêu điểm giữ kiểu riêng.');return;}
+  for(const p of stDoc.pages)if(p.blocks.some(b=>b.type===r.b.type&&!b.focus))stRenderPage(p.id);
+  stPanel();stCommit();stToast(`Đã áp kiểu cho ${changed} khối · hoàn tác được một bước`);
 }
 
 // ---------- Chọn ----------
@@ -801,11 +933,11 @@ function stInsert(type,at){
   if(type==='image'||type==='logo')stPickImage(b.id);else{const c=el?.querySelector('[contenteditable]'),first=c&&[...c.querySelectorAll('h1,h2,h3,p,li,td,th')].find(x=>x.textContent.trim()&&!x.querySelector('p,li,td'));if(c){c.focus();if(first)stSelectAllIn(first);}}
 }
 function stSelectAllIn(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);}
-function stDup(bid){stFlush();const r=stFind(bid);if(!r)return;const c=JSON.parse(JSON.stringify(r.b));c.id=stId('b');r.p.blocks.splice(r.i+1,0,c);stSel={pid:r.p.id,bid:c.id};stRenderPage(r.p.id);stPanel();stCommit();}
+function stDup(bid){stFlush();const r=stFind(bid);if(!r)return;const c=JSON.parse(JSON.stringify(r.b));c.id=stId('b');if(c.focus&&c.style==='accent')c.style='card';c.focus=false;r.p.blocks.splice(r.i+1,0,c);stSel={pid:r.p.id,bid:c.id};stRenderPage(r.p.id);stPanel();stCommit();}
 function stDel(bid){stFlush();const r=stFind(bid);if(!r)return;r.p.blocks.splice(r.i,1);stSel={pid:r.p.id};stRenderPage(r.p.id);stPanel();stCommit();stToast('Đã xoá khối · ⌘Z / Ctrl+Z để hoàn tác');}
 function stMove(bid,pid,index){
   stFlush();const r=stFind(bid);if(!r)return;const from=r.p,to=stPage(pid);
-  from.blocks.splice(r.i,1);if(from===to&&r.i<index)index--;to.blocks.splice(Math.max(0,Math.min(index,to.blocks.length)),0,r.b);
+  from.blocks.splice(r.i,1);if(from===to&&r.i<index)index--;to.blocks.splice(Math.max(0,Math.min(index,to.blocks.length)),0,r.b);if(from!==to&&r.b.focus)stFocusPage(to,r.b.id);
   stSel={pid,bid};if(from!==to)stRenderPage(from.id);stRenderPage(pid);stPanel();stCommit();
 }
 function stSetProp(bid,prop,val){stFlush();const r=stFind(bid);if(!r)return;r.b[prop]=val;stRenderPage(r.p.id);stPanel();stCommit();}
@@ -823,8 +955,11 @@ function stApplyLayout(pid,id){stFlush();const p=stPage(pid),L=ST_LAYOUTS.find(x
 function stScheduleMeasure(){clearTimeout(stMeasureT);stMeasureT=setTimeout(stMeasure,120);}
 const stLimit=grid=>parseFloat(getComputedStyle(grid).minHeight)||0;
 function stMeasure(){
+  stMeasurements={};
   for(const el of st$$('.st-page')){
     const grid=el.querySelector('.st-grid'),over=grid.offsetHeight-stLimit(grid),o=over>2;
+    const units=[],tops=[];for(const block of grid.querySelectorAll(':scope > .st-b')){let row=tops.findIndex(t=>Math.abs(t-block.offsetTop)<2);if(row<0){row=tops.length;tops.push(block.offsetTop);units.push([]);}units[row].push(block.dataset.bid);}
+    stMeasurements[el.dataset.pid]={overflow:o,overflowMm:o?Math.ceil(over/ST_PXMM):0,units};
     el.classList.toggle('is-over',o);el.querySelector('.st-over').hidden=el.querySelector('.st-fix').hidden=!o;
     if(o)el.querySelector('.st-over').textContent=`Tràn ${Math.ceil(over/ST_PXMM)} mm`;
     const li=st$(`#st-pagelist li[data-pid="${el.dataset.pid}"] .st-pover`);if(li)li.hidden=!o;
@@ -832,12 +967,13 @@ function stMeasure(){
   stChecks();
 }
 // Chuyển các hàng khối nằm ngoài khổ A4 sang một trang mới ngay sau. Khối đầu trang quá cao: tách bảng theo dòng nếu có.
+function stContinuedPage(source,blocks){const p=stNewPage(source.bg,blocks,{chrome:source.chrome,role:source.role||'custom'});stSeedFocus(source);stSeedFocus(p);return p;}
 function stFixOverflow(pid){
   const p=stPage(pid),el=stPageEl(pid);if(!p||!el)return false;
   const grid=el.querySelector('.st-grid'),limit=stLimit(grid),kids=[...grid.querySelectorAll(':scope > .st-b')];
   const idx=kids.findIndex(k=>k.offsetTop+k.offsetHeight>limit+2);if(idx<0)return false;
   let cut=idx;while(cut>0&&kids[cut-1].offsetTop===kids[idx].offsetTop)cut--;
-  if(cut>1&&p.blocks[cut-1].type==='heading'&&kids[cut-1].offsetTop<kids[cut].offsetTop)cut--;
+  if(cut>0&&p.blocks[cut-1].type==='heading'&&kids[cut-1].offsetTop<kids[cut].offsetTop)cut--;
   if(cut===0){
     const k=kids[idx],b=p.blocks[idx],tbl=k.querySelector('.st-c table');
     if(!tbl)return 'too-tall';
@@ -849,11 +985,11 @@ function stFixOverflow(pid){
       c.querySelectorAll('img[data-asset]').forEach(i=>i.removeAttribute('src'));return c.innerHTML;};
     const rest={...JSON.parse(JSON.stringify(b)),id:stId('b'),html:make(false),src:undefined};
     b.html=make(true);const moved=[rest,...p.blocks.splice(idx+1)];
-    stDoc.pages.splice(stDoc.pages.indexOf(p)+1,0,stNewPage(p.bg,moved,{chrome:p.chrome}));
+    stDoc.pages.splice(stDoc.pages.indexOf(p)+1,0,stContinuedPage(p,moved));
     return 'split';
   }
   const moved=p.blocks.splice(cut);
-  stDoc.pages.splice(stDoc.pages.indexOf(p)+1,0,stNewPage(p.bg,moved,{chrome:p.chrome}));
+  stDoc.pages.splice(stDoc.pages.indexOf(p)+1,0,stContinuedPage(p,moved));
   return 'moved';
 }
 async function stSettle(){try{await document.fonts?.ready;}catch{}await Promise.all(st$$('#st-pages img[src]').map(i=>i.decode?.().catch(()=>{})));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));}
@@ -992,17 +1128,17 @@ function stStartResize(e,axis,bEl){
 // ---------- Tài liệu ----------
 function stBlankDoc(){
   return {id:stId('d'),version:1,created:Date.now(),updated:Date.now(),title:'Báo giá mới',header:{left:'BASE.VN · ĐỀ XUẤT GIẢI PHÁP VÀ BÁO GIÁ',right:''},footer:{left:'Base 2.0 · Đề xuất giải pháp và báo giá'},assets:{'base-logo':QD_BASE_LOGO},notes:[],
-    pages:[stNewPage('dark',[stNewBlock('cover'),stNewBlock('spacer',{h:30}),{...stNewBlock('logo'),html:'<div class="img logo" contenteditable="false"><img alt="" data-asset="base-logo"></div>'}])]};
+    pages:[stNewPage('dark',[stNewBlock('cover'),stNewBlock('spacer',{h:30}),{...stNewBlock('logo'),html:'<div class="img logo" contenteditable="false"><img alt="" data-asset="base-logo"></div>'}],{role:'cover'})]};
 }
 async function stOpenDoc(d){
   stFlush();if(stDoc&&stDoc.id!==d.id)await stSaveNow();
   d.assets??={};d.notes??=[];d.header??={left:'',right:''};d.footer??={left:''};
-  stDoc=d;stSel=null;stRender();stHistReset();await stSaveNow();
+  stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRender();stHistReset();await stSaveNow();
 }
 async function stNewFromPayload(p){
   let d;try{d=stBuildDoc(p,{baseLogo:QD_BASE_LOGO});}catch(e){stToast(e.message);return;}
   stFlush();if(stDoc)await stSaveNow();
-  stDoc=d;stSel=null;stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();
+  stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();
   stToast(`Đã dựng báo giá ${stDoc.pages.length} trang từ Quote Lab`);
 }
 async function stOnPayload(p){
@@ -1039,8 +1175,9 @@ function stExportHTML(){
 }
 async function stPrint(){
   stFlush();stMeasure();
-  const over=st$$('.st-page.is-over').length;
-  if(over&&!await stDialog('Có trang tràn khổ A4',`${over} trang có nội dung vượt khổ A4; phần vượt sẽ bị cắt khi in. Bấm “Chuyển phần tràn sang trang mới” ở trang đó trước khi xuất.`,[{label:'Quay lại sửa',value:false,primary:true},{label:'Vẫn xuất PDF',value:true}]))return;
+  await stSettle();stMeasure();
+  const errors=stLint(stDoc,stMeasurements).filter(x=>x.level==='error');
+  if(errors.length){await stDialog('Cần sửa lỗi trước khi xuất PDF',`${errors.length} lỗi bố cục. Chuyển phần tràn sang trang mới hoặc rút gọn khối bị tràn; Studio giữ toàn bộ nội dung.`,[{label:'Quay lại sửa',value:false,primary:true}]);return;}
   stSetSel(null);const old=document.title;document.title=stDoc.title||'Bao gia';
   setTimeout(()=>{window.print();document.title=old;},50);
 }
@@ -1097,6 +1234,7 @@ function stWire(){
   panel.addEventListener('click',async e=>{
     const t=e.target.closest('button,[data-goto-page],[data-goto-block],input');if(!t||t.classList.contains('st-libi'))return;
     const bid=stSel?.bid,pid=stSel?.pid;
+    if(t.dataset.dismiss){stFlush();stDoc.dismissed??=[];if(!stDoc.dismissed.includes(t.dataset.dismiss))stDoc.dismissed.push(t.dataset.dismiss);stCommit();stChecks();return;}
     if(t.dataset.gotoPage){stSetSel({pid:t.dataset.gotoPage});stScrollTo(stPageEl(t.dataset.gotoPage));return;}
     if(t.dataset.gotoBlock){const f=stFind(t.dataset.gotoBlock);if(f){stSetSel({pid:f.p.id,bid:f.b.id});stBlockEl(f.b.id)?.scrollIntoView({behavior:'smooth',block:'center'});}return;}
     if(t.dataset.w)return stSetProp(bid,'w',+t.dataset.w);
@@ -1105,6 +1243,8 @@ function stWire(){
     if(t.dataset.layout)return stApplyLayout(pid,t.dataset.layout);
     if(t.dataset.cmd){const c=t.dataset.cmd;if(c==='hl')document.execCommand('foreColor',false,'#5B8CFF');else document.execCommand(c,false,null);const b=bid&&stBlockEl(bid);if(b){stFromDOM(b);stCommit();}return;}
     const act=t.dataset.act;if(!act)return;
+    if(act==='focus')return stSetFocus(bid);if(act==='style-all')return stSyncTypeStyle(bid);
+    if(act==='checks-restore'){stFlush();stDoc.dismissed=[];stCommit();stChecks();return;}
     if(act==='chrome'){stFlush();stPage(pid).chrome=t.checked;stRender();stCommit();return;}
     if(act==='dup')return stDup(bid);if(act==='del')return stDel(bid);
     if(act==='h-auto')return stSetProp(bid,'h',0);
