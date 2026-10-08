@@ -96,7 +96,10 @@
 .st-c .img.logo.cover img{object-fit:cover}
 .st-c table.st-edit-table{table-layout:fixed}
 .st-c table.st-edit-table th,.st-c table.st-edit-table td{width:auto;white-space:normal;overflow-wrap:anywhere}
-.st-c table.app-list th:first-child,.st-c table.app-list td:first-child{width:12mm}
+.st-c table.app-list{table-layout:fixed}
+.st-c table.app-list th,.st-c table.app-list td{vertical-align:top;white-space:normal;overflow-wrap:anywhere}
+.st-c table.app-list tr{break-inside:avoid;page-break-inside:avoid}
+.st-c table.app-list th:first-child,.st-c table.app-list td:first-child{text-align:center;font-variant-numeric:tabular-nums}
 .st-c .img.is-empty{border:1.5px dashed var(--line);border-radius:3mm;min-height:16mm;justify-content:center}
 .st-c .img.is-empty::after{content:'Bấm đúp để chọn ảnh';font:500 11px/1.4 var(--f-ui);color:var(--ink-3)}
 .st-c .img.is-empty img{display:none}
@@ -917,6 +920,53 @@ function stNotes(payload){
   return notes;
 }
 
+// Mô tả rút gọn từ tài liệu người dùng cung cấp, khảo sát ngày 29/09/2026.
+// Phụ lục tính năng.docx: III.1–2, IV.1–11/13–14, V.1–4/11,
+// VI.1–5/7–9, VII.1–2, VIII.1. Danh mục tính năng.docx đối chiếu
+// Output, Workflow, Automation, Form, Payroll, Sales, Success,
+// Fieldwork, Ads manager, E-Hiring và Interview.
+// Chỉ mô tả công dụng; không thay phạm vi ứng dụng trong catalog hoặc giá.
+const ST_APP_BENEFITS={
+  Workforce:'Tập trung cơ cấu tổ chức, nhân sự và biên chế để quản trị nguồn lực.',
+  Dataset:'Lưu trữ và liên kết dữ liệu nghiệp vụ dùng chung để dựng ứng dụng.',
+  Project:'Quản lý tiến độ, nguồn lực và chi phí để kiểm soát hiệu quả dự án.',
+  Workflow:'Điều phối việc liên phòng ban theo từng giai đoạn, người phụ trách và hạn.',
+  Request:'Số hóa đề xuất và luồng phê duyệt để theo dõi việc xử lý tập trung.',
+  Task:'Giao việc, nhắc hạn và bàn giao kết quả để kiểm soát công việc hằng ngày.',
+  Output:'Đo đầu ra, tiến độ và góp ý để theo dõi hiệu suất làm việc.',
+  'E-Sign':'Ký điện tử, ký số và lưu hồ sơ để theo dõi quá trình ký tài liệu.',
+  Automation:'Tự động hóa thao tác và kết nối dữ liệu để giảm việc xử lý thủ công.',
+  Form:'Thu thập dữ liệu qua biểu mẫu và chuyển đến đúng nơi xử lý.',
+  Meeting:'Tập trung lịch, tài liệu, kết luận và việc sau họp để theo dõi thực hiện.',
+  Booking:'Cho khách hàng và đối tác tự đặt lịch để điều phối cuộc hẹn.',
+  Townhall:'Tập trung thông báo, tin tức và sự kiện để thống nhất truyền thông nội bộ.',
+  BPM:'Số hóa luồng nghiệp vụ để theo dõi hồ sơ qua từng bước xử lý.',
+  'E-Office':'Số hóa văn bản đến, đi và nội bộ để quản lý luân chuyển tập trung.',
+  HRIS:'Tập trung hồ sơ, hợp đồng và chế độ nhân sự để quản lý thông tin nhất quán.',
+  Timesheet:'Quản lý lịch, chấm công, tăng ca và nghỉ phép để tổng hợp bảng công.',
+  Payroll:'Tính, duyệt và gửi phiếu lương theo chính sách từ dữ liệu nhân sự và công.',
+  Career:'Quản lý lộ trình nghề nghiệp và điều chuyển để theo dõi phát triển nhân sự.',
+  ESOPs:'Quản lý cổ phần, quyền chọn và lịch trao quyền để theo dõi quyền lợi nhân sự.',
+  Prospect:'Gom hội thoại đa kênh vào một nơi để theo dõi trao đổi với khách hàng.',
+  Lead:'Thu thập, chấm điểm và phân phối lead để tổ chức khai thác khách tiềm năng.',
+  Sales:'Theo dõi deal, hoạt động và dự báo doanh số để quản lý tiến trình bán hàng.',
+  Commerce:'Quản lý báo giá, đơn hàng, thu tiền và giao hàng để theo dõi vòng đời bán.',
+  Inventory:'Theo dõi tồn và nhập, xuất, chuyển kho để kiểm soát số lượng hàng hóa.',
+  Success:'Tập trung yêu cầu hỗ trợ và phản hồi để chăm sóc khách hàng sau bán.',
+  Fieldwork:'Theo dõi lịch viếng thăm và công việc hiện trường để điều phối đội ngũ.',
+  'Ads manager':'Gắn chi phí quảng cáo với lead, deal và doanh thu để đo hiệu quả chiến dịch.',
+  Agents:'Tạo trợ lý AI dùng tri thức và công cụ nội bộ để hỗ trợ từng phòng ban.',
+  'E-Hiring':'Quản lý vị trí, ứng viên và quy trình tuyển để theo dõi hiệu quả tuyển dụng.',
+  Interview:'Tổ chức và chấm điểm phỏng vấn theo tiêu chí thống nhất để đánh giá ứng viên.',
+};
+// Các mục này còn để trống trong phụ lục; không suy công dụng từ tên app.
+const ST_APP_BENEFIT_GAPS=['Work rules','Expense','Review','Goal','Contract','Event','Radar','Studio'];
+function stAppBenefit(app){
+  const name=String(app??'').normalize('NFC').replace(/^Base\s+/i,'').trim().toLowerCase();
+  const key=Object.keys(ST_APP_BENEFITS).find(k=>k.toLowerCase()===name);
+  return key?ST_APP_BENEFITS[key]:'Chưa có mô tả; cần bổ sung.';
+}
+
 
 // Chỉ dùng danh sách app trong catalog / phương án đã được Quote Lab tính.
 const ST_PACKAGES=[
@@ -934,7 +984,7 @@ function stPackageChoices(data){
 function stAppListHTML(pkg){
   if(!pkg)return '<h3>Phụ lục · Danh sách ứng dụng</h3><p>Chọn gói giải pháp ở bảng công cụ bên phải.</p>';
   const apps=[...new Set(pkg.apps)];
-  return `<p class="eyebrow">Phụ lục · Danh sách ứng dụng</p><h3>${stLibEscape(pkg.name)}</h3><p class="s">${apps.length} ứng dụng · Danh sách thuộc gói được chọn</p><table class="app-list"><thead><tr><th>STT</th><th>Ứng dụng</th></tr></thead><tbody>${apps.map((a,i)=>`<tr><td>${i+1}</td><td>${stLibEscape(a)}</td></tr>`).join('')}</tbody></table>`;
+  return `<p class="eyebrow">Phụ lục · Danh sách ứng dụng</p><h3>${stLibEscape(pkg.name)}</h3><p class="s">${apps.length} ứng dụng · Danh sách thuộc gói được chọn</p><table class="app-list"><colgroup><col style="width:7%"><col style="width:18%"><col style="width:75%"></colgroup><thead><tr><th>STT</th><th>Ứng dụng</th><th>Mô tả</th></tr></thead><tbody>${apps.map((a,i)=>`<tr><td>${i+1}</td><td>${stLibEscape(a)}</td><td>${stLibEscape(stAppBenefit(a))}</td></tr>`).join('')}</tbody></table>`;
 }
 // Mẫu nội dung để người soạn điền. Không tự đặt pain, kết quả, cam kết hay điều khoản.
 const ST_PRESETS=[
