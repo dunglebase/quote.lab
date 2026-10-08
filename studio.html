@@ -478,14 +478,55 @@ html:has(.st-preview-readonly),body.st-preview-readonly{height:auto;overflow:vis
 @media screen and (max-width:1200px){.kx{grid-template-columns:300px minmax(0,1fr);height:auto}.kx-right{grid-column:1/-1;border-left:0;border-top:1px solid #E1E4EE}.kx-canvas{min-height:420px}}
 @media screen and (max-width:900px){.kl{grid-template-columns:minmax(0,1fr)}.kl-side{border-right:0;border-bottom:1px solid #E1E4EE}.kl-main{padding:22px 16px}.kx{grid-template-columns:minmax(0,1fr)}.kx-left,.kx-right{border:0}.kx-steps{position:static}.kx-top #kx-name{max-width:100%}}
 @media print{#st-kit{display:none!important}}
+/* Thư viện trang · trang mẫu (không in). */
+#st-ptpl-done,.st-ptpl-tag{display:none}
+.st-ptpl-mode .st-ptpl-tag{display:inline-block;font:700 10.5px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:#B45309;background:#FFF4E5;border:1px solid #F5D9AE;border-radius:99px;padding:5px 9px;white-space:nowrap}
+.st-ptpl-mode #st-ptpl-done{display:inline-block}
+.st-ptpl-mode #st-inputs,.st-ptpl-mode #st-source-update,.st-ptpl-mode #st-pdf,.st-ptpl-mode #st-menu,.st-ptpl-mode #st-docs{display:none!important}
+.st-pagelib-mode #st-pagelib{min-height:100vh}
+.pl-cards{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.pl-thumb{height:350px;display:flex;justify-content:center;padding-top:8px}
+.pl-zoom{zoom:.3;pointer-events:none}
+.pl-zoom .st-page,.st-pp-zoom .st-page{margin:0!important}
+.pl-none{padding:20px;color:#8A91AD;font-size:12px}
+.pl-count{color:#454E70!important;background:#EEF1F7!important}
+.st-dlg:has(.st-pagepick){width:min(980px,100%)}
+.st-pagepick>.st-hint{margin:0 0 10px}
+.st-pp-tabs{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 12px}.st-pp-tabs button{padding:5px 10px;font-size:12px;border-radius:99px}.st-pp-tabs button small{color:#8A91AD;margin-left:2px}.st-pp-tabs button.on{border-color:var(--st-accent);background:#EEF3FF;color:#3563E9;font-weight:600}
+.st-pp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.st-pp-card{display:flex;flex-direction:column;align-items:stretch;gap:4px;text-align:left;padding:8px;border:1px solid #E3E7F1;border-radius:10px;background:#fff;min-width:0}
+.st-pp-card:hover,.st-pp-card:focus-visible{border-color:var(--st-accent);box-shadow:0 0 0 1px var(--st-accent)}
+.st-pp-thumb{display:flex;justify-content:center;height:188px;overflow:hidden;border-radius:6px;background:#EEF1F7;pointer-events:none}
+.st-pp-zoom{display:block;zoom:.165}
+.st-pp-card b{font-size:12.5px;line-height:1.35;overflow-wrap:anywhere}.st-pp-card small{font-size:11px;color:#6B7393;line-height:1.4}
+.st-pp-blank .st-pp-thumb{align-items:center;border:1.5px dashed #CBD3E5;background:#F7F9FD}.st-pp-plus{font-size:30px;color:#3563E9}
+.sh-modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 4px}
+.sh-mode{display:flex;gap:10px;align-items:flex-start;border:1px solid #E3E7F1;border-radius:10px;padding:12px;cursor:pointer;background:#fff}
+.sh-mode input{width:auto;margin-top:3px;flex:0 0 auto}.sh-mode b{display:block;font-size:13px;color:#0E1430}.sh-mode small{display:block;font-size:11.5px;color:#6B7393;line-height:1.5;margin-top:2px}
+.sh-mode:has(input:checked){border-color:#3563E9;background:#F4F7FF;box-shadow:0 0 0 1px #3563E9}
+#sh-mode-body{margin-top:12px}#sh-mode-body .st-field select{max-width:420px}
+.sh-compose{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:14px;margin-bottom:8px}
+.sh-plan,.sh-pick{border:1px solid #E3E7F1;border-radius:10px;padding:12px;background:#F9FAFD;min-width:0}
+.sh-plan-h{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;margin-bottom:8px;flex-wrap:wrap}.sh-plan-h span{display:flex;gap:5px}.sh-plan-h button{padding:4px 8px;font-size:11.5px}
+.sh-plan ol{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.sh-plan-i{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:8px;align-items:center;background:#fff;border:1px solid #E3E7F1;border-radius:8px;padding:6px 8px}
+.sh-plan-i.is-page{border-color:#C9D7FF}.sh-plan-i.is-skip{opacity:.55}
+.sh-plan-n{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#EEF1F7;font-size:11px;font-weight:700;color:#454E70}.sh-plan-i.is-page .sh-plan-n{background:#3563E9;color:#fff}
+.sh-plan-t{min-width:0}.sh-plan-t b{display:block;font-size:12.5px;overflow-wrap:anywhere}.sh-plan-t small{display:block;font-size:11px;color:#8A91AD;line-height:1.4}
+.sh-plan-act{display:flex;gap:2px}.sh-plan-act button{padding:2px 6px;font-size:11px}
+.sh-input-card .sh-pick-g{margin:10px 0 5px;font:700 10.5px/1.3 var(--f-display);letter-spacing:.1em;text-transform:uppercase;color:#8A91AD}
+.sh-pick-list{display:grid;gap:5px}.sh-pick-i{display:block;text-align:left;padding:7px 9px;background:#fff}.sh-pick-i b{display:block;font-size:12px;color:#3563E9}.sh-pick-i small{display:block;font-size:11px;color:#8A91AD}
+@media screen and (max-width:900px){.sh-modes,.sh-compose{grid-template-columns:1fr}.st-ptpl-mode .st-ptpl-tag{display:none}}
+@media print{#st-pagelib{display:none!important}}
 </style>
 </head>
 <body>
 <div id="st-home" hidden></div>
 <div id="st-kit" hidden></div>
+<div id="st-pagelib" hidden></div>
 <div id="st-app">
   <header class="st-top">
-    <button type="button" id="st-home-button" class="st-home-link" title="Trang chủ">←</button><div class="st-brand">Quote <span>Studio</span></div>
+    <button type="button" id="st-home-button" class="st-home-link" title="Trang chủ">←</button><div class="st-brand">Quote <span>Studio</span></div><span id="st-ptpl-tag" class="st-ptpl-tag">Trang mẫu</span>
     <input id="st-title" aria-label="Tên tài liệu" placeholder="Tên tài liệu">
     <span id="st-save" aria-live="polite"></span><button type="button" id="st-source-update" hidden>Số liệu mới từ Lab</button>
     <div class="st-top-actions">
@@ -499,6 +540,7 @@ html:has(.st-preview-readonly),body.st-preview-readonly{height:auto;overflow:vis
         <button type="button" data-file="save">Lưu file dự án (.json)</button>
         <button type="button" data-file="html">Tải bản HTML</button>
       </div></details>
+      <button type="button" id="st-ptpl-done" class="primary">Xong · về Thư viện trang</button>
       <button type="button" id="st-pdf" class="primary">Xuất PDF</button>
     </div>
   </header>
@@ -1698,21 +1740,32 @@ function stLint(doc,measures={}){
 }
 
 // Cập nhật các block lấy số liệu (chỉ số tóm tắt, thẻ phương án, PS, bảng giá); giữ chữ đã sửa ở các block khác.
-function stRefreshDoc(doc,payload){
-  const ctx=stContext(payload),metrics=stSummaryMetrics(ctx);let changed=0;
-  for(const p of doc.pages)for(const b of [...p.blocks]){
-    if(!b.src)continue;let html=null;
-    if(b.src.startsWith('phase2:')){
-      if(!ST_P2_TYPES[b.src.slice(7)])continue;
-      html=stPhase2HTML(b.src.slice(7),payload,b);
-      if(html===null){p.blocks.splice(p.blocks.indexOf(b),1);if(b.focus)stSeedFocus(p);changed++;continue;}
-      if(b.type==='assumptions'){const notes=b.html.match(/<!--st-assumption-extra-->[\s\S]*?<!--\/st-assumption-extra-->/)?.[0];if(notes)html=html.replace(/<!--st-assumption-extra-->[\s\S]*?<!--\/st-assumption-extra-->/,()=>notes);}
+// Dựng lại nội dung một khối số liệu (src) theo dữ liệu mới: HTML mới; null = nguồn không còn (bỏ khối, không giữ số cũ); undefined = không phải khối số liệu đã biết.
+// Dùng chung cho “Cập nhật số liệu” và khi chèn trang mẫu vào báo giá của khách khác.
+function stSourceRenderer(payload){
+  let ctx=null,metrics=[];try{ctx=stContext(payload);metrics=stSummaryMetrics(ctx);}catch{}
+  return b=>{
+    const src=b?.src;if(!src)return undefined;
+    if(src.startsWith('phase2:')){
+      const type=src.slice(7);if(!ST_P2_TYPES[type])return undefined;
+      let html=stPhase2HTML(type,payload,b);if(html===null)return null;
+      if(type==='assumptions'){const notes=String(b.html||'').match(/<!--st-assumption-extra-->[\s\S]*?<!--\/st-assumption-extra-->/)?.[0];if(notes)html=html.replace(/<!--st-assumption-extra-->[\s\S]*?<!--\/st-assumption-extra-->/,()=>notes);}
+      return html;
     }
-    else if(b.src.startsWith('metric:'))html=metrics[+b.src.slice(7)]??null;
-    else if(b.src.startsWith('option:')){const i=ctx.opts.findIndex(o=>o.id===b.src.slice(7));if(i>=0)html=stOptionHTML(ctx.opts[i],i,ctx);}
-    else if(b.src==='ps')html=stPsHTML(ctx.rec)||null;
-    else if(b.src==='price')html=stPriceHTML(ctx);
-    if(html!==null&&html!==b.html){b.html=html;changed++;}
+    if(!['metric:','option:'].some(x=>src.startsWith(x))&&!['ps','price'].includes(src))return undefined;
+    if(!ctx)return null;
+    if(src.startsWith('metric:'))return metrics[+src.slice(7)]??null;
+    if(src.startsWith('option:')){const i=ctx.opts.findIndex(o=>o.id===src.slice(7));return i>=0?stOptionHTML(ctx.opts[i],i,ctx):null;}
+    if(src==='ps')return stPsHTML(ctx.rec)||null;
+    return stPriceHTML(ctx);
+  };
+}
+function stRefreshDoc(doc,payload){
+  stContext(payload);const render=stSourceRenderer(payload);let changed=0;
+  for(const p of doc.pages)for(const b of [...p.blocks]){
+    if(!b.src)continue;const html=render(b);
+    if(html===null&&b.src.startsWith('phase2:')&&ST_P2_TYPES[b.src.slice(7)]){p.blocks.splice(p.blocks.indexOf(b),1);if(b.focus)stSeedFocus(p);changed++;continue;}
+    if(html!=null&&html!==b.html){b.html=html;changed++;}
   }
   doc.data=payload;doc.notes=stNotes(payload);doc.updated=Date.now();
   return changed;
@@ -2082,7 +2135,8 @@ function stKRefreshHTML(html,spec,data,o={}){
   const ctx=stKCtx(data,o);let out=stKRefreshVars(html,ctx);if(!spec)return out;const s=stKNormalize(spec);if(s.raw)return out;
   return out.replace(/<!--kb:([\w-]+)-->[\s\S]*?<!--\/kb:\1-->/g,(m,id)=>{const el=s.els.find(e=>e.id===id);return el&&ST_K_ELEMENTS[el.kind].bound?stKEl(el,ctx):m;});
 }
-function stKRefreshDoc(doc,data){let n=0;for(const p of doc?.pages||[])for(const b of p.blocks||[]){if(!b.kit||b.kit.detached)continue;const html=stKRefreshHTML(b.html,b.kit.spec,data,{rows:b.kit.rows});if(html!==b.html){b.html=html;n++;}}return n;}
+// Khối thư viện: biến + vùng dữ liệu. Khối thường có biến chèn tay (hoặc từ trang mẫu): chỉ thay giá trị biến.
+function stKRefreshDoc(doc,data){let n=0;const ctx=stKCtx(data);for(const p of doc?.pages||[])for(const b of p.blocks||[]){if(b.kit?.detached)continue;const html=b.kit?stKRefreshHTML(b.html,b.kit.spec,data,{rows:b.kit.rows}):/class="kv"/.test(b.html||'')?stKRefreshVars(b.html,ctx):b.html;if(html!==b.html){b.html=html;n++;}}return n;}
 // Giữ nội dung độc lập: biến thành chữ thường, bỏ dấu vùng dữ liệu.
 function stKDetachHTML(html){return String(html??'').replace(/<span class="kv" data-var="[\w.]+"[^>]*>([^<]*)<\/span>\u200B?/g,'$1').replace(/<!--\/?kb:[\w-]+-->/g,'');}
 const stKHasData=spec=>{const s=stKNormalize(spec);return s.els.some(e=>ST_K_ELEMENTS[e.kind].bound||Object.values(e.p).some(v=>/\{\{\s*[\w.]+\s*\}\}|class="kv"/.test(String(v))));};
@@ -2144,16 +2198,35 @@ function stKLint(spec){
 
 // ---------- Kho: nhóm lồng nhau, khối, phiên bản ----------
 function stKNewKit(){return {schema:1,groups:[],defs:[],migrated:[],updated:Date.now()};}
-function stKNormalizeKit(kit){
-  const k=kit&&typeof kit==='object'?kit:{},groups=[],ids=new Set();
-  for(const g of Array.isArray(k.groups)?k.groups:[]){if(!g?.id||ids.has(g.id))continue;ids.add(g.id);groups.push({id:stKStr(g.id,80),name:stKStr(g.name||'Nhóm',80),parent:g.parent||null,order:+g.order||0});}
+// Nhóm lồng nhau (dùng chung cho Thư viện khối và Thư viện trang): bỏ trùng ID, cha không tồn tại hoặc vòng lặp thì về cấp gốc.
+function stKNormalizeGroups(list){
+  const groups=[],ids=new Set();
+  for(const g of Array.isArray(list)?list:[]){if(!g?.id||ids.has(g.id))continue;ids.add(g.id);groups.push({id:stKStr(g.id,80),name:stKStr(g.name||'Nhóm',80),parent:g.parent||null,order:+g.order||0});}
   for(const g of groups){if(g.parent&&!ids.has(g.parent))g.parent=null;}
   for(const g of groups){const seen=new Set([g.id]);let p=g.parent;while(p){if(seen.has(p)){g.parent=null;break;}seen.add(p);p=groups.find(x=>x.id===p)?.parent;}}
+  return {groups,ids};
+}
+function stKNormalizeKit(kit){
+  const k=kit&&typeof kit==='object'?kit:{},{groups,ids}=stKNormalizeGroups(k.groups);
   const defs=[],dids=new Set();
   for(const d of Array.isArray(k.defs)?k.defs:[]){if(!d?.id||dids.has(d.id))continue;dids.add(d.id);
     const versions=(Array.isArray(d.versions)?d.versions:[]).filter(v=>v&&Number.isInteger(v.v)&&v.v>0).map(v=>({v:v.v,at:+v.at||0,note:stKStr(v.note,200),spec:stKNormalize(v.spec)})).sort((a,b)=>a.v-b.v);
     defs.push({id:stKStr(d.id,80),name:stKStr(d.name||'Khối',80),desc:stKStr(d.desc,200),group:ids.has(d.group)?d.group:null,order:+d.order||0,created:+d.created||Date.now(),updated:+d.updated||Date.now(),show:d.show!==false,...(d.seed?{seed:true}:{}),...(d.archivedAt?{archivedAt:+d.archivedAt}:{}),draft:d.draft?stKNormalize(d.draft):null,versions});}
   return {schema:1,groups,defs,migrated:(Array.isArray(k.migrated)?k.migrated:[]).map(String),updated:+k.updated||Date.now()};
+}
+// Gộp hai kho khi đồng bộ xung đột (thư viện là một bản ghi, không tách bản riêng được): hợp theo ID, không mất nhóm/khối/phiên bản của bên nào.
+// Cùng khối: thông tin và nháp lấy theo bên sửa sau (updated); phiên bản bên kia khác nội dung được nối thêm số mới.
+// Xoá hẳn khối/nhóm không truyền qua gộp (khối có thể quay lại từ máy chưa nhận thay đổi); thùng rác (archivedAt) vẫn truyền.
+function stKMergeKit(local,remote){
+  if(!local)return remote?stKNormalizeKit(remote):null;if(!remote)return stKNormalizeKit(local);
+  const a=stKNormalizeKit(local),b=stKNormalizeKit(remote),newer=a.updated>b.updated?a:b,older=newer===a?b:a;
+  const groups=[...newer.groups];for(const g of older.groups)if(!groups.some(x=>x.id===g.id))groups.push(g);
+  const defs=b.defs.map(d=>{const o=a.defs.find(x=>x.id===d.id);if(!o)return d;const win=o.updated>d.updated?o:d,lose=win===o?d:o,versions=[...win.versions];
+    for(const v of lose.versions){const same=versions.find(x=>x.v===v.v);if(same&&JSON.stringify(same.spec)===JSON.stringify(v.spec))continue;if(versions.some(x=>JSON.stringify(x.spec)===JSON.stringify(v.spec)))continue;versions.push(same?{...v,v:Math.max(...versions.map(x=>x.v))+1}:v);}
+    versions.sort((x,y)=>x.v-y.v);if(versions.length>ST_K_MAX_VERSIONS)versions.splice(0,versions.length-ST_K_MAX_VERSIONS);
+    return {...win,created:Math.min(o.created,d.created),versions};});
+  for(const d of a.defs)if(!defs.some(x=>x.id===d.id))defs.push(d);
+  return stKNormalizeKit({schema:1,groups,defs,migrated:[...new Set([...b.migrated,...a.migrated])],updated:Math.max(a.updated,b.updated)});
 }
 const stKSort=(a,b)=>(a.order-b.order)||a.name.localeCompare(b.name,'vi');
 const stKChildren=(kit,parent=null)=>kit.groups.filter(g=>(g.parent||null)===(parent||null)).sort(stKSort);
@@ -2230,6 +2303,205 @@ function stKSampleData(){
   return {kind:'quote-studio-data',version:3,sample:true,deal:parseDealFile(DEAL_SAMPLE),options,recommendedId:'sample-1',useCases:[],scopeNames:QO_SCOPE_NAMES,policy:{effective:'01/10/2026'}};
 }
 
+
+// Thư viện trang — trang mẫu dựng sẵn bố cục (một hoặc vài trang A4), xếp theo nhóm (Mở đầu, Thương mại, Kết thúc…).
+// Trang mẫu chỉ được sao chép khi dùng: chèn vào báo giá thì biến, khối thư viện, khối số liệu và phụ lục app được dựng lại theo dữ liệu
+// của chính báo giá đó; sửa / xoá mẫu không đổi báo giá đã tạo. Khối số liệu lưu nguồn trừu tượng (option#i, quote#i:…) để không mang
+// giá của khách cũ sang khách mới; nguồn không còn trong báo giá mới thì bỏ khối thay vì giữ số cũ. Không dùng DOM.
+
+const ST_P_KEY='st-page-library',ST_P_MAX_PAGES=20;
+// Thứ tự các phần tự dựng từ hồ sơ (giống stBuildDoc).
+const ST_P_AUTO=['cover','summary','problem','goals','solution','plan','proof','investment','terms','action','appendix'];
+const stPStr=(v,max=200)=>String(v??'').slice(0,max);
+const stPClone=x=>JSON.parse(JSON.stringify(x));
+const stPE=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ST_P_STYLES=new Set(ST_STYLES.map(s=>s[0]));
+const ST_P_SRC=/^(phase2:\w+|metric:\d+|option#\d+|ps|price)$/;
+const stPRows=r=>r&&typeof r==='object'?Object.fromEntries(Object.entries(r).filter(([k,x])=>/^[\w-]{1,40}$/.test(k)&&Array.isArray(x)).map(([k,x])=>[k,[Math.max(0,+x[0]||0),x[1]==null?null:Math.max(0,+x[1]||0)]])):{};
+
+// ---------- Chuẩn hoá: mọi trang mẫu từ kho / đồng bộ đi qua đây (chỉ nhận loại, kiểu, số đo trong danh sách). HTML được làm sạch khi hiển thị / chèn. ----------
+function stPBlock(b){
+  if(!b||typeof b!=='object')return null;
+  const out={id:/^[\w-]{1,60}$/.test(b.id)?b.id:stId('b'),type:ST_TYPES[b.type]?b.type:'text',w:Math.max(1,Math.min(12,Math.round(+b.w)||12)),style:ST_P_STYLES.has(b.style)?b.style:'plain',h:Math.max(0,Math.min(280,Math.round(+b.h)||0)),html:stPStr(b.html,300000)};
+  if(typeof b.src==='string'&&ST_P_SRC.test(b.src))out.src=b.src;
+  if(b.focus===true)out.focus=true;
+  if(typeof b.packageId==='string'&&b.packageId)out.packageId=stPStr(b.packageId,120);
+  if(b.frame&&typeof b.frame==='object'){const f={};for(const k of ['pad','radius','edge','accent'])if(typeof b.frame[k]==='string')f[k]=stPStr(b.frame[k],20);out.frame=f;}
+  if(+b.logoW>0)out.logoW=Math.max(8,Math.min(180,+b.logoW));if(+b.logoH>0)out.logoH=Math.max(8,Math.min(100,+b.logoH));
+  if(['start','center','end'].includes(b.logoAlign))out.logoAlign=b.logoAlign;if(typeof b.logoFrame==='boolean')out.logoFrame=b.logoFrame;
+  for(const k of ['variant','ctaLink'])if(typeof b[k]==='string')out[k]=stPStr(b[k],500);
+  if(Array.isArray(b.sourceRows))out.sourceRows=[Math.max(0,+b.sourceRows[0]||0),b.sourceRows[1]==null?null:Math.max(0,+b.sourceRows[1]||0)];
+  if(b.kit&&typeof b.kit==='object'){const rows=stPRows(b.kit.rows);out.kit={def:stPStr(b.kit.def,80),v:Math.max(1,Math.round(+b.kit.v)||1),name:stPStr(b.kit.name||'Khối thư viện',80),spec:stKNormalize(b.kit.spec),...(b.kit.detached?{detached:true}:{}),...(Object.keys(rows).length?{rows}:{})};}
+  return out;
+}
+function stPPage(p){
+  if(!p||typeof p!=='object')return null;
+  return {id:/^[\w-]{1,60}$/.test(p.id)?p.id:stId('p'),bg:p.bg==='dark'?'dark':'light',chrome:p.chrome!==false,role:ST_ROLE_NAMES[p.role]?p.role:'custom',...(typeof p.question==='string'?{question:stPStr(p.question,300)}:{}),...(ST_LAYOUTS.some(L=>L.id===p.layout)?{layout:p.layout}:{}),blocks:(Array.isArray(p.blocks)?p.blocks:[]).slice(0,60).map(stPBlock).filter(Boolean)};
+}
+function stPAssets(a){const out={};for(const [id,v] of Object.entries(a&&typeof a==='object'?a:{}).slice(0,60))if(/^[\w-]{1,80}$/.test(id)&&typeof v==='string'&&v.startsWith('data:image/'))out[id]=v;return out;}
+function stPNewLib(){return {schema:1,groups:[],defs:[],updated:Date.now()};}
+function stPNormalizeLib(lib){
+  const k=lib&&typeof lib==='object'?lib:{},{groups,ids}=stKNormalizeGroups(k.groups),defs=[],dids=new Set();
+  for(const d of Array.isArray(k.defs)?k.defs:[]){if(!d?.id||dids.has(d.id))continue;dids.add(d.id);
+    defs.push({id:stPStr(d.id,80),name:stPStr(d.name||'Trang mẫu',80),desc:stPStr(d.desc,200),group:ids.has(d.group)?d.group:null,order:+d.order||0,created:+d.created||Date.now(),updated:+d.updated||Date.now(),show:d.show!==false,...(d.seed?{seed:true}:{}),...(d.archivedAt?{archivedAt:+d.archivedAt}:{}),pages:(Array.isArray(d.pages)?d.pages:[]).slice(0,ST_P_MAX_PAGES).map(stPPage).filter(Boolean),assets:stPAssets(d.assets)});}
+  return {schema:1,groups,defs,updated:+k.updated||Date.now()};
+}
+// Gộp hai kho khi đồng bộ xung đột (cùng bản ghi thư viện với Thư viện khối): hợp nhóm / trang mẫu theo ID; cùng trang mẫu thì lấy bên sửa sau.
+function stPMergeLib(local,remote){
+  if(!local)return remote?stPNormalizeLib(remote):null;if(!remote)return stPNormalizeLib(local);
+  const a=stPNormalizeLib(local),b=stPNormalizeLib(remote),newer=a.updated>b.updated?a:b,older=newer===a?b:a;
+  const groups=[...newer.groups];for(const g of older.groups)if(!groups.some(x=>x.id===g.id))groups.push(g);
+  const defs=b.defs.map(d=>{const o=a.defs.find(x=>x.id===d.id);return o&&o.updated>d.updated?o:d;});
+  for(const d of a.defs)if(!defs.some(x=>x.id===d.id))defs.push(d);
+  return stPNormalizeLib({schema:1,groups,defs,updated:Math.max(a.updated,b.updated)});
+}
+
+// ---------- Trang mẫu ----------
+const stPNext=list=>list.reduce((m,x)=>Math.max(m,x.order||0),0)+1;
+const stPSort=(a,b)=>(a.order-b.order)||a.name.localeCompare(b.name,'vi');
+// Trang trống theo loại trang: bìa có tiêu đề bìa + logo Base; loại khác có tiêu đề mục mang tên loại trang.
+function stPBlankPages(role='custom',bg){
+  const r=ST_ROLE_NAMES[role]?role:'custom';
+  if(r==='cover')return {pages:[stNewPage(bg||'dark',[stNewBlock('cover'),stNewBlock('spacer',{h:30}),{...stNewBlock('logo'),html:'<div class="img logo" contenteditable="false"><img alt="" data-asset="base-logo"></div>'}],{role:r,question:ST_ROLE_QUESTIONS[r]})],assets:{'base-logo':QD_BASE_LOGO}};
+  return {pages:[stNewPage(bg||'light',[stNewBlock('heading',{html:`<p class="eyebrow">${stPE(r==='custom'?'Tên mục':ST_ROLE_NAMES[r])}</p><h2>Một câu kết luận cho trang này</h2><p class="lead">Một câu giải thích ngắn.</p>`})],{role:r,question:ST_ROLE_QUESTIONS[r]})],assets:{}};
+}
+function stPAddDef(lib,{id=stId('pt'),name,desc='',group=null,pages,assets={},seed=false,at=Date.now()}={}){
+  const blank=pages?.length?null:stPBlankPages();
+  const d={id,name:stPStr(String(name||'').trim()||'Trang mẫu',80),desc:stPStr(desc,200),group:group&&lib.groups.some(g=>g.id===group)?group:null,order:stPNext(lib.defs),created:at,updated:at,show:true,...(seed?{seed:true}:{}),pages:(blank?blank.pages:pages).map(stPPage).filter(Boolean),assets:stPAssets(blank?blank.assets:assets)};
+  lib.defs.push(d);return d;
+}
+function stPDupDef(lib,id){const d=lib.defs.find(x=>x.id===id);if(!d)throw new Error('Không tìm thấy trang mẫu.');return stPAddDef(lib,{name:d.name+' · bản sao',desc:d.desc,group:d.group,pages:stPClone(d.pages),assets:stPClone(d.assets)});}
+// Thùng rác / khôi phục ghi thời điểm sửa để truyền qua đồng bộ (bên sửa sau thắng khi gộp).
+function stPArchiveDef(lib,id,on=true){const d=lib.defs.find(x=>x.id===id);if(!d)return null;if(on)d.archivedAt=Date.now();else delete d.archivedAt;d.updated=Date.now();return d;}
+function stPPurgeDef(lib,id){const i=lib.defs.findIndex(x=>x.id===id&&x.archivedAt);if(i>=0)lib.defs.splice(i,1);return i>=0;}
+// Trang mẫu hiện khi thêm trang vào báo giá: không ở thùng rác, bật hiện, có ít nhất một trang.
+const stPVisible=lib=>(lib?.defs||[]).filter(d=>!d.archivedAt&&d.show!==false&&d.pages.length).sort(stPSort);
+
+// ---------- Từ báo giá → trang mẫu ----------
+// Đổi chữ trùng thông tin nhận diện của khách / báo giá thành biến, để trang dùng được cho khách khác. Chỉ thay trong phần chữ, không trong thẻ hay biến sẵn có.
+const ST_P_IDENTITY=['customer.name','customer.short','customer.tax','customer.address','recipient.name','recipient.phone','recipient.email','quote.no','quote.date','quote.valid','preparer.name','preparer.phone','preparer.email'];
+function stPVarizer(data){
+  const ctx=stKCtx(data),forms=new Map();
+  for(const key of ST_P_IDENTITY){const v=stKValue(ctx,key).trim();if(v.length<3)continue;for(const f of [stPE(v),v.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')])if(!forms.has(f))forms.set(f,key);}
+  if(!forms.size)return null;
+  const re=new RegExp([...forms.keys()].sort((a,b)=>b.length-a.length).map(f=>f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');
+  return (html,count={})=>String(html??'').replace(/(<span class="kv" data-var="[\w.]+"[^>]*>[^<]*<\/span>​?)|(<[^>]*>)|([^<]+)/g,(m,kv,tag,text)=>text?text.replace(re,f=>{const k=forms.get(f);count[k]=(count[k]||0)+1;return stKText('{{'+k+'}}',ctx);}):m);
+}
+// Chụp các trang của một báo giá thành trang mẫu: nguồn số liệu đổi sang dạng trừu tượng theo thứ tự phương án; chỉ giữ ảnh được dùng.
+function stPFromDoc(doc,pageIds,{varize=false}={}){
+  const opts=doc?.data?.options||[],index=id=>opts.findIndex(o=>o.id===id),swap=varize?stPVarizer(doc?.data):null,report={vars:{},linked:0},want=new Set(pageIds||(doc?.pages||[]).map(p=>p.id));
+  const pages=(doc?.pages||[]).filter(p=>want.has(p.id)).map(p=>({id:p.id,bg:p.bg,chrome:p.chrome!==false,role:p.role||'custom',...(p.question?{question:p.question}:{}),...(p.layout?{layout:p.layout}:{}),blocks:(p.blocks||[]).map(b0=>{
+    const b=stPClone(b0);delete b.reusable;
+    if(b.src?.startsWith('option:')){const i=index(b.src.slice(7));if(i>=0)b.src='option#'+i;else delete b.src;}
+    if(b.type==='appList'&&b.packageId?.startsWith('quote:')){const tail=b.packageId.lastIndexOf(':'),i=index(b.packageId.slice(6,tail));if(i>=0)b.packageId=`quote#${i}:${b.packageId.slice(tail+1)}`;else delete b.packageId;}
+    if(b.src)report.linked++;else if(swap)b.html=swap(b.html,report.vars);
+    return b;})}));
+  const assets={};for(const p of pages)for(const b of p.blocks)for(const m of String(b.html).matchAll(/data-asset=["']([^"']+)["']/g))if(doc?.assets?.[m[1]])assets[m[1]]=doc.assets[m[1]];
+  const out=stPNormalizeLib({defs:[{id:'x',pages,assets}]}).defs[0];return {pages:out.pages,assets:out.assets,report};
+}
+
+// ---------- Trang mẫu → báo giá ----------
+// mode 'insert': ID trang / khối / ảnh mới, khối số liệu không còn nguồn bị bỏ. mode 'edit' (sửa mẫu): giữ ID, giữ khối chưa có nguồn để không mất nội dung mẫu.
+// Ảnh trùng nội dung với ảnh sẵn có trong báo giá (ví dụ logo Base) dùng lại ID cũ.
+function stPInstance(def,data,{mode='insert',assetId=()=>stId('a'),existing={}}={}){
+  const d=stPNormalizeLib({defs:[def]}).defs[0];if(!d)return {pages:[],assets:{},dropped:0};
+  const edit=mode==='edit',opts=(data?.options||[]).filter(o=>o&&o.r),render=stSourceRenderer(data),ctx=stKCtx(data),choices=stPackageChoices(data),map={},assets={};
+  for(const [id,v] of Object.entries(d.assets)){if(edit){map[id]=id;assets[id]=v;continue;}const same=Object.entries(existing||{}).find(([,x])=>x===v)?.[0];if(same){map[id]=same;continue;}const nid=assetId();map[id]=nid;assets[nid]=v;}
+  const remap=html=>html.replace(/data-asset=(["'])([^"']*)\1/g,(m,q,id)=>map[id]&&map[id]!==id?`data-asset="${map[id]}"`:m);
+  let dropped=0;const pages=[];
+  for(const p0 of d.pages){
+    const blocks=[];
+    for(const b0 of p0.blocks){
+      const b=stPClone(b0);if(!edit)b.id=stId('b');b.html=remap(b.html);
+      if(b.src){
+        const m=/^option#(\d+)$/.exec(b.src),src=m?(opts[+m[1]]?'option:'+opts[+m[1]].id:null):b.src;let html=null;
+        if(src)try{html=render({...b,src});}catch{html=null;}
+        if(html==null){if(edit)blocks.push(b);else dropped++;continue;}
+        b.html=html;b.src=src;blocks.push(b);continue;
+      }
+      if(b.type==='appList'&&/^quote#\d+:/.test(b.packageId||'')){
+        const [,i,tail]=/^quote#(\d+):(.+)$/.exec(b.packageId),o=opts[+i],pkg=o&&(choices.find(x=>x.id===`quote:${o.id}:${tail}`)||choices.find(x=>x.id===`quote:${o.id}:all`));
+        if(!pkg){if(edit)blocks.push(b);else dropped++;continue;}
+        b.packageId=pkg.id;b.html=stAppListHTML(pkg);blocks.push(b);continue;
+      }
+      if(b.kit&&!b.kit.detached)b.html=stKRefreshHTML(b.html,b.kit.spec,data,{rows:b.kit.rows});
+      else if(/class="kv"/.test(b.html))b.html=stKRefreshVars(b.html,ctx);
+      blocks.push(b);
+    }
+    if(!edit&&p0.blocks.length&&!blocks.length)continue;
+    pages.push({...stPClone(p0),id:edit?p0.id:stId('p'),question:p0.question??ST_ROLE_QUESTIONS[p0.role],blocks});
+  }
+  return {pages,assets,dropped};
+}
+// Đổi dữ liệu xem trước khi sửa mẫu: về dạng trừu tượng rồi dựng lại với dữ liệu mới (không bỏ khối nào).
+function stPRebind(doc,data){const t=stPFromDoc(doc);return stPInstance({id:'rebind',pages:t.pages,assets:{...(doc?.assets||{}),...t.assets}},data,{mode:'edit'});}
+
+// Ghép báo giá từ kế hoạch trang: {kind:'auto',role} lấy các trang tự dựng từ hồ sơ của loại đó; {kind:'page',id} chèn trang mẫu.
+// Phần tự dựng không có trong kế hoạch thì bỏ. Chỉ giữ ảnh được dùng.
+function stPCompose(fresh,plan,lib,{assetId}={}){
+  const pool=new Map(),used=new Set(),assets={...(fresh.assets||{})},out=[];let dropped=0,missing=0;
+  for(const p of fresh.pages||[]){const r=p.role||'custom';if(!pool.has(r))pool.set(r,[]);pool.get(r).push(p);}
+  for(const item of Array.isArray(plan)?plan:[]){
+    if(item?.kind==='auto'){if(used.has(item.role))continue;used.add(item.role);out.push(...(pool.get(item.role)||[]));continue;}
+    if(item?.kind!=='page')continue;const def=(lib?.defs||[]).find(d=>d.id===item.id&&!d.archivedAt);if(!def){missing++;continue;}
+    const r=stPInstance(def,fresh.data,{assetId,existing:assets});Object.assign(assets,r.assets);out.push(...r.pages);dropped+=r.dropped;
+  }
+  if(!out.length)out.push(stPBlankPages('custom').pages[0]);
+  fresh.pages=out;fresh.assets={};for(const p of out)for(const b of p.blocks)for(const m of String(b.html).matchAll(/data-asset=["']([^"']+)["']/g))if(assets[m[1]])fresh.assets[m[1]]=assets[m[1]];
+  fresh.pagePlan=stPClone(plan||[]);return {doc:fresh,dropped,missing};
+}
+// Kế hoạch mặc định: đủ các phần tự dựng theo thứ tự chuẩn.
+const stPDefaultPlan=()=>ST_P_AUTO.map(role=>({kind:'auto',role}));
+
+// ---------- Đồng bộ: thư viện trang đi chung bản ghi `library` với Thư viện khối (không đổi Firestore Rules). ----------
+// Ảnh của trang mẫu đưa lên assets cấp ngoài để cloud tách thành object theo hash (tải một lần), khoá `<trang mẫu>/<ảnh>`.
+function stPLibToCloud(lib){const l=stPNormalizeLib(lib),assets={};for(const d of l.defs){for(const [id,v] of Object.entries(d.assets))assets[d.id+'/'+id]=v;d.assets={};}return {pages:l,assets};}
+function stPLibFromCloud(pages,assets){
+  if(!pages||typeof pages!=='object')return null;const l=stPClone(pages);for(const d of Array.isArray(l.defs)?l.defs:[])d.assets={};
+  for(const [key,v] of Object.entries(assets||{})){const i=key.lastIndexOf('/');if(i<1)continue;const d=(l.defs||[]).find(x=>x.id===key.slice(0,i));if(d)d.assets[key.slice(i+1)]=v;}
+  return stPNormalizeLib(l);
+}
+async function stLibraryEntity(repo){
+  const lib=await repo.getKV(ST_P_KEY),cloud=lib?stPLibToCloud(lib):null;
+  return {id:'block-library',name:'Thư viện khối',blocks:await repo.getKV(ST_K_LEGACY)||[],kit:await repo.getKV(ST_K_KEY)||null,...(cloud?{pages:cloud.pages,assets:cloud.assets}:{})};
+}
+
+// ---------- Xem trước (thư viện, hộp chọn trang): HTML trang A4 thu nhỏ từ khối đã làm sạch. ----------
+function stPPageMarkup(page,{header=['BASE.VN · ĐỀ XUẤT GIẢI PHÁP VÀ BÁO GIÁ',''],footer='Base 2.0 · Đề xuất giải pháp và báo giá',number=1,total=1}={}){
+  const chrome=page.chrome!==false;
+  return `<section class="st-page" data-bg="${page.bg==='dark'?'dark':'light'}" data-role="${stPE(page.role||'custom')}"><div class="st-sheet">${chrome?`<div class="st-ph"><span>${stPE(header[0])}</span><span>${stPE(header[1])}</span></div>`:''}<div class="st-grid">${(page.blocks||[]).map(b=>stKBlockMarkup(b).replace('class="st-b ',b.focus?'class="st-b is-focus ':'class="st-b ')).join('')}</div>${chrome?`<div class="st-pf"><span>${stPE(footer)}</span><span>Trang ${number} / ${total}</span></div>`:''}</div></section>`;
+}
+
+// ---------- Mẫu khởi tạo (ID cố định để nhiều máy trùng nhau khi đồng bộ). Chỉ tạo khi chưa có thư viện trang. ----------
+function stPSeedLib(at=Date.now()){
+  const lib=stPNewLib(),ctx=stKCtx(null),t=s=>stKText(s,ctx),kitSeed=stKSeedKit(at);
+  stKAddGroup(lib,'Mở đầu',null,'seed-pg-intro');stKAddGroup(lib,'Thương mại',null,'seed-pg-commercial');stKAddGroup(lib,'Kết thúc',null,'seed-pg-closing');
+  const B=(pid,n,type,html,w,style='plain',extra={})=>({id:`${pid}-b${n}`,type,w,style,h:0,html,...extra});
+  const K=(pid,n,kid,extra={})=>{const def=kitSeed.defs.find(d=>d.id===kid),spec=stKNormalize(def.versions[0].spec);return {...stKBlockOf(spec,stKRender(spec,null)),id:`${pid}-b${n}`,kit:{def:kid,v:1,name:def.name,spec},...extra};};
+  const logo=(pid,n)=>B(pid,n,'logo','<div class="img logo" contenteditable="false"><img alt="" data-asset="base-logo"></div>',4);
+  const add=(id,group,name,desc,page)=>stPAddDef(lib,{id,group,name,desc,pages:[{id:id+'-p1',question:ST_ROLE_QUESTIONS[page.role],...page}],assets:{'base-logo':QD_BASE_LOGO},seed:true,at});
+  add('seed-p-intro','seed-pg-intro','Bìa giới thiệu','Bìa nền tối: tên khách hàng, người nhận, người lập và hiệu lực tự điền từ hồ sơ.',{bg:'dark',role:'cover',blocks:[
+    B('seed-p-intro',1,'cover',`<h1>Đề xuất giải pháp cho ${t('{{customer.short}}')}</h1><p class="lead">Đề xuất giải pháp và báo giá Base 2.0 cho ${t('{{customer.name}}')}.</p>`,12),
+    B('seed-p-intro',2,'spacer','',12,'plain',{h:18}),
+    B('seed-p-intro',3,'text',`<p class="k">Kính gửi</p><p>${t('{{recipient.name}}')}<br>${t('{{recipient.title}}')}</p>`,6),
+    B('seed-p-intro',4,'text',`<p class="k">Người lập</p><p>${t('{{preparer.name}}')}<br>${t('{{preparer.phone}}')} · ${t('{{preparer.email}}')}</p><p class="k">Số báo giá</p><p>${t('{{quote.no}}')} · hiệu lực đến ${t('{{quote.valid}}')}</p>`,6),
+    logo('seed-p-intro',5)]});
+  add('seed-p-invest','seed-pg-commercial','Tóm tắt đầu tư','Phương án khuyến nghị, tổng đầu tư bằng chữ và so sánh các phương án trong file Quote Lab.',{bg:'light',role:'investment',blocks:[
+    B('seed-p-invest',1,'heading',`<p class="eyebrow">Phương án đầu tư</p><h2>Khuyến nghị: ${t('{{rec.label}}')}</h2><p class="lead">${t('{{rec.packages}}')} · kỳ hạn ${t('{{rec.years}}')} năm.</p>`,12),
+    K('seed-p-invest',2,'seed-k-total',{focus:true}),
+    B('seed-p-invest',3,'text',`<p class="k">Khách hàng</p><p><b>${t('{{customer.name}}')}</b></p><p class="s">Số báo giá ${t('{{quote.no}}')} · ngày ${t('{{quote.date}}')}</p>`,6),
+    K('seed-p-invest',4,'seed-k-options')]});
+  add('seed-p-next','seed-pg-closing','Bước tiếp theo & liên hệ','Các bước có người phụ trách và ngày lấy từ hồ sơ, kèm liên hệ người lập.',{bg:'dark',role:'action',blocks:[
+    B('seed-p-next',1,'heading','<p class="eyebrow">Bước tiếp theo</p><h2>Bắt đầu bằng một bước có ngày cụ thể</h2>',12),
+    K('seed-p-next',2,'seed-k-next',{focus:true})]});
+  add('seed-p-thanks','seed-pg-closing','Lời cảm ơn','Trang kết nền tối: lời cảm ơn theo tên khách và thông tin liên hệ người lập.',{bg:'dark',role:'custom',blocks:[
+    B('seed-p-thanks',1,'cover',`<h1>Cảm ơn ${t('{{customer.short}}')} đã dành thời gian cho đề xuất này</h1><p class="lead">Mọi điều chỉnh về phạm vi, kỳ hạn hoặc phương án, xin liên hệ người lập để cập nhật báo giá.</p>`,12),
+    B('seed-p-thanks',2,'spacer','',12,'plain',{h:24}),
+    B('seed-p-thanks',3,'text',`<p class="k">Liên hệ</p><p>${t('{{preparer.name}}')} · ${t('{{preparer.title}}')}<br>${t('{{preparer.phone}}')} · ${t('{{preparer.email}}')}</p>`,8),
+    logo('seed-p-thanks',4)]});
+  return lib;
+}
+
 const ST_TEMPLATE_KEY='st-document-templates';
 function stInputPayload(input){
   if(!input?.package)throw new Error('Chưa có file phương án từ Quote Lab.');
@@ -2273,8 +2545,14 @@ function stApplyDocumentTemplate(fresh,tpl){
   const identity=tpl.sourceIdentity;if(identity){const substitutions=[[identity.customer.name,fresh.data.deal.customer.name],[identity.customer.short,fresh.data.deal.customer.short],[identity.quote.no,fresh.data.deal.quote.no],[identity.quote.dateText,fresh.data.deal.quote.dateText]].filter(([old])=>typeof old==='string'&&old.length>=3).sort((a,b)=>b[0].length-a[0].length);const fill=s=>{let value=s||'';for(const [old,next] of substitutions)value=value.split(old).join(next||'');return value;};if(tpl.header?.left)fresh.header.left=fill(tpl.header.left);if(tpl.footer?.left)fresh.footer.left=fill(tpl.footer.left);}
   fresh.pages=out;const available={...tpl.assets,...fresh.assets};fresh.assets={};for(const p of out){stSeedFocus(p);for(const b of p.blocks)for(const match of b.html.matchAll(/data-asset=["']([^"']+)["']/g))if(available[match[1]])fresh.assets[match[1]]=available[match[1]];}fresh.templateId=tpl.id;return fresh;
 }
-function stWorkspaceBuild(input,tpl,{baseLogo=''}={}){
-  const payload=stInputPayload(input),doc=stApplyDocumentTemplate(stBuildDoc(payload,{baseLogo}),tpl);doc.inputs=JSON.parse(JSON.stringify(input));doc.created=Date.now();doc.updated=doc.created;doc.quotationId=stId('q');doc.data.quotationId=doc.quotationId;doc.status='draft';return doc;
+// Cách dựng (input.buildMode): standard = khung tư vấn chuẩn; template = template toàn tài liệu; pages = ghép theo input.pagePlan từ Thư viện trang
+// (pageLib) và phần tự dựng; blank = một trang trống có sẵn dữ liệu. Bản cũ không có buildMode: dùng template nếu có.
+// doc.buildReport (không lưu) báo số khối số liệu bị bỏ và trang mẫu không còn.
+function stWorkspaceBuild(input,tpl,{baseLogo='',pageLib=null}={}){
+  const payload=stInputPayload(input),fresh=stBuildDoc(payload,{baseLogo}),mode=input.buildMode;let doc,report={dropped:0,missing:0};
+  if(mode==='pages'||mode==='blank'){const r=stPCompose(fresh,mode==='blank'?[]:Array.isArray(input.pagePlan)?input.pagePlan:stPDefaultPlan(),pageLib);doc=r.doc;report={dropped:r.dropped,missing:r.missing};}
+  else doc=stApplyDocumentTemplate(fresh,mode==='standard'?null:tpl);
+  Object.defineProperty(doc,'buildReport',{value:report,enumerable:false,configurable:true});doc.inputs=JSON.parse(JSON.stringify(input));doc.created=Date.now();doc.updated=doc.created;doc.quotationId=stId('q');doc.data.quotationId=doc.quotationId;doc.status='draft';return doc;
 }
 
 // Firebase chỉ khởi tạo sau khi có cấu hình thật và người dùng đăng nhập Google.
@@ -2293,21 +2571,29 @@ const stCloudString=entity=>JSON.stringify(stCloudSorted(stCloudBody(entity)));
 async function stCloudHash(value){const bytes=typeof value==='string'?new TextEncoder().encode(value):value;return [...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');}
 const stCloudError=e=>({ 'permission-denied':'Firebase chưa cho phép truy cập. Kiểm tra Rules và tài khoản.', 'auth/unauthorized-domain':'Tên miền này chưa được thêm vào Authorized domains của Firebase.', 'auth/operation-not-allowed':'Chưa bật Google Sign-in trong Firebase Authentication.', 'auth/popup-blocked':'Trình duyệt chặn cửa sổ đăng nhập.', 'auth/popup-closed-by-user':'Chưa hoàn tất đăng nhập Google.', 'resource-exhausted':'Đã chạm hạn mức Firebase; bản trên máy vẫn được giữ.', 'unavailable':'Mất kết nối Firebase; bản trên máy vẫn được giữ.' }[e?.code]||e?.message||'Chưa đồng bộ được với Firebase.');
 
-async function stFirebaseTransport(config,{onAuth,onIndex,onError}){
-  const root='https://www.gstatic.com/firebasejs/12.19.0/';
-  const [appSDK,authSDK,dbSDK]=await Promise.all([import(root+'firebase-app.js'),import(root+'firebase-auth.js'),import(root+'firebase-firestore.js')]);
-  const app=appSDK.initializeApp(config,'quote-studio-'+config.projectId),auth=authSDK.getAuth(app),db=dbSDK.initializeFirestore(app,{localCache:dbSDK.memoryLocalCache()});let unsub=null,uid=null;
+const stFirebaseSDK=()=>{const root='https://www.gstatic.com/firebasejs/12.19.0/';return Promise.all([import(root+'firebase-app.js'),import(root+'firebase-auth.js'),import(root+'firebase-firestore.js')]);};
+async function stFirebaseTransport(config,{onAuth,onIndex,onError},{sdk=stFirebaseSDK,retryMs=15000}={}){
+  const [appSDK,authSDK,dbSDK]=await sdk();
+  const app=appSDK.initializeApp(config,'quote-studio-'+config.projectId),auth=authSDK.getAuth(app),db=dbSDK.initializeFirestore(app,{localCache:dbSDK.memoryLocalCache()});let unsub=null,uid=null,retry=null,closed=false;
   const ref=(...path)=>dbSDK.doc(db,...path),base=()=>['quoteStudioUsers',uid];
-  const offAuth=authSDK.onAuthStateChanged(auth,async user=>{
-    unsub?.();unsub=null;uid=null;await onAuth(null);
-    if(!user)return;
-    if(user.email?.toLowerCase()!==ST_CLOUD_EMAIL||!user.emailVerified||!user.providerData.some(p=>p.providerId==='google.com')){onError(new Error('Chỉ đồng bộ bằng tài khoản Google '+ST_CLOUD_EMAIL));await authSDK.signOut(auth);return;}
-    uid=user.uid;
+  // Mất mạng lúc mở app hoặc listener bị ngắt: thử lại sau 15 giây / khi có mạng, không cần tải lại trang.
+  const again=user=>{clearTimeout(retry);retry=setTimeout(()=>{if(!closed&&auth.currentUser===user)connect(user);},retryMs);};
+  async function connect(user){
+    clearTimeout(retry);unsub?.();unsub=null;uid=user.uid;
     // Fail closed nếu database còn dùng Test mode / cho đọc không cần đăng nhập.
     const probeApp=appSDK.initializeApp(config,'studio-access-check-'+stQuoteId('probe')),probeDB=dbSDK.getFirestore(probeApp);
-    try{await dbSDK.getDoc(dbSDK.doc(probeDB,'quoteStudioUsers',uid,'entities','studio-access-check'));onError(new Error('Firestore đang cho phép đọc không cần đăng nhập. Áp Rules riêng tư của Quote Studio trước khi đồng bộ.'));uid=null;return;}catch(e){if(e.code!=='permission-denied'){onError(e);uid=null;return;}}finally{await dbSDK.terminate(probeDB);await appSDK.deleteApp(probeApp);}
+    try{await dbSDK.getDoc(dbSDK.doc(probeDB,'quoteStudioUsers',uid,'entities','studio-access-check'));onError(new Error('Firestore đang cho phép đọc không cần đăng nhập. Áp Rules riêng tư của Quote Studio trước khi đồng bộ.'));uid=null;return;}catch(e){if(e.code!=='permission-denied'){onError(e);uid=null;again(user);return;}}finally{await dbSDK.terminate(probeDB);await appSDK.deleteApp(probeApp);}
+    if(closed||auth.currentUser!==user)return;
     await onAuth({uid,email:user.email});
-    unsub=dbSDK.onSnapshot(dbSDK.collection(db,...base(),'entities'),{includeMetadataChanges:true},s=>onIndex(s.docs.map(d=>d.data()),{fromCache:s.metadata.fromCache,pending:s.metadata.hasPendingWrites}),onError);
+    unsub=dbSDK.onSnapshot(dbSDK.collection(db,...base(),'entities'),{includeMetadataChanges:true},s=>onIndex(s.docs.map(d=>d.data()),{fromCache:s.metadata.fromCache,pending:s.metadata.hasPendingWrites}),e=>{onError(e);unsub=null;again(user);});
+  }
+  const onOnline=()=>{if(!closed&&auth.currentUser&&!unsub&&auth.currentUser.uid)connect(auth.currentUser);};
+  if(typeof window!=='undefined')window.addEventListener('online',onOnline);
+  const offAuth=authSDK.onAuthStateChanged(auth,async user=>{
+    clearTimeout(retry);unsub?.();unsub=null;uid=null;await onAuth(null);
+    if(!user)return;
+    if(user.email?.toLowerCase()!==ST_CLOUD_EMAIL||!user.emailVerified||!user.providerData.some(p=>p.providerId==='google.com')){onError(new Error('Chỉ đồng bộ bằng tài khoản Google '+ST_CLOUD_EMAIL));await authSDK.signOut(auth);return;}
+    await connect(user);
   });
   const partID=i=>String(i).padStart(6,'0');
   const b64=bytes=>{let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return btoa(s);};
@@ -2331,7 +2617,7 @@ async function stFirebaseTransport(config,{onAuth,onIndex,onError}){
         if((current?.version||0)!==expected&&current?.writer!==writer){const e=new Error('Bản trên Firebase đã đổi.');e.name='CloudConflict';e.remote=current;throw e;}
         const next={...meta,ownerUid:uid,version:(current?.version||0)+1,writer,updatedAt:dbSDK.serverTimestamp()};tx.set(target,next);return {...next,updatedAt:Date.now()};});
     },
-    close:async()=>{unsub?.();offAuth();await dbSDK.terminate(db);await appSDK.deleteApp(app);}
+    close:async()=>{closed=true;clearTimeout(retry);if(typeof window!=='undefined')window.removeEventListener('online',onOnline);unsub?.();offAuth();await dbSDK.terminate(db);await appSDK.deleteApp(app);}
   };
 }
 
@@ -2362,12 +2648,17 @@ function stCreateCloud({repo,adapter,transportFactory=stFirebaseTransport,onStat
   async function markAck(meta){await repo.setKV(ackKey(meta.kind,meta.id),{hash:meta.contentHash,version:meta.version});}
   async function fork(kind,entity,hash){const next=JSON.parse(JSON.stringify(entity));next.id=entity.id+'-copy-'+hash.slice(0,12);next.title=(entity.title||entity.name||'Bản đang soạn')+' · Bản riêng';if(kind==='template')next.name=next.title;if(kind==='doc')next.quotationId=next.id;delete next.revision;delete next.updated;
     let saved=await adapter.get(kind,next.id);if(!saved)saved=await adapter.put(kind,next);onConflict({kind,fromId:entity.id,entity:saved});await enqueue(kind,saved);return saved;}
+  // Bản ghi không tách bản riêng được (thư viện): gộp hai bên, nhận bản server làm gốc rồi đẩy phần gộp lên.
+  async function merge(kind,local,remote,meta,pending){const merged=adapter.merge?.(kind,local,remote);if(!merged)return false;
+    if(pending)await repo.updateKV(pendingKey(kind,meta.id),v=>v?.token===pending.token?null:v);const saved=await adapter.put(kind,merged,{remote:true});await markAck(meta);onRemote({kind,entity:saved});await enqueue(kind,saved);return true;}
   async function receive(index,metadata){if(!user||closed||metadata.fromCache)return;const me=user.uid;
     for(const meta of index){if(meta.ownerUid!==user.uid||!['doc','template','draft','library'].includes(meta.kind))continue;const ack=await repo.getKV(ackKey(meta.kind,meta.id));if(ack?.version>=meta.version)continue;
       if(meta.writer===writer){await markAck(meta);continue;}
       const local=await adapter.get(meta.kind,meta.id),pending=await repo.getKV(pendingKey(meta.kind,meta.id));
-      if(local){const packed=await pack(local);if(packed.hash===meta.contentHash){await markAck(meta);continue;}if(pending||!ack||packed.hash!==ack.hash)await fork(meta.kind,local,packed.hash);}
-      const body=await unpack(meta);if(user?.uid!==me)return;const saved=await adapter.put(meta.kind,body,{remote:true});await markAck(meta);if(pending)await repo.updateKV(pendingKey(meta.kind,meta.id),v=>v?.token===pending.token?null:v);onRemote({kind:meta.kind,entity:saved});
+      let body=null;
+      if(local){const packed=await pack(local);if(packed.hash===meta.contentHash){await markAck(meta);continue;}
+        if(pending||!ack||packed.hash!==ack.hash){body=await unpack(meta);if(user?.uid!==me)return;if(await merge(meta.kind,local,body,meta,pending))continue;await fork(meta.kind,local,packed.hash);}}
+      body??=await unpack(meta);if(user?.uid!==me)return;const saved=await adapter.put(meta.kind,body,{remote:true});await markAck(meta);if(pending)await repo.updateKV(pendingKey(meta.kind,meta.id),v=>v?.token===pending.token?null:v);onRemote({kind:meta.kind,entity:saved});
     }
     if(!ready){ready=true;for(const kind of ['doc','template','draft','library'])for(const local of await adapter.all(kind))await enqueue(kind,local);}
     update('Đã kết nối Firebase',{error:null});schedule();
@@ -2376,7 +2667,7 @@ function stCreateCloud({repo,adapter,transportFactory=stFirebaseTransport,onStat
     try{const entries=await repo.listKV(prefix());state.pending=entries.length;if(entries.length)update('Đang đồng bộ '+entries.length+' mục…');
       for(const [key,entry] of entries){if(!entry||user?.uid!==me)return;const latest=await repo.getKV(key);if(latest?.token!==entry.token)continue;const packed=await pack(entry.entity,true);
         const meta={kind:entry.kind,id:entry.id,title:String(entry.entity.title||entry.entity.name||'Báo giá'),contentHash:packed.hash,archived:!!entry.entity.archivedAt};
-        try{const saved=await transport.commit(meta,entry.expected,writer);await markAck(saved);await repo.updateKV(key,v=>v?.token===entry.token?null:v);}catch(e){if(e.name!=='CloudConflict')throw e;await fork(entry.kind,entry.entity,packed.hash);if(e.remote){const remote=await unpack(e.remote),saved=await adapter.put(entry.kind,remote,{remote:true});await markAck(e.remote);onRemote({kind:entry.kind,entity:saved});}await repo.updateKV(key,v=>v?.token===entry.token?null:v);}
+        try{const saved=await transport.commit(meta,entry.expected,writer);await markAck(saved);await repo.updateKV(key,v=>v?.token===entry.token?null:v);}catch(e){if(e.name!=='CloudConflict')throw e;if(e.remote&&adapter.merge){const remote=await unpack(e.remote);if(await merge(entry.kind,await adapter.get(entry.kind,entry.id)||entry.entity,remote,e.remote,entry))continue;}await fork(entry.kind,entry.entity,packed.hash);if(e.remote){const remote=await unpack(e.remote),saved=await adapter.put(entry.kind,remote,{remote:true});await markAck(e.remote);onRemote({kind:entry.kind,entity:saved});}await repo.updateKV(key,v=>v?.token===entry.token?null:v);}
       }
       const remaining=(await repo.listKV(prefix())).length;update(remaining?'Chờ đồng bộ '+remaining+' mục':'Đã đồng bộ Firebase',{pending:remaining,error:null});if(remaining)schedule();
     }catch(e){error(e);}finally{flushBusy=false;}
@@ -2398,12 +2689,12 @@ async function stKitRead(repo){
   if(kit){kit=stKNormalizeKit(kit);if(!stKMigrate(stKNormalizeKit(kit),legacy))return kit;}
   return repo.updateKV(ST_K_KEY,cur=>{const k=stKNormalizeKit(cur||stKSeedKit());stKMigrate(k,legacy);return k;});
 }
-const stKitEntity=(kit,legacy)=>({id:'block-library',name:'Thư viện khối',blocks:legacy||[],kit});
 async function stKitWrite(repo,cloud,fn){
   let err=null,out;
   const kit=await repo.updateKV(ST_K_KEY,cur=>{const k=stKNormalizeKit(cur||stKSeedKit());try{out=fn(k);}catch(e){err=e;return cur||k;}k.updated=Date.now();return k;});
   if(err)throw err;
-  try{await cloud?.queue('library',stKitEntity(kit,await repo.getKV(ST_K_LEGACY)||[]));}catch{}
+  // Bản ghi đồng bộ luôn gồm đủ khối cũ, Thư viện khối và Thư viện trang, để máy khác không mất phần chưa sửa.
+  try{await cloud?.queue('library',await stLibraryEntity(repo));}catch{}
   stQuoteEvents.emit({type:'kit-saved',writer:ST_KU_WRITER});
   return {kit:stKNormalizeKit(kit),out};
 }
@@ -2439,7 +2730,7 @@ function setupKitStudio({repo,cloud,toast,dialog,listDocs=async()=>[],onHome=()=
   const realGroup=()=>S.kit.groups.some(g=>g.id===S.group)?S.group:null;
   async function write(fn){const {kit,out}=await stKitWrite(repo,cloud,fn);S.kit=kit;return out;}
   async function loadDocs(){try{S.docs=(await listDocs()).filter(d=>!d.archivedAt);S.usage=stKUsage(S.docs);}catch{S.docs=[];S.usage=new Map();}}
-  function setURL(){try{const url=new URL(location.href);for(const k of ['doc','quotation','draft','home','preview'])url.searchParams.delete(k);url.searchParams.set('blocks','1');if(S.view==='builder'&&S.def)url.searchParams.set('block',S.def);else url.searchParams.delete('block');history.replaceState(null,'',url);}catch{}}
+  function setURL(){try{const url=new URL(location.href);for(const k of ['doc','quotation','draft','home','preview','pages','page'])url.searchParams.delete(k);url.searchParams.set('blocks','1');if(S.view==='builder'&&S.def)url.searchParams.set('block',S.def);else url.searchParams.delete('block');history.replaceState(null,'',url);}catch{}}
   const groupOptions=(sel,{exclude=null,none='Chưa xếp nhóm'}={})=>{const ex=exclude?stKDescendants(S.kit,exclude):new Set();return `<option value="">${E(none)}</option>`+stKTree(S.kit).filter(({g})=>!ex.has(g.id)).map(({g,depth})=>`<option value="${E(g.id)}"${g.id===sel?' selected':''}>${'　'.repeat(depth)}${depth?'└ ':''}${E(g.name)}</option>`).join('');};
   // Xem trước luôn qua bước làm sạch HTML (nội dung tự do có thể đến từ kho / đồng bộ).
   const preview=(spec,data,o={})=>{const s=stKNormalize(spec);return stKBlockMarkup(stKBlockOf(s,stKUSanitize(stKRender(s,data,o))));};
@@ -2663,7 +2954,7 @@ ${nav('none','Chưa xếp nhóm',live.filter(d=>!d.group).length)}${nav('trash',
   async function reload(){S.kit=await stKitRead(repo);if(root.hidden)return;if(S.view==='library')renderLibrary();else if(!def()){S.view='library';renderLibrary();}else paintTop();}
   async function show(defId){
     S.kit=await stKitRead(repo);await loadDocs();
-    root.hidden=false;document.getElementById('st-home').hidden=true;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode','st-kit-mode');
+    root.hidden=false;document.getElementById('st-home').hidden=true;document.getElementById('st-app').hidden=true;document.getElementById('st-pagelib')?.setAttribute('hidden','');document.body.classList.remove('st-pagelib-mode');document.body.classList.add('st-home-mode','st-kit-mode');
     if(defId&&S.kit.defs.some(d=>d.id===defId&&!d.archivedAt))return openBuilder(defId);
     S.view='library';S.def=null;setURL();renderLibrary();
   }
@@ -2672,37 +2963,154 @@ ${nav('none','Chưa xếp nhóm',live.filter(d=>!d.group).length)}${nav('trash',
   return {show,hide,reload,visible:()=>!root.hidden,flush:flushDraft};
 }
 
+
+// Thư viện trang ngoài trình soạn: quản lý nhóm trang và trang mẫu. Thiết kế trang mẫu mở trình soạn ở chế độ “Trang mẫu” (studio.mjs).
+// Mọi thay đổi kho đi qua updateKV (một transaction) để tab trình soạn và tab thư viện không ghi đè nhau.
+const stPUE=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ST_PU_WRITER=stQuoteId('pagelib');
+async function stPageLibRead(repo){
+  const lib=await repo.getKV(ST_P_KEY);if(lib)return stPNormalizeLib(lib);
+  return stPNormalizeLib(await repo.updateKV(ST_P_KEY,cur=>cur||stPSeedLib()));
+}
+async function stPageLibWrite(repo,cloud,fn){
+  let err=null,out;
+  const lib=await repo.updateKV(ST_P_KEY,cur=>{const l=stPNormalizeLib(cur||stPSeedLib());try{out=fn(l);}catch(e){err=e;return cur||l;}l.updated=Date.now();return l;});
+  if(err)throw err;
+  try{await cloud?.queue('library',await stLibraryEntity(repo));}catch{}
+  stQuoteEvents.emit({type:'pagelib-saved',writer:ST_PU_WRITER});
+  return {lib:stPNormalizeLib(lib),out};
+}
+function stPUSanitize(html){
+  const t=document.createElement('template');t.innerHTML=String(html??'');
+  t.content.querySelectorAll('script,style,iframe,object,embed,link,meta,form,input,button,textarea,select').forEach(n=>n.remove());
+  t.content.querySelectorAll('*').forEach(n=>{for(const a of [...n.attributes]){const v=a.value.trim().toLowerCase();if(a.name.startsWith('on')||((a.name==='href'||a.name==='src'||a.name==='xlink:href')&&(v.startsWith('javascript:')||(v.startsWith('data:')&&!v.startsWith('data:image/')))))n.removeAttribute(a.name);}});
+  return t.innerHTML;
+}
+// Trang A4 thu nhỏ của một trang mẫu với dữ liệu cho trước (mặc định dữ liệu mẫu). Ảnh gắn sau bằng stPUHydrate.
+function stPUPreview(def,data,{mode='edit',existing={},header,footer}={}){
+  const r=stPInstance(def,data,{mode,existing}),first=r.pages[0];
+  const html=first?stPPageMarkup({...first,blocks:first.blocks.map(b=>({...b,html:stPUSanitize(b.html)}))},{header,footer,number:1,total:r.pages.length}):'<p class="pl-none">Trang mẫu chưa có nội dung dùng được.</p>';
+  return {html,pages:r.pages.length,dropped:r.dropped,assets:{...existing,...r.assets}};
+}
+function stPUHydrate(el,assets){el.querySelectorAll('img[data-asset]').forEach(img=>{const src=assets?.[img.dataset.asset]||'';if(src)img.src=src;else img.removeAttribute('src');img.closest('.img')?.classList.toggle('is-empty',!src);});}
+
+const ST_PU_ROLES=['cover','summary','problem','goals','solution','plan','proof','investment','terms','action','appendix','custom'];
+function setupPageLibrary({repo,cloud,toast,dialog,onHome=()=>{},onEdit=()=>{},onBlocks=null}){
+  const root=document.getElementById('st-pagelib');if(!root)return null;
+  const E=stPUE,S={lib:null,group:'all',query:''},sample=stKSampleData();
+  async function write(fn){const {lib,out}=await stPageLibWrite(repo,cloud,fn);S.lib=lib;return out;}
+  function setURL(){try{const url=new URL(location.href);for(const k of ['doc','quotation','draft','home','preview','blocks','block','page'])url.searchParams.delete(k);url.searchParams.set('pages','1');history.replaceState(null,'',url);}catch{}}
+  const groupOptions=(sel,{exclude=null,none='Chưa xếp nhóm'}={})=>{const ex=exclude?stKDescendants(S.lib,exclude):new Set();return `<option value="">${E(none)}</option>`+stKTree(S.lib).filter(({g})=>!ex.has(g.id)).map(({g,depth})=>`<option value="${E(g.id)}"${g.id===sel?' selected':''}>${'　'.repeat(depth)}${depth?'└ ':''}${E(g.name)}</option>`).join('');};
+  async function ask(title,label,value=''){const ok=await dialog(title,`<label class="st-field"><span>${E(label)}</span><input id="pl-ask" maxlength="80" value="${E(value)}"></label>`,[{label:'Huỷ',value:false},{label:'Lưu',value:true,primary:true}]);return ok?document.getElementById('pl-ask')?.value.trim()||null:null;}
+
+  function cards(){
+    const lib=S.lib,match=d=>!S.query||(d.name+' '+d.desc).toLowerCase().includes(S.query.toLowerCase());
+    const order=new Map(stKTree(lib).map(({g},i)=>[g.id,i]));
+    const defs=lib.defs.filter(d=>S.group==='trash'?d.archivedAt:!d.archivedAt).filter(d=>['all','trash'].includes(S.group)||(S.group==='none'?!d.group:stKDescendants(lib,S.group).has(d.group))).filter(match).sort((a,b)=>((order.get(a.group)??-1)-(order.get(b.group)??-1))||(a.order-b.order));
+    if(!defs.length)return `<div class="sh-empty"><h3>${S.group==='trash'?'Thùng rác trống.':S.query?'Không có trang mẫu phù hợp.':'Nhóm này chưa có trang mẫu.'}</h3>${S.group==='trash'?'':'<p>Tạo trang mẫu mới, hoặc trong trình soạn báo giá chọn một trang rồi “Lưu trang vào thư viện”.</p><button type="button" class="primary" data-p="def-new">＋ Trang mẫu mới</button>'}</div>`;
+    return defs.map(d=>{const role=d.pages[0]?.role||'custom';return `<article class="kl-card pl-card" data-pdef="${E(d.id)}"><div class="kl-thumb pl-thumb" data-p="${d.archivedAt?'':'def-edit'}" data-id="${E(d.id)}" role="${d.archivedAt?'img':'button'}" tabindex="${d.archivedAt?-1:0}" aria-label="${E(d.name)}"><div class="pl-zoom"></div></div>
+<div class="kl-meta"><div class="kl-badges"><span class="sh-tag">${E(ST_ROLE_NAMES[role]||'Nội dung')}</span><span class="sh-tag pl-count">${d.pages.length} trang</span>${d.show!==false&&!d.archivedAt?'<span class="kl-live">Hiện khi thêm trang</span>':''}</div><h3>${E(d.name)}</h3>${d.desc?`<p>${E(d.desc)}</p>`:''}<small>${E(d.group?stKPath(lib,d.group):'Chưa xếp nhóm')}</small></div>
+<div class="sh-card-actions">${d.archivedAt?`<button type="button" data-p="def-restore" data-id="${E(d.id)}">Khôi phục</button><button type="button" class="danger" data-p="def-purge" data-id="${E(d.id)}">Xoá vĩnh viễn</button>`:`<button type="button" class="primary" data-p="def-edit" data-id="${E(d.id)}">Thiết kế</button><button type="button" data-p="def-dup" data-id="${E(d.id)}">Nhân bản</button><label class="kl-move"><span>Chuyển</span><select data-p-move="${E(d.id)}" aria-label="Chuyển ${E(d.name)} sang nhóm">${groupOptions(d.group)}</select></label><button type="button" class="danger" data-p="def-del" data-id="${E(d.id)}">Xoá</button>`}</div></article>`;}).join('');
+  }
+  // Thu nhỏ vẽ sau khi có thẻ: mỗi thẻ một trang A4 với dữ liệu mẫu (không phải số liệu khách thật).
+  function paintList(){
+    const el=root.querySelector('#pl-list');if(!el)return;el.innerHTML=cards();
+    el.querySelectorAll('.pl-card').forEach(c=>{const d=S.lib.defs.find(x=>x.id===c.dataset.pdef),z=c.querySelector('.pl-zoom');if(!d||!z)return;const v=stPUPreview(d,sample);z.innerHTML=v.html;stPUHydrate(z,v.assets);});
+  }
+  function render(){
+    const lib=S.lib,live=lib.defs.filter(d=>!d.archivedAt),trashN=lib.defs.length-live.length;
+    if(!['all','none','trash'].includes(S.group)&&!lib.groups.some(g=>g.id===S.group))S.group='all';
+    const count=id=>{const ids=stKDescendants(lib,id);return live.filter(d=>ids.has(d.group)).length;};
+    const title=S.group==='all'?'Tất cả trang mẫu':S.group==='none'?'Chưa xếp nhóm':S.group==='trash'?'Thùng rác':stKPath(lib,S.group);
+    const nav=(id,label,n,depth=0,acts='')=>`<div class="kl-node${S.group===id?' on':''}" style="--depth:${depth}"><button type="button" class="kl-node-name" data-pg="${E(id)}">${label}<small>${n}</small></button>${acts}</div>`;
+    root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><button type="button" data-p="home">← Danh sách báo giá</button>${onBlocks?'<button type="button" data-p="blocks">▦ Thư viện khối</button>':''}<span class="sh-account"><span data-cloud-status></span></span></header>
+<main class="kl"><aside class="kl-side"><div class="kl-side-h"><b>Nhóm trang</b><button type="button" data-p="group-add" title="Thêm nhóm ở cấp gốc">＋ Nhóm</button></div><nav class="kl-tree" aria-label="Nhóm trang">
+${nav('all','Tất cả trang mẫu',live.length)}${stKTree(lib).map(({g,depth})=>nav(g.id,E(g.name),count(g.id),depth,`<span class="kl-node-act"><button type="button" data-p="group-sub" data-id="${E(g.id)}" title="Thêm nhóm con" aria-label="Thêm nhóm con trong ${E(g.name)}">＋</button><button type="button" data-p="group-rename" data-id="${E(g.id)}" title="Đổi tên" aria-label="Đổi tên ${E(g.name)}">✎</button><button type="button" data-p="group-move" data-id="${E(g.id)}" title="Chuyển vào nhóm khác" aria-label="Chuyển ${E(g.name)}">⇄</button><button type="button" data-p="group-del" data-id="${E(g.id)}" title="Xoá nhóm" aria-label="Xoá nhóm ${E(g.name)}">✕</button></span>`)).join('')}
+${nav('none','Chưa xếp nhóm',live.filter(d=>!d.group).length)}${nav('trash','Thùng rác',trashN)}</nav>
+<div class="kl-guide"><b>Dựng một trang mẫu</b><ol><li><b>Loại trang</b> · trang trả lời câu hỏi nào của người đọc (mở đầu, đầu tư, bước tiếp theo…)</li><li><b>Bố cục</b> · nền sáng / tối, khối và độ rộng; một tiêu điểm mỗi trang</li><li><b>Dữ liệu</b> · biến {{…}}, khối thư viện, bảng giá / phương án tự điền theo từng báo giá</li><li><b>Dùng</b> · thêm trang khi soạn, hoặc ghép báo giá từ trang mẫu khi tạo mới. Sửa mẫu không đổi báo giá đã tạo</li></ol></div></aside>
+<section class="kl-main"><div class="sh-heading"><div><p class="sh-eyebrow">THƯ VIỆN TRANG</p><h1>${E(title)}</h1><p>Trang mẫu hiện trong “Thêm trang” khi soạn báo giá và ở bước “Cách dựng báo giá” khi tạo mới. Xem trước dùng dữ liệu mẫu, không phải số liệu khách thật.</p></div><div class="sh-card-actions"><button type="button" class="primary sh-new" data-p="def-new">＋ Trang mẫu mới</button></div></div>
+<div class="sh-toolbar"><label><input type="search" id="pl-search" placeholder="Tìm trang mẫu" value="${E(S.query)}"></label></div>
+<div class="kl-cards pl-cards" id="pl-list"></div></section></main>`;
+    root.querySelectorAll('[data-cloud-status]').forEach(el=>el.textContent=cloud?.state?.message||'');paintList();
+  }
+  async function newDef(){
+    const group=lib=>lib.groups.some(g=>g.id===S.group)?S.group:'';
+    const ok=await dialog('Trang mẫu mới',`<label class="st-field"><span>Tên trang mẫu</span><input id="pl-new-name" maxlength="80" placeholder="Ví dụ: Bìa giới thiệu ngành phân phối"></label><label class="st-field"><span>Nhóm</span><select id="pl-new-group">${groupOptions(group(S.lib))}</select></label><label class="st-field"><span>Loại trang · câu hỏi chính của người đọc</span><select id="pl-new-role">${ST_PU_ROLES.map(r=>`<option value="${r}"${r==='custom'?' selected':''}>${E(ST_ROLE_NAMES[r])}</option>`).join('')}</select></label><label class="st-field"><span>Nền trang</span><select id="pl-new-bg"><option value="">Theo loại trang</option><option value="light">Sáng · số liệu, giấy tờ</option><option value="dark">Tối · lập luận, mở đầu, kết thúc</option></select></label>`,[{label:'Huỷ',value:false},{label:'Tạo và thiết kế',value:true,primary:true}]);
+    if(!ok)return;const name=document.getElementById('pl-new-name')?.value.trim(),groupId=document.getElementById('pl-new-group')?.value||null,role=document.getElementById('pl-new-role')?.value||'custom',bg=document.getElementById('pl-new-bg')?.value||'';
+    const blank=stPBlankPages(role,bg||undefined);const d=await write(lib=>stPAddDef(lib,{name:name||(ST_ROLE_NAMES[role]||'Trang')+' · mẫu mới',group:groupId,pages:blank.pages,assets:blank.assets}));
+    hide();await onEdit(d.id);
+  }
+
+  root.addEventListener('click',async e=>{
+    const t=e.target.closest('[data-p],[data-pg]');if(!t)return;const id=t.dataset.id;
+    try{
+      if(t.dataset.pg){S.group=t.dataset.pg;render();return;}
+      const k=t.dataset.p;if(!k)return;
+      if(k==='home'){hide();await onHome();return;}
+      if(k==='blocks'&&onBlocks){hide();await onBlocks();return;}
+      if(k==='group-add'||k==='group-sub'){const name=await ask(k==='group-sub'?'Thêm nhóm con':'Nhóm trang mới','Tên nhóm');if(!name)return;const g=await write(lib=>stKAddGroup(lib,name,k==='group-sub'?id:null));S.group=g.id;render();return;}
+      if(k==='group-rename'){const g=S.lib.groups.find(x=>x.id===id);const name=g&&await ask('Đổi tên nhóm','Tên nhóm',g.name);if(!name)return;await write(lib=>stKRenameGroup(lib,id,name));render();return;}
+      if(k==='group-move'){const g=S.lib.groups.find(x=>x.id===id);if(!g)return;const ok=await dialog('Chuyển nhóm',`<p>Chuyển “${E(g.name)}” cùng các nhóm con và trang mẫu bên trong vào:</p><label class="st-field"><span>Nhóm đích</span><select id="pl-move-target">${groupOptions(g.parent,{exclude:id,none:'Cấp gốc (không thuộc nhóm nào)'})}</select></label>`,[{label:'Huỷ',value:false},{label:'Chuyển',value:true,primary:true}]);if(!ok)return;const target=document.getElementById('pl-move-target')?.value||null;await write(lib=>stKMoveGroup(lib,id,target));toast('Đã chuyển nhóm.');render();return;}
+      if(k==='group-del'){const g=S.lib.groups.find(x=>x.id===id);if(!g)return;if(!await dialog('Xoá nhóm?',`Nhóm “${E(g.name)}” được xoá; nhóm con và trang mẫu bên trong chuyển lên ${g.parent?'nhóm cha':'cấp gốc'}. Không trang mẫu nào bị xoá.`,[{label:'Huỷ',value:false},{label:'Xoá nhóm',value:true,danger:true}]))return;await write(lib=>stKDeleteGroup(lib,id));if(S.group===id)S.group=g.parent||'all';render();return;}
+      if(k==='def-new')return newDef();
+      if(k==='def-edit'&&id){hide();await onEdit(id);return;}
+      if(k==='def-dup'){await write(lib=>stPDupDef(lib,id));toast('Đã nhân bản trang mẫu.');paintList();return;}
+      if(k==='def-del'){await write(lib=>stPArchiveDef(lib,id));toast('Đã chuyển vào thùng rác. Báo giá đã dùng trang mẫu này giữ nguyên nội dung.');render();return;}
+      if(k==='def-restore'){await write(lib=>stPArchiveDef(lib,id,false));render();return;}
+      if(k==='def-purge'){if(!await dialog('Xoá vĩnh viễn?','Trang mẫu bị xoá khỏi thư viện. Báo giá đã dùng trang mẫu này vẫn giữ nguyên nội dung.',[{label:'Huỷ',value:false},{label:'Xoá vĩnh viễn',value:true,danger:true}]))return;await write(lib=>stPPurgeDef(lib,id));render();return;}
+    }catch(err){toast(err.message);}
+  });
+  root.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.pl-thumb[data-p]')){e.preventDefault();e.target.click();}});
+  root.addEventListener('input',e=>{if(e.target.id==='pl-search'){S.query=e.target.value;paintList();}});
+  root.addEventListener('change',async e=>{const t=e.target;if(!t.dataset.pMove)return;try{const id=t.dataset.pMove,g=t.value||null;await write(lib=>stKMoveDef(lib,id,g));toast('Đã chuyển trang mẫu.');render();}catch(err){toast(err.message);}});
+  stQuoteEvents.subscribe(async ev=>{if(ev.type!=='pagelib-saved'||ev.writer===ST_PU_WRITER||root.hidden)return;await reload();});
+  async function reload(){S.lib=await stPageLibRead(repo);if(!root.hidden)render();}
+  async function show(){
+    S.lib=await stPageLibRead(repo);
+    root.hidden=false;for(const id of ['st-home','st-app','st-kit'])document.getElementById(id)?.setAttribute('hidden','');document.body.classList.remove('st-kit-mode');document.body.classList.add('st-home-mode','st-pagelib-mode');
+    setURL();render();
+  }
+  // Bỏ DOM xem trước khi rời trang để trình soạn không gặp các trang .st-page của thư viện.
+  function hide(){root.hidden=true;root.innerHTML='';document.body.classList.remove('st-pagelib-mode');}
+  return {show,hide,reload,visible:()=>!root.hidden};
+}
+
 const stHEsc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const stHTime=n=>new Date(n||Date.now()).toLocaleString('vi-VN',{dateStyle:'short',timeStyle:'short'});
 const stHMoney=n=>new Intl.NumberFormat('vi-VN').format(n)+' đ';
+// Bước 4 của luồng tạo báo giá: bốn cách dựng bản đầu tiên.
+const ST_H_MODES=[['standard','Mẫu tư vấn chuẩn','Dựng đủ các phần từ hồ sơ: bìa, tóm tắt, hiện trạng… bước tiếp theo, phụ lục.'],['template','Template đã lưu','Bố cục toàn tài liệu đã lưu; nội dung và giá lấy từ hồ sơ mới.'],['pages','Ghép từ Thư viện trang','Chọn trang mẫu và phần tự dựng theo thứ tự, ví dụ bìa riêng + phần đầu tư tự dựng + trang kết thúc.'],['blank','Trang trống · tự dựng bằng khối','Báo giá đã có dữ liệu khách và phương án; tự thêm khối từ Thư viện khối, trang từ Thư viện trang.']];
 function stWorkspaceAdapter(repo,{sanitizeDoc=d=>d}={}){
   const templates=async()=>await repo.getKV(ST_TEMPLATE_KEY)||[];
-  // Một bản ghi đồng bộ cho thư viện: blocks = “Khối đã lưu” cũ (máy bản cũ vẫn đọc được), kit = Thư viện khối có nhóm và phiên bản.
-  const library=async()=>({id:'block-library',name:'Thư viện khối',blocks:await repo.getKV('st-library')||[],kit:await repo.getKV(ST_K_KEY)||null});
+  // Một bản ghi đồng bộ cho thư viện: blocks = “Khối đã lưu” cũ (máy bản cũ vẫn đọc được), kit = Thư viện khối có nhóm và phiên bản,
+  // pages + assets = Thư viện trang (ảnh tách ra assets để cloud tải một lần theo hash). Bản không có pages thì giữ thư viện trang trên máy.
+  const library=()=>stLibraryEntity(repo);
   return {
     get:async(kind,id)=>kind==='doc'?repo.getDoc(id):kind==='draft'?repo.getDraft(id):kind==='template'?(await templates()).find(x=>x.id===id):kind==='library'?library():null,
-    all:async kind=>{if(kind!=='library')return kind==='doc'?repo.allDocs():kind==='draft'?(await repo.allDrafts()).filter(x=>x.workspaceInputs):kind==='template'?templates():[];const l=await library();return l.blocks.length||l.kit?[l]:[];},
+    all:async kind=>{if(kind!=='library')return kind==='doc'?repo.allDocs():kind==='draft'?(await repo.allDrafts()).filter(x=>x.workspaceInputs):kind==='template'?templates():[];const l=await library();return l.blocks.length||l.kit||l.pages?[l]:[];},
     put:async(kind,entity)=>{
       if(kind==='doc'){const old=await repo.getDoc(entity.id),copy=sanitizeDoc(JSON.parse(JSON.stringify(entity)));delete copy.revision;return repo.saveDoc(copy,old?.revision||0);}
       if(kind==='draft')return repo.putDraft(entity);
       if(kind==='template'){let saved;await repo.updateKV(ST_TEMPLATE_KEY,list=>{const all=list||[],i=all.findIndex(t=>t.id===entity.id);saved={...entity,revision:(all[i]?.revision||0)+1,updated:Date.now()};if(i<0)all.push(saved);else all[i]=saved;return all;});return saved;}
-      if(kind==='library'){if(Array.isArray(entity.blocks))await repo.setKV('st-library',entity.blocks);if(entity.kit)await repo.setKV(ST_K_KEY,stKNormalizeKit(entity.kit));return library();}
+      if(kind==='library'){if(Array.isArray(entity.blocks))await repo.setKV('st-library',entity.blocks);if(entity.kit)await repo.setKV(ST_K_KEY,stKNormalizeKit(entity.kit));const pages=stPLibFromCloud(entity.pages,entity.assets);if(pages)await repo.setKV(ST_P_KEY,pages);return library();}
       throw new Error('Loại dữ liệu đồng bộ không hợp lệ.');
-    }
+    },
+    // Thư viện là bản ghi duy nhất của tài khoản: xung đột thì gộp hai bên thay vì tách bản riêng. Loại khác trả null để tách bản riêng như cũ.
+    merge:(kind,local,remote)=>{if(kind!=='library')return null;const blocks=[...(remote.blocks||[])];for(const x of local.blocks||[])if(!blocks.some(y=>y.id===x.id))blocks.push(x);const pages=stPMergeLib(stPLibFromCloud(local.pages,local.assets),stPLibFromCloud(remote.pages,remote.assets));return {...remote,blocks,kit:stKMergeKit(local.kit,remote.kit),...(pages?stPLibToCloud(pages):{})};}
   };
 }
-function setupStudioHome({repo,adapter,cloud,openDoc,openKit,createDoc,createBlankDoc,updateDoc,backFromEditor,toast,askTemplateName=async name=>prompt('Tên template:',name)}){
-  const root=document.getElementById('st-home');let tab='documents',query='',trash=false,templates=[],docs=[],drafts=[],input={},draftId=null,editingDocId=null,saveTimer=null,createBusy=false;
+function setupStudioHome({repo,adapter,cloud,openDoc,openKit,openPages,createDoc,createBlankDoc,updateDoc,backFromEditor,toast,askTemplateName=async name=>prompt('Tên template:',name)}){
+  const root=document.getElementById('st-home');let tab='documents',query='',trash=false,templates=[],docs=[],drafts=[],pageLib=null,input={},draftId=null,editingDocId=null,saveTimer=null,createBusy=false;
   const mode=()=>root.dataset.mode||'list';
   const download=(text,type,name)=>{const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);};
   const isMatch=item=>[item.title,item.name,item.data?.deal?.customer?.name,item.data?.deal?.quote?.no].filter(Boolean).join(' ').toLowerCase().includes(query.toLowerCase());
-  async function refresh(){docs=await repo.allDocs();templates=await repo.getKV(ST_TEMPLATE_KEY)||[];drafts=(await repo.allDrafts()).filter(d=>!d.studioDocId);if(mode()==='list')renderList();syncStatus();}
+  async function refresh(){docs=await repo.allDocs();templates=await repo.getKV(ST_TEMPLATE_KEY)||[];drafts=(await repo.allDrafts()).filter(d=>!d.studioDocId);pageLib=await stPageLibRead(repo).catch(()=>null);if(mode()==='list')renderList();syncStatus();}
   function syncStatus(){const s=cloud.state;for(const el of document.querySelectorAll('[data-cloud-status]')){el.textContent=s.message;el.dataset.sync=s.error?'error':s.ready&&s.pending===0&&s.message==='Đã đồng bộ Firebase'?'synced':'local';}const el=root.querySelector('#sh-account');if(el)el.textContent=s.email||ST_CLOUD_EMAIL;}
   function renderList(){
-    root.dataset.mode='list';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><a href="index.html">← Quote Lab</a>${openKit?'<button type="button" class="sh-kit-link" data-home-act="blocks">▦ Thư viện khối</button>':''}<div class="sh-account"><span id="sh-account"></span><span data-cloud-status></span><button data-home-act="firebase">Firebase</button></div></header>
-<div class="sh-content"><div class="sh-heading"><div><p class="sh-eyebrow">KHÔNG GIAN BÁO GIÁ</p><h1>Mỗi khách hàng, một bộ hồ sơ.</h1><p>Nhập phương án từ Quote Lab, hồ sơ khách hàng và use-case. Soạn, lưu template và mở lại từng báo giá riêng.</p></div><div class="sh-card-actions"><button class="primary sh-new" data-home-act="create">＋ Tạo báo giá</button>${createBlankDoc?'<button data-home-act="blank">Tạo bản trống</button>':''}${openKit?'<button data-home-act="blocks">Thư viện khối</button>':''}</div></div>
+    root.dataset.mode='list';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><a href="index.html">← Quote Lab</a>${openKit?'<button type="button" class="sh-kit-link" data-home-act="blocks">▦ Thư viện khối</button>':''}${openPages?'<button type="button" class="sh-kit-link" data-home-act="pages">▤ Thư viện trang</button>':''}<div class="sh-account"><span id="sh-account"></span><span data-cloud-status></span><button data-home-act="firebase">Firebase</button></div></header>
+<div class="sh-content"><div class="sh-heading"><div><p class="sh-eyebrow">KHÔNG GIAN BÁO GIÁ</p><h1>Mỗi khách hàng, một bộ hồ sơ.</h1><p>Nhập phương án từ Quote Lab, hồ sơ khách hàng và use-case. Soạn, lưu template và mở lại từng báo giá riêng.</p></div><div class="sh-card-actions"><button class="primary sh-new" data-home-act="create">＋ Tạo báo giá</button>${createBlankDoc?'<button data-home-act="blank">Tạo bản trống</button>':''}${openKit?'<button data-home-act="blocks">Thư viện khối</button>':''}${openPages?'<button data-home-act="pages">Thư viện trang</button>':''}</div></div>
 <div class="sh-toolbar"><div class="sh-tabs"><button data-home-tab="documents" class="${tab==='documents'?'on':''}">Báo giá (${docs.filter(d=>!d.archivedAt).length})</button><button data-home-tab="templates" class="${tab==='templates'?'on':''}">Templates (${templates.filter(t=>!t.archivedAt).length})</button><button data-home-tab="inputs" class="${tab==='inputs'?'on':''}">Bộ đầu vào (${drafts.length})</button></div><label><input type="search" id="sh-search" placeholder="Tìm khách hàng / tên báo giá" value="${stHEsc(query)}"></label><label class="sh-trash"><input type="checkbox" id="sh-trash"${trash?' checked':''}> Thùng rác</label></div>
-<div id="sh-list"></div><div class="sh-help"><b>Luồng soạn báo giá</b><span>1. Quote Lab → xuất file phương án</span><span>2. Studio → đính kèm hồ sơ & use-case</span><span>3. Chọn template → soạn → xuất PDF</span>${openKit?'<span><b>Thư viện khối</b> · dựng khối dùng lại theo khung → bố cục → thành phần, có phiên bản</span>':''}</div></div>`;
+<div id="sh-list"></div><div class="sh-help"><b>Luồng soạn báo giá</b><span>1. Quote Lab → xuất file phương án</span><span>2. Studio → đính kèm hồ sơ & use-case</span><span>3. Chọn cách dựng: mẫu chuẩn, template, ghép trang mẫu hoặc trang trống → soạn → xuất PDF</span>${openKit?'<span><b>Thư viện khối</b> · dựng khối dùng lại theo khung → bố cục → thành phần, có phiên bản</span>':''}${openPages?'<span><b>Thư viện trang</b> · trang mẫu theo nhóm (mở đầu, kết thúc…), tự điền theo từng báo giá</span>':''}</div></div>`;
     renderCards();syncStatus();
   }
   function renderCards(){const list=root.querySelector('#sh-list');if(!list)return;
@@ -2715,38 +3123,72 @@ function setupStudioHome({repo,adapter,cloud,openDoc,openKit,createDoc,createBla
   async function showCreate(templateId='',resume){
     draftId=resume?.id||'q-'+stQuoteId('session');input=resume?.workspaceInputs||{useCases:[],optionEdits:{},templateId};
     if(resume&&!resume.workspaceInputs){const s=resume.state||{},selected=resume.selected||[];input={profile:s.fileText?{name:s.fileName||'ho-so-cu.md',text:s.fileText}:null,useCases:[],optionEdits:s.opts||{},recommendedId:s.rec,templateId};try{input.package=qoReadPackage({kind:'quote-lab-options',version:1,options:selected.map(r=>({r,label:s.opts?.[r.id]?.label})),policy:{effective:'01/10/2026'}});}catch{}try{input.useCases=JSON.parse(localStorage.getItem('base-quote-usecases-v1')||'{}').files||[];}catch{}}
+    input.buildMode??=input.templateId?'template':'standard';
     root.dataset.mode='create';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><button data-home-act="home">← Danh sách báo giá</button><span data-cloud-status></span></header><main class="sh-content sh-create"><h1>Tạo báo giá từ hồ sơ</h1><p class="sh-lead">Mỗi bộ đầu vào được lưu riêng. Có thể bổ sung rồi quay lại soạn sau.</p>
 <div class="sh-form"><section class="sh-input-card"><span class="sh-step">1</span><div><h3>Phương án từ Quote Lab</h3><p>File .json giữ giá và phạm vi tại thời điểm chọn gói.</p><input type="file" id="sh-options-file" accept=".json,application/json"><div id="sh-options-info"></div></div></section>
 <section class="sh-input-card"><span class="sh-step">2</span><div><h3>Hồ sơ khách hàng</h3><p>File theo mẫu .md / .txt: thông tin doanh nghiệp, pain, giải pháp, phạm vi, next step.</p><input type="file" id="sh-profile-file" accept=".md,.txt,.markdown,text/plain,text/markdown"><div class="sh-samples"><button data-sample="profile-blank">Tải mẫu trống</button><button data-sample="profile-sample">Tải mẫu minh hoạ</button></div><details><summary>Dán hoặc sửa nội dung hồ sơ</summary><textarea id="sh-profile-text" rows="10" placeholder="# KHÁCH HÀNG…"></textarea></details><div id="sh-profile-info"></div></div></section>
 <section class="sh-input-card"><span class="sh-step">3</span><div><h3>Use-case / bằng chứng</h3><p>Chỉ dùng case có nguồn; case chưa được phép công khai sẽ ẩn tên trong báo giá.</p><input type="file" id="sh-usecase-files" multiple accept=".md,.txt,.markdown,text/plain,text/markdown"><button data-sample="usecase">Tải mẫu use-case</button><div id="sh-usecase-info"></div></div></section>
-<section class="sh-input-card"><span class="sh-step">4</span><div><h3>Template</h3><select id="sh-template"><option value="">Mẫu tư vấn chuẩn</option>${templates.filter(t=>!t.archivedAt).map(t=>`<option value="${stHEsc(t.id)}">${stHEsc(t.name)}</option>`).join('')}</select><p>Bố cục và kiểu khối theo template; giá và nội dung khách hàng lấy từ hồ sơ mới. Các khối đã đánh dấu giữ nội dung sẽ được tái sử dụng.</p></div></section></div><div class="sh-create-actions"><span id="sh-create-status" role="status"></span><button type="button" class="primary" id="sh-build">Tạo và mở trình soạn →</button></div></main>`;
-    root.querySelector('#sh-template').value=input.templateId||'';if(input.profile)root.querySelector('#sh-profile-text').value=input.profile.text;renderInputs();syncStatus();inputChanged();
+<section class="sh-input-card"><span class="sh-step">4</span><div><h3>Cách dựng báo giá</h3><p>Chọn khung cho bản đầu tiên. Sau khi tạo vẫn thêm được trang mẫu, khối thư viện hoặc sửa tự do trong trình soạn.</p><div class="sh-modes" role="radiogroup" aria-label="Cách dựng báo giá">${ST_H_MODES.map(([v,name,hint])=>`<label class="sh-mode"><input type="radio" name="sh-build-mode" value="${v}"${input.buildMode===v?' checked':''}><span><b>${name}</b><small>${hint}</small></span></label>`).join('')}</div><div id="sh-mode-body"></div></div></section></div><div class="sh-create-actions"><span id="sh-create-status" role="status"></span><button type="button" class="primary" id="sh-build">Tạo và mở trình soạn →</button></div></main>`;
+    if(input.profile)root.querySelector('#sh-profile-text').value=input.profile.text;renderInputs();syncStatus();inputChanged();
     const url=new URL(location.href);url.searchParams.delete('doc');url.searchParams.delete('quotation');url.searchParams.set('home','1');url.searchParams.set('draft',draftId);history.replaceState(null,'',url);
   }
   function renderInputs(){
     const p=input.package;root.querySelector('#sh-options-info').innerHTML=p?`<p class="sh-file-name">${stHEsc(input.packageFile?.name||'File phương án đã nhập')} · ${p.options.length} phương án</p>${p.options.map((o,i)=>{const e=input.optionEdits?.[o.id]||{};return `<div class="sh-option" data-option-id="${stHEsc(o.id)}"><div class="sh-option-head"><label><input type="checkbox" data-option-include="${stHEsc(o.id)}"${e.include!==false?' checked':''}> Phương án ${i+1}</label><label><input type="radio" name="sh-recommended" data-recommended="${stHEsc(o.id)}"${(input.recommendedId||p.recommendedId)===o.id?' checked':''}> Khuyến nghị</label></div><b>${stHEsc(o.label)}</b><p>${o.r.years} năm · ${stHMoney(o.r.total)}${o.r.feeKnown===false?' · phí chưa xác nhận':''}</p><label>Tên phương án<input data-option-field="label" value="${stHEsc(e.label||o.label)}"></label><label>Lý do khuyến nghị / đánh đổi<input data-option-field="why" value="${stHEsc(e.why||'')}"></label><div class="sh-value-fields"><label>Hiệu quả/năm · triệu đ<input type="number" min="0" data-option-field="valueYear" value="${stHEsc(e.valueYear||'')}"></label><label>Trong đó tiền mặt · triệu đ<input type="number" min="0" data-option-field="valueCash" value="${stHEsc(e.valueCash||'')}"></label></div></div>`;}).join('')}`:'<p class="sh-muted">Chưa có file phương án.</p>';
     const report=input.profile?.text?profileReport(input.profile.text,input.profile.name):null;root.querySelector('#sh-profile-info').innerHTML=report?`<p class="sh-file-name">${stHEsc(report.deal?.customer?.name||input.profile.name)}</p>${report.errors.map(e=>`<p class="sh-error">${stHEsc(e)}</p>`).join('')}${report.warnings.length?`<details><summary>${report.warnings.length} lưu ý của hồ sơ</summary><ul>${report.warnings.map(e=>`<li>${stHEsc(e)}</li>`).join('')}</ul></details>`:''}`:'<p class="sh-muted">Chưa có hồ sơ khách hàng.</p>';
     const cases=(input.useCases||[]).flatMap(f=>parseUseCaseFile(f.text,f.name).cases),selected=new Set(input.useCaseSelection??cases.map(c=>c.id));root.querySelector('#sh-usecase-info').innerHTML=(input.useCases||[]).map((f,i)=>`<span class="sh-file-chip">${stHEsc(f.name)} <button data-remove-usecase="${i}">✕</button></span>`).join('')+cases.map(c=>`<label class="sh-case"><input type="checkbox" data-usecase="${stHEsc(c.id)}"${selected.has(c.id)?' checked':''}><span><b>${stHEsc(c.name)}</b><small>${stHEsc(c.industry||'')}${c.public?' · được công khai':' · ẩn tên'}${c.sample?' · mẫu minh hoạ':''}</small></span></label>`).join('');
-    root.querySelector('#sh-build').textContent=editingDocId?'Cập nhật các khối liên kết →':'Tạo và mở trình soạn →';root.querySelector('#sh-build').disabled=!p||!report||report.kind!=='deal'||report.errors.length>0||createBusy;
+    renderMode();const noTemplate=input.buildMode==='template'&&!templates.some(t=>t.id===input.templateId&&!t.archivedAt);
+    root.querySelector('#sh-build').textContent=editingDocId?'Cập nhật các khối liên kết →':'Tạo và mở trình soạn →';root.querySelector('#sh-build').disabled=!p||!report||report.kind!=='deal'||report.errors.length>0||createBusy||(!editingDocId&&noTemplate);
+  }
+  // Số trang tự dựng theo từng loại với hồ sơ / phương án hiện tại (null khi đầu vào chưa đủ).
+  function autoRoles(){try{const doc=stBuildDoc(stInputPayload(input),{}),m=new Map();for(const p of doc.pages)m.set(p.role,(m.get(p.role)||0)+1);return m;}catch{return null;}}
+  function renderMode(){
+    const body=root.querySelector('#sh-mode-body');if(!body)return;const m=input.buildMode||'standard',auto=autoRoles(),E=stHEsc;
+    root.querySelectorAll('input[name="sh-build-mode"]').forEach(r=>r.checked=r.value===m);
+    if(m==='standard'){body.innerHTML=auto?`<p class="sh-muted">Sẽ dựng: ${ST_P_AUTO.filter(r=>auto.get(r)).map(r=>E(ST_ROLE_NAMES[r])).join(' · ')}. Phần hồ sơ chưa có dữ liệu được bỏ.</p>`:'<p class="sh-muted">Phần hồ sơ chưa có dữ liệu được bỏ.</p>';return;}
+    if(m==='template'){const list=templates.filter(t=>!t.archivedAt);body.innerHTML=list.length?`<label class="st-field"><span>Template</span><select id="sh-template"><option value="">Chọn template…</option>${list.map(t=>`<option value="${E(t.id)}"${t.id===input.templateId?' selected':''}>${E(t.name)}</option>`).join('')}</select></label><p class="sh-muted">Bố cục và kiểu khối theo template; giá và nội dung khách hàng lấy từ hồ sơ mới. Các khối đã đánh dấu giữ nội dung sẽ được tái sử dụng.</p>`:'<p class="sh-muted">Chưa có template. Mở một báo giá đã soạn và chọn “Lưu thành template”.</p>';return;}
+    if(m==='blank'){body.innerHTML='<p class="sh-muted">Báo giá bắt đầu từ một trang trống. Biến dữ liệu, khối thư viện và trang mẫu chèn vào sẽ tự điền theo hồ sơ và phương án vừa nhập.</p>';return;}
+    const plan=input.pagePlan??=stPDefaultPlan(),defs=pageLib?stPVisible(pageLib):[];
+    const label=item=>{
+      if(item.kind==='auto'){const n=auto?.get(item.role);return {kind:'Tự dựng từ hồ sơ',name:ST_ROLE_NAMES[item.role]||item.role,note:auto?(n?n+' trang':'hồ sơ chưa có dữ liệu · sẽ bỏ qua'):'dựng khi tạo',skip:!!auto&&!n};}
+      const d=pageLib?.defs.find(x=>x.id===item.id),gone=!d||!!d.archivedAt;
+      return {kind:'Trang mẫu',name:d?d.name:'Trang mẫu không còn',note:gone?'không còn trong thư viện · sẽ bỏ qua':`${d.group?stKPath(pageLib,d.group):'Chưa xếp nhóm'} · ${d.pages.length} trang`,skip:gone};
+    };
+    const items=plan.map((item,i)=>{const l=label(item);return `<li class="sh-plan-i${l.skip?' is-skip':''}${item.kind==='page'?' is-page':''}"><span class="sh-plan-n">${i+1}</span><span class="sh-plan-t"><small>${E(l.kind)}</small><b>${E(l.name)}</b><small>${E(l.note)}</small></span><span class="sh-plan-act"><button type="button" data-plan-move="${i}:-1" aria-label="Chuyển lên" title="Chuyển lên"${i?'':' disabled'}>↑</button><button type="button" data-plan-move="${i}:1" aria-label="Chuyển xuống" title="Chuyển xuống"${i<plan.length-1?'':' disabled'}>↓</button><button type="button" data-plan-del="${i}" aria-label="Bỏ khỏi báo giá" title="Bỏ khỏi báo giá">✕</button></span></li>`;}).join('');
+    const groups=pageLib?[...stKTree(pageLib).map(({g})=>g.id),null]:[];
+    const pick=groups.map(gid=>{const list=defs.filter(d=>(d.group||null)===gid);return list.length?`<p class="sh-pick-g">${E(gid?stKPath(pageLib,gid):'Chưa xếp nhóm')}</p><div class="sh-pick-list">${list.map(d=>`<button type="button" class="sh-pick-i" data-plan-add="page:${E(d.id)}"><b>＋ ${E(d.name)}</b><small>${E(ST_ROLE_NAMES[d.pages[0]?.role]||'Nội dung')} · ${d.pages.length} trang</small></button>`).join('')}</div>`:'';}).join('');
+    const missingAuto=ST_P_AUTO.filter(r=>!plan.some(x=>x.kind==='auto'&&x.role===r));
+    body.innerHTML=`<div class="sh-compose"><div class="sh-plan"><div class="sh-plan-h"><b>Thứ tự trong báo giá</b><span><button type="button" data-plan-reset>Thứ tự chuẩn</button><button type="button" data-plan-clear>Bỏ hết</button></span></div>${plan.length?`<ol>${items}</ol>`:'<p class="sh-muted">Chưa chọn trang nào · báo giá bắt đầu từ một trang trống.</p>'}</div>
+<div class="sh-pick"><div class="sh-plan-h"><b>Thêm trang mẫu</b>${openPages?'<button type="button" data-home-act="pages-tab">Thư viện trang ↗</button>':''}</div>${pick||'<p class="sh-muted">Thư viện trang chưa có trang mẫu đang hiện.</p>'}${missingAuto.length?`<p class="sh-pick-g">Phần tự dựng từ hồ sơ</p><div class="sh-pick-list">${missingAuto.map(r=>`<button type="button" class="sh-pick-i" data-plan-add="auto:${r}"><b>＋ ${E(ST_ROLE_NAMES[r])}</b><small>${auto?(auto.get(r)?auto.get(r)+' trang':'hồ sơ chưa có dữ liệu'):'dựng khi tạo'}</small></button>`).join('')}</div>`:''}</div></div>
+<p class="sh-muted">Trang mẫu tự điền biến, khối thư viện và bảng giá / phương án theo hồ sơ này; khối số liệu không có nguồn trong báo giá này được bỏ. Phần tự dựng không nằm trong danh sách thì không tạo.</p>`;
+  }
+  function planOp(b){
+    const plan=input.pagePlan??=stPDefaultPlan();
+    if(b.dataset.planMove){const [i,d]=b.dataset.planMove.split(':').map(Number),j=i+d;if(j<0||j>=plan.length)return false;[plan[i],plan[j]]=[plan[j],plan[i]];}
+    else if(b.dataset.planDel!==undefined)plan.splice(+b.dataset.planDel,1);
+    else if(b.dataset.planAdd){const [kind,id]=b.dataset.planAdd.split(':');plan.push(kind==='auto'?{kind:'auto',role:id}:{kind:'page',id});}
+    else if(b.hasAttribute('data-plan-reset'))input.pagePlan=stPDefaultPlan();
+    else if(b.hasAttribute('data-plan-clear'))input.pagePlan=[];
+    else return false;
+    inputChanged();return true;
   }
   async function readTextFile(file,max=500000){if(!file||file.size>max)throw new Error('File tối đa '+Math.round(max/1e6*10)/10+' MB.');return {name:file.name,text:await file.text(),size:file.size,addedAt:Date.now()};}
   async function saveTemplate(doc,name){const template=stMakeDocumentTemplate(doc,name),saved=await adapter.put('template',template);await cloud.queue('template',saved);await refresh();toast('Đã lưu template. Nội dung khách mới sẽ được điền lại khi sử dụng.');return saved;}
   async function promptTemplate(doc){const name=await askTemplateName(doc.title+' · Template');if(name?.trim())await saveTemplate(doc,name);}
   async function showFirebase(){const stored=cloud.getConfig?.()||await repo.getKV(ST_CLOUD_CONFIG_KEY);root.dataset.mode='firebase';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><button data-home-act="home">← Danh sách</button></header><main class="sh-content sh-firebase"><h1>Đồng bộ Firebase</h1><p>Tài khoản Google: <b>${ST_CLOUD_EMAIL}</b>. Báo giá, bộ đầu vào, template và Thư viện khối (nhóm, khối, phiên bản) được đồng bộ theo tài khoản.</p>${stored?`<p>Project đang dùng: <b>${stHEsc(stored.projectId)}</b></p>`:''}<div class="sh-cloud-state" data-cloud-status></div><div class="sh-card-actions"><button class="primary" data-home-act="login">Đăng nhập Google</button><button data-home-act="sync">Đồng bộ lại</button><button data-home-act="logout">Đăng xuất</button></div><details${stored?'':' open'}><summary>Cấu hình Firebase Web app</summary><p>Dán firebaseConfig từ Web app. Cần bật Google Sign-in, tạo Firestore và áp bộ Rules của Quote Studio trước khi đăng nhập.</p><textarea id="sh-firebase-config" rows="9" placeholder='{"apiKey":"…","authDomain":"…","projectId":"…","appId":"…"}'>${stored?stHEsc(JSON.stringify(stored,null,2)):''}</textarea><button data-home-act="configure">Lưu cấu hình</button></details><p class="sh-muted">Bản trên máy được giữ khi mất mạng hoặc Firebase chưa sẵn sàng. Chỉ báo “Đã đồng bộ” khi Firebase xác nhận; chỉnh sửa cùng bản ở nhiều nơi được giữ thành bản riêng nếu xung đột.</p></main>`;syncStatus();}
-  async function home(){clearTimeout(saveTimer);if(draftId&&mode()==='create')await saveInput();draftId=null;editingDocId=null;tab='documents';query='';trash=false;await backFromEditor();const url=new URL(location.href);for(const k of ['doc','quotation','draft','blocks','block'])url.searchParams.delete(k);url.searchParams.set('home','1');history.replaceState(null,'',url);document.getElementById('st-kit')?.setAttribute('hidden','');document.body.classList.remove('st-kit-mode');root.hidden=false;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode');root.dataset.mode='list';await refresh();}
+  async function home(){clearTimeout(saveTimer);if(draftId&&mode()==='create')await saveInput();draftId=null;editingDocId=null;tab='documents';query='';trash=false;await backFromEditor();const url=new URL(location.href);for(const k of ['doc','quotation','draft','blocks','block','pages','page'])url.searchParams.delete(k);url.searchParams.set('home','1');history.replaceState(null,'',url);document.getElementById('st-kit')?.setAttribute('hidden','');document.getElementById('st-pagelib')?.setAttribute('hidden','');document.body.classList.remove('st-kit-mode','st-pagelib-mode');root.hidden=false;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode');root.dataset.mode='list';await refresh();}
   root.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;try{
-    if(b.dataset.homeTab){tab=b.dataset.homeTab;renderList();return;}if(b.dataset.sample){const type=b.dataset.sample;download(type==='profile-blank'?DEAL_BLANK:type==='profile-sample'?DEAL_SAMPLE:USE_CASE_SAMPLE,'text/markdown',type+'.md');return;}
+    if(b.dataset.homeTab){tab=b.dataset.homeTab;renderList();return;}if(mode()==='create'&&planOp(b))return;if(b.dataset.sample){const type=b.dataset.sample;download(type==='profile-blank'?DEAL_BLANK:type==='profile-sample'?DEAL_SAMPLE:USE_CASE_SAMPLE,'text/markdown',type+'.md');return;}
     if(b.dataset.openDoc){await openDoc(await repo.getDoc(b.dataset.openDoc));return;}if(b.dataset.openTab){const url=new URL(location.href);url.search='?doc='+encodeURIComponent(b.dataset.openTab);window.open(url.href,'_blank','noopener');return;}
     if(b.dataset.templateCreate){editingDocId=null;await showCreate(b.dataset.templateCreate);return;}if(b.dataset.saveTemplate){await promptTemplate(await repo.getDoc(b.dataset.saveTemplate));return;}
     if(b.dataset.complete){const doc=await repo.getDoc(b.dataset.complete);doc.status=doc.status==='complete'?'draft':'complete';const saved=await repo.saveDoc(doc,doc.revision);await cloud.queue('doc',saved);await refresh();return;}
     if(b.dataset.archive||b.dataset.restore){const kind=tab==='templates'?'template':'doc',id=b.dataset.archive||b.dataset.restore,entity=await adapter.get(kind,id);if(b.dataset.archive)entity.archivedAt=Date.now();else delete entity.archivedAt;const saved=await adapter.put(kind,entity);await cloud.queue(kind,saved);await refresh();return;}
     if(b.dataset.resumeInput){await showCreate('',await repo.getDraft(b.dataset.resumeInput));return;}if(b.dataset.backupInput){download(JSON.stringify(await repo.getDraft(b.dataset.backupInput),null,2),'application/json','bo-dau-vao-cu.json');return;}
     if(b.dataset.removeUsecase!==undefined){input.useCases.splice(+b.dataset.removeUsecase,1);input.useCaseSelection=undefined;inputChanged();renderInputs();return;}
-    if(b.id==='sh-build'){createBusy=true;b.disabled=true;await saveInput();const tpl=templates.find(t=>t.id===input.templateId);if(editingDocId)await updateDoc(JSON.parse(JSON.stringify(input)),editingDocId);else await createDoc(JSON.parse(JSON.stringify(input)),tpl,{draftId});draftId=null;editingDocId=null;return;}
-    const act=b.dataset.homeAct;if(act==='home')return home();if(act==='create'){editingDocId=null;return showCreate();}if(act==='blank'&&createBlankDoc)return createBlankDoc();if(act==='firebase')return showFirebase();if(act==='blocks'&&openKit)return openKit();if(act==='project')return document.getElementById('st-file-json').click();if(act==='login')return cloud.login();if(act==='logout')return cloud.logout();if(act==='sync')return cloud.flush();if(act==='configure'){const value=stCloudConfig(root.querySelector('#sh-firebase-config').value);await cloud.configure(value);toast('Đã lưu cấu hình. Đăng nhập Google để bắt đầu đồng bộ.');return;}
+    if(b.id==='sh-build'){createBusy=true;b.disabled=true;await saveInput();const tpl=(input.buildMode||'template')==='template'?templates.find(t=>t.id===input.templateId&&!t.archivedAt):null;if(editingDocId)await updateDoc(JSON.parse(JSON.stringify(input)),editingDocId);else await createDoc(JSON.parse(JSON.stringify(input)),tpl,{draftId});draftId=null;editingDocId=null;return;}
+    const act=b.dataset.homeAct;if(act==='home')return home();if(act==='create'){editingDocId=null;return showCreate();}if(act==='blank'&&createBlankDoc)return createBlankDoc();if(act==='firebase')return showFirebase();if(act==='blocks'&&openKit)return openKit();if(act==='pages'&&openPages)return openPages();if(act==='pages-tab'){const url=new URL(location.href);url.search='?pages=1';if(!window.open(url.href,'quote-studio-pages'))toast('Trình duyệt chặn tab mới. Mở Thư viện trang từ trang chủ.');return;}if(act==='project')return document.getElementById('st-file-json').click();if(act==='login')return cloud.login();if(act==='logout')return cloud.logout();if(act==='sync')return cloud.flush();if(act==='configure'){const value=stCloudConfig(root.querySelector('#sh-firebase-config').value);await cloud.configure(value);toast('Đã lưu cấu hình. Đăng nhập Google để bắt đầu đồng bộ.');return;}
   }catch(error){toast(error.message);const status=root.querySelector('#sh-create-status');if(status)status.textContent=error.message;}finally{createBusy=false;if(mode()==='create')renderInputs();}});
   root.addEventListener('change',async e=>{const t=e.target;try{
-    if(t.id==='sh-trash'){trash=t.checked;renderCards();return;}if(t.id==='sh-template'){input.templateId=t.value;inputChanged();return;}
+    if(t.id==='sh-trash'){trash=t.checked;renderCards();return;}if(t.id==='sh-template'){input.templateId=t.value;inputChanged();renderInputs();return;}if(t.name==='sh-build-mode'){input.buildMode=t.value;if(t.value==='pages')input.pagePlan??=stPDefaultPlan();inputChanged();renderInputs();return;}
     if(t.id==='sh-options-file'){const file=await readTextFile(t.files[0],10e6);input.package=qoReadPackage(file.text);input.packageFile={name:file.name,addedAt:file.addedAt,size:file.size};input.recommendedId=input.package.recommendedId;input.optionEdits={};inputChanged();renderInputs();return;}
     if(t.id==='sh-profile-file'){const f=await readTextFile(t.files[0]);input.profile=f;root.querySelector('#sh-profile-text').value=f.text;inputChanged();renderInputs();return;}
     if(t.id==='sh-usecase-files'){for(const file of t.files){const f=await readTextFile(file),report=profileReport(f.text,f.name);if(report.kind!=='usecase'||!report.cases.length)throw new Error(f.name+' chưa có # USE-CASE đúng mẫu.');input.useCases??=[];input.useCases.push(f);}input.useCaseSelection=undefined;inputChanged();renderInputs();return;}
@@ -2755,6 +3197,7 @@ function setupStudioHome({repo,adapter,cloud,openDoc,openKit,createDoc,createBla
     if(t.dataset.usecase){input.useCaseSelection=[...root.querySelectorAll('[data-usecase]:checked')].map(x=>x.dataset.usecase);inputChanged();return;}
   }catch(error){toast(error.message);}});
   root.addEventListener('input',e=>{const t=e.target;if(t.id==='sh-search'){query=t.value;renderCards();return;}if(t.id==='sh-profile-text'){input.profile={name:input.profile?.name||'ho-so-da-dan.md',text:t.value,addedAt:Date.now()};inputChanged();const report=profileReport(t.value,input.profile.name);root.querySelector('#sh-profile-info').textContent=report.errors.join(' ')||report.deal?.customer?.name||'Đang nhập hồ sơ';root.querySelector('#sh-build').disabled=!input.package||report.errors.length>0;return;}if(t.dataset.optionField){const id=t.closest('[data-option-id]').dataset.optionId;input.optionEdits??={};(input.optionEdits[id]??={})[t.dataset.optionField]=t.value;inputChanged();}});
+  stQuoteEvents.subscribe(async ev=>{if(ev.type!=='pagelib-saved'||root.hidden)return;pageLib=await stPageLibRead(repo).catch(()=>pageLib);if(mode()==='create')renderMode();});
   return {home,refresh,syncStatus,showCreate,showFirebase,promptTemplate,saveTemplate,hide:()=>{root.hidden=true;document.getElementById('st-app').hidden=false;document.body.classList.remove('st-home-mode');},editInputs:async doc=>{if(!doc)return;const d=await repo.getDraft(doc.quotationId);const inputs=doc.inputs||d?.workspaceInputs;if(!inputs){toast('Bản cũ chưa có file đầu vào gắn kèm. Có thể tạo báo giá mới từ hồ sơ hoặc mở bộ đầu vào cũ trên trang chủ.');return;}editingDocId=doc.id;root.hidden=false;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode');await showCreate(inputs.templateId,{id:doc.quotationId,workspaceInputs:JSON.parse(JSON.stringify(inputs))});},activeDraft:()=>draftId,onDraftConflict:(from,id)=>{if(draftId===from){draftId=id;inputChanged();}},resume:async id=>showCreate('',await repo.getDraft(id))};
 }
 
@@ -2789,7 +3232,7 @@ const stStore={put:d=>stQuoteRepo.saveDoc(d),get:stQuoteRepo.getDoc,del:async id
 const stRoute=new URL(location.href),stReadonly=stRoute.searchParams.get('preview')==='1',stWriter=stQuoteId('tab');
 let stBoot=Promise.resolve(),stSaveQueue=Promise.resolve(),stRequestQueue=Promise.resolve(),stPendingSource=null;
 const stChildWindows=new Set(),stSavedSnapshots=new WeakMap();
-function stRememberDoc(d){if(stReadonly)return;stQuoteSession.set('quote-studio-current',d.id);try{const url=new URL(location.href);url.searchParams.set('doc',d.id);if(d.quotationId)url.searchParams.set('quotation',d.quotationId);else url.searchParams.delete('quotation');history.replaceState(null,'',url);}catch{}}
+function stRememberDoc(d){if(stReadonly)return;if(d.kind==='page-template'){try{const url=new URL(location.href);for(const k of ['doc','quotation','draft','home','blocks','block'])url.searchParams.delete(k);url.searchParams.set('pages','1');url.searchParams.set('page',d.tplId);history.replaceState(null,'',url);}catch{}return;}stQuoteSession.set('quote-studio-current',d.id);try{const url=new URL(location.href);url.searchParams.set('doc',d.id);if(d.quotationId)url.searchParams.set('quotation',d.quotationId);else url.searchParams.delete('quotation');history.replaceState(null,'',url);}catch{}}
 function stSendSaved(d){
   stQuoteEvents.emit({type:'doc-saved',docId:d.id,quotationId:d.quotationId,revision:d.revision,writer:stWriter});
   try{window.opener?.postMessage({kind:'quote-studio-saved',doc:d,docId:d.id,quotationId:d.quotationId,revision:d.revision},stQuoteTargetOrigin());}catch{}
@@ -2832,7 +3275,7 @@ function stSaveStatus(t){st$('#st-save').textContent=t;}
 window.addEventListener('quote-store-blocked',()=>stSaveStatus('Lưu rồi tải lại tab Studio phiên bản cũ để mở kho.'));
 function stScheduleSave(){clearTimeout(stSaveT);stSaveStatus('Đang lưu…');stSaveT=setTimeout(stSaveNow,500);}
 async function stSaveNow(){
-  clearTimeout(stSaveT);if(!stDoc||stReadonly)return;const active=stDoc,snapshot=stQuoteClone(active);if(stSavedSnapshots.get(active)===stQuoteDocSignature(snapshot)){stSendSaved(snapshot);return stSaveQueue;}
+  clearTimeout(stSaveT);if(!stDoc||stReadonly)return;if(stDoc.kind==='page-template')return stSavePageTpl();const active=stDoc,snapshot=stQuoteClone(active);if(stSavedSnapshots.get(active)===stQuoteDocSignature(snapshot)){stSendSaved(snapshot);return stSaveQueue;}
   stSaveQueue=stSaveQueue.catch(()=>{}).then(async()=>{
     let copy={...snapshot,id:active.id,quotationId:active.quotationId||'studio-'+active.id,revision:active.revision||0};if(snapshot.id!==active.id)copy.title=active.title;
     try{
@@ -2913,25 +3356,25 @@ function stPanel(){
   const el=st$('#st-panel');if(!stDoc){el.innerHTML='';return;}
   el.querySelectorAll('details[data-section][data-user-toggle]').forEach(d=>stPanelOpen[d.dataset.section]=d.open);
   const r=stSel?.bid&&stFind(stSel.bid),p=r?.p||stPage(stSel?.pid||stCurrentPage());
-  let h=stSection('document','Tài liệu',`<p class="st-hint">Các quotation được lưu riêng. Tên và thao tác lưu / xuất nằm trên thanh trên cùng.</p><button type="button" data-act="docs">Các quotation…</button>`);
+  let h=stIsPageTpl()?stPageTplPanel():stSection('document','Tài liệu',`<p class="st-hint">Các quotation được lưu riêng. Tên và thao tác lưu / xuất nằm trên thanh trên cùng.</p><button type="button" data-act="docs">Các quotation…</button>`);
   if(p){
     const i=stDoc.pages.indexOf(p);
     h+=stSection('page',`Trang ${i+1} · nền & bố cục`,`
-<p class="st-lbl">Nền trang</p><div class="st-bgs">${[['dark','Tối'],['light','Sáng']].map(([v,l])=>`<button type="button" data-bg="${v}" class="${p.bg===v?'on':''}"><i class="st-bgthumb" data-bg="${v}"></i><span>${l}</span></button>`).join('')}</div>
+${stIsPageTpl()?`<label class="st-field"><span>Loại trang · câu hỏi chính của người đọc</span><select data-page-role>${Object.entries(ST_ROLE_NAMES).map(([v,l])=>`<option value="${v}"${(p.role||'custom')===v?' selected':''}>${stEsc(l)}</option>`).join('')}</select></label>`:''}<p class="st-lbl">Nền trang</p><div class="st-bgs">${[['dark','Tối'],['light','Sáng']].map(([v,l])=>`<button type="button" data-bg="${v}" class="${p.bg===v?'on':''}"><i class="st-bgthumb" data-bg="${v}"></i><span>${l}</span></button>`).join('')}</div>
 <label class="st-field"><span>Câu hỏi chính của trang · không in</span><input data-page-question value="${stEsc(p.question??ST_ROLE_QUESTIONS[p.role]??ST_ROLE_QUESTIONS.custom)}"></label>
 <p class="st-lbl">Bố cục <span class="st-muted">· đổi độ rộng, giữ nội dung</span></p><div class="st-layouts">${ST_LAYOUTS.map(L=>`<button type="button" data-layout="${L.id}" class="${p.layout===L.id?'on':''}" title="${L.name}">${stLayoutThumb(L)}<span>${L.name}</span></button>`).join('')}</div>
-<div class="st-row st-sep"><button type="button" data-act="page-add">＋ Trang sau</button><button type="button" data-act="page-dup">⧉ Nhân bản</button><button type="button" data-act="page-del" class="danger">✕ Xoá trang</button></div>`,!r);
-    h+=stSection('chrome','Đầu trang & chân trang',`<label class="st-check"><input type="checkbox" data-act="chrome"${p.chrome!==false?' checked':''}> Hiện trên trang ${i+1}</label><p class="st-hint">Nội dung dưới đây dùng chung cho toàn bộ tài liệu.</p>
+<div class="st-row st-sep"><button type="button" data-act="page-add">＋ Trang sau…</button><button type="button" data-act="page-dup">⧉ Nhân bản</button><button type="button" data-act="page-del" class="danger">✕ Xoá trang</button></div>${stIsPageTpl()?'':'<div class="st-row"><button type="button" data-act="page-save-lib">Lưu trang vào thư viện…</button></div>'}`,!r);
+    h+=stSection('chrome','Đầu trang & chân trang',`<label class="st-check"><input type="checkbox" data-act="chrome"${p.chrome!==false?' checked':''}> Hiện trên trang ${i+1}</label>${stIsPageTpl()?'<p class="st-hint">Chữ ở đầu / chân trang lấy theo báo giá khi dùng mẫu.</p>':`<p class="st-hint">Nội dung dưới đây dùng chung cho toàn bộ tài liệu.</p>
 <label class="st-field"><span>Đầu trang · trái</span><input data-doc="header.left" value="${stEsc(stDoc.header.left)}"></label>
 <label class="st-field"><span>Đầu trang · phải</span><input data-doc="header.right" value="${stEsc(stDoc.header.right)}"></label>
-<label class="st-field"><span>Chân trang</span><input data-doc="footer.left" value="${stEsc(stDoc.footer.left)}"></label>`);
+<label class="st-field"><span>Chân trang</span><input data-doc="footer.left" value="${stEsc(stDoc.footer.left)}"></label>`}`);
   }
   h+=stSection('library','＋ Thêm khối · thư viện mẫu',stLibraryHTML());
   if(r){
     const b=r.b,bg=r.p.bg,hasTable=/<table/.test(b.html),hasImg=/class="img/.test(b.html),logo=stIsLogo(b),size=stLogoSize(b);
     h+=stSection('block',`Khối · ${stEsc(ST_TYPES[b.type]?.name||'Nội dung')}`,`
 <div class="st-row"><button type="button" data-act="dup">⧉ Nhân bản</button><button type="button" data-act="del" class="danger">✕ Xoá khối</button><button type="button" data-act="library-save">Lưu vào thư viện</button></div>
-<label class="st-check"><input type="checkbox" data-reusable${b.reusable?' checked':''}${b.src?' disabled':''}> Giữ nội dung này khi dùng template</label><p class="st-lbl">Độ rộng <span class="st-muted">· kéo cạnh phải</span></p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${b.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div>
+${stIsPageTpl()?'':`<label class="st-check"><input type="checkbox" data-reusable${b.reusable?' checked':''}${b.src?' disabled':''}> Giữ nội dung này khi dùng template</label>`}<p class="st-lbl">Độ rộng <span class="st-muted">· kéo cạnh phải</span></p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${b.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div>
 <p class="st-lbl">Kiểu khối</p><div class="st-styles">${ST_STYLES.map(([s,l])=>`<button type="button" data-style="${s}" class="${b.style===s?'on':''}"><i class="st-swatch" data-bg="${bg}"><b class="st-s-${s}"></b></i><span>${l}</span></button>`).join('')}</div>
 <div class="st-focus-controls"><button type="button" data-act="focus" aria-pressed="${!!b.focus}">${b.focus?'Đang là tiêu điểm · bỏ tiêu điểm':'Đặt làm tiêu điểm trang'}</button><button type="button" data-act="style-all">Áp kiểu này cho mọi khối ${stEsc(ST_TYPES[b.type]?.name||b.type)}</button></div>
 <details class="st-frame" data-section="frame"${stPanelOpen.frame?' open':''}><summary>Khung chi tiết · đệm, bo góc, màu</summary><div class="st-frame-grid">${[['pad','Đệm',ST_K_PADS],['radius','Bo góc',ST_K_RADII],['edge','Màu viền / vạch',ST_K_EDGES],['accent','Màu nhấn',ST_K_ACCENTS]].map(([k,l,list])=>`<label class="st-field"><span>${l}</span><select data-frame="${k}">${list.map(([v,n])=>`<option value="${v}"${(b.frame?.[k]||(k==='accent'?'base':'auto'))===v?' selected':''}>${n}</option>`).join('')}</select></label>`).join('')}</div></details>
@@ -2950,6 +3393,7 @@ ${b.src?'<p class="st-hint">Khối có số liệu liên kết Quote Lab. Cập 
     }
     const typography=stSection('text','Chữ & màu sắc',`
 <p class="st-hint">Bôi đen để định dạng một đoạn. Chọn màu khi chưa bôi đen sẽ đổi màu chữ toàn khối.</p><div class="st-fmt">${[['bold','<b>B</b>','Đậm'],['italic','<i>I</i>','Nghiêng'],['underline','<u>U</u>','Gạch chân'],['insertUnorderedList','•≡','Danh sách chấm'],['insertOrderedList','1≡','Danh sách số'],['justifyLeft','⇤','Căn trái'],['justifyCenter','↔','Căn giữa'],['justifyRight','⇥','Căn phải'],['removeFormat','⌫','Bỏ định dạng']].map(([c,l,title])=>`<button type="button" data-cmd="${c}" title="${title}">${l}</button>`).join('')}</div>
+<label class="st-field st-var-field"><span>Chèn biến dữ liệu · tự điền theo hồ sơ / phương án</span><select data-insert-var><option value="">＋ Chọn biến…</option>${[...new Set(ST_K_VARS.map(v=>v.group))].map(g=>`<optgroup label="${stEsc(g)}">${ST_K_VARS.filter(v=>v.group===g).map(v=>`<option value="${v.key}">${stEsc(v.label)}</option>`).join('')}</optgroup>`).join('')}</select></label>
 <p class="st-lbl">Màu chữ</p><div class="st-colors">${ST_COLORS.map(([c,n])=>`<button type="button" data-color="${c}" style="--color:${c}" aria-label="Màu chữ · ${n}" title="${n}"></button>`).join('')}</div><div class="st-color-custom"><label>Màu khác <input type="color" data-custom-color value="#3563e9" aria-label="Màu chữ tuỳ chọn"></label><button type="button" data-act="color-reset">Màu theo mẫu</button></div>`,true);
     if(hasTable)h+=stSection('table','Bảng · dòng & cột',`<p class="st-hint">Đặt con trỏ vào ô cần sửa. Cột mới được chia đều chiều rộng và tự chọn để nhập.</p><div class="st-row"><button type="button" data-act="row-add">＋ Dòng</button><button type="button" data-act="col-add">＋ Cột</button><button type="button" data-act="row-del">− Dòng</button><button type="button" data-act="col-del">− Cột</button></div><p class="st-lbl">Đổi thứ tự <span class="st-muted">· theo ô đang đặt con trỏ</span></p><div class="st-row st-order"><button type="button" data-act="row-up" title="Alt+Shift+↑">↑ Dòng lên</button><button type="button" data-act="row-down" title="Alt+Shift+↓">↓ Dòng xuống</button><button type="button" data-act="col-left" title="Alt+Shift+←">← Cột trái</button><button type="button" data-act="col-right" title="Alt+Shift+→">→ Cột phải</button></div><p class="st-hint">Phím tắt khi đang ở trong ô: Alt + Shift + mũi tên. Cột di chuyển cùng độ rộng; dòng tiêu đề giữ ở đầu bảng.</p>`,true);
     if(hasImg||['image','logo'].includes(b.type))h+=stSection('image',logo?'Logo · kích thước ảnh':'Ảnh',`
@@ -2963,7 +3407,7 @@ ${logo?`<div class="st-dimensions"><label class="st-field"><span>Rộng logo (mm
 // Kiểm tra thuần nhận dữ liệu và số đo; giao diện chỉ hiển thị và dẫn tới nội dung.
 function stChecks(){
   const el=st$('#st-checks');if(!el||!stDoc)return;
-  const all=stLint(stDoc,stMeasurements),dismissed=new Set(stDoc.dismissed||[]),visible=all.filter(x=>x.level!=='suggestion'||!dismissed.has(x.id));
+  const all=stLint(stDoc,stMeasurements).filter(x=>!stIsPageTpl()||!['C-cta','C-contact','C-validity','N-source'].includes(x.code)),dismissed=new Set(stDoc.dismissed||[]),visible=all.filter(x=>x.level!=='suggestion'||!dismissed.has(x.id));
   const counts={error:0,warning:0,suggestion:0};visible.forEach(x=>counts[x.level]++);
   const groups=[['layout','Bố cục'],['content','Nội dung'],['source','Lưu ý từ Quote Lab']],names={error:'Lỗi',warning:'Cảnh báo',suggestion:'Gợi ý'};
   el.innerHTML=`<p class="st-check-summary" aria-live="polite">${counts.error} lỗi · ${counts.warning} cảnh báo · ${counts.suggestion} gợi ý</p>${groups.map(([group,name])=>{
@@ -3318,13 +3762,13 @@ function stBlankDoc(){
     pages:[stNewPage('dark',[stNewBlock('cover'),stNewBlock('spacer',{h:30}),{...stNewBlock('logo'),html:'<div class="img logo" contenteditable="false"><img alt="" data-asset="base-logo"></div>'}],{role:'cover'})]};
 }
 async function stOpenDoc(d,{forceSave=false}={}){
-  stFlush();if(stDoc&&stDoc.id!==d.id)await stSaveNow();stKitUI?.hide();stHomeUI?.hide();
+  stFlush();if(stDoc&&stDoc.id!==d.id)await stSaveNow();stKitUI?.hide();stHomeUI?.hide();stPageUI?.hide();stLeavePageTpl();
   d.assets??={};d.notes??=[];d.header??={left:'',right:''};d.footer??={left:''};
   stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRememberDoc(stDoc);stRender();stHistReset();if(forceSave||!d.revision||!d.quotationId)await stSaveNow();else{stSavedSnapshots.set(stDoc,stQuoteDocSignature(stDoc));stSaveStatus('Đã mở bản đã lưu');stSendSaved(stDoc);}
 }
 async function stNewFromPayload(p){
   let d;try{d=stBuildDoc(p,{baseLogo:QD_BASE_LOGO});}catch(e){stToast(e.message);return;}
-  stFlush();if(stDoc)await stSaveNow();
+  stFlush();if(stDoc)await stSaveNow();stLeavePageTpl();
   d.quotationId=p.quotationId||stQuoteId('q');d.sourceSignature=stQuoteSignature(p);
   stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stHomeUI?.hide();stRememberDoc(stDoc);stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();
   stToast(`Đã dựng báo giá ${stDoc.pages.length} trang từ Quote Lab`);
@@ -3393,10 +3837,111 @@ async function stDocsDialog(){
   return v;
 }
 
+// ---------- Thư viện trang: chế độ “Trang mẫu” trong trình soạn, thêm trang từ thư viện, lưu trang vào thư viện ----------
+// Trang mẫu được sửa bằng chính trình soạn trên một tài liệu tạm (kind 'page-template', dữ liệu xem trước), lưu thẳng vào Thư viện trang.
+const stIsPageTpl=()=>!!stPageTpl&&stDoc?.kind==='page-template';
+function stLeavePageTpl(){stPageTpl=null;document.body.classList.remove('st-ptpl-mode');}
+function stPageLibOpen(){const url=new URL(location.href);url.search='?pages=1';if(!window.open(url.href,'quote-studio-pages'))stToast('Trình duyệt chặn tab mới. Mở Thư viện trang từ trang chủ.');}
+async function stPageLibCached(){if(!stPageLib)await stPageLibReload();return stPageLib;}
+// Giữ bản thư viện mới nhất trong bộ nhớ (không xoá về null) để panel trang mẫu luôn có nhóm / mô tả khi vẽ lại; không tự vẽ lại panel để khỏi mất focus khi đang gõ.
+async function stPageLibReload(){try{stPageLib=await stPageLibRead(stQuoteRepo);}catch{}}
+const stPageTplHTML=pages=>pages.map(p=>({...p,blocks:p.blocks.map(b=>({...b,html:stSanitize(b.html)}))}));
+async function stOpenPageTemplate(id){
+  stFlush();if(stDoc)await stSaveNow();
+  let lib;try{lib=stPageLib=await stPageLibRead(stQuoteRepo);}catch(e){stToast(e.message);return;}
+  const def=lib.defs.find(d=>d.id===id&&!d.archivedAt);if(!def){stToast('Không tìm thấy trang mẫu (có thể đã ở thùng rác).');await stPageUI?.show();return;}
+  stKitUI?.hide();stHomeUI?.hide();stPageUI?.hide();
+  const data=stKSampleData(),inst=stPInstance(def,data,{mode:'edit'});
+  stPageTpl={id,titleDirty:false,docs:[]};
+  stDoc=stPrepareDoc({id:'ptpl-'+id,kind:'page-template',tplId:id,version:1,title:def.name,header:{left:'BASE.VN · ĐỀ XUẤT GIẢI PHÁP VÀ BÁO GIÁ',right:'[Số báo giá] · [Ngày]'},footer:{left:'Base 2.0 · Đề xuất giải pháp và báo giá'},assets:{'base-logo':QD_BASE_LOGO,...inst.assets},notes:[],dismissed:[],data,created:def.created,updated:def.updated,pages:stPageTplHTML(inst.pages)});
+  document.body.classList.add('st-ptpl-mode');stSel=null;stMeasurements={};stRememberDoc(stDoc);stRender();stHistReset();stSavedSnapshots.set(stDoc,stQuoteDocSignature(stDoc));stSaveStatus('Trang mẫu · tự lưu vào Thư viện trang');
+  try{stPageTpl.docs=(await stStore.all()).filter(d=>!d.archivedAt&&d.data?.options?.length).sort((a,b)=>b.updated-a.updated).slice(0,30).map(d=>({id:d.id,title:d.title,qid:d.data.quotationId||d.quotationId}));if(stIsPageTpl())stPanel();}catch{}
+}
+function stSavePageTpl(){
+  const active=stDoc,tpl=stPageTpl;if(!tpl)return stSaveQueue;const sig=stQuoteDocSignature(active);
+  if(stSavedSnapshots.get(active)===sig){if(stDoc===active)stSaveStatus('Đã lưu vào Thư viện trang');return stSaveQueue;}
+  stSaveQueue=stSaveQueue.catch(()=>{}).then(async()=>{
+    const t=stPFromDoc(active),name=String(active.title||'').trim();
+    try{
+      const {lib}=await stPageLibWrite(stQuoteRepo,stCloudService,lib=>{let d=lib.defs.find(x=>x.id===tpl.id);if(!d)d=stPAddDef(lib,{id:tpl.id,name:name||'Trang mẫu'});d.pages=t.pages;d.assets=t.assets;if(tpl.titleDirty&&name)d.name=name.slice(0,80);d.updated=Date.now();});
+      stSavedSnapshots.set(active,sig);stPageLib=lib;
+      if(stDoc===active)stSaveStatus('Đã lưu vào Thư viện trang '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}));
+      if(active.pages.length>ST_P_MAX_PAGES)stToast(`Một trang mẫu giữ tối đa ${ST_P_MAX_PAGES} trang; các trang sau không được lưu.`);
+    }catch(e){if(stDoc===active)stSaveStatus('Chưa lưu được trang mẫu: '+e.message);}
+  });return stSaveQueue;
+}
+async function stPageTplDone(){stFlush();await stSaveNow();stDoc=null;stSel=null;stLeavePageTpl();stRender();await stPageUI?.show();}
+// Đổi dữ liệu xem trước: dựng lại biến / khối số liệu theo dữ liệu chọn, không bỏ khối nào của mẫu.
+async function stPageTplData(key){
+  if(!stIsPageTpl())return;stFlush();let data=stKSampleData();
+  if(key.startsWith('doc:')){const d=await stStore.get(key.slice(4)).catch(()=>null);if(d?.data?.options?.length)data=d.data;else stToast('Báo giá này chưa có dữ liệu phương án; dùng dữ liệu mẫu.');}
+  const r=stPRebind(stDoc,data);stDoc.data=data;stDoc.assets={...stDoc.assets,...r.assets};stDoc.pages=stPageTplHTML(r.pages);stRender();stCommit();
+}
+async function stPageTplMeta(fn){try{const {lib}=await stPageLibWrite(stQuoteRepo,stCloudService,l=>{const d=l.defs.find(x=>x.id===stPageTpl?.id);if(d){fn(d,l);d.updated=Date.now();}});stPageLib=lib;}catch(e){stToast(e.message);}}
+function stPageTplPanel(){
+  const lib=stPageLib,def=lib?.defs.find(d=>d.id===stPageTpl.id),key=stDoc.data?.sample?'sample':'doc:'+(stPageTpl.docs.find(d=>d.qid&&d.qid===stDoc.data?.quotationId)?.id||'');
+  return stSection('ptpl','Trang mẫu',`<p class="st-hint">Đang sửa trang mẫu của Thư viện trang. Thay đổi tự lưu; báo giá đã dùng mẫu này không đổi.</p>
+<label class="st-field"><span>Nhóm</span><select data-ptpl="group"><option value="">Chưa xếp nhóm</option>${lib?stKTree(lib).map(({g,depth})=>`<option value="${stEsc(g.id)}"${def?.group===g.id?' selected':''}>${'　'.repeat(depth)}${stEsc(g.name)}</option>`).join(''):''}</select></label>
+<label class="st-field"><span>Mô tả ngắn · hiện khi chọn trang</span><input data-ptpl="desc" maxlength="200" value="${stEsc(def?.desc||'')}" placeholder="Trang dùng để…"></label>
+<label class="st-check"><input type="checkbox" data-ptpl="show"${def?.show!==false?' checked':''}> Hiện khi thêm trang vào báo giá</label>
+<label class="st-field"><span>Xem với dữ liệu</span><select data-ptpl="data"><option value="sample"${key==='sample'?' selected':''}>Dữ liệu mẫu</option>${stPageTpl.docs.map(d=>`<option value="doc:${stEsc(d.id)}"${key==='doc:'+d.id?' selected':''}>Báo giá · ${stEsc(d.title)}</option>`).join('')}</select></label>
+<p class="st-hint">Khi dùng mẫu: biến (gạch chân xanh) và khối thư viện tự điền theo hồ sơ; bảng giá, thẻ phương án, phụ lục app dựng lại theo phương án của báo giá đó. Chèn biến ở mục “Chữ & màu sắc”.</p>
+<button type="button" data-act="ptpl-done" class="st-full">Xong · về Thư viện trang</button>`,true);
+}
+async function stAddPageDialog(afterIndex){
+  if(!stDoc)return;stFlush();const lib=await stPageLibCached();
+  const defs=lib?stPVisible(lib).filter(d=>!(stIsPageTpl()&&d.id===stPageTpl.id)):[],groups=lib?[...stKTree(lib).map(({g})=>g.id),null]:[],previews=new Map();
+  const opt={mode:'insert',existing:stDoc.assets||{},header:[stDoc.header?.left||'',stDoc.header?.right||''],footer:stDoc.footer?.left||''};
+  for(const d of defs)previews.set(d.id,stPUPreview(d,stDoc.data,opt));
+  const gname=g=>g?stKPath(lib,g):'Chưa xếp nhóm',used=groups.filter(g=>defs.some(d=>(d.group||null)===g));
+  const card=d=>{const v=previews.get(d.id);return `<button type="button" class="st-pp-card" data-i="ptpl:${stEsc(d.id)}" data-pp-group="${stEsc(d.group||'none')}" title="${stEsc(d.desc||d.name)}"><span class="st-pp-thumb"><span class="st-pp-zoom" data-pp="${stEsc(d.id)}">${v.html}</span></span><b>${stEsc(d.name)}</b><small>${stEsc(gname(d.group||null))} · ${stEsc(ST_ROLE_NAMES[d.pages[0]?.role]||'Nội dung')} · ${v.pages} trang${v.dropped?` · bỏ ${v.dropped} khối số liệu`:''}</small></button>`;};
+  const ordered=used.flatMap(g=>defs.filter(d=>(d.group||null)===g));
+  const body=`<div class="st-pagepick"><p class="st-hint">Chèn sau trang ${afterIndex+1}. Xem trước đã điền theo hồ sơ và phương án của ${stIsPageTpl()?'dữ liệu đang xem':'báo giá này'}.</p>${used.length>1?`<div class="st-pp-tabs" role="group" aria-label="Lọc theo nhóm trang"><button type="button" class="on" data-pp-g="" aria-pressed="true">Tất cả <small>${defs.length}</small></button>${used.map(g=>`<button type="button" data-pp-g="${stEsc(g||'none')}" aria-pressed="false">${stEsc(gname(g))} <small>${defs.filter(d=>(d.group||null)===g).length}</small></button>`).join('')}</div>`:''}<div class="st-pp-grid"><button type="button" class="st-pp-card st-pp-blank" data-i="blank"><span class="st-pp-thumb"><span class="st-pp-plus">＋</span></span><b>Trang trống</b><small>Tiêu đề mục, nền như trang hiện tại</small></button>${ordered.map(card).join('')}</div>${defs.length?'':'<p class="st-hint">Thư viện trang chưa có trang mẫu đang hiện.</p>'}</div>`;
+  const pending=stDialog('Thêm trang',body,[{label:'Quản lý Thư viện trang ↗',value:'manage'},{label:'Huỷ',value:null}]);
+  st$$('#st-dialog [data-pp]').forEach(el=>stPUHydrate(el,previews.get(el.dataset.pp)?.assets));
+  st$('#st-dialog .st-pp-tabs')?.addEventListener('click',e=>{const t=e.target.closest('[data-pp-g]');if(!t)return;e.stopPropagation();const g=t.dataset.ppG;st$$('#st-dialog [data-pp-g]').forEach(x=>{x.classList.toggle('on',x===t);x.setAttribute('aria-pressed',String(x===t));});st$$('#st-dialog .st-pp-card[data-pp-group]').forEach(c=>c.hidden=!!g&&c.dataset.ppGroup!==g);});
+  const v=await pending;st$('#st-dialog .st-pagepick')?.remove();
+  if(v==='blank')return stAddPage(afterIndex);if(v==='manage')return stPageLibOpen();
+  if(typeof v==='string'&&v.startsWith('ptpl:'))return stInsertPageTemplate(v.slice(5),afterIndex);
+}
+// Chèn trang mẫu: bản sao dựng theo dữ liệu báo giá này (ID mới, ảnh trùng dùng lại); một bước hoàn tác.
+async function stInsertPageTemplate(id,afterIndex){
+  const lib=await stPageLibCached(),def=lib?.defs.find(d=>d.id===id&&!d.archivedAt);if(!def||!stDoc){stToast('Không tìm thấy trang mẫu.');return;}
+  stFlush();const r=stPInstance(def,stDoc.data,{existing:stDoc.assets||{},assetId:()=>stId('a')});
+  if(!r.pages.length){stToast('Trang mẫu không còn nội dung dùng được với dữ liệu của báo giá này.');return;}
+  stDoc.assets??={};Object.assign(stDoc.assets,r.assets);const pages=stPageTplHTML(r.pages),at=Math.max(0,Math.min(afterIndex+1,stDoc.pages.length));
+  stDoc.pages.splice(at,0,...pages);stSel={pid:pages[0].id};stRender();stCommit();stScrollTo(stPageEl(pages[0].id));
+  stToast(`Đã thêm ${pages.length} trang từ mẫu “${def.name}”${r.dropped?` · bỏ ${r.dropped} khối số liệu chưa có nguồn trong báo giá này`:''}.`);
+}
+// Lưu trang đang chọn (kèm trang tiếp nối) thành trang mẫu; chữ trùng thông tin khách / báo giá có thể đổi thành biến. Báo giá này không đổi.
+async function stSavePageToLibrary(pid){
+  stFlush();const p=stPage(pid);if(!p||!stDoc)return;let lib;try{lib=stPageLib=await stPageLibRead(stQuoteRepo);}catch(e){stToast(e.message);return;}
+  const i=stDoc.pages.indexOf(p),chain=[p];for(let j=i+1;j<stDoc.pages.length;j++){const q=stDoc.pages[j];if(q.role===p.role&&!q.blocks.some(b=>['heading','cover'].includes(b.type)))chain.push(q);else break;}
+  const guess={cover:'seed-pg-intro',action:'seed-pg-closing',investment:'seed-pg-commercial',terms:'seed-pg-commercial'}[p.role],group=lib.groups.some(g=>g.id===guess)?guess:'';
+  const name=`${ST_ROLE_NAMES[p.role]||'Trang'} · ${stPageTitle(p).replace(/^\(tiếp\) /,'')}`.slice(0,80);
+  const ok=await stDialog('Lưu trang vào Thư viện trang',`<label class="st-field"><span>Tên trang mẫu</span><input id="st-ptpl-name" maxlength="80" value="${stEsc(name)}"></label><label class="st-field"><span>Nhóm</span><select id="st-ptpl-group"><option value="">Chưa xếp nhóm</option>${stKTree(lib).map(({g,depth})=>`<option value="${stEsc(g.id)}"${g.id===group?' selected':''}>${'　'.repeat(depth)}${stEsc(g.name)}</option>`).join('')}</select></label>${chain.length>1?`<label class="st-check"><input type="checkbox" id="st-ptpl-chain" checked> Gồm cả ${chain.length-1} trang tiếp nối</label>`:''}<label class="st-check"><input type="checkbox" id="st-ptpl-varize"${stDoc.data?' checked':' disabled'}> Đổi tên khách hàng, người nhận, số báo giá, ngày… trong chữ thành biến dữ liệu</label><p class="st-hint">Trang mẫu giữ nền, bố cục, kiểu khối và ảnh. Khi dùng cho báo giá khác: biến và khối thư viện tự điền; bảng giá, thẻ phương án, phụ lục app được dựng lại theo phương án của báo giá đó. Báo giá này không đổi.</p>`,[{label:'Huỷ',value:false},{label:'Lưu trang mẫu',value:true,primary:true}]);
+  if(!ok)return;const title=st$('#st-ptpl-name')?.value.trim(),gid=st$('#st-ptpl-group')?.value||null,all=st$('#st-ptpl-chain')?.checked!==false,varize=!!st$('#st-ptpl-varize')?.checked;
+  if(!title){stToast('Cần đặt tên trang mẫu.');return;}
+  const t=stPFromDoc(stDoc,(all?chain:[p]).map(x=>x.id),{varize});
+  try{
+    const {lib:next}=await stPageLibWrite(stQuoteRepo,stCloudService,l=>stPAddDef(l,{name:title,group:gid,pages:t.pages,assets:t.assets,desc:'Lưu từ '+(stDoc.title||'báo giá')}));stPageLib=next;
+    const vars=Object.entries(t.report.vars),n=vars.reduce((s,[,c])=>s+c,0),names=vars.slice(0,3).map(([k,c])=>`${ST_K_VARS.find(v=>v.key===k)?.label||k} ×${c}`).join(', ');
+    stToast(`Đã lưu “${title}” vào Thư viện trang${n?` · ${n} chỗ thành biến (${names}${vars.length>3?'…':''})`:''}.`);
+  }catch(e){stToast('Chưa lưu được trang mẫu: '+e.message);}
+}
+// Chèn biến dữ liệu tại con trỏ (hoặc thay đoạn đang bôi đen); giá trị lấy theo hồ sơ / phương án của tài liệu, làm mới khi cập nhật số liệu.
+function stInsertVar(key){
+  const b=stSel?.bid&&stBlockEl(stSel.bid),v=ST_K_VARS.find(x=>x.key===key),c=b?.querySelector('.st-c[contenteditable="true"]');if(!c||!v)return;
+  stFlush();c.focus();const selection=getSelection(),saved=stTextRange?.bid===b.dataset.bid&&c.contains(stTextRange.range.commonAncestorContainer)?stTextRange.range.cloneRange():null;
+  selection.removeAllRanges();if(saved)selection.addRange(saved);else{const r=document.createRange();r.selectNodeContents(c);r.collapse(false);selection.addRange(r);}
+  stCaretOutOfVar();document.execCommand('insertHTML',false,stKText('{{'+key+'}}',stKCtx(stDoc.data)));stFromDOM(b);stCommit();stScheduleMeasure();
+  stToast(`Đã chèn biến “${v.label}”${stDoc.data?'':' · tài liệu chưa có hồ sơ nên đang hiện tên biến'}.`);
+}
+
 // ---------- Gắn sự kiện ----------
 function stWire(){
   const pages=st$('#st-pages');
-  pages.addEventListener('input',e=>{const b=e.target.closest('.st-b');if(!b)return;stFromDOM(b);stTypingCommit();stScheduleMeasure();if(/H[123]/.test(e.target.closest('h1,h2,h3')?.tagName||''))stPageList();});
+  pages.addEventListener('input',e=>{const b=e.target.closest('.st-b');if(!b)return;const selection=getSelection();if(selection.rangeCount&&b.contains(selection.anchorNode))stTextRange={bid:b.dataset.bid,range:selection.getRangeAt(0).cloneRange()};stFromDOM(b);stTypingCommit();stScheduleMeasure();if(/H[123]/.test(e.target.closest('h1,h2,h3')?.tagName||''))stPageList();});
   pages.addEventListener('pointerdown',e=>{
     if(e.button!==0)return;
     const h=e.target.closest('.st-handle');if(h){const b=h.closest('.st-b'),f=stFind(b.dataset.bid);stSetSel({pid:f.p.id,bid:f.b.id});stStartDrag(e,{kind:'block',bid:b.dataset.bid},'Di chuyển: '+(ST_TYPES[f.b.type]?.name||'khối'));return;}
@@ -3407,7 +3952,7 @@ function stWire(){
     const a=e.target.closest('[data-act]');
     if(a){const b=a.closest('.st-b'),pg=a.closest('.st-page');
       if(a.dataset.act==='dup')stDup(b.dataset.bid);else if(a.dataset.act==='del')stDel(b.dataset.bid);
-      else if(a.dataset.act==='fix')stFixClick(pg.dataset.pid);else if(a.dataset.act==='page-add-end')stAddPage(stDoc.pages.length-1);
+      else if(a.dataset.act==='fix')stFixClick(pg.dataset.pid);else if(a.dataset.act==='page-add-end')stAddPageDialog(stDoc.pages.length-1);
       else if(a.dataset.act==='doc-new')stOpenDoc(stBlankDoc());else if(a.dataset.act==='doc-open-file')st$('#st-file-json').click();
       return;}
     const rec=e.target.closest('[data-open]');if(rec){stStore.get(rec.dataset.open).then(d=>d&&stOpenDoc(d));return;}
@@ -3440,7 +3985,10 @@ function stWire(){
     const t=e.target,bid=stSel?.bid,r=bid&&stFind(bid);
     if(t.hasAttribute('data-custom-color')){stColor(t.value);return;}
     if(t.hasAttribute('data-page-question')){const pid=stSel?.pid||panel.dataset.pid,p=stPage(pid);if(p){stFlush();p.question=t.value;stCommit();}return;}
+    if(t.hasAttribute('data-page-role')){const p=stPage(stSel?.pid||panel.dataset.pid);if(p&&ST_ROLE_NAMES[t.value]){stFlush();if(!p.question||p.question===ST_ROLE_QUESTIONS[p.role])p.question=ST_ROLE_QUESTIONS[t.value];p.role=t.value;stRenderPage(p.id);stPanel();stCommit();}return;}
+    if(t.dataset.ptpl&&stIsPageTpl()){const k=t.dataset.ptpl;if(k==='data'){stPageTplData(t.value);return;}stPageTplMeta(d=>{if(k==='group')d.group=t.value||null;if(k==='desc')d.desc=t.value.slice(0,200);if(k==='show')d.show=t.checked;});return;}
     if(!r)return;
+    if(t.hasAttribute('data-insert-var')){const key=t.value;t.value='';if(key)stInsertVar(key);return;}
     if(t.hasAttribute('data-reusable')){stSetProp(bid,'reusable',t.checked);return;}
     if(t.hasAttribute('data-cta-url')){stSetCTALink(bid,t.value);return;}
     if(t.dataset.logo){const v=+t.value,max=t.dataset.logo==='w'?180:100;if(!Number.isFinite(v)||v<8||v>max){stToast(`Kích thước logo từ 8 đến ${max} mm.`);stPanel();return;}stSetProp(bid,t.dataset.logo==='w'?'logoW':'logoH',v);}
@@ -3482,7 +4030,8 @@ function stWire(){
     if(act==='img-logo'){const b=stBlockEl(bid),r=stFind(bid),box=b?.querySelector('.img');if(box){stFlush();box.classList.add('logo');box.classList.remove('cover');r.b.logoW=32;r.b.logoH=22;r.b.h=0;stFromDOM(b);stRenderPage(r.p.id);stPanel();stCommit();}return;}
     if(act==='img-fit'){const b=stBlockEl(bid),box=b?.querySelector('.img');if(box){box.classList.toggle('cover');stFromDOM(b);stCommit();}return;}
     if(act==='img-clear'){const b=stBlockEl(bid),img=b?.querySelector('.img img');if(img){img.removeAttribute('data-asset');img.removeAttribute('src');stFromDOM(b);stHydrate(b);stCommit();}return;}
-    if(act==='page-add')return stAddPage(stDoc.pages.indexOf(stPage(pid)));
+    if(act==='page-add')return stAddPageDialog(stDoc.pages.indexOf(stPage(pid)));
+    if(act==='page-save-lib')return stSavePageToLibrary(pid);if(act==='ptpl-done')return stPageTplDone();
     if(act==='page-dup')return stDupPage(pid);
     if(act==='page-del')return stDelPage(pid);
   });
@@ -3492,11 +4041,11 @@ function stWire(){
   list.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(!li||e.button!==0)return;stStartDrag(e,{kind:'page',pid:li.dataset.pid},'Trang '+(stDoc.pages.findIndex(p=>p.id===li.dataset.pid)+1));});
   list.addEventListener('click',e=>{const li=e.target.closest('li');if(!li)return;stSetSel({pid:li.dataset.pid});stScrollTo(stPageEl(li.dataset.pid));});
 
-  st$('#st-docs').addEventListener('click',()=>stHomeUI.home());st$('#st-home-button').addEventListener('click',()=>stHomeUI.home());st$('#st-inputs').addEventListener('click',async()=>{stFlush();await stSaveNow();await stHomeUI.editInputs(stDoc);});
+  st$('#st-docs').addEventListener('click',()=>stHomeUI.home());st$('#st-home-button').addEventListener('click',()=>stIsPageTpl()?stPageTplDone():stHomeUI.home());st$('#st-ptpl-done').addEventListener('click',()=>stPageTplDone());st$('#st-inputs').addEventListener('click',async()=>{stFlush();await stSaveNow();await stHomeUI.editInputs(stDoc);});
   st$('#st-source-update').addEventListener('click',()=>stPendingSource&&stAskSource(stPendingSource));
-  st$('#st-title').addEventListener('input',e=>{if(!stDoc)return;stDoc.title=e.target.value;stTypingCommit();});
+  st$('#st-title').addEventListener('input',e=>{if(!stDoc)return;stDoc.title=e.target.value;if(stIsPageTpl())stPageTpl.titleDirty=true;stTypingCommit();});
   st$('#st-undo').addEventListener('click',stUndo);st$('#st-redo').addEventListener('click',stRedo);
-  st$('#st-add-page').addEventListener('click',()=>{if(!stDoc)stOpenDoc(stBlankDoc());else stAddPage(stSel?.pid?stDoc.pages.indexOf(stPage(stSel.pid)):stDoc.pages.length-1);});
+  st$('#st-add-page').addEventListener('click',()=>{if(!stDoc)stOpenDoc(stBlankDoc());else stAddPageDialog(stSel?.pid&&stPage(stSel.pid)?stDoc.pages.indexOf(stPage(stSel.pid)):stDoc.pages.length-1);});
   st$('#st-preview').addEventListener('click',()=>{const on=document.body.classList.toggle('st-preview');st$('#st-preview').textContent=on?'Thoát xem trước':'Xem trước';if(on)stSetSel(null);});
   st$('#st-pdf').addEventListener('click',()=>stDoc&&stPrint());
   st$('#st-menu').addEventListener('click',async e=>{
@@ -3534,27 +4083,28 @@ async function stStart(){
   let d=null;const id=stRoute.searchParams.get('doc');
   try{if(id)d=await stStore.get(id);else if(stRoute.searchParams.get('quotation'))d=await stQuoteRepo.findDoc(stRoute.searchParams.get('quotation'));}catch{}
   if(d&&!stQuoteMatches(d,stRoute.searchParams.get('quotation')))d=null;
-  await stKitReload();stQuoteEvents.subscribe(event=>{if(event.type==='kit-saved')stKitReload();});
-  stQuoteSession.set('quote-studio-seen','1');if(d)await stOpenDoc(d);else if(stRoute.searchParams.get('blocks'))await stKitUI.show(stRoute.searchParams.get('block'));else{await stHomeUI.home();const draft=stRoute.searchParams.get('draft');if(draft)await stHomeUI.resume(draft);}
+  await stKitReload();stQuoteEvents.subscribe(event=>{if(event.type==='kit-saved')stKitReload();if(event.type==='pagelib-saved')stPageLibReload();});
+  stQuoteSession.set('quote-studio-seen','1');if(d)await stOpenDoc(d);else if(stRoute.searchParams.get('blocks'))await stKitUI.show(stRoute.searchParams.get('block'));else if(stRoute.searchParams.get('pages')){const id=stRoute.searchParams.get('page');if(id)await stOpenPageTemplate(id);else await stPageUI.show();}else{await stHomeUI.home();const draft=stRoute.searchParams.get('draft');if(draft)await stHomeUI.resume(draft);}
   const qid=stRoute.searchParams.get('quotation');
   try{const key=qid?'quote-studio-inbox:'+qid:'quote-studio-inbox',raw=localStorage.getItem(key);if(raw){localStorage.removeItem(key);const p=JSON.parse(raw);if(Date.now()-(p.sentAt||0)<15*60e3)await stOnPayload(p);}}catch{}
   if(window.opener)try{window.opener.postMessage({kind:'quote-studio-ready',quotationId:qid},stQuoteTargetOrigin());}catch{}
 }
-let stCloudService=null,stHomeUI=null;
+let stCloudService=null,stHomeUI=null,stPageUI=null,stPageTpl=null,stPageLib=null;
 function stSanitizeDoc(d){d.assets??={};d.pages=(d.pages||[]).map(p=>({...p,blocks:(p.blocks||[]).map(b=>({...b,html:stSanitize(b.html)}))}));return d;}
 function stSetupWorkspace(){
   const adapter=stWorkspaceAdapter(stQuoteRepo,{sanitizeDoc:stSanitizeDoc});
   stCloudService=stCreateCloud({repo:stQuoteRepo,adapter,onStatus:()=>stHomeUI?.syncStatus(),onRemote:async event=>{
     if(event.kind==='doc'&&stDoc?.id===event.entity.id&&!stReadonly&&!document.body.classList.contains('st-home-mode')){stFlush();if(stSavedSnapshots.get(stDoc)===stQuoteDocSignature(stDoc))await stOpenDoc(event.entity);else await stSaveNow();}
-    if(event.kind==='library'){await stKitReload();await stKitUI?.reload();}stHomeUI?.refresh();
+    if(event.kind==='library'){await stKitReload();await stKitUI?.reload();await stPageLibReload();if(stPageUI?.visible())await stPageUI.reload();}stHomeUI?.refresh();
   },onConflict:async event=>{
-    if(event.kind==='doc'&&stDoc?.id===event.fromId){stFlush();Object.assign(stDoc,{id:event.entity.id,quotationId:event.entity.quotationId,title:event.entity.title,revision:event.entity.revision});stRememberDoc(stDoc);stCommit();await stSaveNow();stToast('Có chỉnh sửa ở nơi khác. Đã giữ phần của bạn trong một báo giá riêng.');}
+    if(event.kind==='doc'&&stDoc?.id===event.fromId){stFlush();Object.assign(stDoc,{id:event.entity.id,quotationId:event.entity.quotationId,title:event.entity.title,revision:event.entity.revision});stRememberDoc(stDoc);st$('#st-title').value=stDoc.title||'';stCommit();await stSaveNow();stToast('Có chỉnh sửa ở nơi khác. Đã giữ phần của bạn trong một báo giá riêng.');}
     if(event.kind==='draft')stHomeUI?.onDraftConflict(event.fromId,event.entity.id);
   }});
   stKitUI=setupKitStudio({repo:stQuoteRepo,cloud:stCloudService,toast:stToast,dialog:stDialog,listDocs:()=>stQuoteRepo.allDocs(),onHome:()=>stHomeUI.home()});
-  stHomeUI=setupStudioHome({repo:stQuoteRepo,adapter,cloud:stCloudService,openDoc:stOpenDoc,openKit:()=>stKitUI.show(),createBlankDoc:async()=>{await stOpenDoc(stBlankDoc());await stSaveNow();},backFromEditor:async()=>{stFlush();await stSaveNow();stDoc=null;stSel=null;},toast:stToast,
+  stPageUI=setupPageLibrary({repo:stQuoteRepo,cloud:stCloudService,toast:stToast,dialog:stDialog,onHome:()=>stHomeUI.home(),onEdit:id=>stOpenPageTemplate(id),onBlocks:()=>stKitUI.show()});
+  stHomeUI=setupStudioHome({repo:stQuoteRepo,adapter,cloud:stCloudService,openDoc:stOpenDoc,openKit:()=>stKitUI.show(),openPages:()=>stPageUI.show(),createBlankDoc:async()=>{await stOpenDoc(stBlankDoc());await stSaveNow();},backFromEditor:async()=>{stFlush();await stSaveNow();stDoc=null;stSel=null;stLeavePageTpl();},toast:stToast,
     askTemplateName:async name=>{const ok=await stDialog('Lưu thành template','<label class="st-field"><span>Tên template</span><input id="st-template-name" value="'+stEsc(name)+'"></label><p>Khách hàng và giá sẽ được điền lại từ hồ sơ mới. Khối đã đánh dấu giữ nội dung được tái sử dụng.</p>',[{label:'Huỷ',value:false},{label:'Lưu template',value:true,primary:true}]);return ok?st$('#st-template-name').value:null;},
-    createDoc:async(input,tpl,context={})=>{stFlush();if(stDoc)await stSaveNow();const d=stWorkspaceBuild(input,tpl,{baseLogo:QD_BASE_LOGO});if(context.draftId){d.quotationId=context.draftId;d.data.quotationId=d.quotationId;}d.sourceSignature=stQuoteSignature(d.data);stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stHomeUI.hide();stRememberDoc(d);stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();const draft=await stQuoteRepo.getDraft(d.quotationId);if(draft)await stCloudService.queue('draft',draft);stToast('Đã tạo báo giá độc lập từ bộ hồ sơ.');},
+    createDoc:async(input,tpl,context={})=>{stFlush();if(stDoc)await stSaveNow();stLeavePageTpl();const pageLib=input.buildMode==='pages'?await stPageLibRead(stQuoteRepo):null,d=stWorkspaceBuild(input,tpl,{baseLogo:QD_BASE_LOGO,pageLib}),report=d.buildReport;if(context.draftId){d.quotationId=context.draftId;d.data.quotationId=d.quotationId;}d.sourceSignature=stQuoteSignature(d.data);stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stHomeUI.hide();stRememberDoc(d);stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();const draft=await stQuoteRepo.getDraft(d.quotationId);if(draft)await stCloudService.queue('draft',draft);stToast('Đã tạo báo giá độc lập từ bộ hồ sơ.'+(report?.missing?` ${report.missing} trang mẫu không còn trong thư viện nên được bỏ qua.`:'')+(report?.dropped?` Bỏ ${report.dropped} khối số liệu không có nguồn trong báo giá này.`:''));},
     updateDoc:async(input,id)=>{const target=await stQuoteRepo.getDoc(id);if(!target)throw new Error('Không tìm thấy báo giá.');const payload=stInputPayload(input);if(payload.deal.customer.name!==target.data?.deal?.customer?.name)throw new Error('Hồ sơ thuộc khách hàng khác. Chọn tạo báo giá mới để giữ bản đang có.');await stOpenDoc(target);stFlush();payload.quotationId=target.quotationId;stRefreshDoc(stDoc,payload);stKRefreshDoc(stDoc,payload);stDoc.inputs=input;stDoc.sourceSignature=stQuoteSignature(payload);stRender();stCommit();await stSaveNow();stToast('Đã cập nhật bộ đầu vào và các khối liên kết. Nội dung độc lập giữ nguyên.');}
   });
   stCloudService.start().catch(e=>stToast(e.message));
