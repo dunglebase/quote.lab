@@ -130,6 +130,68 @@ body.st-export .st-assumption-extra:has(li:only-child>br:only-child),body.st-pre
 @media print{.st-assumption-extra:has(li:only-child>br:only-child){display:none!important}}
 .st-cta-row{border-top:1px solid var(--line);padding-top:var(--st-gap-in)}.st-cta-sign{margin-top:var(--st-gap-group);border-top:1px solid var(--line);padding-top:var(--st-gap-in)}.st-cta-sign .sign-space{height:16mm}
 .st-cta-link{color:inherit;text-decoration:underline;overflow-wrap:anywhere}
+/* Thư viện khối · phần trang (editor, preview, HTML, PDF). Hợp đồng schema 1: không đổi nghĩa các lớp đã phát hành. */
+.st-s-outline{border:1px solid var(--card-line);padding:var(--st-gap-group)}
+.st-b.st-pad-none{padding:0}.st-b.st-pad-s{padding:3mm}.st-b.st-pad-m{padding:5mm}.st-b.st-pad-l{padding:8mm}
+.st-b.st-s-line.st-pad-none{padding:0 0 0 4.5mm}.st-b.st-s-line.st-pad-s{padding:3mm 3mm 3mm 4.5mm}
+.st-b.st-rad-none{border-radius:0}.st-b.st-rad-s{border-radius:2mm}.st-b.st-rad-m{border-radius:3.5mm}.st-b.st-rad-l{border-radius:6mm}
+.st-edge-accent{--edge:var(--st-accent)}.st-edge-muted{--edge:var(--ink-3)}.st-edge-ok{--edge:var(--st-ok)}.st-edge-warn{--edge:var(--st-warn)}.st-edge-bad{--edge:var(--st-bad)}
+.st-b[class*=" st-edge-"]:not(.st-s-line){border:1px solid var(--edge)}
+.st-b.st-s-line[class*=" st-edge-"]{border:0;border-left:3px solid var(--edge)}
+/* Màu nhấn theo cặp: giá trị sáng mặc định; trang tối (trừ thẻ sáng) dùng giá trị sáng hơn để giữ tương phản. */
+.st-b.kb-ac-green{--st-accent:#15803D;--hl:#15803D;--accent-bg:#EAF7EF;--accent-line:#B7E4C7}
+.st-b.kb-ac-orange{--st-accent:#B45309;--hl:#B45309;--accent-bg:#FFF4E5;--accent-line:#F7D19E}
+.st-b.kb-ac-red{--st-accent:#C4313A;--hl:#C4313A;--accent-bg:#FDECEC;--accent-line:#F5C2C4}
+.st-b.kb-ac-purple{--st-accent:#7C3AED;--hl:#7C3AED;--accent-bg:#F3EEFF;--accent-line:#D6C6FB}
+.st-b.kb-ac-ink{--st-accent:#0E1430;--hl:#0E1430;--accent-bg:#F1F3F8;--accent-line:#D5DAE6}
+.st-page[data-bg="dark"] .st-b.kb-ac-green:not(.st-s-white){--st-accent:#22C55E;--hl:#4ADE80;--accent-bg:linear-gradient(160deg,rgba(34,197,94,.28),rgba(34,197,94,.08));--accent-line:rgba(74,222,128,.55)}
+.st-page[data-bg="dark"] .st-b.kb-ac-orange:not(.st-s-white){--st-accent:#F5A524;--hl:#FBBF24;--accent-bg:linear-gradient(160deg,rgba(245,165,36,.28),rgba(245,165,36,.08));--accent-line:rgba(251,191,36,.55)}
+.st-page[data-bg="dark"] .st-b.kb-ac-red:not(.st-s-white){--st-accent:#F0565B;--hl:#FF8A8E;--accent-bg:linear-gradient(160deg,rgba(240,86,91,.28),rgba(240,86,91,.08));--accent-line:rgba(255,138,142,.55)}
+.st-page[data-bg="dark"] .st-b.kb-ac-purple:not(.st-s-white){--st-accent:#A78BFA;--hl:#C4B5FD;--accent-bg:linear-gradient(160deg,rgba(167,139,250,.28),rgba(167,139,250,.08));--accent-line:rgba(196,181,253,.55)}
+.st-page[data-bg="dark"] .st-b.kb-ac-ink:not(.st-s-white){--st-accent:#EEF1FF;--hl:#FFFFFF;--accent-bg:rgba(255,255,255,.1);--accent-line:rgba(255,255,255,.32)}
+.st-page[data-bg="dark"] .st-b.kb-ac-ink:not(.st-s-white) .tag{color:#0E1430}
+/* Bố cục vùng trong khối */
+.kb{display:grid;gap:var(--kb-gap,5mm);align-items:start;min-width:0}
+.kb-g-s{--kb-gap:3mm}.kb-g-m{--kb-gap:5mm}.kb-g-l{--kb-gap:8mm}
+.kb-va-center{align-items:center}.kb-va-end{align-items:end}
+.kb-l-stack,.kb-l-bodyFoot{grid-template-columns:minmax(0,1fr)}
+.kb-l-cols2,.kb-l-head2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kb-l-cols3,.kb-l-head3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kb-l-cols4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kb-l-side{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
+.kb-l-sideR{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+.kb-l-head2>.kb-r:first-child,.kb-l-head3>.kb-r:first-child{grid-column:1/-1}
+.kb-l-bodyFoot>.kb-r+.kb-r{border-top:1px solid var(--line);padding-top:var(--st-gap-in)}
+.kb-r{display:flex;flex-direction:column;min-width:0}
+.kb-r>*{margin:0}.kb-r>*+*{margin-top:calc(var(--st-gap-in)*1.5)}
+.kb-r:empty{display:none}
+@container (max-width:300px){.kb-l-cols3,.kb-l-cols4,.kb-l-head3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (max-width:200px){.kb:not(.kb-l-stack){grid-template-columns:minmax(0,1fr)}.kb .kb-r{grid-column:auto!important}}
+.kb-sc-s{font-size:11.5px}.kb-sc-l{font-size:14.5px}.kb-sc-l h3{font-size:clamp(15px,3.6cqw,18px)}
+/* Thành phần */
+.ke{min-width:0}.ke>*{margin:0}.ke>*+*{margin-top:var(--st-gap-in)}
+.ke-t-muted{--ke-c:var(--ink-3)}.ke-t-accent{--ke-c:var(--hl)}.ke-t-ok{--ke-c:var(--st-ok)}.ke-t-warn{--ke-c:var(--st-warn)}.ke-t-bad{--ke-c:var(--st-bad)}
+.ke:is(.ke-eyebrow,.ke-heading,.ke-text,.ke-caption,.ke-quote,.ke-list,.ke-cta)[class*=" ke-t-"],.ke:is(.ke-eyebrow,.ke-caption,.ke-text)[class*=" ke-t-"]>:is(.eyebrow,.s,.lead){color:var(--ke-c)}
+.ke-metric .v{color:var(--ke-c,currentColor)}
+.ke-tag[class*=" ke-t-"] .tag{background:var(--ke-c)}
+.ke-z-s{font-size:11.5px}.ke-z-l{font-size:15px}.ke-z-xl{font-size:17px}
+.ke-metric.ke-z-s .v{font-size:clamp(15px,8cqw,24px)}.ke-metric.ke-z-l .v{font-size:clamp(22px,14cqw,46px)}.ke-metric.ke-z-xl .v{font-size:clamp(26px,17cqw,58px)}
+.ke-quote.ke-z-l .q{font-size:17px}.ke-quote.ke-z-xl .q{font-size:20px}
+.ke-a-left{text-align:left}.ke-a-center{text-align:center}.ke-a-right{text-align:right}
+.ke-a-center .img{justify-content:center}.ke-a-right .img{justify-content:flex-end}
+.ke-a-center .img.logo{margin-left:auto;margin-right:auto}.ke-a-right .img.logo{margin-left:auto}
+.ke-image .img{border-radius:2.5mm;overflow:hidden;justify-content:center}.ke-image .img img{width:100%}
+.kbar{height:2.4mm;border-radius:99px;background:var(--soft);border:1px solid var(--line);overflow:hidden}.kbar i{display:block;height:100%;border-radius:99px;background:var(--ke-c,var(--st-accent))}
+.kcmp{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:3mm}.kcmp p{margin:0}.kcmp-to{font:700 16px/1.6 var(--f-display);color:var(--ink-3)}
+.kst{display:flex;gap:2mm;align-items:baseline;font-weight:600}.kst-i{display:inline-grid;place-items:center;flex:0 0 auto;width:4.6mm;height:4.6mm;border-radius:50%;font:800 10px/1 var(--f-display);color:#fff;transform:translateY(.5mm)}
+.kst-ok .kst-i{background:var(--st-ok)}.kst-warn .kst-i{background:var(--st-warn)}.kst-bad .kst-i{background:var(--st-bad)}
+.kicon{line-height:0}.kicon svg{width:9mm;height:9mm;fill:none;stroke:var(--ke-c,var(--hl));stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ke-icon.ke-z-s svg{width:6mm;height:6mm}.ke-icon.ke-z-l svg{width:13mm;height:13mm}.ke-icon.ke-z-xl svg{width:18mm;height:18mm}
+.kspace{display:block}
+.kcta{font:700 14px/1.4 var(--f-display)}
+.st-c ul.kchk li::before{content:'✓';background:none;width:auto;height:auto;border-radius:0;top:0;color:var(--st-ok);font-weight:800}
+.st-c ul.kbox li{padding-left:6.5mm}.st-c ul.kbox li::before{width:3.4mm;height:3.4mm;border-radius:.8mm;background:none;border:1.2px solid var(--ink-2);top:.3em}
+.st-c .kv{border-radius:2px}
 /* == EDITOR == */
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -329,10 +391,98 @@ body.st-preview .img.is-empty{visibility:hidden}
 @media print{#st-home{display:none!important}}
 .st-preview-readonly #st-canvas{overflow:visible;padding:12px 0;height:auto}.st-preview-readonly #st-pages{width:210mm;margin:0 auto}.st-preview-readonly .st-page{zoom:1;margin-bottom:18px}.st-preview-readonly .st-sheet{min-height:297mm;height:auto}
 html:has(.st-preview-readonly),body.st-preview-readonly{height:auto;overflow:visible}.st-preview-readonly .img.is-empty{display:none}.st-preview-readonly .st-c{cursor:default}
+/* Thư viện khối · giao diện (không in). */
+.st-styles{grid-template-columns:repeat(3,1fr)}
+.st-swatch b.st-s-outline{background-color:transparent}
+@media screen{body:not(.st-preview):not(.st-export) .st-c .kv{box-shadow:inset 0 -1.5px 0 rgba(91,140,255,.65);background:rgba(91,140,255,.06)}}
+.st-kit-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:12px}.st-kit-head button{padding:4px 9px;font-size:11.5px}
+.st-sys{margin-top:16px}
+.st-kit-update{margin:10px 0;padding:10px;border:1px solid #C9D7FF;border-radius:8px;background:#F4F7FF;font-size:12px}.st-kit-update p{margin:0 0 8px;color:#454E70}
+.st-frame{margin-top:12px;border:1px solid #E3E7F1;border-radius:8px;padding:0 8px}.st-frame>summary{cursor:pointer;padding:8px 0;font:600 11.5px/1.3 var(--f-ui);color:#454E70}
+.st-frame-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 8px;padding-bottom:10px}.st-frame-grid .st-field{margin-top:6px}
+.st-order button{font-size:11.5px;padding:5px 8px}
+/* Trang thư viện */
+.st-kit-mode #st-kit{min-height:100vh}
+.sh-kit-link{margin-left:4px}
+.kl{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:calc(100vh - 72px)}
+.kl-side{background:#fff;border-right:1px solid #E1E4EE;padding:22px 16px;display:flex;flex-direction:column;gap:18px}
+.kl-side-h{display:flex;justify-content:space-between;align-items:center;font:700 11px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:#6B7393}.kl-side-h button{padding:4px 9px;font-size:11.5px;letter-spacing:0;text-transform:none}
+.kl-tree{display:grid;gap:2px}
+.kl-node{display:flex;align-items:center;gap:2px;padding-left:calc(var(--depth,0)*14px);border-radius:8px}
+.kl-node-name{flex:1;min-width:0;display:flex;justify-content:space-between;gap:8px;border:1px solid transparent;background:none;text-align:left;padding:7px 9px;overflow-wrap:anywhere}
+.kl-node-name small{color:#8A91AD;font-weight:500}
+.kl-node.on .kl-node-name{background:#EEF3FF;border-color:#C9D7FF;color:#3563E9;font-weight:700}
+.kl-node-act{display:flex;gap:1px;opacity:0}.kl-node:hover .kl-node-act,.kl-node:focus-within .kl-node-act{opacity:1}
+.kl-node-act button{padding:2px 5px;font-size:11px;border-color:transparent;background:none}
+.kl-guide{margin-top:auto;font-size:12px;color:#6B7393;line-height:1.55;background:#F7F9FD;border:1px solid #E3E7F1;border-radius:10px;padding:12px}.kl-guide b{color:#454E70}.kl-guide ol{margin:6px 0 0;padding-left:18px;display:grid;gap:4px}
+.kl-main{padding:34px 30px 70px;min-width:0}
+.kl-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.kl-card{background:#fff;border:1px solid #E3E7F1;border-radius:14px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 3px 15px #0e143006}
+.kl-thumb{position:relative;height:190px;overflow:hidden;background:#EEF1F7;border-bottom:1px solid #E3E7F1;cursor:pointer}.kl-thumb[role=img]{cursor:default}
+.kl-thumb::after{content:'';position:absolute;left:0;right:0;bottom:0;height:34px;background:linear-gradient(transparent,#EEF1F7);pointer-events:none}
+.kl-zoom{zoom:.38;padding:20px}
+.kl-page,.kx-page{margin:0 auto}.kl-page .st-sheet,.kx-page .st-sheet{min-height:0;padding:9mm 12mm}.kl-page .st-grid,.kx-page .st-grid{min-height:0}
+.kl-meta{padding:16px 18px 0}.kl-meta h3{font:700 15.5px/1.4 var(--f-display);margin:8px 0 4px;overflow-wrap:anywhere}.kl-meta p{font-size:12px;color:#6B7393;margin:0 0 6px;line-height:1.55}.kl-meta small{color:#8A91AD;font-size:11.5px}
+.kl-badges{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.kl-draft{color:#B45309!important;background:#FFF4E5!important}.kl-live{font-size:11px;color:#15803D;font-weight:600}
+.kl-card .sh-card-actions{padding:0 18px 16px;margin-top:14px;align-items:center}
+.kl-move{display:flex;align-items:center;gap:5px;font-size:12px;color:#6B7393}.kl-move select{width:auto;max-width:130px;padding:5px;font-size:12px}
+/* Trình dựng khối */
+.kx-top{gap:12px;padding:12px 18px;flex-wrap:wrap}.kx-top #kx-name{max-width:320px;font-weight:700;font-size:15px;border-color:transparent}.kx-top #kx-name:hover,.kx-top #kx-name:focus{border-color:#D9DDE8}
+.kx-top-group{display:flex;align-items:center;gap:6px;font-size:12px;color:#6B7393}.kx-top-group select{width:auto;max-width:220px}
+.kx-state{color:#6B7393;font-size:12px}.kx-top-act{margin-left:auto;display:flex;gap:6px}
+.kx{display:grid;grid-template-columns:330px minmax(0,1fr) 340px;height:calc(100vh - 62px);min-height:560px}
+.kx-left,.kx-right{background:#fff;overflow:auto}.kx-left{border-right:1px solid #E1E4EE}.kx-right{border-left:1px solid #E1E4EE}
+.kx-steps{list-style:none;margin:0;padding:12px;display:grid;gap:4px;border-bottom:1px solid #EEF0F5;position:sticky;top:0;background:#fff;z-index:2}
+.kx-steps button{width:100%;display:grid;grid-template-columns:26px minmax(0,1fr) auto;align-items:center;gap:10px;text-align:left;border-color:transparent;padding:7px 8px}
+.kx-steps button b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#EEF1F7;color:#454E70;font:800 12px/1 var(--f-display)}
+.kx-steps button span{font-weight:600;font-size:13px}.kx-steps button small{display:block;font-weight:400;font-size:11px;color:#8A91AD;margin-top:1px}
+.kx-steps button.on{background:#EEF3FF;border-color:#C9D7FF}.kx-steps button.on b{background:var(--st-accent);color:#fff}
+.kx-steps em{font-style:normal;font-size:11px;font-weight:700;background:#FFF4E5;color:#B45309;border-radius:99px;padding:1px 7px}.kx-steps em.bad{background:#FDECEC;color:#C4313A}
+.kx-step{padding:14px 14px 30px}
+.kx-lead{margin:0 0 12px;font-size:12.5px;line-height:1.6;color:#454E70}
+.kx-mini{margin:6px 0 0;font-size:11.5px;line-height:1.5;color:#8A91AD}
+.kx-opts{display:grid;gap:6px}
+.kx-opt{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:center;text-align:left;padding:8px}
+.kx-opt b{font-size:12.5px}.kx-opt small{display:block;font-size:11px;line-height:1.45;color:#6B7393;margin-top:2px}
+.kx-opt.on{border-color:var(--st-accent);background:#EEF3FF;box-shadow:0 0 0 1px var(--st-accent)}
+.kx-lay{width:64px;height:40px}.kx-lay rect{fill:#C9D7FF}.kx-lay rect.pg{fill:#fff;stroke:#D9DDE8}.kx-opt.on .kx-lay rect:not(.pg){fill:#8FB0FF}
+.kx-seg{display:flex;flex-wrap:wrap;gap:4px}.kx-seg button{padding:5px 9px;font-size:11.5px}.kx-seg button.on{border-color:var(--st-accent);background:#EEF3FF;color:#3563E9;font-weight:600}
+.kx-pal{margin-top:6px}.kx-pal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:6px}
+.kx-pal-i{display:grid;justify-items:center;gap:4px;padding:8px 3px;font-size:10.5px;line-height:1.25;text-align:center}
+.kx-ic{width:20px;height:20px;fill:none;stroke:#454E70;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.kx-accents{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.kx-accents button{display:flex;align-items:center;gap:6px;font-size:11.5px;padding:6px}.kx-accents i{width:14px;height:14px;border-radius:50%;background:var(--c);flex:0 0 auto}.kx-accents button.on{border-color:var(--st-accent);background:#EEF3FF}
+.kx-h4{margin:18px 0 6px;font:700 12.5px/1.3 var(--f-display)}
+.kx-versions{margin:0;padding:0;list-style:none;display:grid;gap:4px}.kx-versions li{display:flex;gap:8px;font-size:12px;color:#454E70;padding:6px 8px;background:#F7F9FD;border-radius:7px}.kx-versions b{color:#3563E9}
+.kx-stage{display:flex;flex-direction:column;min-width:0;background:#E9ECF4}
+.kx-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid #DDE2EE;background:#F4F6FB}
+.kx-data{display:flex;align-items:center;gap:8px;font-size:12px;color:#6B7393}.kx-data select{width:auto;max-width:280px}
+.kx-canvas{flex:1;overflow:auto;padding:22px 12px;position:relative}
+.kx-page .st-sheet{box-shadow:0 10px 36px rgba(14,20,48,.16)}
+.kx-page .st-grid{min-height:30mm}
+.kx-ghost{grid-column:span var(--w);border:1.5px dashed var(--line);border-radius:3.5mm;display:grid;place-items:center;min-height:22mm;color:var(--ink-3);font-size:11px}
+.kx-canvas .ke{cursor:pointer;border-radius:1.5mm}.kx-canvas .ke:hover{outline:1px dashed rgba(91,140,255,.7);outline-offset:1.5mm}.kx-canvas .ke.kx-on{outline:2px solid var(--st-accent);outline-offset:1.5mm}
+.kx-empty-stage{text-align:center;color:#6B7393;font-size:12.5px}
+.kx-note{margin:0;padding:8px 16px;font-size:11.5px;color:#6B7393;border-top:1px solid #DDE2EE;background:#F4F6FB}
+.kx-sec{padding:14px;border-bottom:1px solid #EEF0F5}.kx-sec h4{display:flex;align-items:center;gap:7px;margin:0 0 8px;font:700 13px/1.3 var(--f-display)}.kx-sec h4 small{color:#8A91AD;font-weight:500}
+.kx-slot{margin-top:8px}.kx-slot-h{margin:0 0 4px;font:700 10.5px/1.3 var(--f-display);letter-spacing:.1em;text-transform:uppercase;color:#8A91AD}
+.kx-el{display:flex;align-items:center;gap:4px;border:1px solid #E3E7F1;border-radius:8px;padding:3px;margin-bottom:4px}.kx-el.on{border-color:var(--st-accent);background:#F4F7FF}
+.kx-el-name{flex:1;min-width:0;display:flex;align-items:center;gap:8px;border:0;background:none;text-align:left;padding:4px}.kx-el-name span{min-width:0;font-size:12px;font-weight:600}.kx-el-name small{display:block;font-weight:400;color:#8A91AD;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kx-el-act{display:flex;gap:1px}.kx-el-act button{padding:2px 6px;font-size:11px;border-color:transparent;background:none}
+.kx-empty{margin:0 0 4px;padding:8px;border:1px dashed #D9DDE8;border-radius:8px;font-size:11.5px;color:#8A91AD}
+.kx-insp textarea{font:12px/1.55 var(--f-ui);width:100%;padding:7px 9px;border:1px solid #D9DDE8;border-radius:8px;resize:vertical}
+.kx-var{margin-top:5px;font-size:11.5px;padding:5px;color:#3563E9}
+.kx-bound{margin-left:auto;font-style:normal;font-size:10.5px;font-weight:700;color:#15803D;background:#EAF7EF;border-radius:99px;padding:2px 7px}
+.kx-asset{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.kx-asset img{max-width:120px;max-height:60px;border:1px solid #E3E7F1;border-radius:6px;background:#fff}.kx-asset em{font-size:11.5px;color:#8A91AD}
+.kx-icons{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}.kx-icons button{padding:5px}.kx-icons svg{width:20px;height:20px;fill:none;stroke:#454E70;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.kx-icons button.on{border-color:var(--st-accent);background:#EEF3FF}
+.kx-richpage{width:auto;margin:10px 0 0}.kx-richpage .st-sheet{width:auto;min-height:0;padding:5mm;box-shadow:0 0 0 1px #E3E7F1}.kx-rich{outline:none;min-height:30mm}
+@media screen and (max-width:1200px){.kx{grid-template-columns:300px minmax(0,1fr);height:auto}.kx-right{grid-column:1/-1;border-left:0;border-top:1px solid #E1E4EE}.kx-canvas{min-height:420px}}
+@media screen and (max-width:900px){.kl{grid-template-columns:minmax(0,1fr)}.kl-side{border-right:0;border-bottom:1px solid #E1E4EE}.kl-main{padding:22px 16px}.kx{grid-template-columns:minmax(0,1fr)}.kx-left,.kx-right{border:0}.kx-steps{position:static}.kx-top #kx-name{max-width:100%}}
+@media print{#st-kit{display:none!important}}
 </style>
 </head>
 <body>
 <div id="st-home" hidden></div>
+<div id="st-kit" hidden></div>
 <div id="st-app">
   <header class="st-top">
     <button type="button" id="st-home-button" class="st-home-link" title="Trang chủ">←</button><div class="st-brand">Quote <span>Studio</span></div>
@@ -1144,8 +1294,10 @@ const ST_TYPES={
   sign:{name:'Chữ ký',w:6,style:'plain',html:'<p class="k">Đại diện</p><p class="sign-space"><br></p><p><b>Họ tên</b></p><p class="s">Chức danh</p>'},
   divider:{name:'Đường kẻ',w:12,style:'plain',html:'<hr>'},
   spacer:{name:'Chừa chỗ',w:12,style:'plain',html:'',h:12},
+  // Khối dựng trong Thư viện khối; nội dung do studio-kit.mjs render, kèm bản sao spec ở b.kit.
+  kit:{name:'Khối thư viện',w:12,style:'card',html:'<div class="kb kb-l-stack kb-g-m"><div class="kb-r"><p>Khối thư viện</p></div></div>'},
 };
-const ST_STYLES=[['plain','Trơn'],['card','Thẻ'],['white','Thẻ sáng'],['accent','Nổi bật'],['line','Viền nhấn']];
+const ST_STYLES=[['plain','Trơn'],['card','Thẻ'],['white','Thẻ sáng'],['accent','Nổi bật'],['line','Viền nhấn'],['outline','Viền mảnh']];
 const ST_WIDTHS=[[3,'¼'],[4,'⅓'],[6,'½'],[8,'⅔'],[9,'¾'],[12,'Cả hàng']];
 // Bố cục trang: độ rộng (trên 12 cột) gán lần lượt cho các block; phần tử đầu là block đầu, phần còn lại lặp vòng.
 const ST_LAYOUTS=[
@@ -1261,6 +1413,9 @@ function stPriceHTML(ctx){
   body+=sum('Tổng giá trị hợp đồng',stNf(r.total),'total');
   return `<table class="price"><thead><tr><th>Gói sản phẩm</th><th>Gói dịch vụ</th><th>Số lượng tài khoản</th><th>Ngày bắt đầu</th><th>Ngày hết hạn</th><th class="num">Chi phí / tháng (VNĐ)</th><th class="num">Thành tiền (VNĐ)</th></tr></thead><tbody>${body}</tbody></table><p class="words"><b>Bằng chữ:</b> ${stE(stWords(r.total))}.</p><p class="s">Ghi chú: Kỳ hạn ${r.years} năm (${months} tháng); thanh toán trước toàn bộ. Chi phí / tháng là tổng phí của số tài khoản trên từng dòng. ${stE(q.note||'Ngày bắt đầu và ngày hết hạn dịch vụ được xác nhận khi ký hợp đồng.')}</p>`;
 }
+
+// Bảng giá form Base của một phương án bất kỳ (khối “Bảng giá phương án” của Thư viện khối).
+function stPriceTableHTML(payload,optionId){let ctx;try{ctx=stContext(payload);}catch{return '';}const o=ctx.opts.find(x=>x.id===optionId)||ctx.rec;return stPriceHTML({...ctx,rec:o,years:o.r.years});}
 
 function stContext(payload){
   const d=payload.deal||{},opts=(payload.options||[]).filter(o=>o&&o.r);
@@ -1647,8 +1802,10 @@ const ST_PACKAGES=[
 const stLibEscape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function stPackageChoices(data){
   const whole=[],selected=[];
-  for(const [oi,o] of (data?.options||[]).entries()){
-    const lines=(o.r?.lines||[]).filter(l=>l.apps?.length),label=o.label||'Phương án '+(oi+1);
+  // Phương án khuyến nghị đứng đầu: khối phụ lục mới mặc định lấy đúng phương án đó.
+  const opts=[...(data?.options||[]).entries()].sort(([,a],[,b])=>(b?.id===data?.recommendedId)-(a?.id===data?.recommendedId));
+  for(const [oi,o] of opts){
+    const lines=(o.r?.lines||[]).filter(l=>l.apps?.length),label=(o.label||'Phương án '+(oi+1))+(o.id===data?.recommendedId&&data.options.length>1?' (khuyến nghị)':'');
     if(!lines.length)continue;
     whole.push(stLibPackage({id:`quote:${o.id}:all`,name:'Toàn bộ · '+label,apps:lines.flatMap(l=>l.apps),group:'Toàn bộ phương án',kind:'option',hasSelfService:lines.some(l=>l.selfService||l.scope==='labor')},lines.some(l=>!l.addon)));
     selected.push(...lines.map((l,li)=>stLibPackage({id:`quote:${o.id}:${li}`,name:`${label} · ${data.scopeNames?.[l.scope]||l.scope||'Gói'} · ${l.name}${l.lite?' Lite':''}`,apps:l.apps,group:'Từng bộ trong phương án',selfService:l.selfService||l.scope==='labor'},!l.addon)));
@@ -1696,6 +1853,383 @@ function stPresetBlock(id,data){
   return b;
 }
 
+
+// Thư viện khối — định nghĩa khối theo đúng thứ tự tư duy thiết kế: Khung → Bố cục (vùng) → Thành phần → Kích thước & màu.
+// Mỗi lần lưu là một phiên bản bất biến. Báo giá giữ bản sao spec của phiên bản đã chèn (b.kit.spec), nên sửa thư viện
+// không làm đổi báo giá cũ; người soạn chủ động “Cập nhật khối” khi muốn dùng phiên bản mới. Không dùng DOM.
+// Hợp đồng CSS: lớp .kb-* / .ke-* / .st-pad-* … đã phát hành không đổi nghĩa; thiết kế khác thì thêm lớp hoặc schema mới.
+
+const ST_K_KEY='st-block-kit',ST_K_LEGACY='st-library',ST_K_MAX_VERSIONS=30;
+const stKE=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const stKNf=n=>new Intl.NumberFormat('vi-VN').format(Math.round(n));
+const stKMoney=n=>stKNf(n)+' đ';
+const stKShort=n=>Math.abs(n)>=1e9?new Intl.NumberFormat('vi-VN',{maximumFractionDigits:2}).format(n/1e9)+' tỷ đ':new Intl.NumberFormat('vi-VN',{maximumFractionDigits:1}).format(n/1e6)+' tr đ';
+const stKPick=(v,list,def)=>list.some(x=>(Array.isArray(x)?x[0]:x.id)===v)?v:def;
+const stKStr=(v,max=4000)=>String(v??'').slice(0,max);
+const stKClone=x=>JSON.parse(JSON.stringify(x));
+const stKCells=line=>String(line??'').split('|').map(s=>s.trim());
+const stKRows=text=>String(text??'').split(/\r?\n/).filter(l=>l.trim());
+
+// 1. Khung: khối “nổi” bao nhiêu trên trang. id trùng kiểu khối (st-s-*) để trình soạn đổi kiểu được như khối thường.
+const ST_K_FRAMES=[
+  {id:'plain',name:'Không khung',hint:'Đặt thẳng trên trang. Tiêu đề, đoạn văn, bảng dài.'},
+  {id:'outline',name:'Viền mảnh',hint:'Viền 1 px, nền trong. Gom nhóm nhẹ mà trang không nặng.'},
+  {id:'card',name:'Thẻ nền',hint:'Nền nhạt + viền. Một đơn vị thông tin: chỉ số, pain, case.'},
+  {id:'white',name:'Thẻ sáng',hint:'Nền trắng, nổi trên trang tối. Bảng số cần đọc kỹ.'},
+  {id:'accent',name:'Nổi bật',hint:'Nền tông nhấn. Mỗi trang chỉ một điểm nhấn chính.'},
+  {id:'line',name:'Vạch nhấn trái',hint:'Vạch màu bên trái. Ghi chú, trích dẫn, điều kiện.'},
+];
+// 'auto' = theo kiểu khung (giống khối hệ thống); giá trị khác thêm lớp st-pad-* / st-rad-* / st-edge-*.
+const ST_K_PADS=[['auto','Theo khung'],['none','Không'],['s','Nhỏ · 3 mm'],['m','Vừa · 5 mm'],['l','Rộng · 8 mm']];
+const ST_K_RADII=[['auto','Theo khung'],['none','Vuông'],['s','Nhẹ'],['m','Vừa'],['l','Tròn']];
+const ST_K_EDGES=[['auto','Theo khung'],['accent','Tông nhấn'],['muted','Xám'],['ok','Xanh lá · xong'],['warn','Cam · chờ'],['bad','Đỏ · lỗi']];
+// 2. Bố cục: chia khung thành vùng (slot); thành phần trong cùng vùng xếp dọc.
+const ST_K_LAYOUTS=[
+  {id:'stack',name:'Xếp dọc',slots:['Nội dung'],cols:1,hint:'Một luồng đọc từ trên xuống. Phù hợp hầu hết khối.'},
+  {id:'cols2',name:'Hai cột đều',slots:['Cột trái','Cột phải'],cols:2,hint:'Hai nhóm ngang hàng, so sánh song song.'},
+  {id:'cols3',name:'Ba cột đều',slots:['Cột 1','Cột 2','Cột 3'],cols:3,hint:'Ba ý ngang hàng: ba chỉ số, ba bước.'},
+  {id:'cols4',name:'Bốn cột đều',slots:['Cột 1','Cột 2','Cột 3','Cột 4'],cols:4,hint:'Dãy chỉ số ngắn; cần khối cả hàng.'},
+  {id:'side',name:'Phụ trái · chính phải',slots:['Cột phụ ⅓','Cột chính ⅔'],cols:2,hint:'Biểu tượng / con số bên trái, giải thích bên phải.'},
+  {id:'sideR',name:'Chính trái · phụ phải',slots:['Cột chính ⅔','Cột phụ ⅓'],cols:2,hint:'Nội dung chính bên trái, ghi chú / số phụ bên phải.'},
+  {id:'head2',name:'Đầu khối + hai cột',slots:['Đầu khối','Cột trái','Cột phải'],cols:2,hint:'Tiêu đề chung phía trên, hai nhóm bên dưới.'},
+  {id:'head3',name:'Đầu khối + ba cột',slots:['Đầu khối','Cột 1','Cột 2','Cột 3'],cols:3,hint:'Tiêu đề chung phía trên, ba nhóm bên dưới.'},
+  {id:'bodyFoot',name:'Nội dung + chân khối',slots:['Nội dung','Chân khối'],cols:1,hint:'Chân khối có đường kẻ: nguồn, ký tên, lời kêu gọi.'},
+];
+const ST_K_GAPS=[['s','Sát'],['m','Vừa'],['l','Thoáng']];
+const ST_K_VALIGNS=[['start','Trên'],['center','Giữa'],['end','Dưới']];
+// 4. Màu nhấn: mỗi màu có cặp giá trị cho trang sáng / tối trong CSS để giữ tương phản.
+const ST_K_ACCENTS=[['base','Xanh Base','#3563E9'],['green','Xanh lá','#15803D'],['orange','Cam','#B45309'],['red','Đỏ','#C4313A'],['purple','Tím','#7C3AED'],['ink','Mực','#0E1430']];
+const ST_K_SCALES=[['s','Gọn'],['m','Chuẩn'],['l','Lớn']];
+const ST_K_TONES=[['auto','Theo khối'],['muted','Nhạt'],['accent','Tông nhấn'],['ok','✓ Xong'],['warn','! Chờ'],['bad','✕ Lỗi']];
+const ST_K_SIZES=[['s','Nhỏ'],['m','Vừa'],['l','Lớn'],['xl','Rất lớn']];
+const ST_K_ALIGNS=[['auto','Theo khối'],['left','Trái'],['center','Giữa'],['right','Phải']];
+const ST_K_ICONS={
+  check:'<path d="M5 12.5l4.2 4.2L19 7"/>',clock:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+  chart:'<path d="M4 20h16M7 16v-5M12 16V6M17 16v-8"/>',users:'<circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19c.4-3.3 2.7-5 5.5-5s5.1 1.7 5.5 5M15.5 5.6a3 3 0 0 1 0 5.8M20.5 19c-.3-2.4-1.5-3.9-3.4-4.6"/>',
+  shield:'<path d="M12 3.5l7 2.6v5.6c0 4.3-2.9 7.4-7 8.8-4.1-1.4-7-4.5-7-8.8V6.1z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/>',bolt:'<path d="M13 3L5.5 13.5h5.5L10 21l8.5-11H13z"/>',
+  target:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/>',doc:'<path d="M7 3.5h7l4.5 4.5v12.5H7z"/><path d="M14 3.5V8h4.5M9.5 12.5h6M9.5 16h6"/>',
+  money:'<rect x="3" y="6.5" width="18" height="11" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6.5 9.5v5M17.5 9.5v5"/>',flag:'<path d="M5.5 21V4h11l-2.2 4 2.2 4h-11"/>',
+  link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',star:'<path d="M12 3.8l2.5 5.2 5.7.8-4.1 4 1 5.6-5.1-2.7-5.1 2.7 1-5.6-4.1-4 5.7-.8z"/>',
+};
+const ST_K_ICON_NAMES={check:'Hoàn thành',clock:'Thời gian',chart:'Tăng trưởng',users:'Con người',shield:'An toàn',bolt:'Nhanh',target:'Mục tiêu',doc:'Tài liệu',money:'Chi phí',flag:'Cột mốc',link:'Kết nối',star:'Nổi bật'};
+
+// Biến dữ liệu: {{khoá}} trong chữ được thay bằng giá trị từ hồ sơ khách hàng / file phương án Quote Lab.
+const ST_K_OPT_FIELDS=[['label','Tên phương án'],['packages','Các gói'],['years','Kỳ hạn (năm)'],['total','Tổng đầu tư'],['totalShort','Tổng đầu tư rút gọn'],['totalWords','Tổng bằng chữ'],['software','Phí phần mềm toàn kỳ'],['monthly','Phần mềm mỗi tháng'],['ps','Dịch vụ triển khai (PS)'],['serviceFee','Phí dịch vụ khác'],['people','Số người dùng']];
+const ST_K_SOURCES=[['rec','Phương án khuyến nghị'],['opt1','Phương án 1'],['opt2','Phương án 2'],['opt3','Phương án 3']];
+const ST_K_VARS=[
+  ...[['name','Tên khách hàng'],['short','Tên ngắn khách hàng'],['tax','Mã số thuế khách hàng'],['address','Địa chỉ khách hàng'],['industry','Ngành'],['goal','Mục tiêu của khách'],['context','Bối cảnh khách hàng']].map(([f,l])=>({key:'customer.'+f,label:l,group:'Khách hàng'})),
+  ...[['name','Người nhận'],['title','Chức danh người nhận'],['phone','Điện thoại người nhận'],['email','Email người nhận']].map(([f,l])=>({key:'recipient.'+f,label:l,group:'Người nhận'})),
+  ...[['no','Số báo giá'],['date','Ngày báo giá'],['valid','Hiệu lực đến'],['reason','Lý do hiệu lực']].map(([f,l])=>({key:'quote.'+f,label:l,group:'Báo giá'})),
+  ...[['name','Người lập'],['title','Chức danh người lập'],['phone','Điện thoại người lập'],['email','Email người lập'],['company','Pháp nhân Base']].map(([f,l])=>({key:'preparer.'+f,label:l,group:'Người lập'})),
+  ...ST_K_SOURCES.flatMap(([o,g])=>ST_K_OPT_FIELDS.map(([f,l])=>({key:o+'.'+f,label:l+(o==='rec'?' · khuyến nghị':' · PA '+o.slice(3)),group:g}))),
+  {key:'options.count',label:'Số phương án',group:'Chung'},{key:'policy.effective',label:'Ngày hiệu lực chính sách giá',group:'Chung'},
+];
+const ST_K_VAR_MAP=new Map(ST_K_VARS.map(v=>[v.key,v]));
+
+function stKCtx(data,o={}){
+  const opts=(data?.options||[]).filter(x=>x&&x.r);
+  return {data:data||null,d:data?.deal||{},opts,rec:opts.find(x=>x.id===data?.recommendedId)||opts[0]||null,scopes:{...QO_SCOPE_NAMES,...(data?.scopeNames||{})},policy:data?.policy||{},showVars:!!o.showVars,assetMap:o.assetMap||{},rows:o.rows||{}};
+}
+function stKOption(ctx,src){if(!src||src==='rec')return ctx.rec;const m=/^opt([1-3])$/.exec(src);return m?ctx.opts[+m[1]-1]||null:ctx.rec;}
+const stKLineName=(l,names)=>(l.addon?'Add-on ':l.scope==='combo'?'':(names[l.scope]||l.scope)+' · ')+l.name+(l.lite?' Lite':'');
+function stKOptValue(o,f,ctx){
+  const r=o?.r;if(!r)return '';const money=v=>Number.isFinite(v)&&v>0?stKMoney(v):'';
+  if(f==='label')return o.label||'';
+  if(f==='packages')return (r.lines||[]).filter(l=>l.scope!=='usage').map(l=>stKLineName(l,ctx.scopes)).join(', ');
+  if(f==='years')return r.years?String(r.years):'';
+  if(f==='total')return money(r.total);if(f==='totalShort')return r.total>0?stKShort(r.total):'';if(f==='totalWords')return r.total>0?stWords(r.total):'';
+  if(f==='software')return money(r.software);if(f==='monthly')return money(r.monthly);if(f==='ps')return money(r.ps?.gross);if(f==='serviceFee')return money(r.serviceFee);
+  if(f==='people'){const n=(r.staff||[]).reduce((s,g)=>s+(g.count>0?g.count:0),0);return n?stKNf(n)+' người':'';}
+  return '';
+}
+function stKValue(ctx,key){
+  const [head,f]=String(key).split('.'),d=ctx.d||{};
+  if(head==='customer')return String(d.customer?.[f]||'');
+  if(head==='recipient')return String((d.recipients||[])[0]?.[f]||'');
+  if(head==='quote')return String({no:d.quote?.no,date:d.quote?.dateText,valid:d.quote?.validText,reason:d.quote?.reason}[f]||'');
+  if(head==='preparer')return String(d.preparer?.[f]||'');
+  if(head==='rec'||/^opt[1-3]$/.test(head))return stKOptValue(stKOption(ctx,head),f,ctx);
+  if(key==='options.count')return ctx.opts.length?String(ctx.opts.length):'';
+  if(key==='policy.effective')return String(ctx.policy?.effective||'');
+  return '';
+}
+// Giá trị biến nằm trong span không sửa được, để “Cập nhật số liệu” thay đúng chỗ mà giữ chữ người soạn đã sửa xung quanh.
+// Ký tự rỗng (U+200B) sau span giúp đặt được con trỏ ngay sau biến; làm mới dữ liệu thay cả cặp nên không cộng dồn.
+const ST_K_ZW='\u200B';
+function stKVarHTML(key,ctx){
+  const v=ST_K_VAR_MAP.get(key),value=v?stKValue(ctx,key):'';
+  return `<span class="kv" data-var="${stKE(key)}" contenteditable="false">${stKE(ctx.showVars?'‹'+(v?.label||key)+'›':value||'['+(v?.label||'Biến '+key)+']')}</span>${ST_K_ZW}`;
+}
+const ST_K_TOKEN=/\{\{\s*([\w.]+)\s*\}\}/g;
+function stKText(text,ctx){return stKE(text).replace(ST_K_TOKEN,(_,k)=>stKVarHTML(k,ctx));}
+const stKLines=(text,ctx)=>String(text??'').split(/\r?\n/).map(l=>stKText(l,ctx)).join('<br>');
+
+// 3. Thành phần. f = trường sửa trong trình dựng: [khoá, nhãn, kiểu, lựa chọn]. bound = vùng dữ liệu tự động.
+const ST_K_GROUPS=[['text','Chữ','Phân cấp đọc: nhãn mục → tiêu đề → đoạn văn → chú thích.'],['data','Số liệu','Con số, so sánh, bảng do người soạn nhập.'],['media','Hình ảnh & nhịp','Ảnh, logo, biểu tượng, đường kẻ, khoảng trống.'],['action','Hành động & xác nhận','Bước tiếp theo, ô đánh dấu, lời kêu gọi, chữ ký.'],['bound','Dữ liệu tự động','Tự lấy từ hồ sơ khách hàng và file phương án Quote Lab; làm mới khi cập nhật số liệu.']];
+const stKEmpty=what=>`<p class="s">[${stKE(what)}]</p>`;
+const stKTable=(head,rows,cls='')=>`<table${cls?` class="${cls}"`:''}><thead><tr>${head.map(h=>`<th${h.num?' class="num"':''}>${stKE(h.t??h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td${head[i]?.num?' class="num"':''}>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+const ST_K_FORMATS={apps:[['table','Bảng có mô tả'],['names','Bảng tên app'],['chips','Nhãn app']],packages:[['table','Bảng'],['chips','Nhãn gói']],list:[['bullet','Chấm tròn'],['number','Đánh số'],['check','Dấu ✓']]};
+const stKSrc=[['source','Lấy từ','source']];
+const ST_K_ELEMENTS={
+  eyebrow:{name:'Nhãn mục',g:'text',desc:'Dòng chữ nhỏ in hoa phía trên tiêu đề, cho biết khối thuộc phần nào.',p:{text:'Tên mục'},f:[['text','Nội dung','text']],tone:1,align:1,render:(p,c)=>`<p class="eyebrow">${stKText(p.text,c)}</p>`},
+  heading:{name:'Tiêu đề',g:'text',desc:'Một câu kết luận ngắn. Mỗi khối nên có tối đa một tiêu đề.',p:{text:'Tiêu đề khối',level:'h3'},f:[['text','Nội dung','text'],['level','Cấp tiêu đề','select',[['h3','Tiêu đề khối'],['h2','Tiêu đề mục'],['h1','Tiêu đề bìa']]]],tone:1,align:1,render:(p,c)=>`<${p.level}>${stKText(p.text,c)}</${p.level}>`},
+  text:{name:'Đoạn văn',g:'text',desc:'Giải thích, mô tả. Xuống dòng để tách ý.',p:{text:'Nhập nội dung.',style:'p'},f:[['text','Nội dung','area'],['style','Kiểu chữ','select',[['p','Thường'],['lead','Đoạn dẫn · lớn, nhạt']]]],tone:1,size:1,align:1,render:(p,c)=>`<p${p.style==='lead'?' class="lead"':''}>${stKLines(p.text,c)}</p>`},
+  caption:{name:'Chú thích · nguồn',g:'text',desc:'Chữ nhỏ cho nguồn số liệu, cách tính, điều kiện áp dụng.',p:{text:'Nguồn: [Người xác nhận · Ngày]'},f:[['text','Nội dung','area']],tone:1,align:1,render:(p,c)=>`<p class="s">${stKLines(p.text,c)}</p>`},
+  quote:{name:'Trích dẫn',g:'text',desc:'Lời nguyên văn của khách hàng kèm người nói. Không tự viết lời khách.',p:{text:'[Lời khách hàng đã xác minh]',who:'[Họ tên · Chức danh]'},f:[['text','Lời trích','area'],['who','Người nói','text']],tone:1,size:1,align:1,render:(p,c)=>`<p class="q">“${stKLines(p.text,c)}”</p>${p.who?`<p class="s">${stKText(p.who,c)}</p>`:''}`},
+  tag:{name:'Nhãn',g:'text',desc:'Nhãn ngắn in hoa: Khuyến nghị, Đã xác nhận.',p:{text:'Khuyến nghị'},f:[['text','Nội dung','text']],tone:1,align:1,render:(p,c)=>`<p><span class="tag">${stKText(p.text,c)}</span></p>`},
+  list:{name:'Danh sách',g:'text',desc:'Các ý song song. Mỗi dòng một ý.',p:{items:'Ý thứ nhất\nÝ thứ hai',style:'bullet'},f:[['items','Các ý · mỗi dòng một ý','area'],['style','Kiểu','select',ST_K_FORMATS.list]],tone:1,size:1,render:(p,c)=>{const items=stKRows(p.items).map(i=>`<li>${stKText(i,c)}</li>`).join('')||'<li><br></li>';return p.style==='number'?`<ol>${items}</ol>`:`<ul${p.style==='check'?' class="kchk"':''}>${items}</ul>`;}},
+  richtext:{name:'Nội dung tự do',g:'text',desc:'Đoạn đã định dạng sẵn, dùng cho khối lưu từ báo giá. Gõ {{biến}} để lấy dữ liệu.',p:{html:'<p>Nội dung</p>'},f:[['html','Nội dung','html']],render:(p,c)=>stKRichHTML(p.html,c)},
+  metric:{name:'Chỉ số',g:'data',desc:'Một con số lớn kèm nhãn và nguồn: kết quả, chi phí, thời gian.',p:{label:'Tên chỉ số',value:'0',note:'Nguồn hoặc cách tính'},f:[['label','Nhãn','text'],['value','Giá trị','text'],['note','Ghi chú / nguồn','text']],tone:1,size:1,align:1,render:(p,c)=>`<p class="k">${stKText(p.label,c)}</p><p class="v">${stKText(p.value,c)}</p>${p.note?`<p class="s">${stKText(p.note,c)}</p>`:''}`},
+  compare:{name:'Trước → Sau',g:'data',desc:'Hiện tại và mục tiêu của một chỉ số đã thống nhất.',p:{label:'Tên chỉ số',before:'[Hiện tại]',after:'[Mục tiêu]',note:''},f:[['label','Chỉ số','text'],['before','Hiện tại','text'],['after','Mục tiêu','text'],['note','Ghi chú / nguồn','text']],size:1,align:1,render:(p,c)=>`<p class="k">${stKText(p.label,c)}</p><div class="kcmp"><div><p class="s">Hiện tại</p><p class="v bad">${stKText(p.before,c)}</p></div><span class="kcmp-to">→</span><div><p class="s">Mục tiêu</p><p class="v ok">${stKText(p.after,c)}</p></div></div>${p.note?`<p class="s">${stKText(p.note,c)}</p>`:''}`},
+  progress:{name:'Thanh tỷ lệ',g:'data',desc:'Mức độ hoàn thành / tỷ lệ 0–100%.',p:{label:'Mức độ hoàn thành',value:'60',note:''},f:[['label','Nhãn','text'],['value','Tỷ lệ (%)','num'],['note','Ghi chú','text']],tone:1,render:(p,c)=>{const v=Math.max(0,Math.min(100,Math.round(+p.value)||0));return `<p class="k">${stKText(p.label,c)}</p><div class="kbar" role="img" aria-label="${v}%"><i style="width:${v}%"></i></div><p class="s">${v}%${p.note?' · '+stKText(p.note,c):''}</p>`;}},
+  status:{name:'Trạng thái',g:'data',desc:'Một dòng có trạng thái cố định nghĩa: ✓ xong, ! chờ, ✕ lỗi.',p:{text:'Đã thống nhất phạm vi',state:'ok'},f:[['text','Nội dung','text'],['state','Trạng thái','select',[['ok','✓ Xong'],['warn','! Chờ xác nhận'],['bad','✕ Chưa đạt']]]],render:(p,c)=>`<p class="kst kst-${p.state}"><span class="kst-i">${{ok:'✓',warn:'!',bad:'✕'}[p.state]}</span><span>${stKText(p.text,c)}</span></p>`},
+  kv:{name:'Nhãn – giá trị',g:'data',desc:'Thông tin dạng hồ sơ. Mỗi dòng “Nhãn | Giá trị”.',p:{rows:'Nhãn | Giá trị'},f:[['rows','Các dòng · Nhãn | Giá trị','area']],render:(p,c)=>`<table class="kv"><tbody>${(stKRows(p.rows).length?stKRows(p.rows):['']).map(l=>{const [k,...v]=stKCells(l);return `<tr><th>${stKText(k,c)}</th><td>${stKText(v.join(' | '),c)||'<br>'}</td></tr>`;}).join('')}</tbody></table>`},
+  table:{name:'Bảng',g:'data',desc:'Dữ liệu nhiều cột. Cột phân tách bằng “|”, mỗi dòng một hàng.',p:{head:'Cột 1 | Cột 2 | Cột 3',rows:'Nội dung | Nội dung | Nội dung',num:''},f:[['head','Tiêu đề cột','text'],['rows','Các dòng','area'],['num','Cột số, căn phải (ví dụ: 3)','text']],render:(p,c)=>{
+    const head=String(p.head||'').trim()?stKCells(p.head):[],rows=stKRows(p.rows).map(stKCells),n=Math.min(12,Math.max(head.length,...rows.map(r=>r.length),1)),num=new Set(String(p.num||'').split(/[^\d]+/).map(Number).filter(x=>x>0)),cls=i=>num.has(i+1)?' class="num"':'';
+    return `<table>${head.some(Boolean)?`<thead><tr>${Array.from({length:n},(_,i)=>`<th${cls(i)}>${stKText(head[i]||'',c)}</th>`).join('')}</tr></thead>`:''}<tbody>${(rows.length?rows:[[]]).map(r=>`<tr>${Array.from({length:n},(_,i)=>`<td${cls(i)}>${r[i]?stKText(r[i],c):'<br>'}</td>`).join('')}</tr>`).join('')}</tbody></table>`;}},
+  image:{name:'Ảnh',g:'media',desc:'Ảnh minh hoạ / chụp màn hình. Trong báo giá, bấm đúp để thay ảnh.',p:{asset:'',caption:'',fit:'contain'},f:[['asset','Ảnh','asset'],['fit','Cách đặt ảnh','select',[['contain','Vừa khung'],['cover','Lấp đầy']]],['caption','Chú thích','text']],align:1,render:(p,c)=>`<div class="img${p.fit==='cover'?' cover':''}" contenteditable="false"><img alt="" data-asset="${stKE(c.assetMap[p.asset]??p.asset)}"></div>${p.caption?`<p class="s">${stKText(p.caption,c)}</p>`:''}`},
+  logo:{name:'Logo',g:'media',desc:'Logo trong khung cố định, giữ tỷ lệ ảnh gốc.',p:{asset:'',w:'32',h:'22'},f:[['asset','Ảnh logo','asset'],['w','Rộng khung (mm)','num'],['h','Cao khung (mm)','num']],align:1,render:(p,c)=>`<div class="img logo" contenteditable="false"><img alt="" data-asset="${stKE(c.assetMap[p.asset]??p.asset)}"></div>`},
+  icon:{name:'Biểu tượng',g:'media',desc:'Biểu tượng nét mảnh đi kèm tiêu đề hoặc chỉ số.',p:{icon:'check'},f:[['icon','Biểu tượng','icon']],tone:1,size:1,align:1,render:p=>`<p class="kicon"><svg viewBox="0 0 24 24" aria-hidden="true">${ST_K_ICONS[p.icon]||ST_K_ICONS.check}</svg></p>`},
+  divider:{name:'Đường kẻ',g:'media',desc:'Tách hai nhóm nội dung trong cùng khối.',p:{},f:[],render:()=>'<hr>'},
+  spacer:{name:'Khoảng trống',g:'media',desc:'Khoảng trắng cố định để canh vị trí (mm).',p:{h:'6'},f:[['h','Chiều cao (mm)','num']],render:p=>`<div class="kspace" style="height:${Math.max(1,Math.min(80,+p.h||6))}mm"></div>`},
+  steps:{name:'Các bước',g:'action',desc:'Việc có thứ tự. Mỗi dòng “Việc | Người phụ trách · Ngày”.',p:{items:'Việc cần làm | Người phụ trách · Ngày\nViệc tiếp theo | Người phụ trách · Ngày'},f:[['items','Các bước','area']],render:(p,c)=>`<ol class="steps">${(stKRows(p.items).length?stKRows(p.items):['']).map(l=>{const [a,...b]=stKCells(l);return `<li><b>${stKText(a,c)||'<br>'}</b>${b.length?` <span class="s">${stKText(b.join(' · '),c)}</span>`:''}</li>`;}).join('')}</ol>`},
+  checklist:{name:'Ô đánh dấu',g:'action',desc:'Danh sách để khách đánh dấu khi xác nhận.',p:{items:'Đồng ý phạm vi triển khai\nĐồng ý lịch triển khai'},f:[['items','Các mục · mỗi dòng một mục','area']],render:(p,c)=>`<ul class="kbox">${stKRows(p.items).map(i=>`<li>${stKText(i,c)}</li>`).join('')||'<li><br></li>'}</ul>`},
+  cta:{name:'Lời kêu gọi',g:'action',desc:'Một hành động tiếp theo rõ ràng, có hạn và link nếu cần.',p:{text:'Xác nhận phương án trước [ngày]',url:''},f:[['text','Hành động','text'],['url','Link (tuỳ chọn, http/https)','url']],tone:1,align:1,render:(p,c)=>{const url=stP2URL(p.url);return `<p class="kcta">${stKText(p.text,c)}</p>${url?`<p class="s"><a class="st-cta-link" href="${stKE(url)}" target="_blank" rel="noopener">${stKE(url)}</a></p>`:''}`;}},
+  sign:{name:'Chữ ký',g:'action',desc:'Ô ký xác nhận của một bên.',p:{role:'Đại diện khách hàng',name:'[Họ tên]',title:'[Chức danh]'},f:[['role','Bên ký','text'],['name','Họ tên','text'],['title','Chức danh','text']],render:(p,c)=>`<p class="k center">${stKText(p.role,c)}</p><p class="sign-space"><br></p><p class="center"><b>${stKText(p.name,c)}</b></p>${p.title?`<p class="s center">${stKText(p.title,c)}</p>`:''}`},
+  // Dữ liệu tự động: dựng lại từ hồ sơ / phương án; nằm giữa <!--kb:id--> … <!--/kb:id-->.
+  apps:{name:'Ứng dụng theo phương án',g:'bound',bound:1,desc:'Chỉ liệt kê app của các gói trong phương án đã chọn ở Quote Lab, kèm công dụng. Không lấy gói ngoài phương án.',p:{source:'rec',core:'yes',format:'table',summary:'yes'},f:[...stKSrc,['format','Cách hiển thị','select',ST_K_FORMATS.apps],['core','Base Core dùng chung','select',[['yes','Gồm 12 app Base Core'],['no','Chỉ app của gói']]],['summary','Dòng tổng kết','select',[['yes','Hiện'],['no','Ẩn']]]],render:(p,c)=>{
+    const o=stKOption(c,p.source);if(!o)return stKEmpty('Ứng dụng theo phương án · cần file phương án Quote Lab');
+    const pkg=stPackageChoices(c.data).find(x=>x.id===`quote:${o.id}:all`);if(!pkg)return stKEmpty('Phương án chưa có gói ứng dụng');
+    const apps=[...new Set(p.core==='no'?pkg.packageApps:pkg.apps)];if(p.format==='chips')return `<p class="chips">${apps.map(a=>`<span class="chip">${stKE(a)}</span>`).join(' ')}</p>`;
+    const desc=p.format!=='names',sum=p.summary==='no'?'':`<p class="s">${apps.length} ứng dụng · ${p.core!=='no'&&pkg.coreApps.length?`${pkg.packageApps.length} app của phương án + ${pkg.coreApps.length} app Base Core dùng chung, không tính tiền`:'app của các gói trong phương án'}${pkg.hasSelfService?'. Lao động trực tiếp dùng HRIS, Timesheet và Payroll ở chế độ tự phục vụ':''}.</p>`;
+    return `<table class="app-list"><colgroup>${desc?'<col style="width:7%"><col style="width:18%"><col style="width:75%">':'<col style="width:12%"><col style="width:88%">'}</colgroup><thead><tr><th>STT</th><th>Ứng dụng</th>${desc?'<th>Mô tả</th>':''}</tr></thead><tbody>${apps.map((a,i)=>`<tr><td>${i+1}</td><td>${stKE(a)}</td>${desc?`<td>${stKE(stAppBenefit(a))}</td>`:''}</tr>`).join('')}</tbody></table>${sum}`;}},
+  packages:{name:'Gói trong phương án',g:'bound',bound:1,desc:'Các dòng gói, số tài khoản và phí mỗi tháng của phương án.',p:{source:'rec',format:'table'},f:[...stKSrc,['format','Cách hiển thị','select',ST_K_FORMATS.packages]],render:(p,c)=>{
+    const o=stKOption(c,p.source);if(!o)return stKEmpty('Gói trong phương án · cần file phương án Quote Lab');const lines=(o.r.lines||[]).filter(l=>l.name);
+    if(p.format==='chips')return `<p class="chips">${lines.map(l=>`<span class="chip">${stKE(stKLineName(l,c.scopes))}</span>`).join(' ')}</p>`;
+    return stKTable(['Gói',{t:'Tài khoản',num:true},{t:'Phí / tháng',num:true}],lines.map(l=>[stKE(stKLineName(l,c.scopes)),l.lite?'15 (Lite)':l.fixedPrice?'1 gói':stKNf(l.seats||0),stKMoney(l.monthly||0)]));}},
+  price:{name:'Bảng giá phương án',g:'bound',bound:1,desc:'Bảng báo giá theo form Base: gói, tài khoản, ngày, thành tiền, tổng và bằng chữ. Cần khối cả hàng.',p:{source:'rec'},f:stKSrc,render:(p,c)=>{const o=stKOption(c,p.source);return o&&stPriceTableHTML(c.data,o.id)||stKEmpty('Bảng giá phương án · cần file phương án Quote Lab');}},
+  options:{name:'So sánh phương án',g:'bound',bound:1,desc:'Các phương án trong file Quote Lab, đánh dấu phương án khuyến nghị.',p:{},f:[],render:(p,c)=>c.opts.length?stKTable(['Phương án','Gói',{t:'Kỳ hạn',num:true},{t:'Tổng đầu tư',num:true}],c.opts.map((o,i)=>[`<b>${i+1}. ${stKE(o.label)}</b>${o===c.rec&&c.opts.length>1?' <span class="tag">Khuyến nghị</span>':''}`,stKE(stKOptValue(o,'packages',c)),`${o.r.years} năm`,stKMoney(o.r.total)])):stKEmpty('So sánh phương án · cần file phương án Quote Lab')},
+  pains:{name:'Vấn đề đã xác nhận',g:'bound',bound:1,desc:'Pain trong hồ sơ, kèm lời khách và người nói.',p:{},f:[],render:(p,c)=>{const items=c.d.pains?.items||[];return items.length?`<ul>${items.map(x=>`<li><b>${stKE(x.title)}</b>${x.quote||x.who?`<br><span class="s">${x.quote?'“'+stKE(x.quote)+'”':''}${x.who?' — '+stKE(x.who):''}</span>`:''}</li>`).join('')}</ul>`:stKEmpty('Chưa có vấn đề trong hồ sơ');}},
+  solutions:{name:'Vấn đề → giải pháp',g:'bound',bound:1,desc:'Bảng nối vấn đề với cách xử lý và app trong hồ sơ.',p:{},f:[],render:(p,c)=>{const s=c.d.solutions?.items||[];return s.length?stKTable(['Vấn đề','Cách giải quyết','Ứng dụng'],s.map(x=>[stKE(x.problem),stKE(x.desc||''),stKE((x.apps||[]).join(', '))])):stKEmpty('Chưa có giải pháp trong hồ sơ');}},
+  kpis:{name:'Chỉ số thành công',g:'bound',bound:1,desc:'Chỉ số, hiện tại, mục tiêu và người theo dõi trong hồ sơ.',p:{},f:[],render:(p,c)=>{const k=c.d.kpis?.items||[];return k.length?stKTable(['Chỉ số','Hiện tại','Mục tiêu','Người theo dõi'],k.map(x=>[stKE(x.name),stKE(x.current),stKE(x.target),stKE(x.owner)])):stKEmpty('Chưa có chỉ số thành công trong hồ sơ');}},
+  timeline:{name:'Lộ trình triển khai',g:'bound',bound:1,desc:'Giai đoạn và thời gian trong hồ sơ.',p:{},f:[],render:(p,c)=>{const t=c.d.timeline?.items||[];return t.length?stKTable(['Giai đoạn','Thời gian','Ghi chú'],t.map(x=>[`${x.key?'<b>':''}${stKE(x.name)}${x.key?'</b>':''}`,stKE(x.milestone?x.startText:`${x.startText} – ${x.endText}`),x.milestone?'Mốc':''])):stKEmpty('Chưa có lộ trình trong hồ sơ');}},
+  scope:{name:'Phạm vi',g:'bound',bound:1,desc:'Danh sách trong / ngoài phạm vi hoặc việc khách phối hợp.',p:{which:'in'},f:[['which','Danh sách','select',[['in','Trong phạm vi'],['out','Ngoài phạm vi'],['duties','Khách hàng phối hợp']]]],render:(p,c)=>{const a=(p.which==='out'?c.d.outScope:p.which==='duties'?c.d.duties:c.d.inScope)||[];return a.length?`<ul>${a.map(x=>`<li>${stKE(x)}</li>`).join('')}</ul>`:stKEmpty('Chưa có mục này trong hồ sơ');}},
+  risks:{name:'Rủi ro & cách xử lý',g:'bound',bound:1,desc:'Rủi ro trong hồ sơ và biện pháp.',p:{},f:[],render:(p,c)=>{const r=c.d.risks?.items||[];return r.length?stKTable(['Rủi ro','Cách xử lý'],r.map(x=>[stKE(x.risk),stKE(x.fix)])):stKEmpty('Chưa có rủi ro trong hồ sơ');}},
+  team:{name:'Đội ngũ phụ trách',g:'bound',bound:1,desc:'Vai trò, người phụ trách và trách nhiệm.',p:{},f:[],render:(p,c)=>{const t=c.d.team||[];return t.length?stKTable(['Vai trò','Người phụ trách','Trách nhiệm'],t.map(x=>[stKE(x.role),stKE(x.person),stKE(x.duty)])):stKEmpty('Chưa có đội ngũ trong hồ sơ');}},
+  nextSteps:{name:'Bước tiếp theo theo hồ sơ',g:'bound',bound:1,desc:'Các bước, người phụ trách và ngày trong hồ sơ.',p:{},f:[],render:(p,c)=>{const s=c.d.steps?.items||[];return s.length?`<ol class="steps">${s.map(x=>`<li${x.key?' class="key"':''}><b>${stKE(x.task)}</b> <span class="s">${stKE([x.owner,x.dateText].filter(Boolean).join(' · '))}</span></li>`).join('')}</ol>`:stKEmpty('Chưa có bước tiếp theo trong hồ sơ');}},
+};
+// Kho thành phần trong trình dựng: thành phần gốc + vài mẫu dựng sẵn bằng biến.
+const ST_K_PALETTE=[
+  ...Object.keys(ST_K_ELEMENTS).map(kind=>({kind})),
+  {kind:'metric',g:'bound',name:'Tổng đầu tư',desc:'Chỉ số lấy tổng đầu tư và bằng chữ của phương án khuyến nghị.',p:{label:'Tổng đầu tư {{rec.years}} năm',value:'{{rec.totalShort}}',note:'{{rec.totalWords}}'}},
+  {kind:'kv',g:'bound',name:'Thông tin khách hàng',desc:'Tên, mã số thuế, địa chỉ, người liên hệ từ hồ sơ.',p:{rows:'Khách hàng | {{customer.name}}\nMã số thuế | {{customer.tax}}\nĐịa chỉ | {{customer.address}}\nNgười liên hệ | {{recipient.name}} · {{recipient.title}}'}},
+  {kind:'text',g:'bound',name:'Câu có biến',desc:'Đoạn văn chèn sẵn tên khách và hạn hiệu lực.',p:{text:'Đề xuất dành riêng cho {{customer.name}}, hiệu lực đến {{quote.valid}}.'}},
+];
+
+const ST_K_LAYOUT_MAP=new Map(ST_K_LAYOUTS.map(l=>[l.id,l]));
+const stKLayout=id=>ST_K_LAYOUT_MAP.get(id)||ST_K_LAYOUTS[0];
+function stKNewSpec(){return {schema:1,frame:{kind:'card',pad:'auto',radius:'auto',edge:'auto'},layout:{kind:'stack',gap:'m',valign:'start'},els:[],size:{w:6,h:0},look:{accent:'base',scale:'m'},assets:{}};}
+function stKNewElement(kind,props={},slot=0){const E=ST_K_ELEMENTS[kind];return {id:stId('e'),kind,slot,p:{...stKClone(E.p),...stKClone(props)},s:{tone:'auto',size:'m',align:'auto'}};}
+function stKProps(kind,p){const E=ST_K_ELEMENTS[kind],out={};for(const [k,v] of Object.entries(E.p))out[k]=typeof p?.[k]==='string'||typeof p?.[k]==='number'?stKStr(p[k],k==='html'?200000:4000):v;
+  for(const [k,,type,opts] of E.f)if(type==='select'&&opts&&!opts.some(o=>o[0]===out[k]))out[k]=E.p[k];
+  if(kind==='heading'&&!['h1','h2','h3'].includes(out.level))out.level='h3';if('source' in out&&!ST_K_SOURCES.some(s=>s[0]===out.source))out.source='rec';if(kind==='icon'&&!ST_K_ICONS[out.icon])out.icon='check';return out;}
+// Chuẩn hoá spec từ kho/đồng bộ/file: chỉ giữ giá trị hợp lệ, không để lớp CSS hay thuộc tính lạ lọt vào HTML.
+function stKNormalize(spec){
+  const x=spec&&typeof spec==='object'?spec:{},f=x.frame||{},l=x.layout||{},z=x.size||{},k=x.look||{},ids=new Set();
+  const out={schema:1,frame:{kind:stKPick(f.kind,ST_K_FRAMES,'card'),pad:stKPick(f.pad,ST_K_PADS,'auto'),radius:stKPick(f.radius,ST_K_RADII,'auto'),edge:stKPick(f.edge,ST_K_EDGES,'auto')},
+    layout:{kind:stKPick(l.kind,ST_K_LAYOUTS,'stack'),gap:stKPick(l.gap,ST_K_GAPS,'m'),valign:stKPick(l.valign,ST_K_VALIGNS,'start')},els:[],
+    size:{w:Math.max(2,Math.min(12,Math.round(+z.w)||6)),h:Math.max(0,Math.min(250,Math.round(+z.h)||0))},look:{accent:stKPick(k.accent,ST_K_ACCENTS,'base'),scale:stKPick(k.scale,ST_K_SCALES,'m')},assets:{}};
+  const slots=stKLayout(out.layout.kind).slots.length;
+  for(const e of (Array.isArray(x.els)?x.els:[]).slice(0,40)){if(!ST_K_ELEMENTS[e?.kind])continue;let id=/^[\w-]{1,40}$/.test(e.id)?e.id:stId('e');if(ids.has(id))id=stId('e');ids.add(id);
+    out.els.push({id,kind:e.kind,slot:Math.max(0,Math.min(slots-1,Math.round(+e.slot)||0)),p:stKProps(e.kind,e.p),s:{tone:stKPick(e.s?.tone,ST_K_TONES,'auto'),size:stKPick(e.s?.size,ST_K_SIZES,'m'),align:stKPick(e.s?.align,ST_K_ALIGNS,'auto')}});}
+  for(const [id,v] of Object.entries(x.assets||{}).slice(0,30))if(/^[\w-]{1,80}$/.test(id)&&typeof v==='string'&&v.startsWith('data:image/'))out.assets[id]=v;
+  if(x.raw){out.raw=true;out.baseType=ST_TYPES[x.baseType]&&!['spacer','divider'].includes(x.baseType)?x.baseType:'text';out.extra={};const e=x.extra||{};
+    if(+e.logoW>0)out.extra.logoW=Math.max(8,Math.min(180,+e.logoW));if(+e.logoH>0)out.extra.logoH=Math.max(8,Math.min(100,+e.logoH));if(['start','center','end'].includes(e.logoAlign))out.extra.logoAlign=e.logoAlign;if(typeof e.logoFrame==='boolean')out.extra.logoFrame=e.logoFrame;
+    out.els=[{id:'raw',kind:'richtext',slot:0,p:{html:stKStr((x.els||[]).find(e=>e?.kind==='richtext')?.p?.html??'',200000)},s:{tone:'auto',size:'m',align:'auto'}}];}
+  return out;
+}
+
+// Render khối → HTML nội dung (đặt trong .st-c). assetMap đổi khoá ảnh của spec sang ID ảnh trong tài liệu.
+function stKEl(el,ctx){
+  const E=ST_K_ELEMENTS[el.kind];if(!E)return '';
+  let body=E.render(el.p||{},ctx,el);
+  const r=E.bound&&ctx.rows?.[el.id];if(Array.isArray(r))body=stKSliceRows(body,r);
+  const s=el.s||{},cls=['ke','ke-'+el.kind];if(s.tone&&s.tone!=='auto')cls.push('ke-t-'+s.tone);if(s.size&&s.size!=='m')cls.push('ke-z-'+s.size);if(s.align&&s.align!=='auto')cls.push('ke-a-'+s.align);
+  const html=`<div class="${cls.join(' ')}" data-ke="${stKE(el.id)}">${body}</div>`;
+  return E.bound?`<!--kb:${el.id}-->${html}<!--/kb:${el.id}-->`:html;
+}
+// Bảng dữ liệu đã chia sang trang sau: mỗi đoạn giữ đúng khoảng dòng [đầu, cuối) như khi chia trong trình soạn.
+function stKSliceRows(html,[s,e]){
+  const a=html.indexOf('<table'),b=html.indexOf('</table>');if(a<0||b<0)return html;
+  const table=html.slice(a,b+8).replace(/<tbody>([\s\S]*?)<\/tbody>/,(m,body)=>'<tbody>'+(body.match(/<tr\b[\s\S]*?<\/tr>/g)||[]).slice(s,e==null?undefined:e).join('')+'</tbody>');
+  return (s>0?'<p class="s">(tiếp theo)</p>':html.slice(0,a))+table+(e==null?html.slice(b+8):'');
+}
+function stKRichHTML(html,ctx){
+  const out=String(html||'').replace(/data-asset=(["'])([^"']*)\1/g,(m,q,id)=>`data-asset="${stKE(ctx.assetMap[id]??id)}"`);
+  return stKRefreshVars(out,ctx).replace(/(^|>)([^<]*)/g,(m,a,t)=>a+t.replace(ST_K_TOKEN,(_,k)=>stKVarHTML(k,ctx)));
+}
+function stKRender(spec,data,o={}){
+  const s=stKNormalize(spec),ctx=stKCtx(data,o);
+  if(s.raw)return stKRichHTML(s.els[0].p.html,ctx);
+  const L=stKLayout(s.layout.kind),regions=L.slots.map(()=>[]);
+  for(const el of s.els)regions[Math.min(L.slots.length-1,el.slot)].push(stKEl(el,ctx));
+  const cls=['kb','kb-l-'+L.id,'kb-g-'+s.layout.gap];if(s.layout.valign!=='start')cls.push('kb-va-'+s.layout.valign);if(s.look.scale!=='m')cls.push('kb-sc-'+s.look.scale);
+  return `<div class="${cls.join(' ')}">${regions.map(r=>`<div class="kb-r">${r.join('')}</div>`).join('')}</div>`;
+}
+function stKRefreshVars(html,ctx){return String(html??'').replace(/<span class="kv" data-var="([\w.]+)"[^>]*>[^<]*<\/span>\u200B?/g,(m,k)=>stKVarHTML(k,ctx));}
+// Làm mới tại chỗ: chỉ thay giá trị biến và vùng dữ liệu tự động; chữ người soạn sửa ở chỗ khác giữ nguyên.
+function stKRefreshHTML(html,spec,data,o={}){
+  const ctx=stKCtx(data,o);let out=stKRefreshVars(html,ctx);if(!spec)return out;const s=stKNormalize(spec);if(s.raw)return out;
+  return out.replace(/<!--kb:([\w-]+)-->[\s\S]*?<!--\/kb:\1-->/g,(m,id)=>{const el=s.els.find(e=>e.id===id);return el&&ST_K_ELEMENTS[el.kind].bound?stKEl(el,ctx):m;});
+}
+function stKRefreshDoc(doc,data){let n=0;for(const p of doc?.pages||[])for(const b of p.blocks||[]){if(!b.kit||b.kit.detached)continue;const html=stKRefreshHTML(b.html,b.kit.spec,data,{rows:b.kit.rows});if(html!==b.html){b.html=html;n++;}}return n;}
+// Giữ nội dung độc lập: biến thành chữ thường, bỏ dấu vùng dữ liệu.
+function stKDetachHTML(html){return String(html??'').replace(/<span class="kv" data-var="[\w.]+"[^>]*>([^<]*)<\/span>\u200B?/g,'$1').replace(/<!--\/?kb:[\w-]+-->/g,'');}
+const stKHasData=spec=>{const s=stKNormalize(spec);return s.els.some(e=>ST_K_ELEMENTS[e.kind].bound||Object.values(e.p).some(v=>/\{\{\s*[\w.]+\s*\}\}|class="kv"/.test(String(v))));};
+// Ảnh đang dùng trong khối đã chèn: khoá ảnh của spec → ID ảnh trong tài liệu (dùng khi dựng lại theo template).
+function stKAssetsFromHTML(html,spec){const s=stKNormalize(spec),map={};for(const m of String(html??'').matchAll(/data-ke="([\w-]+)"[^>]*>(?:<!--[\s\S]*?-->)?<div class="img[^"]*"[^>]*><img[^>]*data-asset="([^"]*)"/g)){const el=s.els.find(e=>e.id===m[1]);if(el?.p.asset)map[el.p.asset]=m[2];}return map;}
+
+// Lớp khung của một khối trên trang (mọi loại khối dùng chung; chỉ nhận giá trị trong danh sách).
+function stKFrameClass(b){const f=b?.frame||{},c=[];const pad=stKPick(f.pad,ST_K_PADS,'auto'),rad=stKPick(f.radius,ST_K_RADII,'auto'),edge=stKPick(f.edge,ST_K_EDGES,'auto'),ac=stKPick(f.accent,ST_K_ACCENTS,'base');
+  if(pad!=='auto')c.push('st-pad-'+pad);if(rad!=='auto')c.push('st-rad-'+rad);if(edge!=='auto')c.push('st-edge-'+edge);if(ac!=='base')c.push('kb-ac-'+ac);return c.join(' ');}
+const stKFrameOf=s=>({pad:s.frame.pad,radius:s.frame.radius,edge:s.frame.edge,accent:s.look.accent});
+function stKBlockOf(spec,html){
+  const s=stKNormalize(spec),logo=s.els.find(e=>e.kind==='logo');
+  return {type:s.raw?s.baseType:'kit',w:s.size.w,style:s.frame.kind,h:s.size.h,html,frame:stKFrameOf(s),...(s.raw?s.extra:{}),...(logo?{logoW:Math.max(8,Math.min(180,+logo.p.w||32)),logoH:Math.max(8,Math.min(100,+logo.p.h||22))}:{})};
+}
+// Khung HTML của khối khi xem trước ngoài trình soạn (thư viện, trình dựng); cùng lớp với stBlockHTML của editor.
+function stKBlockMarkup(b){
+  const logo=b.type==='logo'||/class=["'][^"']*\blogo\b/.test(b.html);
+  return `<div class="st-b st-t-${stKE(b.type)} st-s-${stKE(b.style)} ${stKFrameClass(b)}${logo&&b.logoFrame!==false?' st-logo-frame':''}" style="--w:${+b.w||12}${b.h?`;--h:${+b.h}mm`:''}${logo?`;--logo-w:${+b.logoW||32}mm;--logo-h:${+b.logoH||22}mm;--logo-align:${['start','center','end'].includes(b.logoAlign)?b.logoAlign:'start'}`:''}"><div class="st-c">${b.html}</div></div>`;
+}
+const stKStrip=spec=>{const s=stKClone(spec);s.assets={};return s;};
+// Tạo khối để chèn vào báo giá từ phiên bản mới nhất; bản sao spec đi kèm khối để báo giá không phụ thuộc thư viện.
+function stKInstance(def,data,{assetId=()=>stId('a')}={}){
+  const ver=stKLatest(def);if(!ver)return null;const spec=stKNormalize(ver.spec),map={},assets={};
+  for(const [k,v] of Object.entries(spec.assets)){const id=assetId();map[k]=id;assets[id]=v;}
+  const block={id:stId('b'),...stKBlockOf(spec,stKRender(spec,data,{assetMap:map})),kit:{def:def.id,v:ver.v,name:def.name,spec:stKStrip(spec)}};
+  return {block,assets};
+}
+function stKIconKey(spec){const s=stKNormalize(spec);if(s.raw)return ST_TYPES[s.baseType]?s.baseType:'card';const k=(s.els.find(e=>!['eyebrow','heading','caption','divider','spacer'].includes(e.kind))||s.els[0])?.kind;
+  return {text:'text',richtext:'text',list:'list',checklist:'list',scope:'list',pains:'list',metric:'metric',compare:'metric',progress:'metric',quote:'quote',image:'image',logo:'logo',steps:'steps',nextSteps:'steps',sign:'sign',status:'note',cta:'note'}[k]||(['table','kv','apps','packages','price','options','solutions','kpis','timeline','risks','team'].includes(k)?'table':'card');}
+
+// Quy tắc dựng khối: lỗi chặn lưu phiên bản; cảnh báo / gợi ý giúp người dựng cân nhắc.
+function stKLint(spec){
+  const s=stKNormalize(spec),out=[],add=(level,msg,el)=>out.push({level,msg,...(el?{el:el.id}:{})}),name=e=>ST_K_ELEMENTS[e.kind].name,mm=Math.round(s.size.w/12*182);
+  const texts=e=>Object.entries(e.p).filter(([k])=>k!=='asset').map(([,v])=>String(v)).join('\n');
+  for(const e of s.els)for(const m of texts(e).matchAll(ST_K_TOKEN))if(!ST_K_VAR_MAP.has(m[1]))add('error',`${name(e)}: biến {{${m[1]}}} không có trong danh sách biến.`,e);
+  if(s.raw){if(!String(s.els[0].p.html).replace(/<[^>]+>/g,'').trim()&&!/<img/.test(s.els[0].p.html))add('error','Khối chưa có nội dung.');}
+  else{
+    const L=stKLayout(s.layout.kind);
+    if(!s.els.length)add('error','Khối chưa có thành phần. Thêm ít nhất một thành phần ở bước 3.');
+    else L.slots.forEach((n,i)=>{if(!s.els.some(e=>e.slot===i))add('warning',`Vùng “${n}” đang trống. Thêm thành phần hoặc chọn bố cục ít vùng hơn.`);});
+    if(L.cols>1&&mm/L.cols<38)add('warning',`Mỗi cột chỉ còn khoảng ${Math.round(mm/L.cols)} mm. Tăng độ rộng khối hoặc giảm số cột.`);
+    const heads=s.els.filter(e=>e.kind==='heading');if(heads.length>1)add('suggestion','Có hơn một tiêu đề. Mỗi khối nên có một câu kết luận chính; ý phụ dùng nhãn mục hoặc chữ đậm.',heads[1]);
+    if(s.els.length>12)add('warning','Khối có hơn 12 thành phần, dễ dài quá một trang. Cân nhắc tách thành hai khối.');
+    const tones=new Set(s.els.map(e=>e.s.tone).filter(t=>!['auto','muted'].includes(t)));if(tones.size>2)add('suggestion','Khối dùng hơn hai màu nhấn. Giữ màu trạng thái đúng nghĩa: xanh lá = xong, cam = chờ, đỏ = lỗi.');
+    for(const e of s.els){
+      if(['ok','warn','bad'].includes(e.s.tone)&&!['metric','progress','tag'].includes(e.kind))add('suggestion',`${name(e)}: màu trạng thái chỉ dùng cho nội dung có trạng thái thật.`,e);
+      if(['image','logo'].includes(e.kind)&&!s.assets[e.p.asset])add('warning',`${name(e)} chưa có ảnh. Khung trống không được in; người soạn sẽ phải chọn ảnh.`,e);
+      if(e.kind==='table'){const n=Math.max(...[e.p.head,...stKRows(e.p.rows)].map(l=>stKCells(l).length));if(n>12)add('error','Bảng tối đa 12 cột trên A4.',e);else if(n>4&&mm<120)add('warning',`Bảng ${n} cột trong khối rộng ${mm} mm sẽ chật. Tăng độ rộng khối.`,e);}
+      if(e.kind==='metric'&&!String(e.p.value).trim())add('warning','Chỉ số chưa có giá trị.',e);
+      if(e.kind==='cta'&&e.p.url&&!stP2URL(e.p.url))add('error','Link của lời kêu gọi cần bắt đầu bằng http:// hoặc https://.',e);
+      if(['price','options'].includes(e.kind)&&s.size.w<12)add('warning',`${name(e)} nhiều cột, nên dùng khối cả hàng (12/12).`,e);
+      if(e.kind==='apps'&&e.p.format==='table'&&mm<120)add('suggestion','Bảng ứng dụng có mô tả đọc tốt nhất ở khối rộng từ ⅔ trang.',e);
+    }
+  }
+  if(s.frame.kind==='accent')add('suggestion','Khung “Nổi bật” là điểm nhấn của trang; mỗi trang chỉ nên có một khối nổi bật.');
+  if(s.els.some(e=>/\[[^\]\n]{1,60}\]/.test(texts(e).replace(ST_K_TOKEN,''))))add('suggestion','Còn chỗ giữ chỗ [..]. Người soạn cần điền khi dùng; trình soạn sẽ nhắc trước khi gửi.');
+  return out;
+}
+
+// ---------- Kho: nhóm lồng nhau, khối, phiên bản ----------
+function stKNewKit(){return {schema:1,groups:[],defs:[],migrated:[],updated:Date.now()};}
+function stKNormalizeKit(kit){
+  const k=kit&&typeof kit==='object'?kit:{},groups=[],ids=new Set();
+  for(const g of Array.isArray(k.groups)?k.groups:[]){if(!g?.id||ids.has(g.id))continue;ids.add(g.id);groups.push({id:stKStr(g.id,80),name:stKStr(g.name||'Nhóm',80),parent:g.parent||null,order:+g.order||0});}
+  for(const g of groups){if(g.parent&&!ids.has(g.parent))g.parent=null;}
+  for(const g of groups){const seen=new Set([g.id]);let p=g.parent;while(p){if(seen.has(p)){g.parent=null;break;}seen.add(p);p=groups.find(x=>x.id===p)?.parent;}}
+  const defs=[],dids=new Set();
+  for(const d of Array.isArray(k.defs)?k.defs:[]){if(!d?.id||dids.has(d.id))continue;dids.add(d.id);
+    const versions=(Array.isArray(d.versions)?d.versions:[]).filter(v=>v&&Number.isInteger(v.v)&&v.v>0).map(v=>({v:v.v,at:+v.at||0,note:stKStr(v.note,200),spec:stKNormalize(v.spec)})).sort((a,b)=>a.v-b.v);
+    defs.push({id:stKStr(d.id,80),name:stKStr(d.name||'Khối',80),desc:stKStr(d.desc,200),group:ids.has(d.group)?d.group:null,order:+d.order||0,created:+d.created||Date.now(),updated:+d.updated||Date.now(),show:d.show!==false,...(d.seed?{seed:true}:{}),...(d.archivedAt?{archivedAt:+d.archivedAt}:{}),draft:d.draft?stKNormalize(d.draft):null,versions});}
+  return {schema:1,groups,defs,migrated:(Array.isArray(k.migrated)?k.migrated:[]).map(String),updated:+k.updated||Date.now()};
+}
+const stKSort=(a,b)=>(a.order-b.order)||a.name.localeCompare(b.name,'vi');
+const stKChildren=(kit,parent=null)=>kit.groups.filter(g=>(g.parent||null)===(parent||null)).sort(stKSort);
+function stKTree(kit,parent=null,depth=0){return stKChildren(kit,parent).flatMap(g=>[{g,depth},...stKTree(kit,g.id,depth+1)]);}
+function stKDescendants(kit,id){const out=new Set([id]);let grew=true;while(grew){grew=false;for(const g of kit.groups)if(g.parent&&out.has(g.parent)&&!out.has(g.id)){out.add(g.id);grew=true;}}return out;}
+function stKPath(kit,id){const names=[];let g=kit.groups.find(x=>x.id===id),guard=0;while(g&&guard++<20){names.unshift(g.name);g=kit.groups.find(x=>x.id===g.parent);}return names.join(' › ');}
+const stKNext=list=>list.reduce((m,x)=>Math.max(m,x.order||0),0)+1;
+function stKAddGroup(kit,name,parent=null,id=stId('g')){const p=parent&&kit.groups.some(g=>g.id===parent)?parent:null;const g={id,name:stKStr(String(name||'').trim()||'Nhóm mới',80),parent:p,order:stKNext(stKChildren(kit,p))};kit.groups.push(g);return g;}
+function stKRenameGroup(kit,id,name){const g=kit.groups.find(x=>x.id===id);if(!g)throw new Error('Không tìm thấy nhóm.');g.name=stKStr(String(name||'').trim()||g.name,80);return g;}
+function stKMoveGroup(kit,id,parent){
+  const g=kit.groups.find(x=>x.id===id);if(!g)throw new Error('Không tìm thấy nhóm.');const p=parent||null;
+  if(p&&stKDescendants(kit,id).has(p))throw new Error('Không thể chuyển nhóm vào chính nó hoặc nhóm con của nó.');
+  if(p&&!kit.groups.some(x=>x.id===p))throw new Error('Không tìm thấy nhóm đích.');
+  g.parent=p;g.order=stKNext(stKChildren(kit,p).filter(x=>x.id!==id));return g;
+}
+// Xoá nhóm không xoá khối: nhóm con và khối bên trong chuyển lên nhóm cha.
+function stKDeleteGroup(kit,id){const g=kit.groups.find(x=>x.id===id);if(!g)return 0;let n=0;for(const c of kit.groups)if(c.parent===id)c.parent=g.parent||null;for(const d of kit.defs)if(d.group===id){d.group=g.parent||null;n++;}kit.groups.splice(kit.groups.indexOf(g),1);return n;}
+const stKLatest=def=>def?.versions?.[def.versions.length-1]||null;
+const stKWorking=def=>def?.draft||stKLatest(def)?.spec||stKNewSpec();
+// Ảnh không còn thành phần nào dùng thì bỏ khỏi phiên bản lưu.
+function stKPrune(spec){const s=stKNormalize(spec),used=new Set(s.els.map(e=>e.p.asset).filter(Boolean));if(s.raw)for(const m of String(s.els[0].p.html).matchAll(/data-asset=["']([^"']+)/g))used.add(m[1]);for(const k of Object.keys(s.assets))if(!used.has(k))delete s.assets[k];return s;}
+function stKAddDef(kit,{id=stId('k'),name,desc='',group=null,spec,publish=false,note='',seed=false,at=Date.now()}={}){
+  const d={id,name:stKStr(String(name||'').trim()||'Khối mới',80),desc:stKStr(desc,200),group:group&&kit.groups.some(g=>g.id===group)?group:null,order:stKNext(kit.defs),created:at,updated:at,show:true,...(seed?{seed:true}:{}),draft:stKNormalize(spec||stKNewSpec()),versions:[]};
+  kit.defs.push(d);if(publish)stKPublish(kit,d.id,{note,at});return d;
+}
+// Lưu phiên bản: thêm bản mới, không sửa bản cũ. Trả null khi không khác phiên bản đang dùng.
+function stKPublish(kit,id,{note='',at=Date.now()}={}){
+  const d=kit.defs.find(x=>x.id===id);if(!d)throw new Error('Không tìm thấy khối.');
+  const last=stKLatest(d),spec=stKPrune(d.draft||last?.spec||stKNewSpec());
+  if(last&&JSON.stringify(last.spec)===JSON.stringify(spec)){d.draft=null;return null;}
+  const v={v:(last?.v||0)+1,at,note:stKStr(note,200),spec};d.versions.push(v);if(d.versions.length>ST_K_MAX_VERSIONS)d.versions.splice(0,d.versions.length-ST_K_MAX_VERSIONS);
+  d.draft=null;d.updated=at;return v;
+}
+function stKSetDraft(kit,id,spec){const d=kit.defs.find(x=>x.id===id);if(!d)return null;const n=stKNormalize(spec),last=stKLatest(d);d.draft=last&&JSON.stringify(stKPrune(n))===JSON.stringify(last.spec)?null:n;d.updated=Date.now();return d;}
+function stKDupDef(kit,id){const d=kit.defs.find(x=>x.id===id);if(!d)throw new Error('Không tìm thấy khối.');return stKAddDef(kit,{name:d.name+' · bản sao',desc:d.desc,group:d.group,spec:stKWorking(d),publish:!!stKLatest(d),note:'Nhân bản từ '+d.name});}
+function stKArchiveDef(kit,id,on=true){const d=kit.defs.find(x=>x.id===id);if(!d)return null;if(on)d.archivedAt=Date.now();else delete d.archivedAt;return d;}
+function stKPurgeDef(kit,id){const i=kit.defs.findIndex(x=>x.id===id&&x.archivedAt);if(i>=0)kit.defs.splice(i,1);return i>=0;}
+function stKMoveDef(kit,id,group){const d=kit.defs.find(x=>x.id===id);if(!d)return null;d.group=group&&kit.groups.some(g=>g.id===group)?group:null;d.updated=Date.now();return d;}
+// Khối hiện trong trình soạn: đã có ít nhất một phiên bản, không ở thùng rác, bật “Hiện trong trình soạn”.
+const stKVisible=kit=>(kit?.defs||[]).filter(d=>!d.archivedAt&&d.show!==false&&d.versions.length).sort(stKSort);
+// Khối báo giá đang dùng: def → {docs, versions:{v:số báo giá}}.
+function stKUsage(docs){const out=new Map();for(const doc of docs||[]){if(doc?.archivedAt)continue;const used=new Map();for(const p of doc.pages||[])for(const b of p.blocks||[])if(b.kit?.def)(used.get(b.kit.def)||used.set(b.kit.def,new Set()).get(b.kit.def)).add(b.kit.v);for(const [id,vs] of used){const u=out.get(id)||{docs:0,versions:{}};u.docs++;for(const v of vs)u.versions[v]=(u.versions[v]||0)+1;out.set(id,u);}}return out;}
+
+// Khối lưu từ báo giá (hoặc “Khối đã lưu” cũ): nội dung tự do, giữ nguyên HTML / kiểu / ảnh.
+function stKSnapshot(block,assets){
+  const b=block||{},extra={};for(const k of ['logoW','logoH','logoAlign','logoFrame'])if(b[k]!==undefined)extra[k]=b[k];
+  const f=b.frame||{};
+  return stKNormalize({raw:true,baseType:b.type,frame:{kind:b.style,pad:f.pad,radius:f.radius,edge:f.edge},look:{accent:f.accent},size:{w:b.w,h:b.h},extra,els:[{id:'raw',kind:'richtext',p:{html:String(b.html||'')}}],assets:assets||{}});
+}
+function stKSavedGroup(kit){return (kit.groups.find(g=>g.id==='saved')||stKAddGroup(kit,'Khối đã lưu',null,'saved')).id;}
+function stKMigrate(kit,legacy){
+  let n=0;for(const x of Array.isArray(legacy)?legacy:[]){if(!x?.id||kit.migrated.includes(String(x.id)))continue;
+    stKAddDef(kit,{id:'legacy-'+String(x.id).slice(0,60),name:x.name||'Khối đã lưu',group:stKSavedGroup(kit),spec:stKSnapshot(x.block,x.assets),publish:true,note:'Chuyển từ “Khối đã lưu” của phiên bản trước'});kit.migrated.push(String(x.id));n++;}
+  return n;
+}
+// Mẫu khởi tạo (ID cố định để nhiều máy trùng nhau khi đồng bộ). Chỉ tạo khi chưa có thư viện.
+function stKSeedKit(at=Date.now()){
+  const kit=stKNewKit();
+  stKAddGroup(kit,'Phụ lục',null,'seed-g-appendix');stKAddGroup(kit,'Thương mại',null,'seed-g-commercial');stKAddGroup(kit,'Tư vấn',null,'seed-g-consult');
+  const def=(id,group,name,desc,spec)=>stKAddDef(kit,{id,group,name,desc,spec,publish:true,note:'Mẫu khởi tạo',seed:true,at});
+  def('seed-k-apps','seed-g-appendix','Phụ lục · Ứng dụng theo phương án','Chỉ liệt kê app của các gói trong phương án khuyến nghị từ file Quote Lab, kèm công dụng.',{frame:{kind:'plain'},layout:{kind:'stack'},size:{w:12},els:[{id:'eyebrow',kind:'eyebrow',p:{text:'Phụ lục · Danh sách ứng dụng'}},{id:'title',kind:'heading',p:{text:'Ứng dụng trong phương án {{rec.label}}'}},{id:'scope',kind:'caption',p:{text:'{{rec.packages}} · kỳ hạn {{rec.years}} năm'}},{id:'apps',kind:'apps',p:{source:'rec'}}]});
+  def('seed-k-total','seed-g-commercial','Tổng đầu tư','Tổng đầu tư và bằng chữ của phương án khuyến nghị.',{frame:{kind:'accent'},layout:{kind:'stack'},size:{w:6},els:[{id:'metric',kind:'metric',p:{label:'Tổng đầu tư {{rec.years}} năm',value:'{{rec.totalShort}}',note:'{{rec.totalWords}}'}},{id:'note',kind:'caption',p:{text:'Phần mềm {{rec.monthly}} mỗi tháng, thanh toán trước toàn bộ kỳ hạn.'}}]});
+  def('seed-k-customer','seed-g-commercial','Khách hàng & báo giá','Hai cột thông tin tự điền từ hồ sơ khách hàng.',{frame:{kind:'outline'},layout:{kind:'cols2'},size:{w:12},els:[{id:'left',kind:'kv',slot:0,p:{rows:'Khách hàng | {{customer.name}}\nMã số thuế | {{customer.tax}}\nĐịa chỉ | {{customer.address}}'}},{id:'right',kind:'kv',slot:1,p:{rows:'Số báo giá | {{quote.no}}\nNgày | {{quote.date}}\nHiệu lực đến | {{quote.valid}}'}}]});
+  def('seed-k-options','seed-g-commercial','So sánh phương án','Các phương án trong file Quote Lab, đánh dấu khuyến nghị.',{frame:{kind:'white'},layout:{kind:'stack'},size:{w:12},els:[{id:'title',kind:'heading',p:{text:'Các phương án đã cân nhắc'}},{id:'options',kind:'options'}]});
+  def('seed-k-commit','seed-g-consult','Cam kết hai bên','Đầu khối + hai cột trách nhiệm của Base và khách hàng.',{frame:{kind:'card'},layout:{kind:'head2'},size:{w:12},els:[{id:'title',kind:'heading',slot:0,p:{text:'Cam kết của hai bên'}},{id:'base-k',kind:'eyebrow',slot:1,p:{text:'Base cam kết'}},{id:'base',kind:'list',slot:1,p:{items:'[Cam kết đã thống nhất]\n[Cam kết tiếp theo]',style:'check'}},{id:'cus-k',kind:'eyebrow',slot:2,p:{text:'{{customer.short}} phối hợp'}},{id:'cus',kind:'list',slot:2,p:{items:'[Đầu mối và dữ liệu cần chuẩn bị]\n[Thời gian dành cho đào tạo]'}}]});
+  def('seed-k-next','seed-g-commercial','Bước tiếp theo theo hồ sơ','Các bước có người phụ trách và ngày, lấy từ hồ sơ.',{frame:{kind:'plain'},layout:{kind:'bodyFoot'},size:{w:12},els:[{id:'title',kind:'heading',slot:0,p:{text:'Bước tiếp theo'}},{id:'steps',kind:'nextSteps',slot:0},{id:'contact',kind:'caption',slot:1,p:{text:'Người lập: {{preparer.name}} · {{preparer.phone}} · {{preparer.email}}'}}]});
+  return kit;
+}
+// Dữ liệu mẫu để xem trước biến trong trình dựng (không phải số liệu báo giá thật).
+function stKSampleData(){
+  const line=(scope,id,name,price,apps,seats)=>({scope,id,name,seats,monthly:price*seats,apps:[...apps]});
+  const opt=(id,label,lines,years)=>{const monthly=lines.reduce((s,l)=>s+l.monthly,0),software=monthly*years*12;return {id,label,r:{id,years,lines,monthly,software,listPrice:software,discount:0,discountAmount:0,serviceFee:0,total:software,feeKnown:true,staff:[{name:'Văn phòng',count:60},{name:'Nhà máy',count:20}]}};};
+  const options=[opt('sample-1','Vận hành liền mạch',[line('work',WORK[4].id,WORK[4].name,WORK[4].price,WORK[4].apps,60),line('hrm',HRM[0].id,HRM[0].name,HRM[0].price,HRM[0].apps,80)],2),opt('sample-2','Điều hành trọn gói',[line('combo',COMBOS[0].id,COMBOS[0].name,COMBOS[0].price,[...COMBOS[0].work,...COMBOS[0].hrm],80)],3)];
+  return {kind:'quote-studio-data',version:3,sample:true,deal:parseDealFile(DEAL_SAMPLE),options,recommendedId:'sample-1',useCases:[],scopeNames:QO_SCOPE_NAMES,policy:{effective:'01/10/2026'}};
+}
+
 const ST_TEMPLATE_KEY='st-document-templates';
 function stInputPayload(input){
   if(!input?.package)throw new Error('Chưa có file phương án từ Quote Lab.');
@@ -1727,9 +2261,11 @@ function stApplyDocumentTemplate(fresh,tpl){
         const li=(option?.r.lines||[]).filter(l=>l.apps?.length).findIndex(l=>(!scope||l.scope===scope||scope==='crm'&&l.scope.startsWith('crm-'))&&!!l.addon===!!(binding?.addon||group==='addon'));
         const targetId=old.packageId?.endsWith(':all')?`quote:${option.id}:all`:old.packageId==='core'?'core':li>=0?`quote:${option.id}:${li}`:null;const pkg=targetId?stPackageChoices(fresh.data).find(p=>p.id===targetId):null;if(pkg)pages[i].blocks.push({...JSON.parse(JSON.stringify(old)),id:stId('b'),packageId:pkg.id,html:stAppListHTML(pkg),focus:false,reusable:false});continue;
       }
+      // Khối thiết kế từ Thư viện khối: dựng lại từ bản spec đã khoá trong template với dữ liệu khách mới (biến, vùng dữ liệu, ảnh giữ nguyên).
+      if(old.kit&&!old.kit.raw&&!stKNormalize(old.kit.spec).raw&&!old.kit.detached){const b=JSON.parse(JSON.stringify(old)),spec=stKNormalize(old.kit.spec);b.id=stId('b');b.focus=!!old.focus;b.reusable=false;delete b.kit.rows;b.html=stKRender(spec,fresh.data,{assetMap:stKAssetsFromHTML(old.html,spec)});pages[i].blocks.push(b);continue;}
       if(old.reusable&&!old.src&&!['payment','costOfDelay','assumptions'].includes(old.type)){const b=JSON.parse(JSON.stringify(old));b.id=stId('b');b.focus=false;pages[i].blocks.push(b);continue;}
       const n=pending.findIndex(b=>stSlotKey(b)===stSlotKey(old));if(n<0)continue;const b=pending.splice(n,1)[0];
-      for(const k of ['w','style','h','logoW','logoH','logoAlign','logoFrame'])if(old[k]!==undefined)b[k]=old[k];b.focus=!!old.focus;pages[i].blocks.push(b);
+      for(const k of ['w','style','h','logoW','logoH','logoAlign','logoFrame','frame'])if(old[k]!==undefined)b[k]=old[k];b.focus=!!old.focus;pages[i].blocks.push(b);
     }
     pages.at(-1).blocks.push(...pending);out.push(...pages.filter(p=>p.blocks.length));
   }
@@ -1769,7 +2305,7 @@ async function stFirebaseTransport(config,{onAuth,onIndex,onError}){
     uid=user.uid;
     // Fail closed nếu database còn dùng Test mode / cho đọc không cần đăng nhập.
     const probeApp=appSDK.initializeApp(config,'studio-access-check-'+stQuoteId('probe')),probeDB=dbSDK.getFirestore(probeApp);
-    try{await dbSDK.getDoc(dbSDK.doc(probeDB,'quoteStudioUsers',uid,'entities','__access_check__'));onError(new Error('Firestore đang cho phép đọc không cần đăng nhập. Áp Rules riêng tư của Quote Studio trước khi đồng bộ.'));uid=null;return;}catch(e){if(e.code!=='permission-denied'){onError(e);uid=null;return;}}finally{await dbSDK.terminate(probeDB);await appSDK.deleteApp(probeApp);}
+    try{await dbSDK.getDoc(dbSDK.doc(probeDB,'quoteStudioUsers',uid,'entities','studio-access-check'));onError(new Error('Firestore đang cho phép đọc không cần đăng nhập. Áp Rules riêng tư của Quote Studio trước khi đồng bộ.'));uid=null;return;}catch(e){if(e.code!=='permission-denied'){onError(e);uid=null;return;}}finally{await dbSDK.terminate(probeDB);await appSDK.deleteApp(probeApp);}
     await onAuth({uid,email:user.email});
     unsub=dbSDK.onSnapshot(dbSDK.collection(db,...base(),'entities'),{includeMetadataChanges:true},s=>onIndex(s.docs.map(d=>d.data()),{fromCache:s.metadata.fromCache,pending:s.metadata.hasPendingWrites}),onError);
   });
@@ -1852,24 +2388,310 @@ function stCreateCloud({repo,adapter,transportFactory=stFirebaseTransport,onStat
   return {state,start,getConfig:()=>config?{...config}:null,queue:(kind,entity)=>{queue=queue.catch(()=>{}).then(()=>enqueue(kind,entity)).catch(error);return queue;},flush,login:async()=>{if(!started)await start();if(!transport)throw new Error('Cần cấu hình Firebase trước.');try{return await transport.login();}catch(e){error(e);throw e;}},logout:async()=>{ready=false;clearTimeout(timer);await transport?.logout();},configure:async value=>{const next=stCloudConfig(value);await repo.setKV(ST_CLOUD_CONFIG_KEY,next);await transport?.close();started=false;user=null;ready=false;transport=null;await start(next);},wait:()=>Promise.all([queue,indexQueue]),stop:async()=>{closed=true;clearTimeout(timer);await transport?.close();}};
 }
 
+
+// Thư viện khối ngoài trình soạn: quản lý nhóm / khối và trình dựng khối 5 bước.
+// Mọi thay đổi kho đi qua updateKV (một transaction) để tab trình soạn và tab thư viện không ghi đè nhau.
+const stKUE=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ST_KU_WRITER=stQuoteId('kit');
+async function stKitRead(repo){
+  const legacy=await repo.getKV(ST_K_LEGACY)||[];let kit=await repo.getKV(ST_K_KEY);
+  if(kit){kit=stKNormalizeKit(kit);if(!stKMigrate(stKNormalizeKit(kit),legacy))return kit;}
+  return repo.updateKV(ST_K_KEY,cur=>{const k=stKNormalizeKit(cur||stKSeedKit());stKMigrate(k,legacy);return k;});
+}
+const stKitEntity=(kit,legacy)=>({id:'block-library',name:'Thư viện khối',blocks:legacy||[],kit});
+async function stKitWrite(repo,cloud,fn){
+  let err=null,out;
+  const kit=await repo.updateKV(ST_K_KEY,cur=>{const k=stKNormalizeKit(cur||stKSeedKit());try{out=fn(k);}catch(e){err=e;return cur||k;}k.updated=Date.now();return k;});
+  if(err)throw err;
+  try{await cloud?.queue('library',stKitEntity(kit,await repo.getKV(ST_K_LEGACY)||[]));}catch{}
+  stQuoteEvents.emit({type:'kit-saved',writer:ST_KU_WRITER});
+  return {kit:stKNormalizeKit(kit),out};
+}
+function stKUSanitize(html){
+  const t=document.createElement('template');t.innerHTML=String(html??'');
+  t.content.querySelectorAll('script,style,iframe,object,embed,link,meta,form,input,button,textarea,select').forEach(n=>n.remove());
+  t.content.querySelectorAll('*').forEach(n=>{for(const a of [...n.attributes]){const v=a.value.trim().toLowerCase();if(a.name.startsWith('on')||((a.name==='href'||a.name==='src'||a.name==='xlink:href')&&(v.startsWith('javascript:')||(v.startsWith('data:')&&!v.startsWith('data:image/')))))n.removeAttribute(a.name);}});
+  return t.innerHTML;
+}
+async function stKUImage(file){
+  if(!file)throw new Error('Chưa chọn ảnh.');if(file.size>12e6)throw new Error('Ảnh lớn hơn 12 MB. Hãy chọn ảnh nhỏ hơn.');
+  const url=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(file);});
+  if(/svg/.test(file.type))return url;const img=new Image();img.src=url;await img.decode();const k=Math.min(1,1800/Math.max(img.width,img.height));if(k>=1&&file.size<=600e3)return url;
+  const cv=document.createElement('canvas');cv.width=Math.round(img.width*k);cv.height=Math.round(img.height*k);cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height);return cv.toDataURL(/png|webp/.test(file.type)?'image/png':'image/jpeg',.9);
+}
+const KX_ICONS={text:'<path d="M5 6h14M5 10.5h14M5 15h9"/>',data:'<path d="M4 19.5h16M7 16v-5M12 16V6M17 16v-8"/>',media:'<rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9.5" cy="10" r="1.6"/><path d="M5 18l5-4.5 3.5 3 2.5-2 3 3"/>',action:'<circle cx="6" cy="7" r="2"/><circle cx="6" cy="17" r="2"/><path d="M11 7h9M11 17h9M6 9v6"/>',bound:'<ellipse cx="12" cy="6.5" rx="7" ry="2.5"/><path d="M5 6.5v11c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-11M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/>'};
+const stKUIcon=(kind,g)=>`<svg class="kx-ic" viewBox="0 0 24 24" aria-hidden="true">${kind==='icon'?ST_K_ICONS.star:KX_ICONS[g||ST_K_ELEMENTS[kind]?.g]||KX_ICONS.text}</svg>`;
+function stKULayoutThumb(id){
+  const W=64,H=40,p=4,g=3,iw=W-2*p,ih=H-2*p,f=n=>n.toFixed(1),box=(x,y,w,h)=>`<rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" rx="1.5"/>`;
+  const cols=(n,y,h)=>Array.from({length:n},(_,i)=>box(p+i*(iw+g)/n,y,(iw+g)/n-g,h)).join(''),third=(iw-g)/3;
+  const body={stack:box(p,p,iw,ih),cols2:cols(2,p,ih),cols3:cols(3,p,ih),cols4:cols(4,p,ih),side:box(p,p,third,ih)+box(p+third+g,p,third*2,ih),sideR:box(p,p,third*2,ih)+box(p+third*2+g,p,third,ih),head2:box(p,p,iw,8)+cols(2,p+11,ih-11),head3:box(p,p,iw,8)+cols(3,p+11,ih-11),bodyFoot:box(p,p,iw,ih-10)+box(p,H-p-7,iw,7)}[id]||'';
+  return `<svg class="kx-lay" viewBox="0 0 ${W} ${H}" aria-hidden="true"><rect class="pg" x=".5" y=".5" width="${W-1}" height="${H-1}" rx="3"/>${body}</svg>`;
+}
+const KX_STEPS=[['frame','Khung','Có viền hay không, nổi bao nhiêu'],['layout','Bố cục','Chia khung thành các vùng'],['elements','Thành phần','Chọn từ kho element'],['size','Kích thước & màu','Độ rộng, chiều cao, màu nhấn'],['check','Kiểm tra & lưu','Quy tắc và phiên bản']];
+const stKUTime=n=>new Date(n||Date.now()).toLocaleString('vi-VN',{dateStyle:'short',timeStyle:'short'});
+
+function setupKitStudio({repo,cloud,toast,dialog,listDocs=async()=>[],onHome=()=>{}}){
+  const root=document.getElementById('st-kit');if(!root)return null;
+  const E=stKUE,S={kit:null,view:'library',group:'all',tab:'mine',query:'',def:null,work:null,sel:null,step:'frame',bg:'light',data:'sample',slot:0,undo:[],redo:[],last:'',burst:false,burstT:0,saveT:0,saving:null,metaT:0,docs:[],usage:new Map()};
+  const sample=stKSampleData();
+  const def=()=>S.kit?.defs.find(d=>d.id===S.def);
+  const previewData=()=>S.data.startsWith('doc:')?S.docs.find(d=>'doc:'+d.id===S.data)?.data||sample:sample;
+  const realGroup=()=>S.kit.groups.some(g=>g.id===S.group)?S.group:null;
+  async function write(fn){const {kit,out}=await stKitWrite(repo,cloud,fn);S.kit=kit;return out;}
+  async function loadDocs(){try{S.docs=(await listDocs()).filter(d=>!d.archivedAt);S.usage=stKUsage(S.docs);}catch{S.docs=[];S.usage=new Map();}}
+  function setURL(){try{const url=new URL(location.href);for(const k of ['doc','quotation','draft','home','preview'])url.searchParams.delete(k);url.searchParams.set('blocks','1');if(S.view==='builder'&&S.def)url.searchParams.set('block',S.def);else url.searchParams.delete('block');history.replaceState(null,'',url);}catch{}}
+  const groupOptions=(sel,{exclude=null,none='Chưa xếp nhóm'}={})=>{const ex=exclude?stKDescendants(S.kit,exclude):new Set();return `<option value="">${E(none)}</option>`+stKTree(S.kit).filter(({g})=>!ex.has(g.id)).map(({g,depth})=>`<option value="${E(g.id)}"${g.id===sel?' selected':''}>${'　'.repeat(depth)}${depth?'└ ':''}${E(g.name)}</option>`).join('');};
+  // Xem trước luôn qua bước làm sạch HTML (nội dung tự do có thể đến từ kho / đồng bộ).
+  const preview=(spec,data,o={})=>{const s=stKNormalize(spec);return stKBlockMarkup(stKBlockOf(s,stKUSanitize(stKRender(s,data,o))));};
+  const hydrate=(el,assets)=>el.querySelectorAll('img[data-asset]').forEach(img=>{const src=assets?.[img.dataset.asset]||'';if(src)img.src=src;else img.removeAttribute('src');img.closest('.img')?.classList.toggle('is-empty',!src);});
+  const seg=(label,attr,key,list,cur)=>`<p class="st-lbl">${E(label)}</p><div class="kx-seg">${list.map(([v,l])=>`<button type="button" data-${attr}="${key}" data-v="${v}" class="${cur===v?'on':''}" aria-pressed="${cur===v}">${E(l)}</button>`).join('')}</div>`;
+  async function ask(title,label,value=''){const ok=await dialog(title,`<label class="st-field"><span>${E(label)}</span><input id="kx-ask" maxlength="80" value="${E(value)}"></label>`,[{label:'Huỷ',value:false},{label:'Lưu',value:true,primary:true}]);return ok?document.getElementById('kx-ask')?.value.trim()||null:null;}
+
+  // ---------- Thư viện ----------
+  function libraryList(){
+    const kit=S.kit,match=t=>!S.query||t.toLowerCase().includes(S.query.toLowerCase());
+    if(S.tab==='system'){const presets=ST_PRESETS.filter(p=>p.html&&match(p.name+' '+p.group));return presets.map(p=>`<article class="kl-card"><div class="kl-thumb"><div class="kl-zoom"><section class="st-page kl-page" data-bg="light"><div class="st-sheet"><div class="st-grid">${preview(stKSnapshot({type:p.type,style:ST_TYPES[p.type].style,w:p.w||ST_TYPES[p.type].w,html:p.html}),sample)}</div></div></section></div></div><div class="kl-meta"><div class="kl-badges"><span class="sh-tag">${E(p.group)}</span></div><h3>${E(p.name)}</h3><p>Mẫu có sẵn của Studio. Tạo bản tuỳ chỉnh để sửa và đưa vào thư viện của bạn.</p></div><div class="sh-card-actions"><button type="button" class="primary" data-k="preset-copy" data-id="${E(p.id)}">Tạo bản tuỳ chỉnh</button></div></article>`).join('')||'<div class="sh-empty"><h3>Không có mẫu phù hợp.</h3></div>';}
+    const order=new Map(stKTree(kit).map(({g},i)=>[g.id,i]));
+    const defs=kit.defs.filter(d=>S.group==='trash'?d.archivedAt:!d.archivedAt).filter(d=>['all','trash'].includes(S.group)||(S.group==='none'?!d.group:stKDescendants(kit,S.group).has(d.group))).filter(d=>match(d.name+' '+d.desc)).sort((a,b)=>((order.get(a.group)??-1)-(order.get(b.group)??-1))||(a.order-b.order));
+    if(!defs.length)return `<div class="sh-empty"><h3>${S.group==='trash'?'Thùng rác trống.':S.query?'Không có khối phù hợp.':'Nhóm này chưa có khối.'}</h3>${S.group==='trash'?'':'<p>Tạo khối mới theo 5 bước: khung → bố cục → thành phần → kích thước & màu → lưu phiên bản.</p><button type="button" class="primary" data-k="def-new">＋ Khối mới</button>'}</div>`;
+    return defs.map(d=>{const v=stKLatest(d),u=S.usage.get(d.id);return `<article class="kl-card" data-def="${E(d.id)}"><div class="kl-thumb" data-k="${d.archivedAt?'':'def-edit'}" data-id="${E(d.id)}" role="${d.archivedAt?'img':'button'}" tabindex="${d.archivedAt?-1:0}" aria-label="${E(d.name)}"><div class="kl-zoom"><section class="st-page kl-page" data-bg="light"><div class="st-sheet"><div class="st-grid">${preview(stKWorking(d),sample)}</div></div></section></div></div>
+<div class="kl-meta"><div class="kl-badges">${v?`<span class="sh-tag">v${v.v}</span>`:'<span class="sh-tag kl-draft">Chưa có phiên bản</span>'}${d.draft&&v?'<span class="sh-tag kl-draft">Nháp chưa lưu</span>':''}${v&&d.show!==false&&!d.archivedAt?'<span class="kl-live">Hiện trong trình soạn</span>':''}</div><h3>${E(d.name)}</h3>${d.desc?`<p>${E(d.desc)}</p>`:''}<small>${E(d.group?stKPath(kit,d.group):'Chưa xếp nhóm')}${u?` · đang dùng trong ${u.docs} báo giá`:''}</small></div>
+<div class="sh-card-actions">${d.archivedAt?`<button type="button" data-k="def-restore" data-id="${E(d.id)}">Khôi phục</button><button type="button" class="danger" data-k="def-purge" data-id="${E(d.id)}">Xoá vĩnh viễn</button>`:`<button type="button" class="primary" data-k="def-edit" data-id="${E(d.id)}">Thiết kế</button><button type="button" data-k="def-dup" data-id="${E(d.id)}">Nhân bản</button><label class="kl-move"><span>Chuyển</span><select data-k-move="${E(d.id)}" aria-label="Chuyển ${E(d.name)} sang nhóm">${groupOptions(d.group)}</select></label><button type="button" class="danger" data-k="def-del" data-id="${E(d.id)}">Xoá</button>`}</div></article>`;}).join('');
+  }
+  function paintList(){const el=root.querySelector('#kl-list');if(!el)return;el.innerHTML=libraryList();el.querySelectorAll('.kl-card[data-def]').forEach(c=>{const d=S.kit.defs.find(x=>x.id===c.dataset.def);hydrate(c,stKWorking(d).assets);});}
+  function renderLibrary(){
+    S.view='library';const kit=S.kit,live=kit.defs.filter(d=>!d.archivedAt),trashN=kit.defs.length-live.length;
+    if(!['all','none','trash'].includes(S.group)&&!kit.groups.some(g=>g.id===S.group))S.group='all';
+    const count=id=>{const ids=stKDescendants(kit,id);return live.filter(d=>ids.has(d.group)).length;};
+    const title=S.tab==='system'?'Mẫu hệ thống':S.group==='all'?'Tất cả khối':S.group==='none'?'Chưa xếp nhóm':S.group==='trash'?'Thùng rác':stKPath(kit,S.group);
+    const nav=(id,label,n,depth=0,acts='')=>`<div class="kl-node${S.tab==='mine'&&S.group===id?' on':''}" style="--depth:${depth}"><button type="button" class="kl-node-name" data-kg="${E(id)}">${label}<small>${n}</small></button>${acts}</div>`;
+    root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><button type="button" data-k="home">← Danh sách báo giá</button><span class="sh-account"><span data-cloud-status></span></span></header>
+<main class="kl"><aside class="kl-side"><div class="kl-side-h"><b>Nhóm khối</b><button type="button" data-k="group-add" title="Thêm nhóm ở cấp gốc">＋ Nhóm</button></div><nav class="kl-tree" aria-label="Nhóm khối">
+${nav('all','Tất cả khối',live.length)}${stKTree(kit).map(({g,depth})=>nav(g.id,E(g.name),count(g.id),depth,`<span class="kl-node-act"><button type="button" data-k="group-sub" data-id="${E(g.id)}" title="Thêm nhóm con" aria-label="Thêm nhóm con trong ${E(g.name)}">＋</button><button type="button" data-k="group-rename" data-id="${E(g.id)}" title="Đổi tên" aria-label="Đổi tên ${E(g.name)}">✎</button><button type="button" data-k="group-move" data-id="${E(g.id)}" title="Chuyển vào nhóm khác" aria-label="Chuyển ${E(g.name)}">⇄</button><button type="button" data-k="group-del" data-id="${E(g.id)}" title="Xoá nhóm" aria-label="Xoá nhóm ${E(g.name)}">✕</button></span>`)).join('')}
+${nav('none','Chưa xếp nhóm',live.filter(d=>!d.group).length)}${nav('trash','Thùng rác',trashN)}</nav>
+<div class="kl-guide"><b>Tư duy dựng một khối</b><ol><li><b>Khung</b> · khối nổi bao nhiêu trên trang</li><li><b>Bố cục</b> · chia khung thành vùng</li><li><b>Thành phần</b> · quyết định chức năng: chữ, số liệu, ảnh, hành động, dữ liệu tự động</li><li><b>Kích thước & màu</b> · độ rộng lưới, màu nhấn có cặp sáng/tối</li><li><b>Kiểm tra & lưu</b> · mỗi lần lưu là một phiên bản; báo giá cũ giữ phiên bản đã dùng</li></ol></div></aside>
+<section class="kl-main"><div class="sh-heading"><div><p class="sh-eyebrow">THƯ VIỆN KHỐI</p><h1>${E(title)}</h1><p>Khối lưu ở đây hiện trong mục “Thư viện của bạn” khi soạn báo giá. Biến dữ liệu tự điền theo hồ sơ và phương án Quote Lab của từng báo giá.</p></div><div class="sh-card-actions"><button type="button" class="primary sh-new" data-k="def-new">＋ Khối mới</button></div></div>
+<div class="sh-toolbar"><div class="sh-tabs"><button type="button" data-tab="mine" class="${S.tab==='mine'?'on':''}">Thư viện của bạn (${live.length})</button><button type="button" data-tab="system" class="${S.tab==='system'?'on':''}">Mẫu hệ thống</button></div><label><input type="search" id="kl-search" placeholder="Tìm khối" value="${E(S.query)}"></label></div>
+<div class="kl-cards" id="kl-list"></div></section></main>`;
+    root.querySelectorAll('[data-cloud-status]').forEach(el=>el.textContent=cloud?.state?.message||'');paintList();
+  }
+
+  // ---------- Trình dựng ----------
+  async function openBuilder(id){
+    const d=S.kit.defs.find(x=>x.id===id);if(!d||d.archivedAt){renderLibrary();return;}
+    Object.assign(S,{view:'builder',tab:'mine',def:id,work:stKNormalize(stKWorking(d)),sel:null,undo:[],redo:[],slot:0,burst:false});S.last=JSON.stringify(S.work);S.step=S.work.raw?'elements':S.work.els.length?'elements':'frame';
+    setURL();renderBuilder();
+  }
+  function dataOptions(){return `<option value="sample"${S.data==='sample'?' selected':''}>Dữ liệu mẫu</option><option value="names"${S.data==='names'?' selected':''}>Hiện tên biến</option>${S.docs.filter(d=>d.data?.options?.length).map(d=>`<option value="doc:${E(d.id)}"${S.data==='doc:'+d.id?' selected':''}>Báo giá · ${E(d.title)}</option>`).join('')}`;}
+  function renderBuilder(){
+    const d=def();
+    root.innerHTML=`<header class="sh-top kx-top"><button type="button" data-k="back">← Thư viện khối</button><input id="kx-name" value="${E(d.name)}" aria-label="Tên khối" maxlength="80"><label class="kx-top-group"><span>Nhóm</span><select id="kx-group">${groupOptions(d.group)}</select></label><span class="kx-state" id="kx-state" aria-live="polite"></span><span class="kx-top-act"><button type="button" data-k="undo" id="kx-undo" title="Hoàn tác (⌘Z / Ctrl+Z)" aria-label="Hoàn tác">↶</button><button type="button" data-k="redo" id="kx-redo" title="Làm lại" aria-label="Làm lại">↷</button><button type="button" class="primary" data-k="publish" id="kx-publish"></button></span></header>
+<main class="kx"><aside class="kx-left" id="kx-left"></aside><section class="kx-stage"><div class="kx-bar"><div class="kx-seg" role="group" aria-label="Nền trang">${[['light','Trang sáng'],['dark','Trang tối']].map(([v,l])=>`<button type="button" data-bgk="${v}" class="${S.bg===v?'on':''}" aria-pressed="${S.bg===v}">${l}</button>`).join('')}</div><label class="kx-data"><span>Xem với</span><select id="kx-data">${dataOptions()}</select></label></div><div class="kx-canvas" id="kx-canvas"></div><p class="kx-note" id="kx-note"></p></section><aside class="kx-right" id="kx-right"></aside></main>`;
+    paint('tsrc');
+  }
+  const keep=(el,fn)=>{const y=el?.scrollTop;fn();if(el)el.scrollTop=y;};
+  function paint(parts){if(S.view!=='builder')return;if(parts.includes('t'))paintTop();if(parts.includes('s'))keep(root.querySelector('#kx-left'),paintStep);if(parts.includes('r'))keep(root.querySelector('#kx-right'),paintRight);if(parts.includes('c'))paintStage();}
+  function paintTop(){
+    const d=def(),v=stKLatest(d),dirty=!v||!!d.draft||S.saveT;const state=root.querySelector('#kx-state');
+    if(state)state.textContent=S.saveT?'Đang lưu nháp…':!v?'Bản nháp · chưa có phiên bản':dirty?`Có thay đổi · đang dùng v${v.v}`:`Đã lưu v${v.v} · ${stKUTime(v.at)}`;
+    const u=root.querySelector('#kx-undo'),r=root.querySelector('#kx-redo'),p=root.querySelector('#kx-publish');if(u)u.disabled=!S.undo.length;if(r)r.disabled=!S.redo.length;if(p)p.textContent=`Lưu phiên bản v${(v?.v||0)+1}`;
+  }
+  function stepBody(){
+    const s=S.work,d=def();
+    if(S.step==='frame')return `<p class="kx-lead">Khung quyết định khối “nổi” bao nhiêu trên trang. Chọn mức nhẹ nhất đủ dùng: không khung → viền mảnh → thẻ nền → nổi bật.</p><div class="kx-opts">${ST_K_FRAMES.map(f=>`<button type="button" class="kx-opt${s.frame.kind===f.id?' on':''}" data-frame-kind="${f.id}" aria-pressed="${s.frame.kind===f.id}"><i class="st-swatch" data-bg="${S.bg}"><b class="st-s-${f.id}"></b></i><span><b>${E(f.name)}</b><small>${E(f.hint)}</small></span></button>`).join('')}</div>${seg('Đệm trong khung','frame','pad',ST_K_PADS,s.frame.pad)}${seg('Bo góc','frame','radius',ST_K_RADII,s.frame.radius)}${seg('Màu viền / vạch','frame','edge',ST_K_EDGES,s.frame.edge)}<p class="kx-mini">${s.frame.kind==='plain'?'Không khung: chọn màu viền sẽ thêm viền mảnh quanh khối.':'“Theo khung” giữ đúng thông số của kiểu khung trong design system Base 2.0.'}</p>`;
+    if(S.step==='layout')return s.raw?'<p class="kx-lead">Khối nội dung tự do (lưu từ báo giá) giữ nguyên bố cục đã soạn nên không chia vùng. Có thể đổi khung, kích thước, màu và sửa nội dung ở bước 3.</p>':`<p class="kx-lead">Bố cục chia khung thành các vùng. Thành phần trong cùng vùng xếp từ trên xuống. Khi khối hẹp, các cột tự gộp để chữ không bị bóp.</p><div class="kx-opts kx-lays">${ST_K_LAYOUTS.map(L=>`<button type="button" class="kx-opt${s.layout.kind===L.id?' on':''}" data-layout-kind="${L.id}" aria-pressed="${s.layout.kind===L.id}">${stKULayoutThumb(L.id)}<span><b>${E(L.name)}</b><small>${E(L.hint)}</small></span></button>`).join('')}</div>${seg('Khoảng cách giữa vùng','lay','gap',ST_K_GAPS,s.layout.gap)}${seg('Căn các vùng theo chiều dọc','lay','valign',ST_K_VALIGNS,s.layout.valign)}`;
+    if(S.step==='elements'){
+      if(s.raw)return `<p class="kx-lead">Nội dung tự do: sửa trực tiếp như trong trình soạn. Chèn biến để khối tự lấy dữ liệu từ hồ sơ / phương án khi chèn vào báo giá.</p>${varPicker('html')}<section class="st-page kx-richpage" data-bg="light"><div class="st-sheet"><div class="st-c kx-rich" id="kx-rich" contenteditable="true" spellcheck="false">${stKUSanitize(s.els[0].p.html)}</div></div></section>`;
+      const L=stKLayout(s.layout.kind);
+      return `<p class="kx-lead">Thành phần quyết định chức năng của khối: hiển thị gì, lấy dữ liệu từ đâu, người soạn sẽ sửa gì.</p>${L.slots.length>1?`<label class="st-field"><span>Thêm vào vùng</span><select id="kx-slot">${L.slots.map((n,i)=>`<option value="${i}"${S.slot===i?' selected':''}>${E(n)}</option>`).join('')}</select></label>`:''}${ST_K_GROUPS.map(([g,label,hint])=>`<section class="kx-pal"><p class="st-lbl">${E(label)}</p><p class="kx-mini">${E(hint)}</p><div class="kx-pal-grid">${ST_K_PALETTE.map((x,i)=>({x,i})).filter(({x})=>(x.g||ST_K_ELEMENTS[x.kind].g)===g).map(({x,i})=>`<button type="button" class="kx-pal-i" data-add="${i}" title="${E(x.desc||ST_K_ELEMENTS[x.kind].desc)}">${stKUIcon(x.kind,g)}<span>${E(x.name||ST_K_ELEMENTS[x.kind].name)}</span></button>`).join('')}</div></section>`).join('')}`;
+    }
+    if(S.step==='size'){const mm=Math.round(s.size.w/12*182);return `<p class="st-lbl">Độ rộng mặc định trên lưới 12 cột</p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${s.size.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div><p class="kx-mini">≈ ${mm} mm trên A4. Trong báo giá vẫn kéo cạnh khối để đổi.</p><label class="st-field"><span>Chiều cao tối thiểu · mm (0 = tự động theo nội dung)</span><input type="number" id="kx-h" min="0" max="250" step="2" value="${s.size.h}"></label><p class="st-lbl">Màu nhấn</p><div class="kx-accents">${ST_K_ACCENTS.map(([v,l,c])=>`<button type="button" data-accent="${v}" class="${s.look.accent===v?'on':''}" style="--c:${c}" aria-pressed="${s.look.accent===v}"><i></i><span>${E(l)}</span></button>`).join('')}</div><p class="kx-mini">Màu nhấn đổi nhãn, chấm danh sách, vạch và viền nhấn. Mỗi màu có cặp sáng / tối để đọc rõ trên cả hai nền trang.</p><p class="st-lbl">Cỡ chữ của khối</p><div class="kx-seg">${ST_K_SCALES.map(([v,l])=>`<button type="button" data-scale="${v}" class="${s.look.scale===v?'on':''}" aria-pressed="${s.look.scale===v}">${E(l)}</button>`).join('')}</div>`;}
+    const lint=stKLint(s),v=stKLatest(d),u=S.usage.get(d.id),names={error:'Lỗi · chặn lưu',warning:'Cảnh báo',suggestion:'Gợi ý'};
+    return `<p class="kx-lead">Quy tắc thiết kế: lỗi phải sửa trước khi lưu; cảnh báo và gợi ý để cân nhắc.</p>${lint.length?`<ul class="st-checks">${lint.map(x=>`<li class="${x.level==='error'?'bad':x.level}"><button type="button" class="st-check-link"${x.el?` data-sel="${E(x.el)}"`:''}><span class="st-check-level">${names[x.level]}</span>${E(x.msg)}</button></li>`).join('')}</ul>`:'<p class="st-hint">Không có gì cần xem thêm.</p>'}
+<label class="st-field"><span>Mô tả ngắn · hiện khi rê chuột trong trình soạn</span><input id="kx-desc" maxlength="200" value="${E(d.desc||'')}" placeholder="Khối dùng để…"></label><label class="st-check"><input type="checkbox" id="kx-show"${d.show!==false?' checked':''}> Hiện trong “Thư viện của bạn” khi soạn báo giá</label>
+<label class="st-field"><span>Ghi chú phiên bản</span><input id="kx-vnote" maxlength="200" placeholder="Ví dụ: bảng ứng dụng chỉ lấy gói trong phương án"></label><button type="button" class="primary st-full" data-k="publish">Lưu phiên bản v${(v?.v||0)+1}</button>
+<h4 class="kx-h4">Lịch sử phiên bản</h4>${d.versions.length?`<ol class="kx-versions">${[...d.versions].reverse().map(x=>`<li><b>v${x.v}</b><span>${stKUTime(x.at)}${x.note?' · '+E(x.note):''}${u?.versions[x.v]?` · đang dùng trong ${u.versions[x.v]} báo giá`:''}</span></li>`).join('')}</ol>`:'<p class="kx-mini">Chưa có phiên bản. Khối chỉ hiện trong trình soạn sau lần lưu đầu tiên.</p>'}<p class="kx-mini">Mỗi lần lưu tạo phiên bản mới, không ghi đè bản cũ. Báo giá đã chèn khối giữ nguyên phiên bản đó cho tới khi người soạn bấm “Cập nhật khối”.</p>`;
+  }
+  function paintStep(){
+    const el=root.querySelector('#kx-left');if(!el)return;const lint=stKLint(S.work),errs=lint.filter(x=>x.level==='error').length;
+    el.innerHTML=`<ol class="kx-steps">${KX_STEPS.map(([id,label,hint],i)=>`<li><button type="button" data-step="${id}" class="${S.step===id?'on':''}" aria-current="${S.step===id?'step':'false'}"><b>${i+1}</b><span>${label}<small>${hint}</small></span>${id==='check'&&lint.length?`<em class="${errs?'bad':''}">${lint.length}</em>`:''}</button></li>`).join('')}</ol><div class="kx-step">${stepBody()}</div>`;
+    const rich=el.querySelector('#kx-rich');if(rich)hydrate(rich,S.work.assets);
+  }
+  function varPicker(k){const groups=[...new Set(ST_K_VARS.map(v=>v.group))];return `<select class="kx-var" data-var-for="${k}" aria-label="Chèn biến dữ liệu"><option value="">＋ Chèn biến dữ liệu…</option>${groups.map(g=>`<optgroup label="${E(g)}">${ST_K_VARS.filter(v=>v.group===g).map(v=>`<option value="${v.key}">${E(v.label)}</option>`).join('')}</optgroup>`).join('')}</select>`;}
+  function field(el,[k,label,type,opts]){
+    const v=el.p[k]??'';
+    if(type==='text'||type==='url')return `<label class="st-field"><span>${E(label)}</span><input data-f="${k}" type="${type==='url'?'url':'text'}" value="${E(v)}"${type==='url'?' placeholder="https://…"':''}></label>${type==='text'?varPicker(k):''}`;
+    if(type==='area')return `<label class="st-field"><span>${E(label)}</span><textarea data-f="${k}" rows="${Math.min(10,Math.max(3,String(v).split('\n').length+1))}">${E(v)}</textarea></label>${varPicker(k)}`;
+    if(type==='num')return `<label class="st-field"><span>${E(label)}</span><input data-f="${k}" type="number" value="${E(v)}"></label>`;
+    if(type==='select')return `<label class="st-field"><span>${E(label)}</span><select data-f="${k}">${opts.map(([o,l])=>`<option value="${o}"${v===o?' selected':''}>${E(l)}</option>`).join('')}</select></label>`;
+    if(type==='source'){const c=previewData()?.options||[];return `<label class="st-field"><span>${E(label)}</span><select data-f="${k}">${ST_K_SOURCES.map(([o,l],i)=>`<option value="${o}"${v===o?' selected':''}>${E(l)}${i&&c[i-1]?' · '+E(c[i-1].label):''}</option>`).join('')}</select></label><p class="kx-mini">Mỗi báo giá lấy đúng phương án này trong file Quote Lab của chính nó; không dùng gói ngoài phương án.</p>`;}
+    if(type==='asset'){const src=S.work.assets[v];return `<div class="st-field"><span>${E(label)}</span><div class="kx-asset">${src?`<img src="${E(src)}" alt="">`:'<em>Chưa có ảnh</em>'}<button type="button" data-pick="${k}">Chọn ảnh…</button>${src?`<button type="button" data-unpick="${k}">Bỏ ảnh</button>`:''}</div></div>`;}
+    if(type==='icon')return `<div class="st-field"><span>${E(label)}</span><div class="kx-icons">${Object.entries(ST_K_ICONS).map(([n,path])=>`<button type="button" data-icon="${n}" class="${v===n?'on':''}" title="${E(ST_K_ICON_NAMES[n])}" aria-label="${E(ST_K_ICON_NAMES[n])}"><svg viewBox="0 0 24 24">${path}</svg></button>`).join('')}</div></div>`;
+    return '';
+  }
+  const summary=e=>{if(ST_K_ELEMENTS[e.kind].bound)return e.p.source?ST_K_SOURCES.find(x=>x[0]===e.p.source)?.[1]||'':'Từ hồ sơ khách hàng';const v=String(e.p.text||e.p.label||e.p.items||e.p.rows||e.p.head||e.p.role||e.p.caption||'').split('\n')[0];return v.length>42?v.slice(0,40)+'…':v;};
+  function paintRight(){
+    const el=root.querySelector('#kx-right');if(!el)return;const s=S.work;
+    if(s.raw){el.innerHTML=`<div class="kx-sec"><h4>Khối nội dung tự do</h4><p class="kx-mini">Nội dung soạn sẵn, lưu từ báo giá hoặc từ mẫu hệ thống (kiểu gốc: ${E(ST_TYPES[s.baseType]?.name||s.baseType)}). Sửa nội dung ở bước 3; khung, kích thước và màu ở bước 1 và 4.</p><p class="kx-mini">Muốn khối có vùng, thành phần và dữ liệu tự động: tạo khối mới ở thư viện.</p></div>`;return;}
+    const L=stKLayout(s.layout.kind),cur=s.els.find(e=>e.id===S.sel);
+    const outline=L.slots.map((n,i)=>{const els=s.els.filter(e=>e.slot===i);return `<div class="kx-slot"><p class="kx-slot-h">${E(n)}</p>${els.map(e=>`<div class="kx-el${S.sel===e.id?' on':''}"><button type="button" class="kx-el-name" data-sel="${E(e.id)}">${stKUIcon(e.kind)}<span>${E(ST_K_ELEMENTS[e.kind].name)}<small>${E(summary(e))}</small></span></button><span class="kx-el-act"><button type="button" data-el="up" data-id="${E(e.id)}" title="Chuyển lên" aria-label="Chuyển lên">↑</button><button type="button" data-el="down" data-id="${E(e.id)}" title="Chuyển xuống" aria-label="Chuyển xuống">↓</button><button type="button" data-el="dup" data-id="${E(e.id)}" title="Nhân bản" aria-label="Nhân bản">⧉</button><button type="button" class="danger" data-el="del" data-id="${E(e.id)}" title="Xoá" aria-label="Xoá thành phần">✕</button></span></div>`).join('')||'<p class="kx-empty">Vùng trống · thêm ở bước 3</p>'}</div>`;}).join('');
+    let insp='<div class="kx-sec"><p class="kx-mini">Bấm một thành phần trên khối hoặc trong danh sách để sửa nội dung, nguồn dữ liệu và kiểu chữ.</p></div>';
+    if(cur){const D=ST_K_ELEMENTS[cur.kind];insp=`<div class="kx-sec kx-insp"><h4>${stKUIcon(cur.kind)}<span>${E(D.name)}</span>${D.bound?'<em class="kx-bound">Dữ liệu tự động</em>':''}</h4><p class="kx-mini">${E(D.desc)}</p>${D.f.map(f=>field(cur,f)).join('')}${L.slots.length>1?`<label class="st-field"><span>Nằm trong vùng</span><select data-slot-of="${E(cur.id)}">${L.slots.map((n,i)=>`<option value="${i}"${cur.slot===i?' selected':''}>${E(n)}</option>`).join('')}</select></label>`:''}${D.tone?seg('Màu','st','tone',ST_K_TONES,cur.s.tone):''}${D.size?seg('Cỡ','st','size',ST_K_SIZES,cur.s.size):''}${D.align?seg('Căn lề','st','align',ST_K_ALIGNS,cur.s.align):''}</div>`;}
+    el.innerHTML=`<div class="kx-sec"><h4>Thành phần trong khối <small>${s.els.length}</small></h4>${outline}</div>${insp}`;
+  }
+  function paintStage(){
+    const c=root.querySelector('#kx-canvas');if(!c)return;const s=S.work,data=previewData();
+    const block=stKBlockOf(s,stKUSanitize(stKRender(s,data,{showVars:S.data==='names'})));
+    c.innerHTML=`<section class="st-page kx-page" data-bg="${S.bg}"><div class="st-sheet"><div class="st-grid">${stKBlockMarkup(block)}${s.size.w<12?`<div class="kx-ghost" style="--w:${12-s.size.w}"><span>Khối khác · ${12-s.size.w}/12</span></div>`:''}</div></div></section>${!s.raw&&!s.els.length?'<p class="kx-empty-stage">Khối đang trống. Chọn khung và bố cục, rồi thêm thành phần ở bước 3.</p>':''}`;
+    hydrate(c,s.assets);if(S.sel)c.querySelector(`[data-ke="${CSS.escape(S.sel)}"]`)?.classList.add('kx-on');fitStage();
+    const note=root.querySelector('#kx-note');if(note)note.textContent=`Khối ${s.size.w}/12 cột ≈ ${Math.round(s.size.w/12*182)} mm · ${s.size.h?'cao tối thiểu '+s.size.h+' mm':'cao tự động'} · ${S.data==='names'?'đang hiện tên biến':data.sample?'dữ liệu mẫu, không phải số liệu thật':'dữ liệu của báo giá đã chọn'}`;
+  }
+  function fitStage(){const c=root.querySelector('#kx-canvas'),p=c?.querySelector('.kx-page');if(p)p.style.zoom=String(Math.min(1,Math.max(.35,(c.clientWidth-24)/794)));}
+  window.addEventListener('resize',()=>{if(!root.hidden&&S.view==='builder')fitStage();});
+
+  // Mọi thay đổi spec: một bước hoàn tác (gõ chữ gom theo nhịp nghỉ), lưu nháp sau 400 ms.
+  function change(fn,{typing=false,parts='tsrc'}={}){
+    if(!typing||!S.burst){S.undo.push(S.last);if(S.undo.length>80)S.undo.shift();S.redo=[];}
+    S.burst=typing;clearTimeout(S.burstT);if(typing)S.burstT=setTimeout(()=>S.burst=false,700);
+    fn(S.work);S.work=stKNormalize(S.work);const snap=JSON.stringify(S.work);
+    if(snap===S.undo.at(-1)&&!typing)S.undo.pop();S.last=snap;if(S.sel&&!S.work.els.some(e=>e.id===S.sel))S.sel=null;
+    queueSave();paint(parts);
+  }
+  function queueSave(){clearTimeout(S.saveT);S.saveT=setTimeout(saveDraft,400);paintTop();}
+  async function saveDraft(){clearTimeout(S.saveT);S.saveT=0;const id=S.def,spec=S.work;if(!id||!spec)return;const run=write(kit=>{stKSetDraft(kit,id,spec);}).catch(e=>toast('Chưa lưu được nháp: '+e.message));S.saving=run;await run;if(S.saving===run)S.saving=null;paintTop();}
+  async function flushDraft(){if(S.saveT)await saveDraft();else if(S.saving)await S.saving;}
+  function undo(redo=false){const from=redo?S.redo:S.undo,to=redo?S.undo:S.redo;if(!from.length)return;to.push(S.last);S.last=from.pop();S.work=JSON.parse(S.last);if(S.sel&&!S.work.els.some(e=>e.id===S.sel))S.sel=null;queueSave();paint('tsrc');}
+  function addElement(i){
+    const x=ST_K_PALETTE[i];if(!x)return;if(S.work.els.length>=40){toast('Một khối tối đa 40 thành phần.');return;}
+    change(w=>{const slots=stKLayout(w.layout.kind).slots.length,el=stKNewElement(x.kind,x.p||{},Math.min(S.slot,slots-1)),at=w.els.findIndex(e=>e.id===S.sel);if(at>=0&&w.els[at].slot===el.slot)w.els.splice(at+1,0,el);else w.els.push(el);S.sel=el.id;});
+  }
+  function elementAction(op,id){
+    change(w=>{const i=w.els.findIndex(e=>e.id===id);if(i<0)return;const el=w.els[i];
+      if(op==='del'){w.els.splice(i,1);return;}
+      if(op==='dup'){const c=JSON.parse(JSON.stringify(el));c.id=stId('e');w.els.splice(i+1,0,c);S.sel=c.id;return;}
+      const dir=op==='up'?-1:1;let j=i+dir;while(j>=0&&j<w.els.length&&w.els[j].slot!==el.slot)j+=dir;if(j<0||j>=w.els.length)return;[w.els[i],w.els[j]]=[w.els[j],w.els[i]];S.sel=id;});
+  }
+  function pickImage(key){
+    const f=document.createElement('input');f.type='file';f.accept='image/png,image/jpeg,image/webp,image/svg+xml';
+    f.onchange=async()=>{try{const url=await stKUImage(f.files[0]),id=stId('ka'),sel=S.sel;change(w=>{w.assets[id]=url;const el=w.els.find(e=>e.id===sel);if(el)el.p[key]=id;});}catch(e){toast(e.message);}};f.click();
+  }
+  function insertVar(k,key){
+    const tok='{{'+key+'}}';
+    if(k==='html'){const r=root.querySelector('#kx-rich');if(!r)return;r.focus();document.execCommand('insertText',false,tok);return;}
+    const inp=root.querySelector(`#kx-right [data-f="${k}"]`);if(!inp)return;const a=inp.selectionStart??inp.value.length,b=inp.selectionEnd??a;
+    inp.value=inp.value.slice(0,a)+tok+inp.value.slice(b);inp.focus();inp.setSelectionRange(a+tok.length,a+tok.length);inp.dispatchEvent(new Event('input',{bubbles:true}));
+  }
+  function readRich(el){const c=el.cloneNode(true);c.querySelectorAll('img[data-asset]').forEach(i=>i.removeAttribute('src'));c.querySelectorAll('.is-empty').forEach(x=>x.classList.remove('is-empty'));return stKUSanitize(c.innerHTML);}
+  async function publish(){
+    if(S.view!=='builder')return;const errors=stKLint(S.work).filter(x=>x.level==='error');
+    if(errors.length){S.step='check';paint('s');toast(`Còn ${errors.length} lỗi ở bước Kiểm tra & lưu.`);return;}
+    clearTimeout(S.saveT);S.saveT=0;if(S.saving)await S.saving;const note=root.querySelector('#kx-vnote')?.value||'',id=S.def,spec=S.work;
+    const v=await write(kit=>{stKSetDraft(kit,id,spec);return stKPublish(kit,id,{note});});
+    toast(v?`Đã lưu phiên bản v${v.v}. Báo giá đang dùng phiên bản cũ giữ nguyên.`:'Không có thay đổi so với phiên bản đang dùng.');paint('ts');
+  }
+  async function metaWrite(fn){clearTimeout(S.metaT);S.metaT=setTimeout(()=>write(kit=>{const d=kit.defs.find(x=>x.id===S.def);if(d){fn(d);d.updated=Date.now();}}).catch(e=>toast(e.message)),350);}
+
+  root.addEventListener('click',async e=>{
+    const t=e.target.closest('[data-k],[data-kg],[data-tab],[data-step],[data-frame-kind],[data-frame],[data-layout-kind],[data-lay],[data-add],[data-sel],[data-el],[data-w],[data-accent],[data-scale],[data-st],[data-bgk],[data-pick],[data-unpick],[data-icon]');
+    const ke=e.target.closest('#kx-canvas [data-ke]');
+    if(ke&&(!t||!ke.contains(t))){S.sel=ke.dataset.ke;paint('rc');return;}
+    if(!t)return;const v=t.dataset.v,id=t.dataset.id;
+    try{
+      if(t.dataset.tab){S.tab=t.dataset.tab;renderLibrary();return;}
+      if(t.dataset.kg){S.tab='mine';S.group=t.dataset.kg;renderLibrary();return;}
+      if(t.dataset.step){S.step=t.dataset.step;paint('s');return;}
+      if(t.dataset.frameKind)return change(w=>{w.frame.kind=t.dataset.frameKind;});
+      if(t.dataset.frame)return change(w=>{w.frame[t.dataset.frame]=v;});
+      if(t.dataset.layoutKind)return change(w=>{w.layout.kind=t.dataset.layoutKind;S.slot=Math.min(S.slot,stKLayout(w.layout.kind).slots.length-1);});
+      if(t.dataset.lay)return change(w=>{w.layout[t.dataset.lay]=v;});
+      if(t.dataset.add!==undefined)return addElement(+t.dataset.add);
+      if(t.dataset.sel){S.sel=t.dataset.sel;paint('rc');root.querySelector('#kx-right .kx-insp')?.scrollIntoView({block:'nearest'});return;}
+      if(t.dataset.el)return elementAction(t.dataset.el,id);
+      if(t.dataset.w)return change(w=>{w.size.w=+t.dataset.w;});
+      if(t.dataset.accent)return change(w=>{w.look.accent=t.dataset.accent;});
+      if(t.dataset.scale)return change(w=>{w.look.scale=t.dataset.scale;});
+      if(t.dataset.st){const sel=S.sel;return change(w=>{const el=w.els.find(x=>x.id===sel);if(el)el.s[t.dataset.st]=v;});}
+      if(t.dataset.bgk){S.bg=t.dataset.bgk;root.querySelectorAll('[data-bgk]').forEach(b=>{b.classList.toggle('on',b===t);b.setAttribute('aria-pressed',String(b===t));});paint('sc');return;}
+      if(t.dataset.pick)return pickImage(t.dataset.pick);
+      if(t.dataset.unpick){const sel=S.sel;return change(w=>{const el=w.els.find(x=>x.id===sel);if(el)el.p[t.dataset.unpick]='';});}
+      if(t.dataset.icon){const sel=S.sel;return change(w=>{const el=w.els.find(x=>x.id===sel);if(el)el.p.icon=t.dataset.icon;});}
+      const k=t.dataset.k;if(!k)return;
+      if(k==='home'){if(S.view==='builder')await flushDraft();hide();await onHome();return;}
+      if(k==='back'){await flushDraft();S.view='library';S.def=null;setURL();await loadDocs();renderLibrary();return;}
+      if(k==='undo')return undo();if(k==='redo')return undo(true);if(k==='publish')return publish();
+      if(k==='group-add'||k==='group-sub'){const name=await ask(k==='group-sub'?'Thêm nhóm con':'Nhóm khối mới','Tên nhóm');if(!name)return;const g=await write(kit=>stKAddGroup(kit,name,k==='group-sub'?id:null));S.tab='mine';S.group=g.id;renderLibrary();return;}
+      if(k==='group-rename'){const g=S.kit.groups.find(x=>x.id===id);const name=g&&await ask('Đổi tên nhóm','Tên nhóm',g.name);if(!name)return;await write(kit=>stKRenameGroup(kit,id,name));renderLibrary();return;}
+      if(k==='group-move'){const g=S.kit.groups.find(x=>x.id===id);if(!g)return;const ok=await dialog('Chuyển nhóm',`<p>Chuyển “${E(g.name)}” cùng các nhóm con và khối bên trong vào:</p><label class="st-field"><span>Nhóm đích</span><select id="kx-move-target">${groupOptions(g.parent,{exclude:id,none:'Cấp gốc (không thuộc nhóm nào)'})}</select></label>`,[{label:'Huỷ',value:false},{label:'Chuyển',value:true,primary:true}]);if(!ok)return;const target=document.getElementById('kx-move-target')?.value||null;await write(kit=>stKMoveGroup(kit,id,target));toast('Đã chuyển nhóm.');renderLibrary();return;}
+      if(k==='group-del'){const g=S.kit.groups.find(x=>x.id===id);if(!g)return;if(!await dialog('Xoá nhóm?',`Nhóm “${E(g.name)}” được xoá; nhóm con và khối bên trong chuyển lên ${g.parent?'nhóm cha':'cấp gốc'}. Không khối nào bị xoá.`,[{label:'Huỷ',value:false},{label:'Xoá nhóm',value:true,danger:true}]))return;await write(kit=>stKDeleteGroup(kit,id));if(S.group===id)S.group=g.parent||'all';renderLibrary();return;}
+      if(k==='def-new'){const group=S.tab==='mine'?realGroup():null;const d=await write(kit=>stKAddDef(kit,{name:'Khối mới',group,spec:stKNewSpec()}));return openBuilder(d.id);}
+      if(k==='def-edit'&&id)return openBuilder(id);
+      if(k==='def-dup'){await write(kit=>stKDupDef(kit,id));toast('Đã nhân bản khối.');paintList();return;}
+      if(k==='def-del'){await write(kit=>stKArchiveDef(kit,id));toast('Đã chuyển vào thùng rác. Báo giá đã chèn khối này giữ nguyên nội dung.');renderLibrary();return;}
+      if(k==='def-restore'){await write(kit=>stKArchiveDef(kit,id,false));renderLibrary();return;}
+      if(k==='def-purge'){if(!await dialog('Xoá vĩnh viễn?','Khối và lịch sử phiên bản bị xoá khỏi thư viện. Báo giá đã chèn khối vẫn giữ nguyên nội dung.',[{label:'Huỷ',value:false},{label:'Xoá vĩnh viễn',value:true,danger:true}]))return;await write(kit=>stKPurgeDef(kit,id));renderLibrary();return;}
+      if(k==='preset-copy'){const p=ST_PRESETS.find(x=>x.id===id);if(!p)return;const d=await write(kit=>stKAddDef(kit,{name:p.name+' · tuỳ chỉnh',group:realGroup(),spec:stKSnapshot({type:p.type,style:ST_TYPES[p.type].style,w:p.w||ST_TYPES[p.type].w,html:p.html})}));return openBuilder(d.id);}
+    }catch(err){toast(err.message);}
+  });
+  root.addEventListener('keydown',e=>{
+    if(S.view==='builder'&&(e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'&&!e.target.closest('input,textarea,[contenteditable]')){e.preventDefault();undo(e.shiftKey);return;}
+    if(e.key==='Enter'&&e.target.matches('.kl-thumb[data-k]')){e.preventDefault();e.target.click();}
+  });
+  root.addEventListener('input',e=>{
+    const t=e.target;
+    if(t.id==='kl-search'){S.query=t.value;paintList();return;}
+    if(t.id==='kx-name'){const name=t.value;metaWrite(d=>{d.name=name.trim()||d.name;});return;}
+    if(t.id==='kx-desc'){const desc=t.value;metaWrite(d=>{d.desc=desc;});return;}
+    if(t.id==='kx-h'){const h=+t.value||0;change(w=>{w.size.h=h;},{typing:true,parts:'tc'});return;}
+    if(t.id==='kx-rich'){const html=readRich(t);change(w=>{w.els[0].p.html=html;},{typing:true,parts:'tc'});return;}
+    if(t.dataset.f&&t.tagName!=='SELECT'){const sel=S.sel,k=t.dataset.f,val=t.value;change(w=>{const el=w.els.find(x=>x.id===sel);if(el)el.p[k]=val;},{typing:true,parts:'tc'});}
+  });
+  root.addEventListener('change',async e=>{
+    const t=e.target;
+    try{
+      if(t.dataset.kMove){await write(kit=>stKMoveDef(kit,t.dataset.kMove,t.value||null));toast('Đã chuyển khối.');renderLibrary();return;}
+      if(t.id==='kx-group'){const g=t.value||null;await write(kit=>stKMoveDef(kit,S.def,g));return;}
+      if(t.id==='kx-show'){const on=t.checked;await write(kit=>{const d=kit.defs.find(x=>x.id===S.def);if(d)d.show=on;});return;}
+      if(t.id==='kx-data'){S.data=t.value;paint('rc');return;}
+      if(t.id==='kx-slot'){S.slot=+t.value||0;return;}
+      if(t.dataset.varFor){const key=t.value;t.value='';if(key)insertVar(t.dataset.varFor,key);return;}
+      if(t.dataset.slotOf){const id=t.dataset.slotOf,slot=+t.value;change(w=>{const el=w.els.find(x=>x.id===id);if(el)el.slot=slot;});return;}
+      if(t.dataset.f&&t.tagName==='SELECT'){const sel=S.sel,k=t.dataset.f,val=t.value;change(w=>{const el=w.els.find(x=>x.id===sel);if(el)el.p[k]=val;},{parts:'tsc'});return;}
+    }catch(err){toast(err.message);}
+  });
+  root.addEventListener('paste',e=>{if(!e.target.closest('#kx-rich'))return;e.preventDefault();(e.clipboardData?.getData('text/plain')??'').replace(/\r/g,'').split('\n').forEach((line,i)=>{if(i)document.execCommand('insertLineBreak');if(line)document.execCommand('insertText',false,line);});});
+  stQuoteEvents.subscribe(async ev=>{if(ev.type!=='kit-saved'||ev.writer===ST_KU_WRITER||root.hidden)return;await reload();});
+  async function reload(){S.kit=await stKitRead(repo);if(root.hidden)return;if(S.view==='library')renderLibrary();else if(!def()){S.view='library';renderLibrary();}else paintTop();}
+  async function show(defId){
+    S.kit=await stKitRead(repo);await loadDocs();
+    root.hidden=false;document.getElementById('st-home').hidden=true;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode','st-kit-mode');
+    if(defId&&S.kit.defs.some(d=>d.id===defId&&!d.archivedAt))return openBuilder(defId);
+    S.view='library';S.def=null;setURL();renderLibrary();
+  }
+  // Bỏ DOM xem trước khi rời trang thư viện để trình soạn không gặp các trang .st-page của thư viện.
+  function hide(){if(S.view==='builder')flushDraft();root.hidden=true;root.innerHTML='';S.view='library';document.body.classList.remove('st-kit-mode');}
+  return {show,hide,reload,visible:()=>!root.hidden,flush:flushDraft};
+}
+
 const stHEsc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const stHTime=n=>new Date(n||Date.now()).toLocaleString('vi-VN',{dateStyle:'short',timeStyle:'short'});
 const stHMoney=n=>new Intl.NumberFormat('vi-VN').format(n)+' đ';
 function stWorkspaceAdapter(repo,{sanitizeDoc=d=>d}={}){
   const templates=async()=>await repo.getKV(ST_TEMPLATE_KEY)||[];
+  // Một bản ghi đồng bộ cho thư viện: blocks = “Khối đã lưu” cũ (máy bản cũ vẫn đọc được), kit = Thư viện khối có nhóm và phiên bản.
+  const library=async()=>({id:'block-library',name:'Thư viện khối',blocks:await repo.getKV('st-library')||[],kit:await repo.getKV(ST_K_KEY)||null});
   return {
-    get:async(kind,id)=>kind==='doc'?repo.getDoc(id):kind==='draft'?repo.getDraft(id):kind==='template'?(await templates()).find(x=>x.id===id):kind==='library'?{id:'block-library',name:'Thư viện khối',blocks:await repo.getKV('st-library')||[]}:null,
-    all:async kind=>kind==='doc'?repo.allDocs():kind==='draft'?(await repo.allDrafts()).filter(x=>x.workspaceInputs):kind==='template'?templates():kind==='library'?((await repo.getKV('st-library'))?.length?[{id:'block-library',name:'Thư viện khối',blocks:await repo.getKV('st-library')}]:[]):[],
+    get:async(kind,id)=>kind==='doc'?repo.getDoc(id):kind==='draft'?repo.getDraft(id):kind==='template'?(await templates()).find(x=>x.id===id):kind==='library'?library():null,
+    all:async kind=>{if(kind!=='library')return kind==='doc'?repo.allDocs():kind==='draft'?(await repo.allDrafts()).filter(x=>x.workspaceInputs):kind==='template'?templates():[];const l=await library();return l.blocks.length||l.kit?[l]:[];},
     put:async(kind,entity)=>{
       if(kind==='doc'){const old=await repo.getDoc(entity.id),copy=sanitizeDoc(JSON.parse(JSON.stringify(entity)));delete copy.revision;return repo.saveDoc(copy,old?.revision||0);}
       if(kind==='draft')return repo.putDraft(entity);
       if(kind==='template'){let saved;await repo.updateKV(ST_TEMPLATE_KEY,list=>{const all=list||[],i=all.findIndex(t=>t.id===entity.id);saved={...entity,revision:(all[i]?.revision||0)+1,updated:Date.now()};if(i<0)all.push(saved);else all[i]=saved;return all;});return saved;}
-      if(kind==='library'){await repo.setKV('st-library',entity.blocks||[]);return entity;}
+      if(kind==='library'){if(Array.isArray(entity.blocks))await repo.setKV('st-library',entity.blocks);if(entity.kit)await repo.setKV(ST_K_KEY,stKNormalizeKit(entity.kit));return library();}
       throw new Error('Loại dữ liệu đồng bộ không hợp lệ.');
     }
   };
 }
-function setupStudioHome({repo,adapter,cloud,openDoc,createDoc,updateDoc,backFromEditor,toast,askTemplateName=async name=>prompt('Tên template:',name)}){
+function setupStudioHome({repo,adapter,cloud,openDoc,openKit,createDoc,createBlankDoc,updateDoc,backFromEditor,toast,askTemplateName=async name=>prompt('Tên template:',name)}){
   const root=document.getElementById('st-home');let tab='documents',query='',trash=false,templates=[],docs=[],drafts=[],input={},draftId=null,editingDocId=null,saveTimer=null,createBusy=false;
   const mode=()=>root.dataset.mode||'list';
   const download=(text,type,name)=>{const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);};
@@ -1877,10 +2699,10 @@ function setupStudioHome({repo,adapter,cloud,openDoc,createDoc,updateDoc,backFro
   async function refresh(){docs=await repo.allDocs();templates=await repo.getKV(ST_TEMPLATE_KEY)||[];drafts=(await repo.allDrafts()).filter(d=>!d.studioDocId);if(mode()==='list')renderList();syncStatus();}
   function syncStatus(){const s=cloud.state;for(const el of document.querySelectorAll('[data-cloud-status]')){el.textContent=s.message;el.dataset.sync=s.error?'error':s.ready&&s.pending===0&&s.message==='Đã đồng bộ Firebase'?'synced':'local';}const el=root.querySelector('#sh-account');if(el)el.textContent=s.email||ST_CLOUD_EMAIL;}
   function renderList(){
-    root.dataset.mode='list';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><a href="index.html">← Quote Lab</a><div class="sh-account"><span id="sh-account"></span><span data-cloud-status></span><button data-home-act="firebase">Firebase</button></div></header>
-<div class="sh-content"><div class="sh-heading"><div><p class="sh-eyebrow">KHÔNG GIAN BÁO GIÁ</p><h1>Mỗi khách hàng, một bộ hồ sơ.</h1><p>Nhập phương án từ Quote Lab, hồ sơ khách hàng và use-case. Soạn, lưu template và mở lại từng báo giá riêng.</p></div><button class="primary sh-new" data-home-act="create">＋ Tạo báo giá</button></div>
+    root.dataset.mode='list';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><a href="index.html">← Quote Lab</a>${openKit?'<button type="button" class="sh-kit-link" data-home-act="blocks">▦ Thư viện khối</button>':''}<div class="sh-account"><span id="sh-account"></span><span data-cloud-status></span><button data-home-act="firebase">Firebase</button></div></header>
+<div class="sh-content"><div class="sh-heading"><div><p class="sh-eyebrow">KHÔNG GIAN BÁO GIÁ</p><h1>Mỗi khách hàng, một bộ hồ sơ.</h1><p>Nhập phương án từ Quote Lab, hồ sơ khách hàng và use-case. Soạn, lưu template và mở lại từng báo giá riêng.</p></div><div class="sh-card-actions"><button class="primary sh-new" data-home-act="create">＋ Tạo báo giá</button>${createBlankDoc?'<button data-home-act="blank">Tạo bản trống</button>':''}${openKit?'<button data-home-act="blocks">Thư viện khối</button>':''}</div></div>
 <div class="sh-toolbar"><div class="sh-tabs"><button data-home-tab="documents" class="${tab==='documents'?'on':''}">Báo giá (${docs.filter(d=>!d.archivedAt).length})</button><button data-home-tab="templates" class="${tab==='templates'?'on':''}">Templates (${templates.filter(t=>!t.archivedAt).length})</button><button data-home-tab="inputs" class="${tab==='inputs'?'on':''}">Bộ đầu vào (${drafts.length})</button></div><label><input type="search" id="sh-search" placeholder="Tìm khách hàng / tên báo giá" value="${stHEsc(query)}"></label><label class="sh-trash"><input type="checkbox" id="sh-trash"${trash?' checked':''}> Thùng rác</label></div>
-<div id="sh-list"></div><div class="sh-help"><b>Luồng soạn báo giá</b><span>1. Quote Lab → xuất file phương án</span><span>2. Studio → đính kèm hồ sơ & use-case</span><span>3. Chọn template → soạn → xuất PDF</span></div></div>`;
+<div id="sh-list"></div><div class="sh-help"><b>Luồng soạn báo giá</b><span>1. Quote Lab → xuất file phương án</span><span>2. Studio → đính kèm hồ sơ & use-case</span><span>3. Chọn template → soạn → xuất PDF</span>${openKit?'<span><b>Thư viện khối</b> · dựng khối dùng lại theo khung → bố cục → thành phần, có phiên bản</span>':''}</div></div>`;
     renderCards();syncStatus();
   }
   function renderCards(){const list=root.querySelector('#sh-list');if(!list)return;
@@ -1910,8 +2732,8 @@ function setupStudioHome({repo,adapter,cloud,openDoc,createDoc,updateDoc,backFro
   async function readTextFile(file,max=500000){if(!file||file.size>max)throw new Error('File tối đa '+Math.round(max/1e6*10)/10+' MB.');return {name:file.name,text:await file.text(),size:file.size,addedAt:Date.now()};}
   async function saveTemplate(doc,name){const template=stMakeDocumentTemplate(doc,name),saved=await adapter.put('template',template);await cloud.queue('template',saved);await refresh();toast('Đã lưu template. Nội dung khách mới sẽ được điền lại khi sử dụng.');return saved;}
   async function promptTemplate(doc){const name=await askTemplateName(doc.title+' · Template');if(name?.trim())await saveTemplate(doc,name);}
-  async function showFirebase(){const stored=cloud.getConfig?.()||await repo.getKV(ST_CLOUD_CONFIG_KEY);root.dataset.mode='firebase';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><button data-home-act="home">← Danh sách</button></header><main class="sh-content sh-firebase"><h1>Đồng bộ Firebase</h1><p>Tài khoản Google: <b>${ST_CLOUD_EMAIL}</b>. Báo giá, bộ đầu vào, template và thư viện khối được đồng bộ theo tài khoản.</p>${stored?`<p>Project đang dùng: <b>${stHEsc(stored.projectId)}</b></p>`:''}<div class="sh-cloud-state" data-cloud-status></div><div class="sh-card-actions"><button class="primary" data-home-act="login">Đăng nhập Google</button><button data-home-act="sync">Đồng bộ lại</button><button data-home-act="logout">Đăng xuất</button></div><details${stored?'':' open'}><summary>Cấu hình Firebase Web app</summary><p>Dán firebaseConfig từ Web app. Cần bật Google Sign-in, tạo Firestore và áp bộ Rules của Quote Studio trước khi đăng nhập.</p><textarea id="sh-firebase-config" rows="9" placeholder='{"apiKey":"…","authDomain":"…","projectId":"…","appId":"…"}'>${stored?stHEsc(JSON.stringify(stored,null,2)):''}</textarea><button data-home-act="configure">Lưu cấu hình</button></details><p class="sh-muted">Bản trên máy được giữ khi mất mạng hoặc Firebase chưa sẵn sàng. Chỉ báo “Đã đồng bộ” khi Firebase xác nhận; chỉnh sửa cùng bản ở nhiều nơi được giữ thành bản riêng nếu xung đột.</p></main>`;syncStatus();}
-  async function home(){clearTimeout(saveTimer);if(draftId&&mode()==='create')await saveInput();draftId=null;editingDocId=null;tab='documents';query='';trash=false;await backFromEditor();const url=new URL(location.href);url.searchParams.delete('doc');url.searchParams.delete('quotation');url.searchParams.delete('draft');url.searchParams.set('home','1');history.replaceState(null,'',url);root.hidden=false;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode');root.dataset.mode='list';await refresh();}
+  async function showFirebase(){const stored=cloud.getConfig?.()||await repo.getKV(ST_CLOUD_CONFIG_KEY);root.dataset.mode='firebase';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><button data-home-act="home">← Danh sách</button></header><main class="sh-content sh-firebase"><h1>Đồng bộ Firebase</h1><p>Tài khoản Google: <b>${ST_CLOUD_EMAIL}</b>. Báo giá, bộ đầu vào, template và Thư viện khối (nhóm, khối, phiên bản) được đồng bộ theo tài khoản.</p>${stored?`<p>Project đang dùng: <b>${stHEsc(stored.projectId)}</b></p>`:''}<div class="sh-cloud-state" data-cloud-status></div><div class="sh-card-actions"><button class="primary" data-home-act="login">Đăng nhập Google</button><button data-home-act="sync">Đồng bộ lại</button><button data-home-act="logout">Đăng xuất</button></div><details${stored?'':' open'}><summary>Cấu hình Firebase Web app</summary><p>Dán firebaseConfig từ Web app. Cần bật Google Sign-in, tạo Firestore và áp bộ Rules của Quote Studio trước khi đăng nhập.</p><textarea id="sh-firebase-config" rows="9" placeholder='{"apiKey":"…","authDomain":"…","projectId":"…","appId":"…"}'>${stored?stHEsc(JSON.stringify(stored,null,2)):''}</textarea><button data-home-act="configure">Lưu cấu hình</button></details><p class="sh-muted">Bản trên máy được giữ khi mất mạng hoặc Firebase chưa sẵn sàng. Chỉ báo “Đã đồng bộ” khi Firebase xác nhận; chỉnh sửa cùng bản ở nhiều nơi được giữ thành bản riêng nếu xung đột.</p></main>`;syncStatus();}
+  async function home(){clearTimeout(saveTimer);if(draftId&&mode()==='create')await saveInput();draftId=null;editingDocId=null;tab='documents';query='';trash=false;await backFromEditor();const url=new URL(location.href);for(const k of ['doc','quotation','draft','blocks','block'])url.searchParams.delete(k);url.searchParams.set('home','1');history.replaceState(null,'',url);document.getElementById('st-kit')?.setAttribute('hidden','');document.body.classList.remove('st-kit-mode');root.hidden=false;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode');root.dataset.mode='list';await refresh();}
   root.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;try{
     if(b.dataset.homeTab){tab=b.dataset.homeTab;renderList();return;}if(b.dataset.sample){const type=b.dataset.sample;download(type==='profile-blank'?DEAL_BLANK:type==='profile-sample'?DEAL_SAMPLE:USE_CASE_SAMPLE,'text/markdown',type+'.md');return;}
     if(b.dataset.openDoc){await openDoc(await repo.getDoc(b.dataset.openDoc));return;}if(b.dataset.openTab){const url=new URL(location.href);url.search='?doc='+encodeURIComponent(b.dataset.openTab);window.open(url.href,'_blank','noopener');return;}
@@ -1921,7 +2743,7 @@ function setupStudioHome({repo,adapter,cloud,openDoc,createDoc,updateDoc,backFro
     if(b.dataset.resumeInput){await showCreate('',await repo.getDraft(b.dataset.resumeInput));return;}if(b.dataset.backupInput){download(JSON.stringify(await repo.getDraft(b.dataset.backupInput),null,2),'application/json','bo-dau-vao-cu.json');return;}
     if(b.dataset.removeUsecase!==undefined){input.useCases.splice(+b.dataset.removeUsecase,1);input.useCaseSelection=undefined;inputChanged();renderInputs();return;}
     if(b.id==='sh-build'){createBusy=true;b.disabled=true;await saveInput();const tpl=templates.find(t=>t.id===input.templateId);if(editingDocId)await updateDoc(JSON.parse(JSON.stringify(input)),editingDocId);else await createDoc(JSON.parse(JSON.stringify(input)),tpl,{draftId});draftId=null;editingDocId=null;return;}
-    const act=b.dataset.homeAct;if(act==='home')return home();if(act==='create'){editingDocId=null;return showCreate();}if(act==='firebase')return showFirebase();if(act==='project')return document.getElementById('st-file-json').click();if(act==='login')return cloud.login();if(act==='logout')return cloud.logout();if(act==='sync')return cloud.flush();if(act==='configure'){const value=stCloudConfig(root.querySelector('#sh-firebase-config').value);await cloud.configure(value);toast('Đã lưu cấu hình. Đăng nhập Google để bắt đầu đồng bộ.');return;}
+    const act=b.dataset.homeAct;if(act==='home')return home();if(act==='create'){editingDocId=null;return showCreate();}if(act==='blank'&&createBlankDoc)return createBlankDoc();if(act==='firebase')return showFirebase();if(act==='blocks'&&openKit)return openKit();if(act==='project')return document.getElementById('st-file-json').click();if(act==='login')return cloud.login();if(act==='logout')return cloud.logout();if(act==='sync')return cloud.flush();if(act==='configure'){const value=stCloudConfig(root.querySelector('#sh-firebase-config').value);await cloud.configure(value);toast('Đã lưu cấu hình. Đăng nhập Google để bắt đầu đồng bộ.');return;}
   }catch(error){toast(error.message);const status=root.querySelector('#sh-create-status');if(status)status.textContent=error.message;}finally{createBusy=false;if(mode()==='create')renderInputs();}});
   root.addEventListener('change',async e=>{const t=e.target;try{
     if(t.id==='sh-trash'){trash=t.checked;renderCards();return;}if(t.id==='sh-template'){input.templateId=t.value;inputChanged();return;}
@@ -1956,6 +2778,7 @@ const ST_ICONS={
   sign:'<svg viewBox="0 0 24 24"><path d="M4 16c3-6 5-6 6-2s3 2 4-1 3-2 6 1"/><path d="M4 20h16"/></svg>',
   divider:'<svg viewBox="0 0 24 24"><path d="M3 12h18"/></svg>',
   spacer:'<svg viewBox="0 0 24 24"><path d="M12 4v16M8 7l4-3 4 3M8 17l4 3 4-3"/></svg>',
+  kit:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18M10 10v10" class="a"/></svg>',
 };
 const ST_PXMM=96/25.4;
 const stEsc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1987,8 +2810,8 @@ let stDoc=null,stSel=null,stHist={undo:[],redo:[],last:null},stTyping=0,stSaveT=
 const stHandled=new Set();
 const stPage=pid=>stDoc.pages.find(p=>p.id===pid);
 function stFind(bid){for(const p of stDoc.pages){const i=p.blocks.findIndex(b=>b.id===bid);if(i>=0)return {p,i,b:p.blocks[i]};}return null;}
-const stBlockEl=bid=>st$(`.st-b[data-bid="${bid}"]`);
-const stPageEl=pid=>st$(`.st-page[data-pid="${pid}"]`);
+const stBlockEl=bid=>st$(`#st-pages .st-b[data-bid="${bid}"]`);
+const stPageEl=pid=>st$(`#st-pages > .st-page[data-pid="${pid}"]`);
 
 function stToast(msg){const t=st$('#st-toast');t.textContent=msg;t.hidden=false;clearTimeout(stToast.t);stToast.t=setTimeout(()=>t.hidden=true,3200);}
 function stDialog(title,html,buttons){return new Promise(res=>{const d=st$('#st-dialog');d.innerHTML=`<div class="st-dlg" role="dialog" aria-modal="true"><h3>${title}</h3><div class="st-dlg-body">${html}</div><div class="st-dlg-b">${buttons.map((b,i)=>`<button type="button" data-i="${i}" class="${b.primary?'primary':''}${b.danger?' danger':''}">${b.label}</button>`).join('')}</div></div>`;d.hidden=false;d.onclick=e=>{const b=e.target.closest('[data-i]');if(b||e.target===d){d.hidden=true;d.onclick=null;res(b?(/^\d+$/.test(b.dataset.i)?buttons[+b.dataset.i]?.value:b.dataset.i):null);}};});}
@@ -2027,7 +2850,8 @@ async function stSaveNow(){
 function stBlockHTML(b){
   const editable=!stReadonly&&!['spacer','divider'].includes(b.type);
   const size=stLogoSize(b),logo=stIsLogo(b)?`;--logo-w:${size.w}mm;--logo-h:${size.h}mm;--logo-align:${['start','center','end'].includes(b.logoAlign)?b.logoAlign:'start'}`:'';
-  return `<div class="st-b st-t-${b.type} st-s-${b.style}${logo&&b.logoFrame!==false?' st-logo-frame':''}${stSel?.bid===b.id?' is-sel':''}${b.focus?' is-focus':''}" data-bid="${b.id}" style="--w:${b.w}${b.h?`;--h:${b.h}mm`:''}${logo}"><div class="st-c"${editable?' contenteditable="true"':''} spellcheck="false">${b.html}</div><button type="button" class="st-handle" title="Kéo để di chuyển khối" aria-label="Kéo để di chuyển khối" tabindex="-1">⠿</button><span class="st-rw" title="Kéo để đổi độ rộng"></span><span class="st-rh" title="Kéo để đổi chiều cao · bấm đúp để về tự động"></span><div class="st-mini"><button type="button" data-act="dup" title="Nhân bản khối" tabindex="-1">⧉</button><button type="button" data-act="del" title="Xoá khối" tabindex="-1">✕</button></div></div>`;
+  const frame=stKFrameClass(b);
+  return `<div class="st-b st-t-${b.type} st-s-${b.style}${frame?' '+frame:''}${logo&&b.logoFrame!==false?' st-logo-frame':''}${stSel?.bid===b.id?' is-sel':''}${b.focus?' is-focus':''}" data-bid="${b.id}" style="--w:${b.w}${b.h?`;--h:${b.h}mm`:''}${logo}"><div class="st-c"${editable?' contenteditable="true"':''} spellcheck="false">${b.html}</div><button type="button" class="st-handle" title="Kéo để di chuyển khối" aria-label="Kéo để di chuyển khối" tabindex="-1">⠿</button><span class="st-rw" title="Kéo để đổi độ rộng"></span><span class="st-rh" title="Kéo để đổi chiều cao · bấm đúp để về tự động"></span><div class="st-mini"><button type="button" data-act="dup" title="Nhân bản khối" tabindex="-1">⧉</button><button type="button" data-act="del" title="Xoá khối" tabindex="-1">✕</button></div></div>`;
 }
 function stPageHTML(p,i){
   const n=stDoc.pages.length,chrome=p.chrome!==false;
@@ -2068,16 +2892,21 @@ function stRenderEmpty(){
 
 // ---------- Bảng thuộc tính bên phải ----------
 const stPanelOpen={};
-let stLibrary=[],stTextRange=null;
+let stKit=null,stKitUI=null,stTextRange=null,stPkgAll=false;
 const ST_COLORS=[['#0E1430','Mực đậm'],['#FFFFFF','Trắng'],['#454E70','Xám đậm'],['#BCC4E8','Xám sáng'],['#3563E9','Xanh Base'],['#8FB0FF','Xanh sáng'],['#15803D','Xanh lá'],['#B45309','Cam'],['#C4313A','Đỏ'],['#7C3AED','Tím']];
 const stIsLogo=b=>b.type==='logo'||/class=["'][^"']*\blogo\b/.test(b.html);
 const stLogoSize=b=>({w:Math.max(8,Math.min(180,+b.logoW||32)),h:Math.max(8,Math.min(100,+b.logoH||22))});
 function stSection(key,title,body,open=false){return `<details class="st-sec st-toggle" data-section="${key}"${(stPanelOpen[key]??open)?' open':''}><summary>${title}</summary><div class="st-section-body">${body}</div></details>`;}
+// Thư viện của bạn: khối đã lưu phiên bản trong Thư viện khối, theo nhóm (gồm nhóm con).
+function stKitPanelHTML(){
+  const defs=stKit?stKVisible(stKit):[],by=new Map();for(const d of defs){const k=d.group||'';if(!by.has(k))by.set(k,[]);by.get(k).push(d);}
+  const keys=[...(stKit?stKTree(stKit).map(({g})=>g.id).filter(id=>by.has(id)):[]),...(by.has('')?['']:[])];
+  return `<div class="st-kit-head"><b>Thư viện của bạn</b><button type="button" data-act="kit-open" title="Mở Thư viện khối ở tab riêng">Quản lý ↗</button></div>${keys.length?keys.map(id=>`<details class="st-library-group" data-section="kit-${stEsc(id||'none')}"${stPanelOpen['kit-'+(id||'none')]?' open':''}><summary>${stEsc(id?stKPath(stKit,id):'Chưa xếp nhóm')}</summary><div class="st-lib st-presets">${by.get(id).map(d=>`<button type="button" class="st-libi" data-kit="${stEsc(d.id)}" title="${stEsc(d.desc||d.name)} · v${stKLatest(d).v}">${ST_ICONS[stKIconKey(stKLatest(d).spec)]||ST_ICONS.kit}<span>${stEsc(d.name)}</span></button>`).join('')}</div></details>`).join(''):'<p class="st-hint">Chưa có khối. Bấm “Quản lý” để dựng khối theo khung → bố cục → thành phần, hoặc chọn một khối rồi “Lưu vào thư viện”.</p>'}`;
+}
 function stLibraryHTML(){
   const groups=[...new Set(ST_PRESETS.map(p=>p.group))];
-  return `<p class="st-hint">Bấm để thêm sau khối đang chọn, hoặc kéo mẫu vào vị trí cần đặt.</p>${groups.map(g=>`<details class="st-library-group" data-section="lib-${g}"${stPanelOpen['lib-'+g]?' open':''}><summary>${g}</summary><div class="st-lib st-presets">${ST_PRESETS.filter(p=>p.group===g).map(p=>`<button type="button" class="st-libi" data-preset="${p.id}" title="${stEsc(p.name)}">${ST_ICONS[p.type]||ST_ICONS.table}<span>${p.name}</span></button>`).join('')}</div></details>`).join('')}
-<details class="st-library-group" data-section="lib-basic"${stPanelOpen['lib-basic']?' open':''}><summary>Tạo khối cơ bản</summary><div class="st-lib">${Object.entries(ST_TYPES).filter(([k])=>!['spacer','divider','appList'].includes(k)).map(([k,t])=>`<button type="button" class="st-libi" data-type="${k}">${ST_ICONS[k]||''}<span>${t.name}</span></button>`).join('')}</div></details>
-<details class="st-library-group" data-section="lib-saved"${stPanelOpen['lib-saved']?' open':''}><summary>Khối đã lưu (${stLibrary.length})</summary>${stLibrary.length?stLibrary.map(x=>`<div class="st-saved-row"><button type="button" data-library="${stEsc(x.id)}">＋ ${stEsc(x.name)}</button><button type="button" data-library-del="${stEsc(x.id)}" aria-label="Xoá mẫu ${stEsc(x.name)}">✕</button></div>`).join(''):'<p class="st-hint">Chọn một khối rồi bấm “Lưu vào thư viện” để dùng lại trong quotation khác.</p>'}</details>
+  return `<p class="st-hint">Bấm để thêm sau khối đang chọn, hoặc kéo mẫu vào vị trí cần đặt.</p>${stKitPanelHTML()}<p class="st-lbl st-sys">Mẫu hệ thống</p>${groups.map(g=>`<details class="st-library-group" data-section="lib-${g}"${stPanelOpen['lib-'+g]?' open':''}><summary>${g}</summary><div class="st-lib st-presets">${ST_PRESETS.filter(p=>p.group===g).map(p=>`<button type="button" class="st-libi" data-preset="${p.id}" title="${stEsc(p.name)}">${ST_ICONS[p.type]||ST_ICONS.table}<span>${p.name}</span></button>`).join('')}</div></details>`).join('')}
+<details class="st-library-group" data-section="lib-basic"${stPanelOpen['lib-basic']?' open':''}><summary>Tạo khối cơ bản</summary><div class="st-lib">${Object.entries(ST_TYPES).filter(([k])=>!['spacer','divider','appList','kit'].includes(k)).map(([k,t])=>`<button type="button" class="st-libi" data-type="${k}">${ST_ICONS[k]||''}<span>${t.name}</span></button>`).join('')}</div></details>
 <details class="st-library-group" data-section="lib-layout"${stPanelOpen['lib-layout']?' open':''}><summary>Bố cục nâng cao</summary><p class="st-hint">“Chừa chỗ” là vùng trắng có chiều cao cố định để đẩy nội dung phía sau xuống. Dùng khi cần chừa chỗ ký hoặc canh vị trí; khoảng cách giữa các khối đã được xử lý sẵn.</p><div class="st-lib">${['divider','spacer'].map(k=>`<button type="button" class="st-libi" data-type="${k}">${ST_ICONS[k]}<span>${ST_TYPES[k].name}</span></button>`).join('')}</div></details>`;
 }
 function stPanel(){
@@ -2105,17 +2934,24 @@ function stPanel(){
 <label class="st-check"><input type="checkbox" data-reusable${b.reusable?' checked':''}${b.src?' disabled':''}> Giữ nội dung này khi dùng template</label><p class="st-lbl">Độ rộng <span class="st-muted">· kéo cạnh phải</span></p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${b.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div>
 <p class="st-lbl">Kiểu khối</p><div class="st-styles">${ST_STYLES.map(([s,l])=>`<button type="button" data-style="${s}" class="${b.style===s?'on':''}"><i class="st-swatch" data-bg="${bg}"><b class="st-s-${s}"></b></i><span>${l}</span></button>`).join('')}</div>
 <div class="st-focus-controls"><button type="button" data-act="focus" aria-pressed="${!!b.focus}">${b.focus?'Đang là tiêu điểm · bỏ tiêu điểm':'Đặt làm tiêu điểm trang'}</button><button type="button" data-act="style-all">Áp kiểu này cho mọi khối ${stEsc(ST_TYPES[b.type]?.name||b.type)}</button></div>
+<details class="st-frame" data-section="frame"${stPanelOpen.frame?' open':''}><summary>Khung chi tiết · đệm, bo góc, màu</summary><div class="st-frame-grid">${[['pad','Đệm',ST_K_PADS],['radius','Bo góc',ST_K_RADII],['edge','Màu viền / vạch',ST_K_EDGES],['accent','Màu nhấn',ST_K_ACCENTS]].map(([k,l,list])=>`<label class="st-field"><span>${l}</span><select data-frame="${k}">${list.map(([v,n])=>`<option value="${v}"${(b.frame?.[k]||(k==='accent'?'base':'auto'))===v?' selected':''}>${n}</option>`).join('')}</select></label>`).join('')}</div></details>
 <p class="st-lbl">Chiều cao khối</p><div class="st-row">${b.h?`<span>${b.h} mm</span><button type="button" data-act="h-auto">Về tự động</button>`:'<span class="st-muted">Tự động theo nội dung · kéo cạnh dưới để đặt</span>'}</div>
 ${b.src?'<p class="st-hint">Khối có số liệu liên kết Quote Lab. Cập nhật số liệu sẽ thay nội dung khối này.</p>':''}`,true);
+    if(b.kit){
+      const def=stKit?.defs.find(d=>d.id===b.kit.def),latest=def&&!def.archivedAt&&stKLatest(def),newer=latest&&latest.v>b.kit.v,data=stKHasData(b.kit.spec);
+      h+=stSection('kit','Khối thư viện',`<p class="st-hint"><b>${stEsc(b.kit.name)}</b> · phiên bản v${b.kit.v}${b.kit.detached?' · nội dung độc lập':''}. Báo giá giữ đúng phiên bản đã chèn; sửa thư viện không làm đổi khối này.</p>${newer?`<div class="st-kit-update"><p>Thư viện có phiên bản <b>v${latest.v}</b>${latest.note?' · '+stEsc(latest.note):''}.</p><button type="button" data-act="kit-upgrade">Cập nhật khối lên v${latest.v}</button></div>`:!def?'<p class="st-hint">Mẫu gốc không còn trong thư viện; khối vẫn giữ nguyên.</p>':''}<div class="st-row">${data&&!b.kit.detached?'<button type="button" data-act="kit-refresh">Làm mới dữ liệu</button><button type="button" data-act="kit-detach">Giữ nội dung độc lập</button>':''}${def&&!def.archivedAt?'<button type="button" data-act="kit-edit">Sửa mẫu ↗</button>':''}</div>${data&&!b.kit.detached?'<p class="st-hint">Biến (gạch chân xanh) và vùng dữ liệu tự động lấy lại từ hồ sơ / phương án khi làm mới hoặc cập nhật số liệu; chữ khác giữ nguyên.</p>':''}`,true);
+    }
     if(ST_P2_TYPES[b.type])h+=stSection('phase2','Dữ liệu của khối',`<p class="st-hint">Lấy nội dung từ hồ sơ / phương án của quotation này. Thiếu dữ liệu thì giữ khối để điền tay; thao tác có hoàn tác.</p><div class="st-row"><button type="button" data-act="phase2-fill">Điền từ hồ sơ / phương án</button>${b.src?.startsWith('phase2:')?'<button type="button" data-act="phase2-detach">Giữ nội dung độc lập</button>':''}</div>${b.type==='assumptions'?'<p class="st-hint">Ghi chú riêng ở cuối khối được giữ khi cập nhật dữ liệu.</p>':''}${b.type==='cta'?`<label class="st-field"><span>Link xác nhận / trao đổi · tuỳ chọn</span><input type="url" data-cta-url value="${stEsc(b.ctaLink??stBlockEl(b.id)?.querySelector('.st-cta-link')?.getAttribute('href')??'')}" placeholder="https://…"></label><p class="st-hint">Chỉ dùng link được nhập; không tự tạo link thanh toán.</p>`:''}`,true);
     if(b.type==='appList'){
-      const choices=stPackageChoices(stDoc.data),current=choices.find(x=>x.id===b.packageId),groups=[...new Set(choices.map(x=>x.group))];
-      h+=stSection('package','Phụ lục · chọn gói',`<label class="st-field"><span>Gói giải pháp</span><select data-package><option value="">Chọn gói…</option>${!current&&b.packageId?'<option value="'+stEsc(b.packageId)+'" selected>Gói đã lưu · giữ nội dung hiện tại</option>':''}${groups.map(g=>`<optgroup label="${stEsc(g)}">${choices.filter(x=>x.group===g).map(x=>`<option value="${stEsc(x.id)}"${x.id===b.packageId?' selected':''}>${stEsc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label>${current?'<button type="button" data-act="apps-rebuild">Tạo lại bảng đầy đủ</button>':''}<p class="st-hint">Chọn “Toàn bộ phương án” để gom app của các bộ đi kèm. Các gói chính đã gồm Base Core dùng chung; add-on chỉ liệt kê app mua thêm. Tạo lại bảng sẽ thay chữ đã sửa trong khối này; có thể hoàn tác.</p>`,true);
+      const all=stPackageChoices(stDoc.data),hasOpts=all.some(x=>x.id.startsWith('quote:')),saved=!!b.packageId&&!b.packageId.startsWith('quote:')&&b.packageId!=='core',showAll=!hasOpts||stPkgAll||saved;
+      // Có file phương án: chỉ gói trong phương án (+ Base Core dùng chung); gói catalog khác phải bật rõ.
+      const choices=showAll?all:all.filter(x=>x.id.startsWith('quote:')||x.id==='core'),current=choices.find(x=>x.id===b.packageId),groups=[...new Set(choices.map(x=>x.group))];
+      h+=stSection('package','Phụ lục · chọn gói',`<label class="st-field"><span>Gói giải pháp</span><select data-package><option value="">Chọn gói…</option>${!current&&b.packageId?'<option value="'+stEsc(b.packageId)+'" selected>Gói đã lưu · giữ nội dung hiện tại</option>':''}${groups.map(g=>`<optgroup label="${stEsc(g)}">${choices.filter(x=>x.group===g).map(x=>`<option value="${stEsc(x.id)}"${x.id===b.packageId?' selected':''}>${stEsc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label>${hasOpts?`<label class="st-check"><input type="checkbox" data-package-all${showAll?' checked':''}${saved?' disabled':''}> Hiện cả gói ngoài phương án (catalog)</label>`:''}${current?'<button type="button" data-act="apps-rebuild">Tạo lại bảng đầy đủ</button>':''}<p class="st-hint">${hasOpts?'Danh sách chỉ gồm gói trong phương án của file Quote Lab. ':''}Chọn “Toàn bộ phương án” để gom app của các bộ đi kèm. Các gói chính đã gồm Base Core dùng chung; add-on chỉ liệt kê app mua thêm. Tạo lại bảng sẽ thay chữ đã sửa trong khối này; có thể hoàn tác.</p>`,true);
     }
     const typography=stSection('text','Chữ & màu sắc',`
 <p class="st-hint">Bôi đen để định dạng một đoạn. Chọn màu khi chưa bôi đen sẽ đổi màu chữ toàn khối.</p><div class="st-fmt">${[['bold','<b>B</b>','Đậm'],['italic','<i>I</i>','Nghiêng'],['underline','<u>U</u>','Gạch chân'],['insertUnorderedList','•≡','Danh sách chấm'],['insertOrderedList','1≡','Danh sách số'],['justifyLeft','⇤','Căn trái'],['justifyCenter','↔','Căn giữa'],['justifyRight','⇥','Căn phải'],['removeFormat','⌫','Bỏ định dạng']].map(([c,l,title])=>`<button type="button" data-cmd="${c}" title="${title}">${l}</button>`).join('')}</div>
 <p class="st-lbl">Màu chữ</p><div class="st-colors">${ST_COLORS.map(([c,n])=>`<button type="button" data-color="${c}" style="--color:${c}" aria-label="Màu chữ · ${n}" title="${n}"></button>`).join('')}</div><div class="st-color-custom"><label>Màu khác <input type="color" data-custom-color value="#3563e9" aria-label="Màu chữ tuỳ chọn"></label><button type="button" data-act="color-reset">Màu theo mẫu</button></div>`,true);
-    if(hasTable)h+=stSection('table','Bảng · dòng & cột',`<p class="st-hint">Đặt con trỏ vào ô cần sửa. Cột mới được chia đều chiều rộng và tự chọn để nhập.</p><div class="st-row"><button type="button" data-act="row-add">＋ Dòng</button><button type="button" data-act="col-add">＋ Cột</button><button type="button" data-act="row-del">− Dòng</button><button type="button" data-act="col-del">− Cột</button></div>`,true);
+    if(hasTable)h+=stSection('table','Bảng · dòng & cột',`<p class="st-hint">Đặt con trỏ vào ô cần sửa. Cột mới được chia đều chiều rộng và tự chọn để nhập.</p><div class="st-row"><button type="button" data-act="row-add">＋ Dòng</button><button type="button" data-act="col-add">＋ Cột</button><button type="button" data-act="row-del">− Dòng</button><button type="button" data-act="col-del">− Cột</button></div><p class="st-lbl">Đổi thứ tự <span class="st-muted">· theo ô đang đặt con trỏ</span></p><div class="st-row st-order"><button type="button" data-act="row-up" title="Alt+Shift+↑">↑ Dòng lên</button><button type="button" data-act="row-down" title="Alt+Shift+↓">↓ Dòng xuống</button><button type="button" data-act="col-left" title="Alt+Shift+←">← Cột trái</button><button type="button" data-act="col-right" title="Alt+Shift+→">→ Cột phải</button></div><p class="st-hint">Phím tắt khi đang ở trong ô: Alt + Shift + mũi tên. Cột di chuyển cùng độ rộng; dòng tiêu đề giữ ở đầu bảng.</p>`,true);
     if(hasImg||['image','logo'].includes(b.type))h+=stSection('image',logo?'Logo · kích thước ảnh':'Ảnh',`
 <div class="st-row"><button type="button" data-act="img-pick">Chọn ảnh…</button>${logo?'':'<button type="button" data-act="img-logo">Dùng như logo</button>'}<button type="button" data-act="img-fit">Vừa khung / Lấp đầy</button><button type="button" data-act="img-clear">Bỏ ảnh</button></div>
 ${logo?`<div class="st-dimensions"><label class="st-field"><span>Rộng logo (mm)</span><input type="number" data-logo="w" min="8" max="180" value="${size.w}"></label><label class="st-field"><span>Cao logo (mm)</span><input type="number" data-logo="h" min="8" max="100" value="${size.h}"></label></div><label class="st-field"><span>Vị trí trong khối</span><select data-logo-align>${[['start','Trái'],['center','Giữa'],['end','Phải']].map(([v,l])=>`<option value="${v}"${(b.logoAlign||'start')===v?' selected':''}>${l}</option>`).join('')}</select></label><label class="st-check"><input type="checkbox" data-logo-frame${b.logoFrame!==false?' checked':''}> Nền trắng chung cho khung logo</label><button type="button" data-act="logo-all" class="st-full">Áp kích thước này cho tất cả logo</button><p class="st-hint">Khung mặc định 32 × 22 mm. Ảnh giữ tỷ lệ khi chọn “Vừa khung”. Độ rộng khối trên lưới được chỉnh riêng.</p>`:''}`,true);
@@ -2154,7 +2990,7 @@ function stSetSel(s,{panel=true}={}){
 }
 function stCurrentPage(){
   const c=st$('#st-canvas').getBoundingClientRect();let best=null,score=-1;
-  for(const el of st$$('.st-page')){const r=el.getBoundingClientRect(),v=Math.min(r.bottom,c.bottom)-Math.max(r.top,c.top);if(v>score){score=v;best=el.dataset.pid;}}
+  for(const el of st$$('#st-pages > .st-page')){const r=el.getBoundingClientRect(),v=Math.min(r.bottom,c.bottom)-Math.max(r.top,c.top);if(v>score){score=v;best=el.dataset.pid;}}
   return best||stDoc.pages[0]?.id;
 }
 function stScrollTo(el){el?.scrollIntoView({behavior:'smooth',block:'start'});}
@@ -2180,25 +3016,53 @@ function stInsert(type,at,prepared){
   const el=stBlockEl(b.id);el?.scrollIntoView({block:'nearest',behavior:'smooth'});
   if(!prepared&&(type==='image'||type==='logo'))stPickImage(b.id);else{const c=el?.querySelector('[contenteditable]'),first=c&&[...c.querySelectorAll('h1,h2,h3,p,li,td,th')].find(x=>x.textContent.trim()&&!x.querySelector('p,li,td'));if(c){c.focus();if(first)stSelectAllIn(first);}}
 }
+// Biến dữ liệu là “chip” không sửa được: bấm chuột trúng biến rồi gõ thì con trỏ ra ngay sau biến (không chặn phím mũi tên).
+function stCaretOutOfVar(){
+  const selection=getSelection(),n=selection.anchorNode,el=n&&(n.nodeType===1?n:n.parentElement),kv=selection.isCollapsed&&el?.closest?.('[contenteditable="true"] .kv');if(!kv)return false;
+  const r=document.createRange(),next=kv.nextSibling;if(next?.nodeType===3)r.setStart(next,next.data.startsWith('\u200B')?1:0);else r.setStartAfter(kv);r.collapse(true);selection.removeAllRanges();selection.addRange(r);return true;
+}
 function stSelectAllIn(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);}
 function stInsertPreset(id,at){const b=stPresetBlock(id,stDoc?.data);if(b)stInsert(b.type,at,b);}
 function stApplyAppPackage(bid,packageId){
   const r=stFind(bid),pkg=stPackageChoices(stDoc?.data).find(x=>x.id===packageId);if(!r||!pkg||r.b.type!=='appList')return;
   stFlush();r.b.packageId=pkg.id;r.b.html=stAppListHTML(pkg);stRenderPage(r.p.id);stPanel();stCommit();
 }
+// Lưu khối đang chọn thành khối “nội dung tự do” (phiên bản v1) trong Thư viện khối; giữ ảnh, kiểu, khung.
 async function stSaveLibrary(){
   stFlush();const b=stSel?.bid&&stFind(stSel.bid)?.b;if(!b)return;
   if(b.src){stToast('Khối số liệu liên kết lấy theo từng quotation. Dùng mẫu trong thư viện để tránh mang giá của khách cũ sang bản mới.');return;}
-  const v=await stDialog('Lưu khối vào thư viện','<label class="st-field"><span>Tên mẫu</span><input id="st-library-name" maxlength="80" value="'+stEsc(ST_TYPES[b.type]?.name||'Khối nội dung')+'"></label>',[{label:'Huỷ',value:false},{label:'Lưu mẫu',value:true,primary:true}]);
-  if(!v)return;const name=st$('#st-library-name').value.trim();if(!name){stToast('Cần đặt tên cho mẫu.');return;}
-  const block=stQuoteClone(b);delete block.id;delete block.src;block.focus=false;if(block.style==='accent')block.style='card';block.html=stSanitize(block.html);
-  const assets={};const box=document.createElement('template');box.innerHTML=block.html;box.content.querySelectorAll('img[data-asset]').forEach(i=>{if(stDoc.assets[i.dataset.asset])assets[i.dataset.asset]=stDoc.assets[i.dataset.asset];i.removeAttribute('src');});block.html=box.innerHTML;
-  try{const all=await stStore.getKV('st-library')||[];all.push({id:stQuoteId('tpl'),name,block,assets});await stStore.setKV('st-library',all);await stCloudService?.queue('library',{id:'block-library',name:'Thư viện khối',blocks:all});stLibrary=all;stPanelOpen.library=true;stPanelOpen['lib-saved']=true;st$('[data-section="library"]').open=true;st$('[data-section="lib-saved"]').open=true;stPanel();stToast('Đã lưu mẫu trên trình duyệt này.');}catch{stToast('Chưa lưu được mẫu vào thư viện.');}
+  const groups=stKit?stKTree(stKit):[];
+  const v=await stDialog('Lưu khối vào thư viện',`<label class="st-field"><span>Tên mẫu</span><input id="st-library-name" maxlength="80" value="${stEsc(b.kit?.name||ST_TYPES[b.type]?.name||'Khối nội dung')}"></label><label class="st-field"><span>Nhóm</span><select id="st-library-group"><option value="saved">Khối đã lưu</option>${groups.filter(({g})=>g.id!=='saved').map(({g,depth})=>`<option value="${stEsc(g.id)}">${'　'.repeat(depth)}${stEsc(g.name)}</option>`).join('')}</select></label><p class="st-hint">Khối được lưu thành phiên bản v1, hiện ngay trong “Thư viện của bạn”. Có thể sửa tiếp trong Thư viện khối.</p>`,[{label:'Huỷ',value:false},{label:'Lưu mẫu',value:true,primary:true}]);
+  if(!v)return;const name=st$('#st-library-name').value.trim(),group=st$('#st-library-group')?.value||'saved';if(!name){stToast('Cần đặt tên cho mẫu.');return;}
+  const block=stQuoteClone(b);delete block.id;delete block.src;block.focus=false;if(block.style==='accent')block.style='card';
+  const assets={};const box=document.createElement('template');box.innerHTML=stSanitize(block.html);box.content.querySelectorAll('img[data-asset]').forEach(i=>{if(stDoc.assets[i.dataset.asset])assets[i.dataset.asset]=stDoc.assets[i.dataset.asset];i.removeAttribute('src');});block.html=box.innerHTML;
+  try{
+    const {kit,out}=await stKitWrite(stQuoteRepo,stCloudService,k=>{const gid=group==='saved'||!k.groups.some(g=>g.id===group)?stKSavedGroup(k):group;return stKAddDef(k,{name,group:gid,spec:stKSnapshot(block,assets),publish:true,note:'Lưu từ '+(stDoc.title||'báo giá')});});
+    stKit=kit;stPanelOpen.library=true;stPanelOpen['kit-'+(out.group||'none')]=true;stPanel();stToast('Đã lưu vào Thư viện khối · v1.');
+  }catch(e){stToast('Chưa lưu được mẫu vào thư viện: '+e.message);}
 }
-function stInsertLibrary(id){
-  const x=stLibrary.find(x=>x.id===id);if(!x)return;const b=stQuoteClone(x.block);b.id=stId('b');b.html=stSanitize(b.html);delete b.src;b.focus=false;
-  const box=document.createElement('template');box.innerHTML=b.html;box.content.querySelectorAll('img[data-asset]').forEach(i=>{const src=x.assets?.[i.dataset.asset];i.removeAttribute('src');if(src&&/^data:image\//.test(src)){const aid=stId('a');stDoc.assets[aid]=src;i.dataset.asset=aid;}else i.removeAttribute('data-asset');});b.html=box.innerHTML;stInsert(b.type,null,b);
+// Chèn khối từ thư viện: render theo dữ liệu của báo giá này, kèm bản sao spec của phiên bản (không phụ thuộc thư viện về sau).
+function stInsertKit(id,at){
+  const def=stKit?.defs.find(d=>d.id===id);if(!def||!stDoc)return;
+  const r=stKInstance(def,stDoc.data,{assetId:()=>stId('a')});if(!r)return;
+  stDoc.assets??={};Object.assign(stDoc.assets,r.assets);r.block.html=stSanitize(r.block.html);stInsert(r.block.type,at,r.block);
 }
+function stKitSelected(){const r=stSel?.bid&&stFind(stSel.bid);return r&&r.b.kit?r:null;}
+async function stKitUpgrade(){
+  const r=stKitSelected(),def=r&&stKit?.defs.find(d=>d.id===r.b.kit.def),latest=def&&stKLatest(def);if(!latest)return;
+  if(!await stDialog(`Cập nhật khối lên v${latest.v}?`,`Khối được dựng lại theo phiên bản v${latest.v} của “${stEsc(def.name)}” với dữ liệu báo giá này. Chữ đã sửa trong khối sẽ được thay; độ rộng trên trang giữ nguyên. Hoàn tác được bằng ⌘Z / Ctrl+Z.`,[{label:'Huỷ',value:false},{label:'Cập nhật khối',value:true,primary:true}]))return;
+  stFlush();const x=stKInstance(def,stDoc.data,{assetId:()=>stId('a')});Object.assign(stDoc.assets,x.assets);
+  const keep={id:r.b.id,w:r.b.w,focus:r.b.focus};for(const k of Object.keys(r.b))delete r.b[k];Object.assign(r.b,x.block,keep,{html:stSanitize(x.block.html)});
+  stRenderPage(r.p.id);stPanel();stCommit();stToast(`Đã cập nhật khối lên v${latest.v} · hoàn tác được`);
+}
+function stKitRefresh(){
+  const r=stKitSelected();if(!r)return;stFlush();const html=stKRefreshHTML(r.b.html,r.b.kit.spec,stDoc.data,{rows:r.b.kit.rows});
+  if(html===r.b.html){stToast('Dữ liệu của khối đã đúng với hồ sơ / phương án hiện tại.');return;}
+  r.b.html=stSanitize(html);stRenderPage(r.p.id);stPanel();stCommit();stToast('Đã làm mới dữ liệu của khối; chữ khác giữ nguyên.');
+}
+function stKitDetach(){const r=stKitSelected();if(!r)return;stFlush();r.b.html=stKDetachHTML(r.b.html);r.b.kit={...r.b.kit,detached:true};stRenderPage(r.p.id);stPanel();stCommit();stToast('Khối giữ nội dung độc lập; cập nhật số liệu không thay khối này.');}
+function stKitOpen(defId){const url=new URL(location.href);url.search='?blocks=1'+(defId?'&block='+encodeURIComponent(defId):'');const w=window.open(url.href,'quote-studio-blocks');if(!w)stToast('Trình duyệt chặn tab mới. Mở Thư viện khối từ trang chủ.');}
+async function stKitReload(){try{stKit=await stKitRead(stQuoteRepo);}catch{return;}if(stDoc&&!stReadonly&&!st$('#st-app').hidden)stPanel();}
 function stRestoreTextSelection(bEl,whole=false){
   const c=bEl?.querySelector('.st-c');if(!c)return false;
   const saved=stTextRange?.bid===bEl.dataset.bid&&c.contains(stTextRange.range.commonAncestorContainer)?stTextRange.range:null;
@@ -2249,7 +3113,7 @@ function stScheduleMeasure(){clearTimeout(stMeasureT);stMeasureT=setTimeout(stMe
 const stLimit=grid=>parseFloat(getComputedStyle(grid).minHeight)||0;
 function stMeasure(){
   stMeasurements={};
-  for(const el of st$$('.st-page')){
+  for(const el of st$$('#st-pages > .st-page')){
     const grid=el.querySelector('.st-grid'),over=grid.offsetHeight-stLimit(grid),o=over>2;
     const units=[],tops=[];for(const block of grid.querySelectorAll(':scope > .st-b')){let row=tops.findIndex(t=>Math.abs(t-block.offsetTop)<2);if(row<0){row=tops.length;tops.push(block.offsetTop);units.push([]);}units[row].push(block.dataset.bid);}
     stMeasurements[el.dataset.pid]={overflow:o,overflowMm:o?Math.ceil(over/ST_PXMM):0,units};
@@ -2273,11 +3137,15 @@ function stFixOverflow(pid){
     const gTop=grid.getBoundingClientRect().top,rows=[...(tbl.tBodies[0]?.rows||[])];
     const s=rows.findIndex(row=>row.getBoundingClientRect().bottom-gTop>limit);
     if(s<1)return 'too-tall';
+    // Bảng nằm trong vùng của khối thư viện: cắt anh em ở mọi cấp tới .st-c; giữ dấu vùng dữ liệu của chính bảng để làm mới đúng khoảng dòng.
+    const ke=tbl.closest('[data-ke]')?.dataset.ke,mark=n=>n.nodeType===8&&ke&&(n.data==='kb:'+ke||n.data==='/kb:'+ke);
+    const prune=(c,t,after)=>{for(let n=t;n&&n!==c;n=n.parentNode){let x=after?n.nextSibling:n.previousSibling;while(x){const y=after?x.nextSibling:x.previousSibling;if(!mark(x))x.remove();x=y;}}};
     const make=keepFirst=>{const c=k.querySelector('.st-c').cloneNode(true),t=c.querySelector('table'),body=t.tBodies[0];[...body.rows].forEach((row,i)=>{if(keepFirst?i>=s:i<s)row.remove();});
-      if(keepFirst){let n=t.nextSibling;while(n){const nx=n.nextSibling;n.remove();n=nx;}}else{let n=t.previousSibling;while(n){const pv=n.previousSibling;n.remove();n=pv;}t.insertAdjacentHTML('beforebegin','<p class="s">(tiếp theo)</p>');}
+      if(keepFirst)prune(c,t,true);else{prune(c,t,false);t.insertAdjacentHTML('beforebegin','<p class="s">(tiếp theo)</p>');}
       c.querySelectorAll('img[data-asset]').forEach(i=>i.removeAttribute('src'));return c.innerHTML;};
     const rest={...JSON.parse(JSON.stringify(b)),id:stId('b'),html:make(false),src:undefined};
     if(b.src==='phase2:payment'){const start=b.sourceRows?.[0]||0,end=b.sourceRows?.[1]??null;b.sourceRows=[start,start+s];rest.sourceRows=[start+s,end];rest.src=b.src;}
+    if(b.kit&&ke){const old=b.kit.rows?.[ke],start=old?.[0]||0,end=old?.[1]??null;b.kit={...b.kit,rows:{...b.kit.rows,[ke]:[start,start+s]}};rest.kit={...rest.kit,rows:{...rest.kit.rows,[ke]:[start+s,end]}};}
     b.html=make(true);const moved=[rest,...p.blocks.splice(idx+1)];
     stDoc.pages.splice(stDoc.pages.indexOf(p)+1,0,stContinuedPage(p,moved));
     return 'split';
@@ -2334,7 +3202,9 @@ function stTableOp(op){
   if(!tbl){stToast('Khối này chưa có bảng.');return;}
   const body=tbl.tBodies[0],row=cell?.closest('tr')||body?.rows[body.rows.length-1]||tbl.rows[0],ci=cell?cell.cellIndex:(row?.cells.length||1)-1;
   if(!row){stToast('Bảng chưa có dòng để sửa.');return;}
-  if(op.startsWith('col-')&&[...tbl.querySelectorAll('td,th')].some(c=>c.colSpan>1||c.rowSpan>1)){stToast('Bảng có ô gộp. Dùng khối Bảng cơ bản để thêm hoặc xoá cột.');return;}
+  if(op.startsWith('col-')&&[...tbl.querySelectorAll('td,th')].some(c=>c.colSpan>1||c.rowSpan>1)){stToast(/left|right/.test(op)?'Bảng có ô gộp nên không đổi thứ tự cột được; tách ô gộp hoặc dùng khối Bảng cơ bản.':'Bảng có ô gộp. Dùng khối Bảng cơ bản để thêm hoặc xoá cột.');return;}
+  if(/^(row-up|row-down|col-left|col-right)$/.test(op)&&!cell){stToast('Đặt con trỏ vào một ô của dòng / cột cần chuyển.');return;}
+  if(op.startsWith('row-')&&/up|down/.test(op)&&[...tbl.querySelectorAll('td,th')].some(c=>c.rowSpan>1)){stToast('Bảng có ô gộp dòng nên không đổi thứ tự dòng được.');return;}
   stFlush();let next=null;
   if(op==='row-add'){
     const base=row.parentElement.tagName==='THEAD'?(body?.rows[0]||row):row,nr=document.createElement('tr');
@@ -2349,6 +3219,16 @@ function stTableOp(op){
   }else if(op==='col-del'){
     if((tbl.rows[0]?.cells.length||0)<2){stToast('Bảng cần ít nhất một cột.');return;}
     for(const r of tbl.rows){if(r.cells.length<2)continue;const i=Math.min(ci,r.cells.length-1);r.cells[i].remove();if(r===row)next=r.cells[Math.min(i,r.cells.length-1)];}tbl.classList.add('st-edit-table');
+  }
+  else if(op==='row-up'||op==='row-down'){
+    const up=op==='row-up',sib=up?row.previousElementSibling:row.nextElementSibling;
+    if(!sib){stToast(row.parentElement.tagName==='THEAD'?'Dòng tiêu đề cố định ở đầu bảng.':up?'Dòng đã ở đầu phần thân bảng.':'Dòng đã ở cuối bảng.');return;}
+    if(up)sib.before(row);else sib.after(row);next=row.cells[Math.min(ci,row.cells.length-1)];
+  }else if(op==='col-left'||op==='col-right'){
+    const to=ci+(op==='col-left'?-1:1);if(to<0||to>=row.cells.length){stToast(op==='col-left'?'Cột đã ở bên trái cùng.':'Cột đã ở bên phải cùng.');return;}
+    // Chuyển cả ô tiêu đề, mọi dòng và độ rộng cột (colgroup) để bảng không đổi bố cục.
+    for(const r of tbl.rows){const a=r.cells[ci],b=r.cells[to];if(!a||!b)continue;if(to<ci)b.before(a);else b.after(a);if(r===row)next=a;}
+    const cols=[...(tbl.querySelector('colgroup')?.children||[])];if(cols[ci]&&cols[to]){if(to<ci)cols[to].before(cols[ci]);else cols[to].after(cols[ci]);}
   }
   stCell=next;stFromDOM(bEl);stCommit();stScheduleMeasure();
   if(next){bEl.querySelector('.st-c').focus();stSelectAllIn(next);next.scrollIntoView({block:'nearest',inline:'nearest'});}
@@ -2408,11 +3288,11 @@ function stDragMove(e){
 function stDragEnd(){
   const d=stDrag;stDrag=null;window.removeEventListener('pointermove',stDragMove);if(!d)return;
   clearInterval(d.scroll);document.body.classList.remove('st-dragging-on');st$('#st-ghost').hidden=true;stShowDrop(null);st$$('.st-dragging').forEach(x=>x.classList.remove('st-dragging'));
-  if(!d.moved){if(d.src.kind==='new')d.src.preset?stInsertPreset(d.src.preset):stInsert(d.src.type);return;}
+  if(!d.moved){if(d.src.kind==='new')d.src.kit?stInsertKit(d.src.kit):d.src.preset?stInsertPreset(d.src.preset):stInsert(d.src.type);return;}
   const t=d.target;if(!t)return;
   if(d.src.kind==='page'&&t.kind==='page')stMovePage(d.src.pid,t.index);
   else if(d.src.kind==='block'&&t.pid)stMove(d.src.bid,t.pid,t.index);
-  else if(d.src.kind==='new'&&t.pid)d.src.preset?stInsertPreset(d.src.preset,{pid:t.pid,index:t.index}):stInsert(d.src.type,{pid:t.pid,index:t.index});
+  else if(d.src.kind==='new'&&t.pid)d.src.kit?stInsertKit(d.src.kit,{pid:t.pid,index:t.index}):d.src.preset?stInsertPreset(d.src.preset,{pid:t.pid,index:t.index}):stInsert(d.src.type,{pid:t.pid,index:t.index});
 }
 
 // ---------- Đổi kích thước ----------
@@ -2438,7 +3318,7 @@ function stBlankDoc(){
     pages:[stNewPage('dark',[stNewBlock('cover'),stNewBlock('spacer',{h:30}),{...stNewBlock('logo'),html:'<div class="img logo" contenteditable="false"><img alt="" data-asset="base-logo"></div>'}],{role:'cover'})]};
 }
 async function stOpenDoc(d,{forceSave=false}={}){
-  stFlush();if(stDoc&&stDoc.id!==d.id)await stSaveNow();stHomeUI?.hide();
+  stFlush();if(stDoc&&stDoc.id!==d.id)await stSaveNow();stKitUI?.hide();stHomeUI?.hide();
   d.assets??={};d.notes??=[];d.header??={left:'',right:''};d.footer??={left:''};
   stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRememberDoc(stDoc);stRender();stHistReset();if(forceSave||!d.revision||!d.quotationId)await stSaveNow();else{stSavedSnapshots.set(stDoc,stQuoteDocSignature(stDoc));stSaveStatus('Đã mở bản đã lưu');stSendSaved(stDoc);}
 }
@@ -2451,7 +3331,7 @@ async function stNewFromPayload(p){
 }
 async function stAskSource(p){
   const v=await stDialog('Cập nhật số liệu từ Quote Lab',`Bản đã sửa trong Studio được giữ. Các khối liên kết sẽ được cập nhật: số liệu, chi phí hiện trạng, giả định, thanh toán và CTA. Nội dung độc lập được giữ; có thể hoàn tác.`,[{label:'Giữ bản đang soạn',value:null},{label:'Tạo quotation riêng',value:'new'},{label:'Cập nhật số liệu',value:'refresh',primary:true}]);
-  if(v==='refresh'){stFlush();const n=stRefreshDoc(stDoc,p);stDoc.sourceSignature=stQuoteSignature(p);stPendingSource=null;st$('#st-source-update').hidden=true;stRender();stCommit();await stSaveNow();stToast(n?`Đã cập nhật ${n} khối số liệu; nội dung khác giữ nguyên`:'Số liệu không đổi');}
+  if(v==='refresh'){stFlush();const n=stRefreshDoc(stDoc,p)+stKRefreshDoc(stDoc,p);stDoc.sourceSignature=stQuoteSignature(p);stPendingSource=null;st$('#st-source-update').hidden=true;stRender();stCommit();await stSaveNow();stToast(n?`Đã cập nhật ${n} khối số liệu; nội dung khác giữ nguyên`:'Số liệu không đổi');}
   if(v==='new'){const old=p.quotationId,qid=stQuoteId('q'),draft=old&&await stQuoteRepo.getDraft(old);if(draft)await stQuoteRepo.putDraft({...draft,id:qid,studioDocId:null,created:Date.now(),state:{...draft.state,quotationId:qid,studioDocId:null}});await stNewFromPayload({...p,quotationId:qid});}
 }
 async function stOnPayload(p){
@@ -2483,7 +3363,7 @@ async function stOpenFile(file){
     const d=JSON.parse(await file.text());
     if(d.kind==='quote-studio-data'){stQueuePayload({...d,sentAt:Date.now()});return;}
     if(!Array.isArray(d.pages))throw new Error('File không phải dự án Quote Studio.');
-    d.pages.forEach(p=>{p.id||=stId('p');p.bg=p.bg==='dark'?'dark':'light';p.blocks=(p.blocks||[]).map(b=>({...b,id:b.id||stId('b'),w:Math.max(1,Math.min(12,+b.w||12)),h:Math.max(0,+b.h||0),type:ST_TYPES[b.type]?b.type:'text',style:ST_STYLES.some(s=>s[0]===b.style)?b.style:'plain',html:stSanitize(b.html)}));});
+    d.pages.forEach(p=>{p.id||=stId('p');p.bg=p.bg==='dark'?'dark':'light';p.blocks=(p.blocks||[]).map(b=>({...b,id:b.id||stId('b'),w:Math.max(1,Math.min(12,+b.w||12)),h:Math.max(0,+b.h||0),type:ST_TYPES[b.type]?b.type:'text',style:ST_STYLES.some(s=>s[0]===b.style)?b.style:'plain',html:stSanitize(b.html),kit:b.kit&&typeof b.kit==='object'?{def:String(b.kit.def||'').slice(0,80),v:Math.max(1,Math.round(+b.kit.v)||1),name:String(b.kit.name||'Khối thư viện').slice(0,80),spec:stKNormalize(b.kit.spec),...(b.kit.detached?{detached:true}:{}),...(b.kit.rows&&typeof b.kit.rows==='object'?{rows:Object.fromEntries(Object.entries(b.kit.rows).filter(([,r])=>Array.isArray(r)).map(([k,r])=>[k,[Math.max(0,+r[0]||0),r[1]==null?null:Math.max(0,+r[1]||0)]]))}:{})}:undefined}));});
     for(const [k,v] of Object.entries(d.assets||{}))if(!/^data:image\//.test(v))delete d.assets[k];
     delete d.kind;d.id||=stId('d');const stored=await stStore.get(d.id);if(stored&&JSON.stringify(stored.pages)!==JSON.stringify(d.pages)){d.id=stQuoteId('d');d.quotationId=stQuoteId('q');d.revision=0;}else d.revision=stored?.revision||0;
     await stOpenDoc(d,{forceSave:true});stToast('Đã mở '+(d.title||file.name));
@@ -2492,7 +3372,7 @@ async function stOpenFile(file){
 function stExportHTML(){
   stFlush();
   const css=st$('#st-css').textContent.split('/* == EDITOR == */')[0];
-  const pages=st$$('.st-page').map(el=>{const c=el.cloneNode(true);c.querySelectorAll('.st-ptools,.st-handle,.st-rw,.st-rh,.st-mini,.st-a4line,.st-emptyhint,.img.is-empty').forEach(x=>x.remove());c.querySelectorAll('[contenteditable]').forEach(x=>x.removeAttribute('contenteditable'));c.querySelectorAll('[spellcheck]').forEach(x=>x.removeAttribute('spellcheck'));c.classList.remove('is-sel','is-over');c.querySelectorAll('.is-sel').forEach(x=>x.classList.remove('is-sel'));return c.outerHTML;}).join('\n');
+  const pages=st$$('#st-pages > .st-page').map(el=>{const c=el.cloneNode(true);c.querySelectorAll('.st-ptools,.st-handle,.st-rw,.st-rh,.st-mini,.st-a4line,.st-emptyhint,.img.is-empty').forEach(x=>x.remove());c.querySelectorAll('[contenteditable]').forEach(x=>x.removeAttribute('contenteditable'));c.querySelectorAll('[spellcheck]').forEach(x=>x.removeAttribute('spellcheck'));c.classList.remove('is-sel','is-over');c.querySelectorAll('.is-sel').forEach(x=>x.classList.remove('is-sel'));return c.outerHTML;}).join('\n');
   const fonts=st$('#st-fonts')?.outerHTML||'';
   stDownload(`<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${stEsc(stDoc.title)}</title>${fonts}<style>${css}</style></head><body class="st-export">${pages}</body></html>`,'text/html',stSlug(stDoc.title)+'.html');
 }
@@ -2540,7 +3420,9 @@ function stWire(){
     const rh=e.target.closest('.st-rh');if(rh){stSetProp(rh.closest('.st-b').dataset.bid,'h',0);return;}
     const im=e.target.closest('.img');if(im){const b=im.closest('.st-b');stPickImage(b.dataset.bid);}
   });
+  pages.addEventListener('mouseup',()=>stCaretOutOfVar());
   pages.addEventListener('keydown',e=>{
+    if(e.key.length===1||['End','Enter','Backspace'].includes(e.key))stCaretOutOfVar();
     if(e.key==='Enter'&&!e.shiftKey&&e.target.closest('[contenteditable]')){const t=getSelection().anchorNode,el=t&&(t.nodeType===1?t:t.parentElement);if(el?.closest('td,th,.k,.v,.s,h1,h2,h3,.eyebrow')){e.preventDefault();document.execCommand('insertLineBreak');}}
   });
   pages.addEventListener('paste',e=>{
@@ -2548,7 +3430,8 @@ function stWire(){
     (e.clipboardData?.getData('text/plain')??'').replace(/\r/g,'').split('\n').forEach((line,i)=>{if(i)document.execCommand('insertLineBreak');if(line)document.execCommand('insertText',false,line);});
   });
   pages.addEventListener('drop',e=>e.preventDefault());
-  document.addEventListener('selectionchange',()=>{const selection=getSelection(),n=selection.anchorNode,el=n&&(n.nodeType===1?n:n.parentElement),b=el?.closest?.('#st-pages .st-b');if(!b)return;const c=el.closest('td,th');if(c)stCell=c;if(selection.rangeCount){const range=selection.getRangeAt(0);if(b.querySelector('.st-c').contains(range.commonAncestorContainer))stTextRange={bid:b.dataset.bid,range:range.cloneRange()};}});
+  document.addEventListener('selectionchange',()=>{const selection=getSelection(),n=selection.anchorNode,el=n&&(n.nodeType===1?n:n.parentElement);
+    const b=el?.closest?.('#st-pages .st-b');if(!b)return;const c=el.closest('td,th');if(c)stCell=c;if(selection.rangeCount){const range=selection.getRangeAt(0);if(b.querySelector('.st-c').contains(range.commonAncestorContainer))stTextRange={bid:b.dataset.bid,range:range.cloneRange()};}});
 
   const panel=st$('#st-panel');
   panel.addEventListener('click',e=>{const summary=e.target.closest('summary'),d=summary?.parentElement;if(d?.dataset.section)d.dataset.userToggle='1';});
@@ -2564,14 +3447,16 @@ function stWire(){
     if(t.hasAttribute('data-logo-align'))stSetProp(bid,'logoAlign',t.value);
     if(t.hasAttribute('data-logo-frame'))stSetProp(bid,'logoFrame',t.checked);
     if(t.hasAttribute('data-package'))stApplyAppPackage(bid,t.value);
+    if(t.hasAttribute('data-package-all')){stPkgAll=t.checked;stPanel();}
+    if(t.dataset.frame){const f={...(r.b.frame||{}),[t.dataset.frame]:t.value};stSetProp(bid,'frame',f);}
   });
   panel.addEventListener('pointerdown',e=>{
-    const lib=e.target.closest('.st-libi');if(lib&&e.button===0){const preset=ST_PRESETS.find(p=>p.id===lib.dataset.preset),type=preset?.type||lib.dataset.type;stStartDrag(e,{kind:'new',type,preset:preset?.id},'Thêm: '+(preset?.name||ST_TYPES[type].name));return;}
+    const lib=e.target.closest('.st-libi');if(lib&&e.button===0){if(lib.dataset.kit){const d=stKit?.defs.find(x=>x.id===lib.dataset.kit);if(d)stStartDrag(e,{kind:'new',kit:d.id},'Thêm: '+d.name);return;}const preset=ST_PRESETS.find(p=>p.id===lib.dataset.preset),type=preset?.type||lib.dataset.type;stStartDrag(e,{kind:'new',type,preset:preset?.id},'Thêm: '+(preset?.name||ST_TYPES[type].name));return;}
     if(e.target.closest('[data-cmd],[data-color],[data-act="color-reset"]'))e.preventDefault();
   });
   panel.addEventListener('mousedown',e=>{if(e.target.closest('[data-cmd],[data-color],[data-act="color-reset"]'))e.preventDefault();});
   panel.addEventListener('click',async e=>{
-    const t=e.target.closest('button,[data-goto-page],[data-goto-block],input');if(!t)return;if(t.classList.contains('st-libi')){if(e.detail===0)t.dataset.preset?stInsertPreset(t.dataset.preset):stInsert(t.dataset.type);return;}
+    const t=e.target.closest('button,[data-goto-page],[data-goto-block],input');if(!t)return;if(t.classList.contains('st-libi')){if(e.detail===0)t.dataset.kit?stInsertKit(t.dataset.kit):t.dataset.preset?stInsertPreset(t.dataset.preset):stInsert(t.dataset.type);return;}
     const bid=stSel?.bid,pid=stSel?.pid||panel.dataset.pid;
     if(t.dataset.dismiss){stFlush();stDoc.dismissed??=[];if(!stDoc.dismissed.includes(t.dataset.dismiss))stDoc.dismissed.push(t.dataset.dismiss);stCommit();stChecks();return;}
     if(t.dataset.gotoPage){stSetSel({pid:t.dataset.gotoPage});stScrollTo(stPageEl(t.dataset.gotoPage));return;}
@@ -2581,11 +3466,10 @@ function stWire(){
     if(t.dataset.bg){stFlush();stPage(pid).bg=t.dataset.bg;stRenderPage(pid);stPanel();stCommit();return;}
     if(t.dataset.layout)return stApplyLayout(pid,t.dataset.layout);
     if(t.dataset.color)return stColor(t.dataset.color);
-    if(t.dataset.library)return stInsertLibrary(t.dataset.library);
-    if(t.dataset.libraryDel){try{stLibrary=(await stStore.getKV('st-library')||[]).filter(x=>x.id!==t.dataset.libraryDel);await stStore.setKV('st-library',stLibrary);await stCloudService?.queue('library',{id:'block-library',name:'Thư viện khối',blocks:stLibrary});stPanel();stToast('Đã xoá mẫu khỏi thư viện; khối đã chèn vẫn được giữ.');}catch{stToast('Chưa xoá được mẫu.');}return;}
     if(t.dataset.cmd){const b=bid&&stBlockEl(bid);if(b){stRestoreTextSelection(b);document.execCommand(t.dataset.cmd,false,null);stFromDOM(b);stCommit();stScheduleMeasure();}return;}
     const act=t.dataset.act;if(!act)return;
     if(act==='apps-rebuild')return stApplyAppPackage(bid,stFind(bid)?.b.packageId);
+    if(act==='kit-open')return stKitOpen();if(act==='kit-edit')return stKitOpen(stFind(bid)?.b.kit?.def);if(act==='kit-upgrade')return stKitUpgrade();if(act==='kit-refresh')return stKitRefresh();if(act==='kit-detach')return stKitDetach();
     if(act==='docs')return stHomeUI.home();if(act==='library-save')return stSaveLibrary();if(act==='logo-all')return stSyncLogo();if(act==='color-reset')return stResetColor();
     if(act==='phase2-fill')return stFillPhase2(bid);if(act==='phase2-detach')return stSetProp(bid,'src',undefined);
     if(act==='focus')return stSetFocus(bid);if(act==='style-all')return stSyncTypeStyle(bid);
@@ -2628,6 +3512,9 @@ function stWire(){
   st$('#st-file-json').addEventListener('change',e=>{const f=e.target.files[0];e.target.value='';if(f)stOpenFile(f);});
   document.addEventListener('keydown',e=>{
     const mod=e.metaKey||e.ctrlKey;
+    if(e.key==='Escape'&&!st$('#st-dialog').hidden){st$('#st-dialog').click();return;}
+    if(st$('#st-app').hidden)return;
+    if(e.altKey&&e.shiftKey&&/^Arrow(Up|Down|Left|Right)$/.test(e.key)&&(n=>(n?.nodeType===1?n:n?.parentElement)?.closest('#st-pages td,#st-pages th'))(getSelection().anchorNode)){e.preventDefault();stTableOp({ArrowUp:'row-up',ArrowDown:'row-down',ArrowLeft:'col-left',ArrowRight:'col-right'}[e.key]);return;}
     if(mod&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?stRedo():stUndo();return;}
     if(mod&&e.key.toLowerCase()==='y'){e.preventDefault();stRedo();return;}
     if(mod&&e.key.toLowerCase()==='s'){e.preventDefault();stSaveNow();return;}
@@ -2647,8 +3534,8 @@ async function stStart(){
   let d=null;const id=stRoute.searchParams.get('doc');
   try{if(id)d=await stStore.get(id);else if(stRoute.searchParams.get('quotation'))d=await stQuoteRepo.findDoc(stRoute.searchParams.get('quotation'));}catch{}
   if(d&&!stQuoteMatches(d,stRoute.searchParams.get('quotation')))d=null;
-  try{stLibrary=await stStore.getKV('st-library')||[];}catch{}
-  stQuoteSession.set('quote-studio-seen','1');if(d)await stOpenDoc(d);else{await stHomeUI.home();const draft=stRoute.searchParams.get('draft');if(draft)await stHomeUI.resume(draft);}
+  await stKitReload();stQuoteEvents.subscribe(event=>{if(event.type==='kit-saved')stKitReload();});
+  stQuoteSession.set('quote-studio-seen','1');if(d)await stOpenDoc(d);else if(stRoute.searchParams.get('blocks'))await stKitUI.show(stRoute.searchParams.get('block'));else{await stHomeUI.home();const draft=stRoute.searchParams.get('draft');if(draft)await stHomeUI.resume(draft);}
   const qid=stRoute.searchParams.get('quotation');
   try{const key=qid?'quote-studio-inbox:'+qid:'quote-studio-inbox',raw=localStorage.getItem(key);if(raw){localStorage.removeItem(key);const p=JSON.parse(raw);if(Date.now()-(p.sentAt||0)<15*60e3)await stOnPayload(p);}}catch{}
   if(window.opener)try{window.opener.postMessage({kind:'quote-studio-ready',quotationId:qid},stQuoteTargetOrigin());}catch{}
@@ -2659,15 +3546,16 @@ function stSetupWorkspace(){
   const adapter=stWorkspaceAdapter(stQuoteRepo,{sanitizeDoc:stSanitizeDoc});
   stCloudService=stCreateCloud({repo:stQuoteRepo,adapter,onStatus:()=>stHomeUI?.syncStatus(),onRemote:async event=>{
     if(event.kind==='doc'&&stDoc?.id===event.entity.id&&!stReadonly&&!document.body.classList.contains('st-home-mode')){stFlush();if(stSavedSnapshots.get(stDoc)===stQuoteDocSignature(stDoc))await stOpenDoc(event.entity);else await stSaveNow();}
-    if(event.kind==='library'){stLibrary=event.entity.blocks||[];if(stDoc)stPanel();}stHomeUI?.refresh();
+    if(event.kind==='library'){await stKitReload();await stKitUI?.reload();}stHomeUI?.refresh();
   },onConflict:async event=>{
     if(event.kind==='doc'&&stDoc?.id===event.fromId){stFlush();Object.assign(stDoc,{id:event.entity.id,quotationId:event.entity.quotationId,title:event.entity.title,revision:event.entity.revision});stRememberDoc(stDoc);stCommit();await stSaveNow();stToast('Có chỉnh sửa ở nơi khác. Đã giữ phần của bạn trong một báo giá riêng.');}
     if(event.kind==='draft')stHomeUI?.onDraftConflict(event.fromId,event.entity.id);
   }});
-  stHomeUI=setupStudioHome({repo:stQuoteRepo,adapter,cloud:stCloudService,openDoc:stOpenDoc,backFromEditor:async()=>{stFlush();await stSaveNow();stDoc=null;stSel=null;},toast:stToast,
+  stKitUI=setupKitStudio({repo:stQuoteRepo,cloud:stCloudService,toast:stToast,dialog:stDialog,listDocs:()=>stQuoteRepo.allDocs(),onHome:()=>stHomeUI.home()});
+  stHomeUI=setupStudioHome({repo:stQuoteRepo,adapter,cloud:stCloudService,openDoc:stOpenDoc,openKit:()=>stKitUI.show(),createBlankDoc:async()=>{await stOpenDoc(stBlankDoc());await stSaveNow();},backFromEditor:async()=>{stFlush();await stSaveNow();stDoc=null;stSel=null;},toast:stToast,
     askTemplateName:async name=>{const ok=await stDialog('Lưu thành template','<label class="st-field"><span>Tên template</span><input id="st-template-name" value="'+stEsc(name)+'"></label><p>Khách hàng và giá sẽ được điền lại từ hồ sơ mới. Khối đã đánh dấu giữ nội dung được tái sử dụng.</p>',[{label:'Huỷ',value:false},{label:'Lưu template',value:true,primary:true}]);return ok?st$('#st-template-name').value:null;},
     createDoc:async(input,tpl,context={})=>{stFlush();if(stDoc)await stSaveNow();const d=stWorkspaceBuild(input,tpl,{baseLogo:QD_BASE_LOGO});if(context.draftId){d.quotationId=context.draftId;d.data.quotationId=d.quotationId;}d.sourceSignature=stQuoteSignature(d.data);stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stHomeUI.hide();stRememberDoc(d);stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();const draft=await stQuoteRepo.getDraft(d.quotationId);if(draft)await stCloudService.queue('draft',draft);stToast('Đã tạo báo giá độc lập từ bộ hồ sơ.');},
-    updateDoc:async(input,id)=>{const target=await stQuoteRepo.getDoc(id);if(!target)throw new Error('Không tìm thấy báo giá.');const payload=stInputPayload(input);if(payload.deal.customer.name!==target.data?.deal?.customer?.name)throw new Error('Hồ sơ thuộc khách hàng khác. Chọn tạo báo giá mới để giữ bản đang có.');await stOpenDoc(target);stFlush();payload.quotationId=target.quotationId;stRefreshDoc(stDoc,payload);stDoc.inputs=input;stDoc.sourceSignature=stQuoteSignature(payload);stRender();stCommit();await stSaveNow();stToast('Đã cập nhật bộ đầu vào và các khối liên kết. Nội dung độc lập giữ nguyên.');}
+    updateDoc:async(input,id)=>{const target=await stQuoteRepo.getDoc(id);if(!target)throw new Error('Không tìm thấy báo giá.');const payload=stInputPayload(input);if(payload.deal.customer.name!==target.data?.deal?.customer?.name)throw new Error('Hồ sơ thuộc khách hàng khác. Chọn tạo báo giá mới để giữ bản đang có.');await stOpenDoc(target);stFlush();payload.quotationId=target.quotationId;stRefreshDoc(stDoc,payload);stKRefreshDoc(stDoc,payload);stDoc.inputs=input;stDoc.sourceSignature=stQuoteSignature(payload);stRender();stCommit();await stSaveNow();stToast('Đã cập nhật bộ đầu vào và các khối liên kết. Nội dung độc lập giữ nguyên.');}
   });
   stCloudService.start().catch(e=>stToast(e.message));
 }
