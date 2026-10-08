@@ -118,6 +118,18 @@ body.st-export .img.is-empty{display:none}
   .st-sheet{height:297mm!important;min-height:0!important;overflow:visible!important;box-shadow:none!important}
   .img.is-empty{display:none!important}
 }
+/* Pha 2 dùng cùng CSS cho editor, preview, HTML và PDF. */
+.st-c table.nb{table-layout:fixed}.st-c table.nb th:nth-child(1){width:24%}.st-c table.nb th:nth-child(2){width:31%}.st-c table.nb th:nth-child(3){width:15%}.st-c table.nb th:nth-child(4){width:30%}
+.st-c table.nb td{overflow-wrap:anywhere}.st-c table.nb .chip{white-space:normal;margin:0 1mm 1mm 0}.st-c table.nb td .s{margin-top:1mm}
+.st-funnel{display:flex;flex-direction:column;gap:var(--st-gap-in)}.st-funnel>div{box-sizing:border-box;padding:3mm 4mm;border:1px solid var(--line);border-radius:2mm;background:var(--soft)}
+.st-funnel .st-f1{width:100%}.st-funnel .st-f2{width:88%}.st-funnel .st-f3{width:76%}.st-funnel p{margin:0}.st-funnel .k{margin-bottom:1mm}.st-funnel .st-f3>p:last-child{font-weight:700}
+.st-t-assumptions .st-c ul{font-size:11.5px;line-height:1.5}.st-assumption-extra{margin-top:var(--st-gap-in);border-top:1px solid var(--line);padding-top:var(--st-gap-in)}.st-assumption-extra ul{margin-top:var(--st-gap-in)}
+.st-t-payment table{table-layout:fixed}.st-t-payment td,.st-t-payment th{overflow-wrap:break-word;text-transform:none;letter-spacing:0}
+.st-t-payment th:nth-child(1){width:18%}.st-t-payment th:nth-child(2){width:42%}.st-t-payment th:nth-child(3){width:25%}.st-t-payment th:nth-child(4){width:15%}
+body.st-export .st-assumption-extra:has(li:only-child>br:only-child),body.st-preview .st-assumption-extra:has(li:only-child>br:only-child){display:none}
+@media print{.st-assumption-extra:has(li:only-child>br:only-child){display:none!important}}
+.st-cta-row{border-top:1px solid var(--line);padding-top:var(--st-gap-in)}.st-cta-sign{margin-top:var(--st-gap-group);border-top:1px solid var(--line);padding-top:var(--st-gap-in)}.st-cta-sign .sign-space{height:16mm}
+.st-cta-link{color:inherit;text-decoration:underline;overflow-wrap:anywhere}
 /* == EDITOR == */
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -305,22 +317,33 @@ body.st-preview .img.is-empty{visibility:hidden}
 .st-dismiss{padding:2px 5px;font-size:10.5px;white-space:nowrap}.st-check-options{margin-top:10px;font-size:11px;color:#6B7393}.st-check-options button{padding:4px 7px;font-size:11px}
 .st-docrow{grid-template-columns:minmax(0,1fr) auto auto}
 .st-preview-readonly #st-app{display:block;height:auto}.st-preview-readonly .st-top,.st-preview-readonly .st-left,.st-preview-readonly .st-right,.st-preview-readonly .st-ptools,.st-preview-readonly .st-addpage{display:none!important}
+/* Trang chủ của Studio; A4 trong editor giữ nguyên lưới và kích thước. */
+[hidden]{display:none!important}.st-home-mode{height:auto;min-height:100vh;background:#F1F4FA}
+.sh-top{display:flex;align-items:center;gap:18px;padding:18px 30px;border-bottom:1px solid #E1E4EE;background:#fff}.sh-top>a{color:#454E70;text-decoration:none}.sh-account{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:12px;flex-wrap:wrap}
+.sh-content{max-width:1250px;margin:0 auto;padding:42px 30px 70px}.sh-heading{display:flex;justify-content:space-between;align-items:center;gap:25px;margin-bottom:30px}.sh-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;color:#3563E9;margin:0 0 12px}.sh-heading h1,.sh-create h1,.sh-firebase h1{font:800 30px/1.3 var(--f-display);margin:0 0 12px}.sh-heading p:not(.sh-eyebrow),.sh-lead{color:#6B7393;max-width:750px;line-height:1.7}.sh-new{padding:12px 18px;white-space:nowrap}
+.sh-toolbar{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:22px}.sh-tabs{display:flex;gap:5px}.sh-tabs button{background:transparent;border-color:transparent;padding:10px 14px}.sh-tabs button.on{background:#fff;border-color:#C9D7FF;color:#3563E9;font-weight:700}.sh-toolbar>label:nth-child(2){margin-left:auto;min-width:230px}.sh-trash{display:flex;gap:5px;align-items:center;font-size:12px;color:#6B7393}.sh-trash input{width:auto}
+.sh-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}.sh-card{background:#fff;border:1px solid #E3E7F1;border-radius:14px;padding:22px;display:flex;flex-direction:column;box-shadow:0 3px 15px #0e143006}.sh-card-title{display:flex;justify-content:space-between;gap:8px;color:#8A91AD;font-size:11px}.sh-tag{font-weight:600;color:#3563E9;background:#EEF3FF;padding:4px 8px;border-radius:5px;align-self:start}.sh-card h3{font:700 16px/1.45 var(--f-display);margin:15px 0 6px;overflow-wrap:anywhere}.sh-card>p{font-size:12px;color:#6B7393;margin:0 0 13px;line-height:1.6}.sh-card>small{color:#8A91AD;margin-top:auto}.sh-card-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}.sh-card-actions button{font-size:12px}.sh-empty{padding:55px 30px;text-align:center;border:1px dashed #CBD3E5;border-radius:16px;color:#6B7393;background:#fff}.sh-empty h3{color:#0E1430}.sh-help{display:flex;flex-wrap:wrap;gap:16px;margin-top:28px;font-size:12px;color:#6B7393}.sh-help b{color:#454E70}
+.sh-create{max-width:980px}.sh-form{display:grid;gap:18px;margin-top:26px}.sh-input-card{display:grid;grid-template-columns:32px minmax(0,1fr);gap:16px;background:#fff;border:1px solid #E3E7F1;border-radius:13px;padding:24px}.sh-step{width:29px;height:29px;display:grid;place-items:center;border-radius:50%;background:#EEF3FF;color:#3563E9;font-weight:800}.sh-input-card h3{font:700 16px/1.4 var(--f-display);margin:2px 0 8px}.sh-input-card p{font-size:12px;color:#6B7393;line-height:1.65}.sh-input-card input[type=file]{background:#F7F9FD;max-width:100%;margin:8px 0 12px}.sh-samples{display:flex;gap:8px;margin:6px 0 15px}.sh-input-card details{font-size:12px;margin:12px 0}.sh-input-card summary,.sh-firebase summary{cursor:pointer;font-weight:600;color:#454E70}.sh-input-card textarea,.sh-firebase textarea{font:12px/1.6 ui-monospace,monospace;width:100%;padding:12px;border:1px solid #D9DDE8;border-radius:8px;margin:12px 0;resize:vertical}.sh-file-name{font-weight:600;color:#454E70!important;overflow-wrap:anywhere}.sh-error{color:#C4313A!important}.sh-muted{color:#8A91AD;font-size:12px;line-height:1.7}.sh-option{border:1px solid #E3E7F1;border-radius:9px;padding:16px;margin:12px 0}.sh-option-head{display:flex;justify-content:space-between;gap:12px;margin-bottom:12px}.sh-option-head label{display:flex;align-items:center;gap:5px;font-size:12px}.sh-option input[type=checkbox],.sh-option input[type=radio],.sh-case input{width:auto}.sh-option>label,.sh-value-fields label{display:grid;gap:5px;font-size:12px;color:#6B7393;margin-top:12px}.sh-value-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.sh-case{display:flex;align-items:flex-start;gap:10px;margin:10px 0;padding:10px;background:#F7F9FD;border-radius:8px}.sh-case small{display:block;color:#8A91AD;margin-top:4px}.sh-file-chip{display:inline-flex;gap:8px;align-items:center;background:#EEF3FF;color:#454E70;padding:5px 8px;border-radius:7px;font-size:12px;margin:8px 5px 5px 0}.sh-file-chip button{padding:1px 4px;border:0;background:transparent}.sh-create-actions{display:flex;align-items:center;gap:16px;justify-content:flex-end;margin-top:24px}.sh-create-actions .primary{padding:12px 20px}.sh-create-actions [role=status]{color:#C4313A;font-size:12px}
+.sh-firebase{max-width:850px}.sh-firebase>p{color:#6B7393;line-height:1.7}.sh-firebase>details{background:#fff;border:1px solid #E3E7F1;padding:20px;border-radius:12px;margin:25px 0}.sh-cloud-state{border:1px solid #E3E7F1;border-radius:10px;background:#fff;padding:20px;margin:25px 0}.st-cloud-indicator,[data-cloud-status]{font-size:11px;color:#8A91AD}[data-cloud-status][data-sync=synced]{color:#15803D}[data-cloud-status][data-sync=error]{color:#C4313A}.st-cloud-indicator{max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.st-home-link{padding:4px 8px}
+@media screen and (max-width:900px){.sh-top{padding:14px 18px;flex-wrap:wrap}.sh-content{padding:25px 18px}.sh-heading{align-items:flex-start;flex-direction:column}.sh-heading h1,.sh-create h1{font-size:25px}.sh-account{margin-left:0;width:100%}.sh-toolbar>label:nth-child(2){margin-left:0;flex:1}.sh-input-card{padding:18px;gap:10px}.sh-value-fields{grid-template-columns:1fr}.st-cloud-indicator{display:none}}
+@media print{#st-home{display:none!important}}
 .st-preview-readonly #st-canvas{overflow:visible;padding:12px 0;height:auto}.st-preview-readonly #st-pages{width:210mm;margin:0 auto}.st-preview-readonly .st-page{zoom:1;margin-bottom:18px}.st-preview-readonly .st-sheet{min-height:297mm;height:auto}
 html:has(.st-preview-readonly),body.st-preview-readonly{height:auto;overflow:visible}.st-preview-readonly .img.is-empty{display:none}.st-preview-readonly .st-c{cursor:default}
 </style>
 </head>
 <body>
+<div id="st-home" hidden></div>
 <div id="st-app">
   <header class="st-top">
-    <div class="st-brand">Quote <span>Studio</span></div>
+    <button type="button" id="st-home-button" class="st-home-link" title="Trang chủ">←</button><div class="st-brand">Quote <span>Studio</span></div>
     <input id="st-title" aria-label="Tên tài liệu" placeholder="Tên tài liệu">
     <span id="st-save" aria-live="polite"></span><button type="button" id="st-source-update" hidden>Số liệu mới từ Lab</button>
     <div class="st-top-actions">
       <button type="button" id="st-undo" title="Hoàn tác (⌘Z / Ctrl+Z)" aria-label="Hoàn tác" disabled>↶</button>
       <button type="button" id="st-redo" title="Làm lại (⇧⌘Z / Ctrl+Y)" aria-label="Làm lại" disabled>↷</button>
-      <button type="button" id="st-docs">Các quotation</button><button type="button" id="st-preview">Xem trước</button>
+      <button type="button" id="st-docs">Trang chủ</button><button type="button" id="st-inputs">Bộ đầu vào</button><span class="st-cloud-indicator" data-cloud-status></span><button type="button" id="st-preview">Xem trước</button>
       <details class="st-menu" id="st-menu"><summary>Tệp</summary><div>
-        <button type="button" data-file="docs">Tài liệu đã lưu…</button>
+        <button type="button" data-file="docs">Trang chủ / Danh sách</button><button type="button" data-file="template">Lưu thành template</button><button type="button" data-file="firebase">Đồng bộ Firebase</button>
         <button type="button" data-file="new">Tài liệu trống</button>
         <button type="button" data-file="open">Mở file dự án (.json)…</button>
         <button type="button" data-file="save">Lưu file dự án (.json)</button>
@@ -339,6 +362,9 @@ html:has(.st-preview-readonly),body.st-preview-readonly{height:auto;overflow:vis
 <input type="file" id="st-file-img" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden>
 <input type="file" id="st-file-json" accept="application/json,.json" hidden>
 <script type="module">// Nguồn: Chính sách giá Base 2.0, hiệu lực 01/10/2026, mục II và III.
+// Mục 1.4, trang 3: Base Core có trong mọi gói, không tính tiền.
+// Giữ riêng với app nghiệp vụ của gói để không đổi cách tính giá/add-on.
+const BASE_CORE_APPS=['Account','Settings','Home','Platform','Workforce','Dataset','Output','Chat','Mail','Call','Drive','Media'];
 const plan = (id, name, price, apps, extra = {}) => ({ id, name, price, apps: apps.split('|'), ...extra });
 const WORK = [
   plan('wp','Starter · Work Project',59000,'Project|Request'),
@@ -428,6 +454,509 @@ const PS_AI = [
 ].map(p=>({...p,scope:['Tư vấn ứng dụng AI Agent vào vận hành và quản trị',`Hỗ trợ cấu hình tối đa ${p.agents} Agents`]}));
 const POLICY = { effective:'01/10/2026', workMin:30, hrmMin:30, comboMin:30, block:10, crmMin:5, crmBlock:5, liteSeats:15, liteFactor:18, directPrice:18000, years:[1,2,3,4,5] };
 
+// Hợp đồng file trao đổi: Quote Lab chỉ xuất snapshot phương án, không chứa hồ sơ/use-case.
+const QO_KIND='quote-lab-options',QO_VERSION=1;
+const QO_SCOPE_NAMES={work:'Work OS',hrm:'HRM OS',combo:'Base Combo','crm-suite':'CRM Suite','crm-mkt':'CRM MKT','crm-sale':'CRM Sale',hiring:'E-Hiring',usage:'AI Credit',labor:'Lao động trực tiếp'};
+function qoReadPackage(value){
+  const p=typeof value==='string'?JSON.parse(value):value;
+  if(!p||p.kind!==QO_KIND||p.version!==QO_VERSION)throw new Error('Cần file phương án .json xuất từ Quote Lab.');
+  if(!Array.isArray(p.options)||!p.options.length||p.options.length>3)throw new Error('File phải có từ 1 đến 3 phương án.');
+  const ids=new Set();
+  const options=p.options.map(o=>{
+    const r=o?.r;if(!r||typeof r.id!=='string'||!r.id||ids.has(r.id)||!Number.isInteger(r.years)||r.years<1||r.years>5||!Array.isArray(r.lines)||!r.lines.length)throw new Error('Một phương án trong file không hợp lệ.');
+    ids.add(r.id);for(const k of ['monthly','software','total','serviceFee'])if(!Number.isFinite(r[k])||r[k]<0)throw new Error('Số tiền trong phương án không hợp lệ.');
+    const ps=r.ps?.gross||0;if(!Number.isFinite(ps)||ps<0||Math.abs(r.total-r.software-ps-r.serviceFee)>1)throw new Error('Tổng tiền không khớp phần mềm + PS + phí dịch vụ.');
+    for(const l of r.lines)if(typeof l.name!=='string'||!l.name||!Number.isFinite(l.monthly)||l.monthly<0||!Number.isFinite(l.seats)||l.seats<0||!Array.isArray(l.apps)||l.apps.some(a=>typeof a!=='string'))throw new Error('Hạng mục trong phương án không hợp lệ.');
+    return {id:r.id,label:String(o.label||r.lines.filter(l=>!l.addon).map(l=>l.name).join(' + ')+' · '+r.years+' năm'),r:JSON.parse(JSON.stringify(r))};
+  });
+  return {kind:QO_KIND,version:QO_VERSION,exportedAt:p.exportedAt||null,policy:{effective:String(p.policy?.effective||'')},scopeNames:QO_SCOPE_NAMES,options,recommendedId:options.some(o=>o.id===p.recommendedId)?p.recommendedId:options[0].id};
+}
+function qoMakePackage(results,{effective='',heading=r=>r.lines.filter(l=>!l.addon).map(l=>l.name).join(' + ')}={}){
+  return qoReadPackage({kind:QO_KIND,version:QO_VERSION,exportedAt:new Date().toISOString(),policy:{effective},options:results.map(r=>({r,label:heading(r)+' · '+r.years+' năm'}))});
+}
+
+// Hồ sơ khách hàng cho báo giá: file .md/.txt theo mẫu "# MỤC", "Nhãn: giá trị" và "- cột | cột".
+const QF_SECTIONS={'BAO GIA':'quote','KHACH HANG':'customer','NGUOI NHAN':'recipients','NGUOI LAP':'preparer','THONG DIEP':'message','NOI DAU':'pains','CHI PHI HIEN TAI':'costs','CHI SO CHINH':'mainKpi','CHI SO THANH CONG':'kpis','GIAI PHAP':'solutions','LO TRINH':'timeline','TRONG PHAM VI':'inScope','NGOAI PHAM VI':'outScope','KHACH HANG PHOI HOP':'duties','NGHIEM THU':'gates','DOANH NGHIEP TUONG TU':'cases','DOI NGU':'team','RUI RO':'risks','DIEU KHOAN':'terms','THANH TOAN':'payment','UU DAI':'offers','BUOC TIEP THEO':'steps'};
+const qfFold=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toUpperCase().replace(/\s+/g,' ').trim();
+
+// "1.100" · "1100" · "1,1" · "2,16" → số; trả null nếu không đọc được.
+function qfNumber(s){
+  let t=String(s??'').replace(/[^\d.,-]/g,'');if(!t||!/\d/.test(t))return null;
+  if(t.includes(',')&&t.includes('.'))t=t.replace(/\./g,'').replace(',','.');
+  else if(t.includes(','))t=t.replace(',','.');
+  else if(/^-?\d{1,3}(\.\d{3})+$/.test(t))t=t.replace(/\./g,'');
+  const n=Number(t);return Number.isFinite(n)?n:null;
+}
+// "02/11/2026" · "2/11" (lấy năm tham chiếu) · "2026-11-02" → {iso, text}
+function qfDate(s,refYear){
+  const t=String(s??'').trim();let m=t.match(/^(\d{1,2})\/(\d{1,2})(?:\/(\d{4}))?$/),y,mo,d;
+  if(m){d=+m[1];mo=+m[2];y=m[3]?+m[3]:refYear;}
+  else if((m=t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/))){y=+m[1];mo=+m[2];d=+m[3];}
+  else return null;
+  if(!y||mo<1||mo>12||d<1||d>31)return null;
+  const p=n=>String(n).padStart(2,'0');
+  return {iso:`${y}-${p(mo)}-${p(d)}`,text:`${p(d)}/${p(mo)}/${y}`,short:`${p(d)}/${p(mo)}`};
+}
+
+function parseDealFile(text){
+  const raw={},warnings=[],errors=[],stray=new Set();let cur=null,lastKV=null,lastItem=null;
+  for(const line of String(text??'').replace(/^\uFEFF/,'').split(/\r?\n/)){
+    const t=line.trim();
+    if(!t){lastKV=lastItem=null;continue;}
+    if(t.startsWith('>')||t.startsWith('<!--')||t.startsWith('//'))continue;
+    const h=t.match(/^#{1,3}\s+(.+)$/);
+    if(h){const key=QF_SECTIONS[qfFold(h[1].replace(/\(.*$/,''))];cur=key??null;if(key)raw[key]??={kv:{},items:[]};else warnings.push(`Không nhận ra mục “${h[1].trim()}”; phần này được bỏ qua.`);lastKV=lastItem=null;continue;}
+    if(!cur)continue;
+    const sec=raw[cur],li=t.match(/^[-*•]\s*(.*)$/);
+    if(li){const cells=li[1].split('|').map(s=>s.trim());if(cells.some(Boolean)){sec.items.push(cells);lastItem=cells;}lastKV=null;continue;}
+    const kv=t.match(/^([^:|]{1,48}):\s*(.*)$/);
+    if(kv&&!/^\d/.test(kv[1])&&!/^https?$/i.test(kv[1])){const k=qfFold(kv[1]);sec.kv[k]=kv[2].trim();lastKV=k;lastItem=null;continue;}
+    if(lastKV)sec.kv[lastKV]=(sec.kv[lastKV]+' '+t).trim();
+    else if(lastItem)lastItem[lastItem.length-1]=(lastItem[lastItem.length-1]+' '+t).trim();
+    else stray.add(cur);
+  }
+  for(const s of stray)warnings.push(`Mục ${s}: có dòng không theo dạng “Nhãn: giá trị” hoặc “- cột | cột”, đã bỏ qua.`);
+  const sec=k=>raw[k]??{kv:{},items:[]};
+  const get=(k,...names)=>{const s=sec(k);for(const n of names){const v=s.kv[qfFold(n)];if(v)return v;}return '';};
+  const cell=(a,i)=>(a[i]??'').trim();
+  const flag=(v,word)=>qfFold(v).includes(qfFold(word));
+
+  const quoteDate=qfDate(get('quote','Ngày báo giá','Ngày'))??qfDate(new Date().toLocaleDateString('en-GB'));
+  const refYear=+quoteDate.iso.slice(0,4);
+  const valid=qfDate(get('quote','Hiệu lực đến','Hiệu lực'),refYear);
+  const deal={
+    quote:{no:get('quote','Số báo giá'),date:quoteDate.iso,dateText:quoteDate.text,valid:valid?.iso??'',validText:valid?.text??get('quote','Hiệu lực đến','Hiệu lực'),reason:get('quote','Lý do hiệu lực'),tag:get('quote','Nhãn mẫu'),serviceStart:get('quote','Ngày bắt đầu dịch vụ'),serviceEnd:get('quote','Ngày hết hạn dịch vụ'),note:get('quote','Ghi chú phụ lục')},
+    customer:{name:get('customer','Tên công ty','Tên khách hàng','Khách hàng'),short:get('customer','Tên ngắn'),tax:get('customer','Mã số thuế'),address:get('customer','Địa chỉ'),context:get('customer','Bối cảnh'),goal:get('customer','Mục tiêu'),industry:get('customer','Ngành'),industryContext:get('customer','Bối cảnh ngành')},
+    recipients:sec('recipients').items.map(a=>({name:cell(a,0),title:cell(a,1),phone:cell(a,2),email:cell(a,3)})).filter(x=>x.name),
+    preparer:{name:get('preparer','Họ tên','Tên'),title:get('preparer','Chức danh'),phone:get('preparer','Điện thoại','Số điện thoại'),email:get('preparer','Email'),company:get('preparer','Pháp nhân','Công ty'),tax:get('preparer','Mã số thuế'),address:get('preparer','Địa chỉ'),signer:get('preparer','Người ký'),signerTitle:get('preparer','Chức danh người ký')},
+    message:{title:get('message','Tiêu đề bìa','Tiêu đề'),highlight:get('message','Điểm nhấn'),lead:get('message','Mô tả')},
+    pains:{source:get('pains','Ghi nhận qua','Nguồn'),heading:get('pains','Tiêu đề'),lead:get('pains','Mô tả'),items:sec('pains').items.map(a=>({title:cell(a,0),quote:cell(a,1).replace(/^["“]|["”]$/g,''),who:cell(a,2),fact:cell(a,3)})).filter(x=>x.title)},
+    costs:{heading:get('costs','Tiêu đề'),note:get('costs','Ghi chú'),source:get('costs','Nguồn'),dateText:get('costs','Ngày ghi nhận'),items:sec('costs').items.map(a=>({item:cell(a,0),method:cell(a,1),amount:qfNumber(cell(a,2)),cash:flag(cell(a,3),'tiền mặt')})).filter(x=>x.item)},
+    mainKpi:null,
+    kpis:{when:get('kpis','Thời điểm đo'),confirmed:get('kpis','Xác nhận'),note:get('kpis','Ghi chú'),items:sec('kpis').items.map(a=>({name:cell(a,0),current:cell(a,1),target:cell(a,2),owner:cell(a,3)})).filter(x=>x.name)},
+    solutions:{heading:get('solutions','Tiêu đề'),excluded:get('solutions','Chưa đưa vào'),items:sec('solutions').items.map(a=>{const numbered=/^\d+$/.test(cell(a,0)),b=numbered?a:['',...a];return {no:cell(b,0),problem:cell(b,1),apps:cell(b,2).split(/[,;]/).map(s=>s.trim()).filter(Boolean),desc:cell(b,3),result:cell(b,4)};}).filter(x=>x.problem)},
+    timeline:{heading:get('timeline','Tiêu đề'),lead:get('timeline','Mô tả'),items:[]},
+    inScope:sec('inScope').items.map(a=>a.filter(Boolean).join(' · ')).filter(Boolean),
+    outScope:sec('outScope').items.map(a=>a.filter(Boolean).join(' · ')).filter(Boolean),
+    duties:sec('duties').items.map(a=>a.filter(Boolean).join(' · ')).filter(Boolean),
+    gates:sec('gates').items.map(a=>({title:cell(a,0),text:cell(a,1)})).filter(x=>x.title),
+    cases:sec('cases').items.map(a=>({title:cell(a,0),text:cell(a,1)})).filter(x=>x.title),
+    team:sec('team').items.map(a=>({role:cell(a,0),person:cell(a,1),duty:cell(a,2)})).filter(x=>x.role),
+    risks:{heading:get('risks','Tiêu đề'),items:sec('risks').items.map(a=>({risk:cell(a,0),fix:cell(a,1)})).filter(x=>x.risk)},
+    terms:sec('terms').items.map(a=>({label:cell(a,0),text:cell(a,1)})).filter(x=>x.label),
+    payment:{approved:/^(CO|DA DUYET)$/.test(qfFold(get('payment','Đã duyệt'))),items:sec('payment').items.map(a=>({label:cell(a,0),milestone:cell(a,1),amount:cell(a,2),due:cell(a,3)})).filter(x=>x.label)},
+    offers:{note:get('offers','Ghi chú'),items:sec('offers').items.map(a=>({commit:cell(a,0),offer:cell(a,1),value:cell(a,2)})).filter(x=>x.commit)},
+    steps:{heading:get('steps','Tiêu đề'),url:get('steps','Link xác nhận','URL','Link'),items:[]},
+    warnings,errors,
+  };
+  const k=sec('mainKpi');
+  if(Object.values(k.kv).some(Boolean)){
+    const m={name:get('mainKpi','Tên','Chỉ số'),unit:get('mainKpi','Đơn vị'),current:qfNumber(get('mainKpi','Hiện tại')),target:qfNumber(get('mainKpi','Mục tiêu')),threshold:qfNumber(get('mainKpi','Ngưỡng')),thresholdLabel:get('mainKpi','Nhãn ngưỡng'),heading:get('mainKpi','Tiêu đề'),lead:get('mainKpi','Mô tả')};
+    if(m.current!==null&&m.target!==null)deal.mainKpi=m;else warnings.push('Chỉ số chính cần cả “Hiện tại” và “Mục tiêu” là số; phần trục so sánh được bỏ qua.');
+  }
+  for(const a of sec('timeline').items){
+    const s=qfDate(cell(a,1),refYear),e=qfDate(cell(a,2),refYear);
+    if(!cell(a,0))continue;
+    if(!s){warnings.push(`Lộ trình “${cell(a,0)}”: ngày bắt đầu không hợp lệ (dùng dd/mm/yyyy).`);continue;}
+    deal.timeline.items.push({name:cell(a,0),start:s.iso,end:(e??s).iso,startText:s.text,endText:(e??s).text,milestone:!e||e.iso===s.iso,key:flag(cell(a,3),'chính')});
+  }
+  for(const a of sec('steps').items){
+    const dt=qfDate(cell(a,0),refYear);if(!cell(a,1))continue;
+    deal.steps.items.push({date:dt?.iso??'',dateText:dt?.short??cell(a,0),task:cell(a,1),owner:cell(a,2),key:flag(cell(a,3),'chính')});
+  }
+  if(valid&&valid.iso<deal.quote.date)errors.push(`“Hiệu lực đến” (${valid.text}) sớm hơn “Ngày báo giá” (${deal.quote.dateText}).`);
+  for(const x of deal.steps.items)if(x.date&&x.date<deal.quote.date)warnings.push(`Bước tiếp theo “${x.task}” có ngày ${x.dateText}, trước ngày báo giá.`);
+  for(const x of deal.timeline.items)if(x.start<deal.quote.date)warnings.push(`Lộ trình “${x.name}” bắt đầu ${x.startText}, trước ngày báo giá.`);
+  if(!deal.customer.name)errors.push('Thiếu “Tên công ty” trong mục # KHÁCH HÀNG.');
+  if(!deal.customer.short)deal.customer.short=deal.customer.name.replace(/^(Công ty|Cty)\s+(TNHH|CP|Cổ phần)?\s*/i,'').trim()||deal.customer.name;
+  if(!deal.recipients.length)warnings.push('Chưa có người nhận trong mục # NGƯỜI NHẬN.');
+  if(!deal.quote.validText)warnings.push('Chưa có “Hiệu lực đến” trong mục # BÁO GIÁ.');
+  if(deal.costs.items.some(c=>c.amount===null))warnings.push('Một số dòng chi phí chưa có số tiền (triệu đồng) ở cột thứ ba.');
+  return deal;
+}
+
+const DEAL_SAMPLE=`# BÁO GIÁ
+> Hồ sơ khách hàng cho công cụ Soạn báo giá · Base 2.0.
+> Dòng bắt đầu bằng ">" là hướng dẫn, công cụ bỏ qua. Mỗi mục bắt đầu bằng "# TÊN MỤC".
+> Thông tin đơn lẻ viết "Nhãn: giá trị". Danh sách viết "- cột | cột | cột".
+Số báo giá: BG-2026-1006-HA
+Ngày báo giá: 06/10/2026
+Hiệu lực đến: 31/10/2026
+Lý do hiệu lực: đội triển khai còn đúng một lịch kick-off trong quý 4
+Nhãn mẫu: Tài liệu mẫu · Số liệu minh hoạ
+Ngày bắt đầu dịch vụ:
+Ngày hết hạn dịch vụ:
+Ghi chú phụ lục:
+
+# KHÁCH HÀNG
+Tên công ty: Công ty CP Phân phối Hoà An
+Tên ngắn: Hoà An
+Mã số thuế:
+Địa chỉ:
+Bối cảnh: Hoà An đã lên 220 nhân sự và 4 điểm hoạt động, nhưng phê duyệt, giao việc và tính lương vẫn chạy trên giấy, Zalo và Excel.
+Mục tiêu: Rút thời gian từ nhận hoá đơn đến chi tiền từ 12 xuống tối đa 5 ngày; tính lương từ 15 xuống tối đa 5 ngày công mỗi tháng.
+
+# NGƯỜI NHẬN
+> - Họ tên | Chức danh | Điện thoại (tuỳ chọn) | Email (tuỳ chọn)
+- Anh Trần Quốc Bảo | Tổng Giám đốc
+- Chị Nguyễn Thu Hà | Giám đốc Vận hành
+
+# NGƯỜI LẬP
+Họ tên: [Tên chuyên viên tư vấn]
+Điện thoại: [Số điện thoại]
+Email: [Email]
+Pháp nhân: [Tên pháp nhân]
+Mã số thuế:
+Địa chỉ:
+Người ký:
+Chức danh người ký:
+
+# THÔNG ĐIỆP
+> Bìa gồm tiêu đề, điểm nhấn (in màu thương hiệu) và một câu mô tả.
+Tiêu đề bìa: Từ nhận hoá đơn đến chi tiền:
+Điểm nhấn: 12 ngày còn 5.
+Mô tả: Đề xuất chuẩn hoá vận hành cho Công ty CP Phân phối Hoà An: phê duyệt thanh toán, việc liên phòng ban và tính lương trên một nền tảng.
+
+# NỖI ĐAU
+> - Vấn đề | Lời khách nói | Người nói · Chức danh | Dữ kiện, con số
+Ghi nhận qua: hai buổi làm việc ngày 15/09 và 24/09/2026
+- Phê duyệt thanh toán chậm làm mất tiền | Tiền có sẵn, chỉ thiếu chữ ký. | Anh Lê Minh Tuấn · Kế toán trưởng | Khoảng 650 đề nghị mỗi tháng qua 3–4 cấp duyệt bằng giấy và Zalo. Từ nhận hoá đơn đến chi tiền mất trung bình 12 ngày, nên công ty chỉ hưởng khoảng 35% số lần đủ điều kiện nhận chiết khấu 2% của 6 nhà cung cấp lớn.
+- Việc liên phòng ban rơi rớt | Hỏi một việc đến đâu phải gọi ba cuộc mới biết. | Chị Nguyễn Thu Hà · Giám đốc Vận hành | Việc được giao qua Zalo, không ai biết việc đang nằm ở đâu. Quý 2/2026 có 18% đơn hàng dự án giao trễ hạn cho công trình.
+- Tính lương thủ công cho 4 điểm | Tuần cuối tháng, cả phòng chỉ làm mỗi việc gom công. | Chị Phạm Ngọc Lan · Trưởng phòng Nhân sự | Ba nhân sự C&B mất tổng cộng 15 ngày công mỗi tháng để gom chấm công và tính lương. Khoảng 2–3% phiếu lương phải điều chỉnh sau khi phát.
+- Ban điều hành nhìn số liệu chậm một tuần | Tôi đang lái xe bằng gương chiếu hậu. | Anh Trần Quốc Bảo · Tổng Giám đốc | 9 trưởng bộ phận mất khoảng 3 giờ mỗi tuần để tổng hợp báo cáo thứ Hai.
+
+# CHI PHÍ HIỆN TẠI
+> - Hạng mục | Cách tính | Số tiền mỗi năm (triệu đồng) | ghi "tiền mặt" nếu là tiền mất thật
+- Chiết khấu thanh toán sớm bị bỏ lỡ | Ước tính của Kế toán trưởng | 1100 | tiền mặt
+- Thời gian xử lý đề nghị | 650 đề nghị × 25 phút × 12 tháng × 120.000 đ/giờ | 390
+- Gom chấm công và tính lương | 15 ngày công × 8 giờ × 12 tháng × 150.000 đ/giờ | 216
+- Tổng hợp báo cáo điều hành | 9 người × 3 giờ × 48 tuần × 350.000 đ/giờ | 454
+Ghi chú: Chưa tính thiệt hại từ 18% đơn hàng dự án trễ hạn (phạt hợp đồng, uy tín với nhà thầu) vì chưa có số liệu. Đơn giá giờ công là mức bình quân do phòng Nhân sự cung cấp.
+
+# CHỈ SỐ CHÍNH
+> Vẽ trục so sánh hiện tại với mục tiêu. Xoá cả mục nếu không cần.
+Tên: Thời gian từ nhận hoá đơn đến chi tiền
+Đơn vị: ngày
+Hiện tại: 12
+Mục tiêu: 5
+Ngưỡng: 10
+Nhãn ngưỡng: Hạn chiết khấu 2%
+Tiêu đề: Hạn hưởng chiết khấu là 10 ngày. Hôm nay hồ sơ đi mất 12.
+Mô tả: Đưa thời gian từ nhận hoá đơn đến chi tiền về tối đa 5 ngày là mục tiêu chính. Bốn chỉ số còn lại đo phần việc liên phòng ban và tính lương.
+
+# CHỈ SỐ THÀNH CÔNG
+> - Chỉ số | Hiện tại | Mục tiêu | Người theo dõi
+Thời điểm đo: 90 ngày sau nghiệm thu tổng (tháng 04/2027)
+Xác nhận: 24/09/2026
+- Thời gian từ nhận hoá đơn đến chi tiền | 12 ngày | Tối đa 5 ngày | Anh Lê Minh Tuấn
+- Tỷ lệ hưởng chiết khấu thanh toán sớm (6 nhà cung cấp lớn) | 35% | Tối thiểu 65% | Anh Lê Minh Tuấn
+- Ngày công tính lương mỗi tháng | 15 ngày | Tối đa 5 ngày | Chị Phạm Ngọc Lan
+- Phiếu lương phải điều chỉnh sau khi phát | 2–3% | Dưới 0,5% | Chị Phạm Ngọc Lan
+- Việc liên phòng ban có người phụ trách và hạn chót trên hệ thống | Không đo được | 100% | Chị Nguyễn Thu Hà
+Ghi chú: Số liệu nền lấy từ dữ liệu tháng 7–8/2026 của Hoà An. Hai bên cùng rà soát các chỉ số này tại buổi đánh giá 90 ngày.
+
+# GIẢI PHÁP
+> - Số vấn đề | Vấn đề | App, cách nhau bởi dấu phẩy | Giải pháp | Kết quả đo được
+- 1 | Đề nghị thanh toán qua 3–4 cấp duyệt bằng giấy, mất 12 ngày | BPM | Quy trình thanh toán nhà cung cấp: nhận hoá đơn, đối chiếu, duyệt theo hạn mức, chi tiền. Mỗi bước có người giữ và hạn xử lý; quá hạn thì hệ thống báo và chuyển bước theo quy tắc đã đặt. | Chi tiền trong tối đa 5 ngày; hưởng chiết khấu tối thiểu 65% số lần đủ điều kiện
+- 1 | Đề nghị lẻ (tạm ứng, hoàn ứng, mua hàng nhỏ) gửi qua Zalo | Request | Đề nghị một cấp duyệt về một chỗ, có người giữ và hạn xử lý. | Không còn đề nghị được duyệt qua Zalo
+- 2 | Việc liên phòng ban giao qua Zalo | Project | Mỗi đơn hàng dự án là một dự án: đầu việc có người phụ trách, hạn chót và phụ thuộc. | 100% việc liên phòng ban có người phụ trách và hạn chót
+- 3 | Gom chấm công 4 điểm, tính lương thủ công | HRIS, Timesheet, Payroll | Hồ sơ nhân sự, bảng công và bảng lương trên một nguồn dữ liệu; bảng lương lấy thẳng dữ liệu công. | Tính lương tối đa 5 ngày công mỗi tháng; phiếu phải sửa dưới 0,5%
+- 4 | Báo cáo thứ Hai tổng hợp bằng tay | BPM, Project | Thời gian xử lý từng bước và tỷ lệ đúng hạn của từng người lấy thẳng từ hệ thống. | Giảm khoảng 430 giờ tổng hợp báo cáo mỗi năm
+Chưa đưa vào: tích hợp phần mềm kế toán và báo cáo điều hành tổng hợp. Kế toán cần chuẩn hoá danh mục nhà cung cấp trước, và chúng tôi không muốn dồn quá nhiều thay đổi vào cao điểm cuối năm.
+
+# LỘ TRÌNH
+> - Hạng mục | Ngày bắt đầu | Ngày kết thúc (bỏ trống nếu là mốc) | ghi "chính" cho mốc quan trọng nhất
+Tiêu đề: 10 tuần, hai giai đoạn; phần phê duyệt chạy trước vì đó là nơi đang mất tiền.
+Mô tả: Giai đoạn 2 chỉ bắt đầu sau khi mốc 1 được nghiệm thu, nên mỗi lần Hoà An chỉ phải làm quen một thay đổi.
+- Khảo sát, thiết kế luồng duyệt | 02/11/2026 | 13/11/2026
+- Phê duyệt: thí điểm → toàn công ty | 16/11/2026 | 04/12/2026
+- Nghiệm thu mốc 1 | 04/12/2026
+- Project, hồ sơ nhân sự, chấm công | 07/12/2026 | 25/12/2026
+- Chạy song song lương tháng 12 | 28/12/2026 | 08/01/2027
+- Nghiệm thu tổng | 11/01/2027 | | chính
+
+# TRONG PHẠM VI
+- 12 mẫu đề nghị và quy trình theo danh sách thống nhất ngày 24/09/2026: mua hàng, thanh toán nhà cung cấp, tạm ứng, hoàn ứng.
+- Ma trận duyệt theo hạn mức: dưới 50 triệu do Trưởng phòng, 50–500 triệu do Giám đốc khối, trên 500 triệu do Tổng Giám đốc.
+- Nhập dữ liệu 220 nhân sự, sơ đồ tổ chức, ca làm việc của 4 điểm và tối đa 3 công thức bảng lương.
+- Chạy song song bảng lương tháng 12/2026 trên Excel cũ và trên Base để đối chiếu từng phiếu.
+- 6 buổi đào tạo tại 4 điểm và 30 ngày hỗ trợ tăng cường sau nghiệm thu.
+
+# NGOÀI PHẠM VI
+- Tích hợp phần mềm kế toán và báo cáo điều hành tổng hợp.
+- Chuyển dữ liệu lịch sử trước tháng 01/2026.
+- Thiết bị chấm công phần cứng.
+- Phát triển tính năng riêng ngoài cấu hình chuẩn.
+
+# KHÁCH HÀNG PHỐI HỢP
+- Cử chị Hà làm đầu mối dự án và một quản trị viên hệ thống làm cùng đội triển khai.
+- Cung cấp dữ liệu nhân sự và công thức lương hiện hành trong tuần đầu tiên.
+- Từ 04/12/2026, kế toán chỉ chi tiền cho đề nghị đã duyệt trên hệ thống.
+
+# NGHIỆM THU
+> - Mốc · ngày | Điều kiện nghiệm thu
+- Mốc 1 · 04/12/2026 | 12 mẫu đề nghị chạy toàn công ty sau 2 tuần thí điểm tại phòng Mua hàng và Kế toán.
+- Nghiệm thu tổng · 11/01/2027 | Bảng lương tháng 12 trên Base khớp với Excel; 100% nhân sự chấm công trên hệ thống.
+
+# ĐỘI NGŨ
+> - Vai trò | Người phụ trách | Trách nhiệm
+- Tư vấn và quản lý quan hệ | [Tên chuyên viên tư vấn] | Đầu mối thương mại, theo dõi 5 chỉ số thành công
+- Trưởng nhóm triển khai | [Tên] | Thiết kế quy trình, lịch triển khai, nghiệm thu
+- Chuyên viên đào tạo | [Tên] | 6 buổi đào tạo tại 4 điểm
+- Chăm sóc khách hàng | [Tên] | 30 ngày hỗ trợ tăng cường, buổi đánh giá 90 ngày
+
+# RỦI RO
+> - Rủi ro | Cách xử lý
+- Quản lý cấp trung vẫn duyệt qua Zalo | Từ 04/12, kế toán chỉ chi cho đề nghị đã duyệt trên hệ thống; Tổng Giám đốc duyệt mẫu trên hệ thống ngay tuần đầu.
+- Bảng lương sai khi chuyển đổi | Chạy song song kỳ lương tháng 12; chỉ bỏ Excel khi hai bảng khớp 100%.
+- Triển khai trùng cao điểm cuối năm | Phê duyệt chạy toàn công ty trước 04/12; không đưa hạng mục nào vào vận hành trong 2 tuần trước Tết.
+
+# ĐIỀU KHOẢN
+> - Nhãn | Nội dung. Xoá hết dòng để dùng điều khoản mặc định theo chính sách giá.
+- Thanh toán phần mềm | Thanh toán trước toàn bộ phí phần mềm của kỳ hạn trong 7 ngày kể từ ngày ký.
+- Thanh toán dịch vụ | 50% khi ký, 50% sau nghiệm thu tổng.
+- Thuế | Giá phần mềm không cộng VAT theo Chính sách giá Base 2.0; dịch vụ triển khai (Professional Service) cộng VAT 8%; phí dịch vụ khác đã gồm thuế nếu có.
+- Hỗ trợ | Theo SLA tiêu chuẩn đính kèm hợp đồng.
+
+# ƯU ĐÃI
+> - Khách hàng cam kết | Ưu đãi | Giá trị. Chiết khấu giá phần mềm nhập ở bộ lọc và cần Trading Order được duyệt.
+- Đồng ý làm case study sau 6 tháng vận hành | Tặng 2 buổi đào tạo nâng cao cho quản lý cấp trung | 15.000.000 đ
+
+# BƯỚC TIẾP THEO
+> - Ngày | Việc | Phụ trách | ghi "chính" cho bước quan trọng nhất
+Tiêu đề: Ký trước 28/10 để kick-off ngày 02/11.
+- 09/10/2026 | Trình bày đề xuất với Ban Tổng Giám đốc (60 phút) | Base, chị Hà
+- 14/10/2026 | Demo luồng thanh toán nhà cung cấp trên dữ liệu thật của Hoà An | Base, anh Tuấn
+- 16/10/2026 | Hoà An chốt phương án và phạm vi | Anh Bảo
+- 21/10/2026 | Gửi dự thảo hợp đồng, pháp chế hai bên rà soát | Base
+- 28/10/2026 | Ký hợp đồng, thanh toán đợt 1 | Hai bên | chính
+- 02/11/2026 | Kick-off dự án | Hai bên
+`;
+
+const DEAL_BLANK=`# BÁO GIÁ
+> Hồ sơ khách hàng cho công cụ Soạn báo giá · Base 2.0.
+> Dòng bắt đầu bằng ">" là hướng dẫn, công cụ bỏ qua. Mục nào để trống thì không xuất hiện trong báo giá.
+> Thông tin đơn lẻ viết "Nhãn: giá trị". Danh sách viết "- cột | cột | cột". Ngày viết dd/mm/yyyy.
+Số báo giá:
+Ngày báo giá:
+Hiệu lực đến:
+Lý do hiệu lực:
+Nhãn mẫu:
+Ngày bắt đầu dịch vụ:
+Ngày hết hạn dịch vụ:
+Ghi chú phụ lục:
+
+# KHÁCH HÀNG
+Tên công ty:
+Tên ngắn:
+Mã số thuế:
+Địa chỉ:
+Ngành:
+Bối cảnh ngành:
+Bối cảnh:
+Mục tiêu:
+
+# NGƯỜI NHẬN
+> - Họ tên | Chức danh | Điện thoại (tuỳ chọn) | Email (tuỳ chọn)
+
+# NGƯỜI LẬP
+Họ tên:
+Chức danh:
+Điện thoại:
+Email:
+Pháp nhân:
+Mã số thuế:
+Địa chỉ:
+Người ký:
+Chức danh người ký:
+
+# THÔNG ĐIỆP
+Tiêu đề bìa:
+Điểm nhấn:
+Mô tả:
+
+# NỖI ĐAU
+> - Vấn đề | Lời khách nói | Người nói · Chức danh | Dữ kiện, con số
+Ghi nhận qua:
+
+# CHI PHÍ HIỆN TẠI
+> - Hạng mục | Cách tính | Số tiền mỗi năm (triệu đồng) | ghi "tiền mặt" nếu là tiền mất thật
+Nguồn:
+Ngày ghi nhận:
+Ghi chú:
+
+# CHỈ SỐ CHÍNH
+> Vẽ trục so sánh hiện tại với mục tiêu. Xoá cả mục nếu không cần.
+Tên:
+Đơn vị:
+Hiện tại:
+Mục tiêu:
+Ngưỡng:
+Nhãn ngưỡng:
+Tiêu đề:
+Mô tả:
+
+# CHỈ SỐ THÀNH CÔNG
+> - Chỉ số | Hiện tại | Mục tiêu | Người theo dõi
+Thời điểm đo:
+Xác nhận:
+Ghi chú:
+
+# GIẢI PHÁP
+> - Số vấn đề | Vấn đề | App, cách nhau bởi dấu phẩy | Giải pháp | Kết quả đo được
+Chưa đưa vào:
+
+# LỘ TRÌNH
+> - Hạng mục | Ngày bắt đầu | Ngày kết thúc (bỏ trống nếu là mốc) | ghi "chính" cho mốc quan trọng nhất
+Tiêu đề:
+Mô tả:
+
+# TRONG PHẠM VI
+> - Một dòng một hạng mục
+
+# NGOÀI PHẠM VI
+> - Một dòng một hạng mục
+
+# KHÁCH HÀNG PHỐI HỢP
+> - Một dòng một việc khách hàng cần làm
+
+# NGHIỆM THU
+> - Mốc · ngày | Điều kiện nghiệm thu
+
+# DOANH NGHIỆP TƯƠNG TỰ
+> Chỉ dùng khi chưa tải thư viện use-case. - Tên, ngành, quy mô | Bối cảnh · con số trước và sau · người tham chiếu. Chỉ dùng case có thật.
+
+# ĐỘI NGŨ
+> - Vai trò | Người phụ trách | Trách nhiệm
+
+# RỦI RO
+> - Rủi ro | Cách xử lý
+
+# ĐIỀU KHOẢN
+> - Nhãn | Nội dung. Để trống để dùng điều khoản mặc định theo chính sách giá.
+
+# THANH TOÁN
+> Tuỳ chọn, chỉ nhập lịch khác khi đã được duyệt. Để trống thì dùng chính sách.
+> - Đợt / Hạng mục | Mốc | Tỷ lệ / Số tiền | Hạn đã thống nhất
+Đã duyệt:
+
+# ƯU ĐÃI
+> - Khách hàng cam kết | Ưu đãi | Giá trị. Chiết khấu giá phần mềm nhập ở bộ lọc và cần Trading Order được duyệt.
+
+# BƯỚC TIẾP THEO
+Link xác nhận:
+> - Ngày | Việc | Phụ trách | ghi "chính" cho bước quan trọng nhất
+Tiêu đề:
+`;
+
+// Thư viện use-case: mỗi use-case bắt đầu bằng "# USE-CASE"; kết quả viết "- Chỉ số | Trước | Sau".
+function parseUseCaseFile(text,fileName=''){
+  const blocks=[],warnings=[];let cur=null,lastKV=null,lastItem=null;
+  const start=title=>{cur={title,kv:{},items:[]};blocks.push(cur);lastKV=lastItem=null;};
+  for(const line of String(text??'').replace(/^\uFEFF/,'').split(/\r?\n/)){
+    const t=line.trim();
+    if(!t){lastKV=lastItem=null;continue;}
+    if(t.startsWith('>')||t.startsWith('<!--')||t.startsWith('//'))continue;
+    const h=t.match(/^#{1,3}\s+(.+)$/);
+    if(h){const m=h[1].match(/^use[\s-]*case\b\s*[:·\-–]?\s*(.*)$/i);if(m)start(m[1].trim());else if(cur)cur.title=cur.title||h[1].trim();continue;}
+    if(!cur)start('');
+    const li=t.match(/^[-*•]\s*(.*)$/);
+    if(li){const cells=li[1].split('|').map(x=>x.trim());if(cells.some(Boolean)){cur.items.push(cells);lastItem=cells;}lastKV=null;continue;}
+    const kv=t.match(/^([^:|]{1,48}):\s*(.*)$/);
+    if(kv&&!/^\d/.test(kv[1])&&!/^https?$/i.test(kv[1])){const k=qfFold(kv[1]);cur.kv[k]=kv[2].trim();lastKV=k;lastItem=null;continue;}
+    if(lastKV)cur.kv[lastKV]=(cur.kv[lastKV]+' '+t).trim();
+    else if(lastItem)lastItem[lastItem.length-1]=(lastItem[lastItem.length-1]+' '+t).trim();
+  }
+  const hash=x=>{let h=5381;for(let i=0;i<x.length;i++)h=((h*33)^x.charCodeAt(i))>>>0;return h.toString(36);};
+  const cases=[];
+  blocks.forEach((b,i)=>{
+    const get=(...names)=>{for(const n of names){const v=b.kv[qfFold(n)];if(v)return v;}return '';};
+    const name=get('Tên','Doanh nghiệp','Khách hàng')||b.title;
+    const results=b.items.map(a=>a.filter(Boolean).length>=3?{metric:a[0],before:a[1],after:a[2]}:{text:a.filter(Boolean).join(' · ')}).filter(r=>r.metric||r.text);
+    if(!results.length&&get('Kết quả'))results.push({text:get('Kết quả')});
+    const problem=get('Bài toán','Vấn đề');
+    if(!name){warnings.push(`Use-case thứ ${i+1}${fileName?' trong '+fileName:''}: thiếu “Tên”, đã bỏ qua.`);return;}
+    if(!problem&&!results.length){warnings.push(`Use-case “${name}”: cần ít nhất “Bài toán” hoặc một dòng kết quả.`);return;}
+    const pub=qfFold(get('Công khai tên','Nêu tên'));
+    cases.push({id:'uc-'+hash(fileName+'|'+name+'|'+problem),file:fileName,name,public:/^(CO|YES|X|DONG Y)/.test(pub),industry:get('Ngành'),size:get('Quy mô'),problem,apps:get('App','Ứng dụng','Sản phẩm').split(/[,;]/).map(x=>x.trim()).filter(Boolean),solution:get('Giải pháp','Cách làm'),duration:get('Thời gian triển khai','Triển khai'),quote:get('Trích lời','Lời khách').replace(/^["“]|["”]$/g,''),who:get('Người nói'),reference:get('Người tham chiếu','Tham chiếu'),source:get('Nguồn'),results,sample:/^\[\s*mẫu\s*\]/i.test(name)});
+  });
+  if(!blocks.length)warnings.push(`${fileName||'Nội dung'}: không tìm thấy use-case nào (mỗi use-case bắt đầu bằng “# USE-CASE”).`);
+  return {cases,warnings};
+}
+
+const USE_CASE_SAMPLE=`# USE-CASE
+> Thư viện use-case cho công cụ Soạn báo giá · Base 2.0. Mỗi use-case bắt đầu bằng dòng "# USE-CASE"; một file chứa được nhiều use-case.
+> Chỉ dùng use-case có thật. Ghi "Công khai tên: có" khi khách hàng đã đồng ý cho nêu tên; nếu không, báo giá tự ẩn tên doanh nghiệp.
+> Kết quả viết "- Chỉ số | Trước | Sau". Hai use-case dưới đây là MẪU ĐỊNH DẠNG, số liệu minh hoạ, không dùng gửi khách.
+Tên: [Mẫu] Công ty phân phối hàng tiêu dùng miền Nam
+Công khai tên: không
+Ngành: Phân phối hàng tiêu dùng
+Quy mô: 300 nhân sự, 6 chi nhánh
+Bài toán: Đề nghị thanh toán nhà cung cấp đi qua 4 cấp duyệt bằng giấy; kế toán không biết hồ sơ đang nằm ở đâu.
+App: BPM, Request
+Giải pháp: Chuẩn hoá 9 mẫu đề nghị, duyệt theo hạn mức; mỗi bước có người giữ và hạn xử lý.
+Thời gian triển khai: 6 tuần
+Trích lời: Giờ tôi mở máy là biết hồ sơ nào đang chờ ai.
+Người nói: [Họ tên] · Kế toán trưởng
+Người tham chiếu: [Họ tên, chức danh] · đã đồng ý nhận cuộc gọi
+Nguồn: [Biên bản đánh giá sau 6 tháng]
+- Thời gian từ nhận hoá đơn đến chi tiền | 11 ngày | 4 ngày
+- Đề nghị bị trả lại vì thiếu chứng từ | 18% | 5%
+
+# USE-CASE
+Tên: [Mẫu] Công ty sản xuất bao bì
+Công khai tên: không
+Ngành: Sản xuất
+Quy mô: 450 nhân sự, 2 nhà máy
+Bài toán: Gom chấm công từ 2 nhà máy và tính lương bằng Excel mất gần một tuần mỗi tháng.
+App: HRIS, Timesheet, Payroll
+Giải pháp: Chấm công, nghỉ phép và bảng lương trên một nguồn dữ liệu; bảng lương lấy thẳng dữ liệu công.
+Thời gian triển khai: 8 tuần
+Trích lời: Kỳ lương đầu tiên chạy song song, khớp đến từng phiếu.
+Người nói: [Họ tên] · Trưởng phòng Nhân sự
+Người tham chiếu: [Họ tên, chức danh]
+Nguồn: [Tài liệu nội bộ]
+- Ngày công tính lương mỗi tháng | 6 ngày | 1,5 ngày
+- Phiếu lương phải điều chỉnh sau khi phát | 3% | 0,4%
+`;
+
+// Báo cáo kiểm tra trước khi tải lên: dùng chung cho tab Soạn báo giá và lệnh check-profile.
+function profileReport(text,fileName=''){
+  const t=String(text??'');
+  if(/^#{1,3}\s*use[\s-]*case\b/im.test(t)){
+    const {cases,warnings}=parseUseCaseFile(t,fileName),w=[...warnings];
+    for(const c of cases){
+      if(c.sample)w.push(`“${c.name}”: use-case mẫu, số liệu minh hoạ; không dùng gửi khách.`);
+      if(!c.public)w.push(`“${c.name}”: chưa ghi “Công khai tên: có”, báo giá sẽ ẩn tên doanh nghiệp.`);
+      if(!c.reference&&!c.source)w.push(`“${c.name}”: chưa có nguồn hoặc người tham chiếu.`);
+      if(!c.results.some(r=>r.metric))w.push(`“${c.name}”: chưa có kết quả dạng “- Chỉ số | Trước | Sau”.`);
+    }
+    const errors=cases.length?[]:['Không đọc được use-case nào.'];
+    return {kind:'usecase',ok:!errors.length,errors,warnings:w,cases,summary:[`File use-case: ${cases.length} case`,...cases.map(c=>`  - ${c.name}${c.industry?' · '+c.industry:''} · ${c.results.length} kết quả${c.public?'':' · ẩn tên'}`)]};
+  }
+  const d=parseDealFile(t),w=[...d.warnings];
+  const holders=[...new Set(t.split(/\r?\n/).filter(l=>!l.trim().startsWith('>')).join('\n').match(/\[[^\]\n]{1,60}\]/g)||[])];
+  if(holders.length)w.push(`Còn ${holders.length} chỗ giữ chỗ chưa điền: ${holders.slice(0,6).join(', ')}${holders.length>6?'…':''}`);
+  if(d.quote.tag)w.push(`Bìa còn nhãn “${d.quote.tag}”: xoá dòng “Nhãn mẫu” khi gửi khách thật.`);
+  if(!d.quote.no)w.push('Chưa có “Số báo giá”.');
+  if(!d.preparer.name)w.push('Chưa có tên người lập trong mục # NGƯỜI LẬP.');
+  if(!d.message.title)w.push('Chưa có “Tiêu đề bìa”: bìa dùng tiêu đề mặc định.');
+  if(!d.pains.items.length)w.push('Chưa có nỗi đau: báo giá không có mục Hiện trạng.');
+  else{const n=d.pains.items.filter(p=>!p.quote).length;if(n)w.push(`${n} nỗi đau chưa có lời khách nói.`);}
+  if(!d.mainKpi&&!d.kpis.items.length)w.push('Chưa có chỉ số thành công: báo giá không có mục Mục tiêu.');
+  if(!d.solutions.items.length)w.push('Chưa có dòng giải pháp: báo giá không có mục Giải pháp.');
+  if(!d.steps.items.length)w.push('Chưa có bước tiếp theo có ngày.');
+  const counts=[['người nhận',d.recipients.length],['nỗi đau',d.pains.items.length],['dòng chi phí',d.costs.items.length],['chỉ số',d.kpis.items.length+(d.mainKpi?1:0)],['dòng giải pháp',d.solutions.items.length],['mốc lộ trình',d.timeline.items.length],['bước tiếp theo',d.steps.items.length]].filter(([,n])=>n).map(([l,n])=>`${n} ${l}`).join(', ');
+  return {kind:'deal',ok:!d.errors.length,errors:d.errors,warnings:w,deal:d,summary:[`Khách hàng: ${d.customer.name||'—'}${d.customer.short&&d.customer.short!==d.customer.name?' ('+d.customer.short+')':''}`,`Báo giá: ${d.quote.no||'—'} · ngày ${d.quote.dateText} · hiệu lực đến ${d.quote.validText||'—'}`,`Đọc được: ${counts||'chưa có mục nào'}`]};
+}
+function formatProfileReport(r,fileName=''){
+  const lines=[`== ${fileName||'Nội dung'} · ${r.kind==='usecase'?'File use-case':'Hồ sơ khách hàng'}`,...r.summary];
+  if(r.errors.length)lines.push(`Lỗi (${r.errors.length}) — phải sửa:`,...r.errors.map(e=>'  ✕ '+e));
+  if(r.warnings.length)lines.push(`Lưu ý (${r.warnings.length}):`,...r.warnings.map(e=>'  ! '+e));
+  lines.push(r.ok?'Kết quả: ĐẠT — tải lên Quote Lab được.':'Kết quả: CHƯA ĐẠT — sửa lỗi rồi kiểm tra lại.');
+  return lines.join('\n');
+}
+
 // Kho chung của Lab và Studio; giữ nguyên store docs/kv cũ khi nâng lên v2.
 const stQuoteId=p=>p+'-'+(globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2));
 const stQuoteClone=x=>JSON.parse(JSON.stringify(x));
@@ -457,6 +986,8 @@ const stQuoteRepo=(()=>{
   return {
     getDoc:id=>get('docs',id),allDocs:()=>all('docs'),getDraft:id=>get('drafts',id),allDrafts:async()=> (await all('drafts')).filter(d=>!d.redirect),getKV:k=>get('kv',k),
     setKV:(k,v)=>run('kv','readwrite',(tx,done)=>{tx.objectStore('kv').put(v,k);done(v);}),
+    updateKV:(k,fn)=>run('kv','readwrite',(tx,done)=>{const store=tx.objectStore('kv'),r=store.get(k);r.onsuccess=()=>{const next=fn(r.result);if(next===null||next===undefined)store.delete(k);else store.put(next,k);done(next);};}),
+    listKV:prefix=>run('kv','readonly',(tx,done)=>{const store=tx.objectStore('kv'),range=IDBKeyRange.bound(prefix,prefix+'\uffff'),keys=store.getAllKeys(range),values=store.getAll(range);let a,b;const finish=()=>{if(a&&b)done(a.map((k,i)=>[k,b[i]]).filter(x=>x[1]!=null));};keys.onsuccess=()=>{a=keys.result;finish();};values.onsuccess=()=>{b=values.result;finish();};}),
     putDraft:d=>run('drafts','readwrite',(tx,done)=>{const store=tx.objectStore('drafts'),r=store.get(d.id);r.onsuccess=()=>{const next={...r.result,...d,studioDocId:r.result&&'studioDocId' in r.result?r.result.studioDocId:d.studioDocId,studioRevision:r.result?.studioRevision||d.studioRevision||0};store.put(next);done(next);};}),
     saveDoc:(doc,expected=doc.revision||0)=>run(['docs','drafts','kv'],'readwrite',(tx,done,fail)=>{const store=tx.objectStore('docs'),r=store.get(doc.id);r.onsuccess=()=>{const actual=r.result?.revision||0;if(actual!==expected){const e=new Error('Bản này đã được cập nhật ở tab khác.');e.name='QuotationConflict';fail(e);return;}const next={...doc,revision:actual+1,updated:Date.now()};store.put(next);bind(tx,next,r.result);done(next);};}),
     acceptDoc:doc=>run(['docs','drafts','kv'],'readwrite',(tx,done)=>{const store=tx.objectStore('docs'),r=store.get(doc.id);r.onsuccess=()=>{const next=r.result&&(r.result.revision||0)>=(doc.revision||0)?r.result:doc;store.put(next);bind(tx,next,r.result);done(next);};}),
@@ -481,10 +1012,122 @@ const stQuoteMatches=(doc,qid)=>!!doc&&(!qid||!doc.quotationId||doc.quotationId=
 // Logo gốc lấy từ form báo giá Base do người dùng cung cấp ngày 07/10/2026.
 const QD_BASE_LOGO="data:image/png;base64,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";
 
+// Sáu khối Pha 2. Thuần dữ liệu, không dùng DOM và không suy diễn tính năng / ngày / ưu đãi.
+const stP2E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const stP2Has=s=>!!String(s??'').trim()&&!/^\[[\s\S]*\]$/.test(String(s).trim());
+const stP2Fold=s=>String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').toLowerCase().replace(/\s+/g,' ').trim();
+const stP2N=(n,d=0)=>new Intl.NumberFormat('vi-VN',{maximumFractionDigits:d}).format(n);
+const stP2Money=n=>stP2N(Math.round(n))+' đ';
+const stP2Big=n=>Math.abs(n)>=1e9?stP2N(n/1e9,2)+' tỷ đồng':stP2N(n/1e6,1)+' triệu đồng';
+const stP2Table=(head,rows,cls='')=>`<table class="${cls}"><thead><tr>${head.map(h=>`<th>${stP2E(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+const ST_P2_TYPES={
+  needBenefit:{name:'Nhu cầu → Giải pháp → Lợi ích',w:12,style:'white',html:stP2Table(['Nhu cầu của khách','Cách Base xử lý','App / phạm vi','Lợi ích cho khách'],[['[Pain đã xác nhận]','[Cách làm đã kiểm chứng]','[Ứng dụng / phạm vi]','[Kết quả khách cần]']],'nb')},
+  problemFunnel:{name:'Phễu vấn đề',w:12,style:'plain',html:'<div class="st-funnel"><div class="st-f1"><p class="k">Bối cảnh</p><p>[Bối cảnh ngành có nguồn]</p></div><div class="st-f2"><p class="k">Tình hình khách hàng</p><p>[Tình hình đã ghi nhận]</p></div><div class="st-f3"><p class="k">Vấn đề cần giải quyết</p><p>[Một vấn đề cụ thể đã xác nhận]</p></div></div>'},
+  costOfDelay:{name:'Chi phí của việc chờ đợi',w:6,style:'card',html:'<p class="k">Chi phí hiện trạng mỗi tháng</p><p class="v">[Số tiền / tháng]</p><p class="s">[Chi phí năm ÷ 12 · Nguồn số liệu]</p>'},
+  assumptions:{name:'Giả định của báo giá',w:6,style:'line',html:'<h3>Giả định của báo giá</h3><p>Báo giá dựa trên các giả định sau; nếu thay đổi, đầu tư sẽ được tính lại:</p><ul><li>[Số tài khoản · Kỳ hạn]</li><li>[Phạm vi · PS · Thuế áp dụng]</li></ul>'},
+  payment:{name:'Điều kiện thanh toán',w:6,style:'card',html:'<h3>Điều kiện thanh toán</h3>'+stP2Table(['Đợt / Hạng mục','Mốc','Tỷ lệ / Số tiền','Hạn'],[['[Hạng mục]','[Mốc đã thống nhất]','[Số tiền / Tỷ lệ đã duyệt]','[Hạn đã xác nhận]']])},
+  cta:{name:'Xác nhận phương án',w:12,style:'accent',html:'<h3>[Một hành động tiếp theo]</h3><p>[PIC · Ngày đã thống nhất]</p><p class="s">Hiệu lực báo giá: [Ngày đã xác nhận]</p><div class="st-cta-row"><p>[Tên người lập · Chức danh · Điện thoại · Email]</p></div><div class="st-cta-sign"><p class="k">Xác nhận của khách hàng</p><p class="sign-space"><br></p></div>'},
+};
+const ST_ROLE_QUESTIONS={cover:'Tài liệu này cho ai, về việc gì?',summary:'Nên quyết định gì, vì sao, bao nhiêu?',problem:'Họ có hiểu tình hình của mình không?',goals:'Thành công được đo bằng gì?',solution:'Đề xuất xử lý đúng vấn đề nào?',plan:'Làm thế nào, mất bao lâu?',proof:'Ai đã làm được?',investment:'Chọn gì, tổng đầu tư bao nhiêu?',terms:'Có những điều kiện và ràng buộc gì?',action:'Hành động tiếp theo là gì?',appendix:'Mua hàng và Kế toán cần kiểm tra gì?',custom:'Trang này giúp khách quyết định điều gì?'};
+function stP2URL(value){try{const url=new URL(String(value||''));return ['https:','http:'].includes(url.protocol)&&!url.username&&!url.password?url.href:'';}catch{return '';}}
+function stCostDelayModel(payload){
+  const costs=payload?.deal?.costs||{},items=(costs.items||[]).filter(x=>stP2Has(x.item)&&typeof x.amount==='number'&&Number.isFinite(x.amount)&&x.amount>0);
+  const year=items.reduce((sum,x)=>sum+x.amount*1e6,0);if(!year||!Number.isFinite(year))return null;
+  return {year,month:year/12,partial:items.length<(costs.items||[]).length,items};
+}
+const stP2Rec=p=>p?.options?.find(o=>o.id===p.recommendedId&&o.r)||p?.options?.find(o=>o.r);
+function stP2SolutionPain(d,s){
+  const pains=d.pains?.items||[],pain=/^\d+$/.test(String(s.no))?pains[+s.no-1]:pains.find(x=>stP2Fold(x.title)===stP2Fold(s.problem));
+  return pain&&stP2Has(pain.title)&&stP2Has(s.problem)&&stP2Has(s.desc)&&stP2Has(s.result)&&((s.apps||[]).some(stP2Has)||stP2Has(s.scope))?pain:null;
+}
+function stP2NeedBenefit(p){
+  const d=p.deal||{},customer=d.customer?.short||d.customer?.name||'khách hàng';
+  const rows=(d.solutions?.items||[]).flatMap(s=>{
+    const pain=stP2SolutionPain(d,s);
+    const apps=(s.apps||[]).filter(stP2Has);
+    if(!pain||!stP2Has(pain.title)||!stP2Has(s.problem)||!stP2Has(s.desc)||!stP2Has(s.result)||(!apps.length&&!stP2Has(s.scope)))return [];
+    return [[`${stP2E(pain.title)}<p class="s">${stP2E(s.problem)}</p>`,stP2E(s.desc),apps.length?apps.map(a=>`<span class="chip">${stP2E(a)}</span>`).join(' '):stP2E(s.scope),stP2E(s.result)]];
+  });
+  if(!rows.length)return null;
+  return stP2Table([`Nhu cầu của ${customer}`,'Cách Base xử lý','App / phạm vi',`Lợi ích cho ${customer}`],rows,'nb')+(stP2Has(d.pains?.source)?`<p class="s">Nguồn nhu cầu: ${stP2E(d.pains.source)}. Lợi ích là mục tiêu ghi trong hồ sơ.</p>`:'');
+}
+function stP2Funnel(p){
+  const d=p.deal||{},c=d.customer||{},pain=(d.pains?.items||[]).find(x=>stP2Has(x.title));
+  if(!pain||!stP2Has(c.context))return null;
+  const industry=stP2Has(c.industryContext)?c.industryContext:stP2Has(c.industry)?c.industry:'';
+  const second=industry?c.context:c.goal;if(!stP2Has(second))return null;
+  return `<div class="st-funnel"><div class="st-f1"><p class="k">${industry?'Bối cảnh ngành':'Bối cảnh hoạt động'}</p><p>${stP2E(industry||c.context)}</p></div><div class="st-f2"><p class="k">${industry?'Tình hình khách hàng':'Mục tiêu của khách hàng'}</p><p>${stP2E(second)}</p></div><div class="st-f3"><p class="k">Vấn đề cần giải quyết</p><p>${stP2E(pain.title)}</p></div></div>`;
+}
+function stP2Delay(p,b){
+  const model=stCostDelayModel(p);if(!model)return null;const d=p.deal||{},c=d.customer||{},costs=d.costs||{},r=stP2Rec(p)?.r;
+  const source=stP2Has(costs.source)?costs.source:`hồ sơ ${c.short||c.name||'khách hàng'} cung cấp`;
+  let html=`<p class="k">Chi phí hiện trạng mỗi tháng</p><p class="v">${stP2E(stP2Big(model.month))}</p><p class="s">Ước tính từ ${stP2E(source)}${stP2Has(costs.dateText)?' · ghi nhận '+stP2E(costs.dateText):''}. Cách tính: ${stP2E(stP2Money(model.year))} / năm ÷ 12.</p><p class="s">Gồm ${model.items.filter(x=>x.cash).length?'tiền mặt và / hoặc thời gian quy đổi':'thời gian / chi phí quy đổi'}${model.partial?'; chỉ tính các hạng mục có số tiền, chưa phải toàn bộ chi phí':''}. Đây là chi phí hiện trạng, không phải cam kết tiết kiệm.</p>`;
+  if(b.variant==='investment'&&r&&r.feeKnown!==false&&r.years>0&&Number.isFinite(r.software)&&Number.isFinite(r.ps?.gross??0)&&Number.isFinite(r.serviceFee??0)){
+    const annual=r.software/r.years+(r.ps?.gross||0)+(r.serviceFee||0);
+    if(annual>0)html+=`<p><b>Đầu tư quy đổi năm đầu ≈ ${stP2N(annual/model.month,1)} tháng chi phí hiện trạng.</b></p><p class="s">Cách tính: phần mềm sau chiết khấu ÷ ${stP2E(r.years)} năm + PS và phí khác một lần. Phần mềm vẫn thanh toán trước toàn bộ kỳ hạn.</p>`;
+  }
+  return html;
+}
+function stP2Assumptions(p){
+  const r=stP2Rec(p)?.r,d=p.deal||{};if(!r||!r.years||!r.lines?.length)return null;const lines=[];
+  lines.push(`Kỳ hạn phần mềm ${r.years} năm (${r.years*12} tháng), thanh toán trước toàn bộ.`);
+  for(const l of r.lines){if(!stP2Has(l.name))continue;lines.push(`${p.scopeNames?.[l.scope]||l.scope||''}${l.addon?' · Add-on':''} · ${l.name}: ${l.fixedPrice?'1 gói':stP2N(l.seats)+' tài khoản'}${l.lite?' (Lite)':''}.`);}
+  for(const item of r.ps?.items||[]){lines.push(`${item.name}${item.sessions?' · '+item.sessions+' buổi':''}${item.sessionsText?' · '+item.sessionsText:''}${item.assumed?' · đang tạm tính, cần xác nhận':''}; phí một lần cho hợp đồng.`);}
+  lines.push('Phần mềm không cộng VAT theo chính sách đang áp dụng.');
+  if(r.ps?.gross)lines.push('Professional Service: phí một lần; số tiền báo giá đã gồm VAT 8%.');
+  if(r.serviceFee)lines.push(`Phí dịch vụ khác ${stP2Money(r.serviceFee)} đã gồm thuế, tính một lần.`);
+  if(r.discount>0)lines.push(`Chiết khấu phần mềm ${stP2N(r.discount,1)}% cần Trading Order được duyệt.`);
+  if(r.feeKnown===false)lines.push('Chưa xác nhận đủ phí dịch vụ; tổng đầu tư cần rà lại trước khi gửi.');
+  for(const scope of d.inScope||[])if(stP2Has(scope))lines.push('Trong phạm vi: '+scope);
+  for(const scope of d.outScope||[])if(stP2Has(scope))lines.push('Ngoài phạm vi: '+scope);
+  return `<h3>Giả định của báo giá</h3><p>Báo giá dựa trên các giả định sau; nếu thay đổi, đầu tư sẽ được tính lại:</p><ul class="st-assumption-source">${lines.map(x=>`<li>${stP2E(x)}</li>`).join('')}</ul><!--st-assumption-extra--><div class="st-assumption-extra"><p class="s">Ghi chú bổ sung</p><ul><li><br></li></ul></div><!--/st-assumption-extra-->`;
+}
+function stPaymentIssues(p){
+  const d=p?.deal||{},schedule=d.payment||{},issues=[];
+  if(schedule.items?.length&&schedule.approved!==true)issues.push('Lịch thanh toán trong hồ sơ chưa ghi “Đã duyệt: có”; khối Thanh toán dùng chính sách mặc định.');
+  for(const term of d.terms||[])if(/thanh toan/.test(stP2Fold(term.label))&&/(?:\b[1-9]\d?\s*%|\bchia\b|\bdot\b)/.test(stP2Fold(term.text))&&!/da duyet/.test(stP2Fold(term.text)))issues.push(`Điều khoản “${term.label}” có chia đợt nhưng chưa ghi đã duyệt. Rà lại trước khi gửi.`);
+  return issues;
+}
+function stP2PaymentTermAllowed(term){
+  return !/thanh toan/.test(stP2Fold(term.label))||!/(?:\b[1-9]\d?\s*%|\bchia\b|\bdot\b)/.test(stP2Fold(term.text))||/da duyet/.test(stP2Fold(term.text));
+}
+function stP2Payment(p){
+  const d=p.deal||{},r=stP2Rec(p)?.r,schedule=d.payment||{};
+  const explicit=(schedule.items||[]).filter(x=>stP2Has(x.label)&&stP2Has(x.milestone)&&stP2Has(x.amount));
+  if(schedule.approved===true&&explicit.length)return '<h3>Điều kiện thanh toán</h3>'+stP2Table(['Đợt / Hạng mục','Mốc','Tỷ lệ / Số tiền','Hạn'],explicit.map(x=>[x.label,x.milestone,x.amount,x.due||'Theo hợp đồng'].map(stP2E)))+'<p class="s">Lịch do người soạn nhập · đã duyệt trong hồ sơ. Đối chiếu tổng số tiền với phương án.</p>';
+  if(!r||!Number.isFinite(r.software)||!r.years)return null;
+  const approved=(d.terms||[]).filter(t=>/thanh toan/.test(stP2Fold(t.label))&&/da duyet/.test(stP2Fold(t.text)));
+  const sw=approved.find(t=>/phan mem/.test(stP2Fold(t.label))),ps=approved.find(t=>/dich vu|ps|trien khai/.test(stP2Fold(t.label)));
+  const normal=(d.terms||[]).find(t=>/thanh toan phan mem/.test(stP2Fold(t.label))&&!/(?:\b[1-9]\d?\s*%|\bchia\b|\bdot\b)/.test(stP2Fold(t.text)));
+  const rows=[['Phần mềm',sw?.text||normal?.text||`Thanh toán trước toàn bộ kỳ hạn ${r.years} năm`,(sw?'Theo lịch đã duyệt · Tổng ':'100% · ')+stP2Money(r.software),'Theo hợp đồng'].map(stP2E)];
+  if(r.ps?.gross)rows.push(['Professional Service',ps?.text||'Lịch thanh toán cần thống nhất trong hợp đồng',stP2Money(r.ps.gross)+' · một lần, gồm VAT','Theo hợp đồng'].map(stP2E));
+  if(r.serviceFee)rows.push(['Dịch vụ khác','Theo điều khoản đã thống nhất',stP2Money(r.serviceFee)+' · một lần, gồm thuế','Theo hợp đồng'].map(stP2E));
+  return '<h3>Điều kiện thanh toán</h3>'+stP2Table(['Đợt / Hạng mục','Mốc','Tỷ lệ / Số tiền','Hạn'],rows)+'<p class="s">Không tự chia đợt hoặc đặt ngày thanh toán. Phí PS không nhân theo kỳ hạn phần mềm.</p>';
+}
+function stP2CTA(p,b){
+  const d=p.deal||{},q=d.quote||{},prep=d.preparer||{},step=d.steps?.items?.[0];
+  if(!step||!stP2Has(step.task)||!stP2Has(step.owner)||!stP2Has(step.dateText)||!step.date)return null;
+  const parts=String(step.date).match(/^(\d{4})-(\d{2})-(\d{2})$/);if(!parts)return null;
+  const dt=new Date(Date.UTC(+parts[1],+parts[2]-1,+parts[3]));if(dt.getUTCFullYear()!==+parts[1]||dt.getUTCMonth()!==+parts[2]-1||dt.getUTCDate()!==+parts[3])return null;
+  const url=stP2URL(b.ctaLink??d.steps?.url),contact=[prep.name,prep.title,prep.phone,prep.email].filter(stP2Has);
+  return `<h3>${stP2E(step.task)}</h3><p>${stP2E(step.owner)} · ${stP2E(step.dateText)}</p>${stP2Has(q.validText)?`<p class="s">Hiệu lực báo giá: ${stP2E(q.validText)}</p>`:''}${b.variant==='compact'?'':`${contact.length?`<div class="st-cta-row"><p>${stP2E(contact.join(' · '))}</p></div>`:''}${url?`<p><a class="st-cta-link" href="${stP2E(url)}" target="_blank" rel="noopener">Mở link xác nhận / trao đổi</a></p>`:''}<div class="st-cta-sign"><p class="k">Xác nhận của khách hàng</p><p class="sign-space"><br></p></div>`}`;
+}
+function stPhase2HTML(type,payload,b={}){
+  if(!payload)return null;
+  let html=({needBenefit:stP2NeedBenefit,problemFunnel:stP2Funnel,costOfDelay:stP2Delay,assumptions:stP2Assumptions,payment:stP2Payment,cta:stP2CTA})[type]?.(payload,b)??null;
+  if(html&&type==='payment'&&Array.isArray(b.sourceRows)){
+    const match=html.match(/<tbody>([\s\S]*?)<\/tbody>/),rows=match?.[1].match(/<tr>[\s\S]*?<\/tr>/g)||[],kept=rows.slice(b.sourceRows[0],b.sourceRows[1]??undefined);
+    if(!kept.length)return null;html=html.replace(/<tbody>[\s\S]*?<\/tbody>/,()=>'<tbody>'+kept.join('')+'</tbody>');
+    if(b.sourceRows[0]>0)html=html.replace('<h3>Điều kiện thanh toán</h3>','<h3>Điều kiện thanh toán (tiếp theo)</h3>');
+  }
+  return html;
+}
+
 // Quote Studio — dữ liệu tài liệu: loại block, bố cục, dựng tài liệu từ Quote Lab. Không dùng DOM; chạy được trong test.
 // Mô hình: doc { id, title, header, footer, assets, pages:[{ id, bg:'dark'|'light', chrome, blocks:[{ id, type, w(1–12), style, h(mm, 0 = tự động), html, src? }] }] }
 
 const ST_TYPES={
+  ...ST_P2_TYPES,
   heading:{name:'Tiêu đề mục',w:12,style:'plain',html:'<p class="eyebrow">Tên mục</p><h2>Một câu kết luận cho trang này</h2><p class="lead">Một câu giải thích ngắn.</p>'},
   cover:{name:'Tiêu đề bìa',w:12,style:'plain',html:'<h1>Tiêu đề đề xuất <span class="hl">điểm nhấn</span></h1><p class="lead">Mô tả ngắn gửi khách hàng.</p>'},
   text:{name:'Đoạn văn',w:12,style:'plain',html:'<p>Nhập nội dung.</p>'},
@@ -634,6 +1277,7 @@ function stBuildDoc(payload,{baseLogo=''}={}){
   const ctx=stContext(payload),{d,opts,rec,years,short}=ctx,q=d.quote||{},c=d.customer||{},prep=d.preparer||{},msg=d.message||{};
   const pages=[],P=(bg,blocks,extra)=>{if(blocks.length)pages.push(stNewPage(bg,blocks,extra));};
   const assets={};if(baseLogo)assets['base-logo']=baseLogo;
+  const p2=(type,extra={})=>{const html=stPhase2HTML(type,payload,extra);return html?stB(type,html,ST_TYPES[type].w,ST_TYPES[type].style,{...extra,...(['costOfDelay','assumptions','payment','cta'].includes(type)?{src:'phase2:'+type}:{})}):null;};
   const logo=(id,w)=>stB('logo',`<div class="img logo" contenteditable="false"><img alt="" data-asset="${id||''}"></div>`,w,'plain');
 
   // 1. Bìa
@@ -659,7 +1303,8 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     stHead('Tóm tắt điều hành',pb?`Đầu tư ${stBig(rec.r.total)} cho ${years} năm, hoàn vốn trong khoảng ${pb} tháng.`:`Đầu tư ${stBig(rec.r.total)} cho ${years} năm với phương án ${rec.label}.`,`Chúng tôi khuyến nghị phương án ${rec.label}.`),
     ...stSummaryMetrics(ctx).map((h,i)=>stB('metric',h,4,'card',{src:'metric:'+i})),
     stB('table',`<table class="kv"><tbody>${rows.map(([k,v])=>`<tr><th>${stE(k)}</th><td>${stE(v)}</td></tr>`).join('')}</tbody></table>`,12,'card',{src:'summary-rows'}),
-  ]);
+    ...[p2('cta',{variant:'compact',style:'card'})].filter(Boolean),
+  ],{role:'summary'});
 
   // 3. Hiện trạng
   const pains=d.pains?.items||[],costs=d.costs?.items||[];
@@ -668,7 +1313,8 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     const blocks=[stHead('Hiện trạng',d.pains?.heading||d.costs?.heading||(costSum?`Mỗi năm ${short} trả khoảng ${stBig(costSum)} cho cách vận hành hiện tại.`:`${pains.length} vấn đề ${short} cần giải quyết.`),d.pains?.lead||(pains.length?`${pains.length} vấn đề ghi nhận${d.pains?.source?' qua '+d.pains.source:''}, bằng lời của chính đội ngũ ${short}.`:''))];
     pains.forEach((p,i)=>blocks.push(stB('card',`<p class="no">${i+1}</p><h3>${stE(p.title)}</h3>${p.quote?`<p class="q">“${stE(p.quote)}”</p>`:''}${p.who?`<p class="s">${stE(p.who)}</p>`:''}${p.fact?`<p>${stE(p.fact)}</p>`:''}`,6,'card')));
     if(costs.length)blocks.push(stB('table',`<h3>Cái giá mỗi năm, ước tính thận trọng</h3>`+stTable(['Hạng mục','Cách tính',{t:'Ước tính mỗi năm',num:true}],[...costs.map(x=>[stE(x.item),stE(x.method),x.amount===null?'—':stE(stShort(x.amount*1e6))+(x.cash?' (tiền mặt)':'')]),['<b>Tổng</b>','',`<b>${stE(stShort(costSum))}</b>`]])+(d.costs?.note?`<p class="s">${stE(d.costs.note)}</p>`:''),12,'plain'));
-    P('light',blocks);
+    const funnel=p2('problemFunnel'),delay=p2('costOfDelay');if(funnel)blocks.splice(1,0,funnel);if(delay)blocks.push(delay);
+    P('light',blocks,{role:'problem'});
   }
 
   // 4. Mục tiêu
@@ -678,16 +1324,18 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     const blocks=[stHead('Mục tiêu và tiêu chí thành công',k?.heading||(k?`Đưa ${stLc(k.name)} từ ${k.current} về ${k.target}${unit}.`:'Thành công được đo bằng các chỉ số hai bên đã thống nhất.'),k?.lead||'')];
     if(k){blocks.push(stB('metric',`<p class="k">Hôm nay</p><p class="v bad">${stE(k.current+unit)}</p><p class="s">${stE(k.name)}</p>`,6,'card'));blocks.push(stB('metric',`<p class="k">Mục tiêu</p><p class="v ok">${stE(k.target+unit)}</p><p class="s">${k.threshold!==null&&k.threshold!==undefined?stE((k.thresholdLabel||'Ngưỡng')+': '+k.threshold+unit):stE(k.name)}</p>`,6,'card'));}
     if(kpis.length)blocks.push(stB('table',`<h3>${stE(d.kpis.when?'Chỉ số đo '+d.kpis.when:'Chỉ số thành công')}${d.kpis.confirmed?` <span class="tag">Đã xác nhận ${stE(d.kpis.confirmed)}</span>`:''}</h3>`+stTable(['Chỉ số','Hiện tại','Mục tiêu','Người theo dõi'],kpis.map(x=>[stE(x.name),stE(x.current),stE(x.target),stE(x.owner)]))+(d.kpis.note?`<p class="s">${stE(d.kpis.note)}</p>`:''),12,'white'));
-    P('dark',blocks);
+    P('dark',blocks,{role:'goals'});
   }
 
-  // 5. Giải pháp
-  const sols=d.solutions?.items||[];
+  // 5. Giải pháp: chỉ gắn lợi ích khi dòng có pain liên quan và đủ nội dung.
+  const sols=d.solutions?.items||[],nb=p2('needBenefit');
   if(sols.length){
-    const blocks=[stHead('Giải pháp đề xuất',d.solutions.heading||'Mỗi hạng mục nối thẳng về một vấn đề; hạng mục nào không nối được đã bỏ ra.','')];
-    blocks.push(stB('table',stTable(['Vấn đề','Giải pháp trên Base 2.0','Kết quả đo được'],sols.map(s=>[`${s.no?`<b>${stE(s.no)}.</b> `:''}${stE(s.problem)}`,`${s.apps.length?`<span class="chips">${s.apps.map(a=>`<span class="chip">${stE(a)}</span>`).join(' ')}</span><br>`:''}${stE(s.desc)}`,s.result?'✓ '+stE(s.result):''])),12,'plain'));
+    const blocks=[stHead('Giải pháp đề xuất',d.solutions.heading||'Giải pháp gắn với nhu cầu và kết quả khách hàng đã nêu.','')];
+    if(nb)blocks.push(nb);
+    const partial=sols.filter(s=>!stP2SolutionPain(d,s));
+    if(partial.length)blocks.push(stB('table',stTable(['Vấn đề trong hồ sơ','Cách xử lý đã nhập','App / phạm vi'],partial.map(s=>[stE(s.problem),stE(s.desc||''),(s.apps||[]).map(stE).join(', ')])),12,'plain'));
     if(d.solutions.excluded)blocks.push(stB('note',`<p><b>Chưa đưa vào đợt này:</b> ${stE(d.solutions.excluded)}</p>`,12,'line'));
-    P('light',blocks);
+    P('light',blocks,{role:'solution'});
   }
 
   // 6. Use-case
@@ -702,7 +1350,7 @@ function stBuildDoc(payload,{baseLogo=''}={}){
       const ref=[u.reference?'Người tham chiếu: '+u.reference:'',u.source?'Nguồn: '+u.source:''].filter(Boolean).join(' · ');
       blocks.push(stB('card',`<h3>${stE(shown(u))}</h3>${meta?`<p class="s">${stE(meta)}</p>`:''}${u.problem?`<p class="k">Bài toán</p><p>${stE(u.problem)}</p>`:''}${u.apps?.length||u.solution?`<p class="k">Cách làm trên Base</p>${u.apps?.length?`<p class="chips">${u.apps.map(a=>`<span class="chip">${stE(a)}</span>`).join(' ')}</p>`:''}${u.solution?`<p>${stE(u.solution)}</p>`:''}`:''}${res?`<p class="k">Kết quả</p><table class="res"><thead><tr><th>Chỉ số</th><th>Trước</th><th>Sau</th></tr></thead><tbody>${res}</tbody></table>`:''}${u.quote?`<p class="q">“${stE(u.quote)}”</p>${role?`<p class="s">${stE(role)}</p>`:''}`:''}${ref?`<p class="s">${stE(ref)}</p>`:''}`,ucs.length===1?12:6,'white'));
     }
-    P('dark',blocks);
+    P('dark',blocks,{role:'proof'});
   }
 
   // 7. Phạm vi và lộ trình
@@ -713,7 +1361,7 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     const lists=[['Trong phạm vi',inScope],['Ngoài phạm vi (báo giá riêng khi cần)',outScope],[`${short} phối hợp`,duties]].filter(([,a])=>a.length);
     for(const [t,a] of lists)blocks.push(stB('list',`<h3>${stE(t)}</h3><ul>${a.map(x=>`<li>${stE(x)}</li>`).join('')}</ul>`,stSpan(lists.length),'card'));
     for(const g of gates)blocks.push(stB('card',`<p class="k">${stE(g.title)}</p><p>${stE(g.text)}</p>`,stSpan(gates.length),'line'));
-    P('light',blocks);
+    P('light',blocks,{role:'plan'});
   }
 
   // 8. Phương án đầu tư
@@ -728,7 +1376,8 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     blocks.push(stB('text',`<p class="s">Giá theo Chính sách giá Base 2.0${ctx.policy.effective?' hiệu lực '+stE(ctx.policy.effective):''}: phần mềm không cộng VAT${anyPs?', dịch vụ triển khai (Professional Service) tính một lần và cộng VAT':''}, phí dịch vụ khác đã gồm thuế nếu có, thanh toán trước toàn bộ kỳ hạn.</p>`,12,'plain'));
     if(stPs(rec.r))blocks.push(stB('table',stPsHTML(rec),12,'white',{src:'ps'}));
     for(const o of opts)if(o!==rec&&o.why)blocks.push(stB('card',`<h3>Vì sao chưa chọn phương án ${opts.indexOf(o)+1}</h3><p>${stE(o.why)}</p>`,6,'card'));
-    P('dark',blocks);
+    const delay=p2('costOfDelay',{variant:'investment'}),assumptions=p2('assumptions',{w:12});if(delay)blocks.push(delay);if(assumptions)blocks.push(assumptions);
+    P('dark',blocks,{role:'investment'});
   }
 
   // 9. Đội ngũ, rủi ro
@@ -738,7 +1387,7 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     for(const x of cases)blocks.push(stB('card',`<h3>${stE(x.title)}</h3><p>${stE(x.text)}</p>`,stSpan(cases.length),'card'));
     if(team.length)blocks.push(stB('table',`<h3>Đội ngũ phụ trách</h3>`+stTable(['Vai trò','Người phụ trách','Trách nhiệm'],team.map(x=>[stE(x.role),stE(x.person),stE(x.duty)])),12,'plain'));
     if(risks.length)blocks.push(stB('table',`<h3>Rủi ro chính và cách xử lý</h3>`+stTable(['Rủi ro','Cách xử lý'],risks.map(x=>[stE(x.risk),stE(x.fix)])),12,'plain'));
-    P('light',blocks);
+    P('light',blocks,{role:cases.length?'proof':'plan'});
   }
 
   // 10. Điều khoản
@@ -747,20 +1396,21 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     const terms=d.terms?.length?[...d.terms]:[{label:'Thanh toán phần mềm',text:`Thanh toán trước toàn bộ phí phần mềm của kỳ hạn ${years} năm.`},{label:'Thuế',text:'Giá phần mềm không cộng VAT theo Chính sách giá Base 2.0'+(anyPs?'; dịch vụ triển khai (Professional Service) cộng VAT 8%':'')+'; phí dịch vụ khác đã gồm thuế nếu có.'},{label:'Căn cứ giá',text:`Chính sách giá Base 2.0${ctx.policy.effective?' hiệu lực '+ctx.policy.effective:''}.`}];
     if(anyPs&&!terms.some(t=>/triển khai|professional/i.test(t.label)))terms.push({label:'Dịch vụ triển khai',text:'Phí Professional Service tính một lần cho cả hợp đồng, không nhân theo số năm; giá chưa gồm VAT, cộng VAT 8%.'});
     const blocks=[stHead('Điều khoản thương mại',q.validText?(q.reason?`Hiệu lực đến hết ${q.validText}, vì ${q.reason}.`:`Báo giá có hiệu lực đến hết ${q.validText}.`):'Điều khoản thương mại.','')];
-    terms.forEach(t=>blocks.push(stB('card',`<p class="k">${stE(t.label)}</p><p>${stE(t.text)}</p>`,6,'plain')));
+    terms.filter(stP2PaymentTermAllowed).forEach(t=>blocks.push(stB('card',`<p class="k">${stE(t.label)}</p><p>${stE(t.text)}</p>`,6,'plain')));
     const offers=d.offers?.items||[];
     if(offers.length)blocks.push(stB('table',`<h3>Ưu đãi có điều kiện</h3>`+stTable([`${short} cam kết`,'Ưu đãi',{t:'Giá trị',num:true}],offers.map(o=>[stE(o.commit),stE(o.offer),stE(o.value)]))+(d.offers.note?`<p class="s">${stE(d.offers.note)}</p>`:''),12,'plain'));
-    P('light',blocks);
+    const payment=p2('payment',{w:12});if(payment)blocks.splice(1,0,payment);
+    P('light',blocks,{role:'terms'});
   }
 
   // 11. Bước tiếp theo
   if(steps.length){
-    const key=steps.find(s=>s.key);
+    const key=steps.find(s=>s.key),cta=p2('cta');
     P('dark',[
       stHead('Bước tiếp theo',d.steps.heading||(key?`${key.task} trước ${key.dateText}.`:`${steps[0].task} ngày ${steps[0].dateText}.`),''),
       stB('steps',`<ol class="steps">${steps.map(s=>`<li${s.key?' class="key"':''}><b>${stE(s.task)}</b> <span class="s">${stE([s.owner,s.dateText].filter(Boolean).join(' · '))}</span></li>`).join('')}</ol>`,12,'plain'),
-      stB('text',`<p class="s">Người lập: ${stE([prep.name,prep.phone,prep.email].filter(Boolean).join(' · ')||'[Tên chuyên viên tư vấn]')}</p>`,12,'plain'),
-    ]);
+      ...(cta?[cta]:[stB('text',`<p class="s">Người lập: ${stE([prep.name,prep.phone,prep.email].filter(Boolean).join(' · ')||'[Tên chuyên viên tư vấn]')}</p>`,12,'plain')]),
+    ],{role:'action'});
   }
 
   // 12. Phụ lục: form báo giá dịch vụ Base
@@ -779,7 +1429,9 @@ function stBuildDoc(payload,{baseLogo=''}={}){
     ],{role:'appendix'});
   }
 
-  for(const page of pages){page.role=stInferRole(page);stSeedFocus(page);}
+  const roleOrder=['cover','summary','problem','goals','solution','plan','proof','investment','terms','action','appendix'];
+  pages.sort((a,b)=>roleOrder.indexOf(a.role||stInferRole(a))-roleOrder.indexOf(b.role||stInferRole(b)));
+  for(const page of pages){page.role=stInferRole(page);page.question=ST_ROLE_QUESTIONS[page.role];stSeedFocus(page);}
 
   return {
     id:stId('d'),version:1,created:Date.now(),updated:Date.now(),
@@ -824,7 +1476,7 @@ function stSeedFocus(page){
   if(['cover','appendix'].includes(stInferRole(page)))return;
   const blocks=page.blocks||[];if(!blocks.length)return;
   const current=blocks.find(b=>b.focus),accent=blocks.find(b=>b.style==='accent');
-  const preferred={summary:b=>b.src==='summary-rows',problem:b=>b.type==='quote'||/class=["'][^"']*\bq\b/.test(b.html),goals:b=>b.type==='table',solution:b=>b.type==='table',plan:b=>b.type==='table'||b.type==='steps',proof:b=>b.type==='card',investment:b=>b.src?.startsWith('option:'),terms:b=>b.type==='card',action:b=>b.type==='steps'}[stInferRole(page)];
+  const preferred={summary:b=>b.src==='summary-rows',problem:b=>b.type==='quote'||/class=["'][^"']*\bq\b/.test(b.html),goals:b=>b.type==='table',solution:b=>b.type==='needBenefit'||b.type==='table',plan:b=>b.type==='table'||b.type==='steps',proof:b=>b.type==='card',investment:b=>b.src?.startsWith('option:'),terms:b=>b.type==='card',action:b=>b.type==='cta'||b.type==='steps'}[stInferRole(page)];
   const chosen=current||accent||(preferred&&blocks.find(preferred))||blocks.find(b=>!['heading','spacer','divider','logo'].includes(b.type))||blocks.find(b=>b.type==='heading');
   if(chosen)stFocusPage(page,chosen.id);
 }
@@ -877,7 +1529,7 @@ function stLint(doc,measures={}){
   }
   for(const [type,x] of typeStyles)if(x.styles.size>=3)add('L-style','suggestion','layout',`Khối ${ST_TYPES[type]?.name||type} đang dùng ${x.styles.size} kiểu. Có thể áp một kiểu chung theo loại.`,x.p,x.b,{key:type});
   const content=pages.filter(p=>!['cover','appendix'].includes(stInferRole(p))&&p.blocks?.length),last=content.at(-1),actions=pages.filter(p=>stInferRole(p)==='action');
-  const cta=last?.blocks.find(b=>b.type==='cta'&&stText(b.html).replace(/\[[^\]]*\]/g,'').trim()||b.type==='steps'&&stHasDate(stText(b.html)));
+  const cta=last?.blocks.find(b=>b.type==='cta'&&stHasDate(stText(b.html).replace(/\[[^\]]*\]/g,''))||b.type==='steps'&&stHasDate(stText(b.html)));
   if(!cta)add('C-cta','warning','content','Cuối đề xuất chưa có một hành động tiếp theo có ngày (trước phụ lục).',last||pages.at(-1));
   if(!actions.some(p=>p.blocks.some(b=>stContact(stText(b.html)))))add('C-contact','warning','content','Trang bước tiếp theo chưa có điện thoại hoặc email của người lập.',actions.at(-1)||last);
   const visibleValidity=pages.some(p=>p.blocks.some(b=>{const t=stText(b.html),m=t.match(/hiệu lực[\s\S]{0,90}/i);return m&&stHasDate(m[0]);}));
@@ -893,9 +1545,15 @@ function stLint(doc,measures={}){
 // Cập nhật các block lấy số liệu (chỉ số tóm tắt, thẻ phương án, PS, bảng giá); giữ chữ đã sửa ở các block khác.
 function stRefreshDoc(doc,payload){
   const ctx=stContext(payload),metrics=stSummaryMetrics(ctx);let changed=0;
-  for(const p of doc.pages)for(const b of p.blocks){
+  for(const p of doc.pages)for(const b of [...p.blocks]){
     if(!b.src)continue;let html=null;
-    if(b.src.startsWith('metric:'))html=metrics[+b.src.slice(7)]??null;
+    if(b.src.startsWith('phase2:')){
+      if(!ST_P2_TYPES[b.src.slice(7)])continue;
+      html=stPhase2HTML(b.src.slice(7),payload,b);
+      if(html===null){p.blocks.splice(p.blocks.indexOf(b),1);if(b.focus)stSeedFocus(p);changed++;continue;}
+      if(b.type==='assumptions'){const notes=b.html.match(/<!--st-assumption-extra-->[\s\S]*?<!--\/st-assumption-extra-->/)?.[0];if(notes)html=html.replace(/<!--st-assumption-extra-->[\s\S]*?<!--\/st-assumption-extra-->/,()=>notes);}
+    }
+    else if(b.src.startsWith('metric:'))html=metrics[+b.src.slice(7)]??null;
     else if(b.src.startsWith('option:')){const i=ctx.opts.findIndex(o=>o.id===b.src.slice(7));if(i>=0)html=stOptionHTML(ctx.opts[i],i,ctx);}
     else if(b.src==='ps')html=stPsHTML(ctx.rec)||null;
     else if(b.src==='price')html=stPriceHTML(ctx);
@@ -916,6 +1574,7 @@ function stNotes(payload){
   for(const u of payload.useCases||[]){if(u.sample)notes.push(`Use-case “${u.name}” là mẫu định dạng, số liệu minh hoạ. Thay bằng use-case thật trước khi gửi.`);if(!u.public)notes.push(`Use-case “${u.name}” đang ẩn tên doanh nghiệp vì hồ sơ chưa ghi “Công khai tên: có”.`);if(!u.reference&&!u.source)notes.push(`Use-case “${u.name}” chưa có nguồn hoặc người tham chiếu.`);}
   if(q.tag)notes.push(`Bìa đang có nhãn “${q.tag}”. Xoá nhãn này khi gửi khách thật.`);
   notes.push('Đối chiếu các câu mô tả tính năng với sản phẩm thực tế trước khi gửi.');
+  notes.push(...stPaymentIssues(payload));
   for(const w of d.warnings||[])notes.push('Hồ sơ: '+w);
   return notes;
 }
@@ -960,7 +1619,7 @@ const ST_APP_BENEFITS={
   Interview:'Tổ chức và chấm điểm phỏng vấn theo tiêu chí thống nhất để đánh giá ứng viên.',
 };
 // Các mục này còn để trống trong phụ lục; không suy công dụng từ tên app.
-const ST_APP_BENEFIT_GAPS=['Work rules','Expense','Review','Goal','Contract','Event','Radar','Studio'];
+const ST_APP_BENEFIT_GAPS=['Work rules','Expense','Review','Goal','Contract','Event','Radar','Studio','Account','Settings','Home','Platform','Chat','Mail','Call','Drive','Media'];
 function stAppBenefit(app){
   const name=String(app??'').normalize('NFC').replace(/^Base\s+/i,'').trim().toLowerCase();
   const key=Object.keys(ST_APP_BENEFITS).find(k=>k.toLowerCase()===name);
@@ -968,23 +1627,40 @@ function stAppBenefit(app){
 }
 
 
-// Chỉ dùng danh sách app trong catalog / phương án đã được Quote Lab tính.
+// App nghiệp vụ lấy từ catalog / phương án; Base Core từ chính sách giá 1.4.
+// Output thuộc Base Core trong chính sách ban hành, dù phụ lục draft xếp khác.
+const stLibPackage=(pkg,includeCore=true)=>{
+  const own=[...new Set(pkg.apps||[])];
+  const packageApps=includeCore?own.filter(a=>!BASE_CORE_APPS.includes(a)):own;
+  return {...pkg,packageApps,coreApps:includeCore?BASE_CORE_APPS:[],apps:[...packageApps,...(includeCore?BASE_CORE_APPS:[])]};
+};
 const ST_PACKAGES=[
-  ...WORK.map(p=>({id:'work:'+p.id,name:'Work OS · '+p.name,apps:p.apps,group:'Work OS'})),
-  ...HRM.map(p=>({id:'hrm:'+p.id,name:'HRM OS · '+p.name,apps:p.apps,group:'HRM OS'})),
-  ...CRM.map(p=>({id:'crm:'+p.id,name:'CRM OS · '+p.name,apps:p.apps,group:'CRM OS'})),
-  ...COMBOS.map(p=>({id:'combo:'+p.id,name:p.name,apps:[...new Set([...p.work,...p.hrm])],group:'Base Combo'})),
-  ...ADDONS.map(p=>({id:'addon:'+p.id,name:'Add-on · '+p.name,apps:p.apps,group:'Add-on'})),
+  ...WORK.map(p=>stLibPackage({id:'work:'+p.id,name:'Work OS · '+p.name,apps:p.apps,group:'Work OS'})),
+  ...HRM.map(p=>stLibPackage({id:'hrm:'+p.id,name:'HRM OS · '+p.name,apps:p.apps,group:'HRM OS'})),
+  ...CRM.map(p=>stLibPackage({id:'crm:'+p.id,name:'CRM OS · '+p.name,apps:p.apps,group:'CRM OS'})),
+  ...COMBOS.map(p=>stLibPackage({id:'combo:'+p.id,name:p.name,apps:[...p.work,...p.hrm],group:'Base Combo'})),
+  // Chính sách giá 2.6, trang 7: E-Hiring, Interview và Meeting.
+  ...HIRING.map(p=>stLibPackage({id:'hiring:'+p.id,name:'Base E-Hiring · '+p.name,apps:['E-Hiring','Interview','Meeting'],group:'Base E-Hiring'})),
+  ...ADDONS.map(p=>stLibPackage({id:'addon:'+p.id,name:'Add-on · '+p.name,apps:p.apps,group:'Add-on'},false)),
+  stLibPackage({id:'core',name:'Base Core · Dùng chung trong mọi gói',apps:[],group:'Base Core',kind:'core'}),
 ];
 const stLibEscape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function stPackageChoices(data){
-  const selected=(data?.options||[]).flatMap((o,oi)=>(o.r?.lines||[]).filter(l=>l.apps?.length).map((l,li)=>({id:`quote:${o.id}:${li}`,name:`${o.label||'Phương án '+(oi+1)} · ${data.scopeNames?.[l.scope]||l.scope} · ${l.name}${l.lite?' Lite':''}`,apps:[...new Set(l.apps)],group:'Trong báo giá'})));
-  return [...selected,...ST_PACKAGES];
+  const whole=[],selected=[];
+  for(const [oi,o] of (data?.options||[]).entries()){
+    const lines=(o.r?.lines||[]).filter(l=>l.apps?.length),label=o.label||'Phương án '+(oi+1);
+    if(!lines.length)continue;
+    whole.push(stLibPackage({id:`quote:${o.id}:all`,name:'Toàn bộ · '+label,apps:lines.flatMap(l=>l.apps),group:'Toàn bộ phương án',kind:'option',hasSelfService:lines.some(l=>l.selfService||l.scope==='labor')},lines.some(l=>!l.addon)));
+    selected.push(...lines.map((l,li)=>stLibPackage({id:`quote:${o.id}:${li}`,name:`${label} · ${data.scopeNames?.[l.scope]||l.scope||'Gói'} · ${l.name}${l.lite?' Lite':''}`,apps:l.apps,group:'Từng bộ trong phương án',selfService:l.selfService||l.scope==='labor'},!l.addon)));
+  }
+  return [...whole,...selected,...ST_PACKAGES];
 }
 function stAppListHTML(pkg){
   if(!pkg)return '<h3>Phụ lục · Danh sách ứng dụng</h3><p>Chọn gói giải pháp ở bảng công cụ bên phải.</p>';
   const apps=[...new Set(pkg.apps)];
-  return `<p class="eyebrow">Phụ lục · Danh sách ứng dụng</p><h3>${stLibEscape(pkg.name)}</h3><p class="s">${apps.length} ứng dụng · Danh sách thuộc gói được chọn</p><table class="app-list"><colgroup><col style="width:7%"><col style="width:18%"><col style="width:75%"></colgroup><thead><tr><th>STT</th><th>Ứng dụng</th><th>Mô tả</th></tr></thead><tbody>${apps.map((a,i)=>`<tr><td>${i+1}</td><td>${stLibEscape(a)}</td><td>${stLibEscape(stAppBenefit(a))}</td></tr>`).join('')}</tbody></table>`;
+  const summary=pkg.kind==='core'?'Base Core dùng chung trong mọi gói, không tính tiền':pkg.coreApps?.length?`${pkg.packageApps.length} app ${pkg.kind==='option'?'của phương án':'của gói'} + ${pkg.coreApps.length} app Base Core dùng chung, không tính tiền`:'Danh sách thuộc gói được chọn';
+  const limits=pkg.selfService?'HRIS, Timesheet và Payroll của tài khoản lao động trực tiếp chỉ ở chế độ tự phục vụ.':pkg.kind==='option'?'Quyền sử dụng theo từng gói và nhóm tài khoản.'+(pkg.hasSelfService?' Lao động trực tiếp dùng HRIS, Timesheet và Payroll ở chế độ tự phục vụ.':''):'';
+  return `<p class="eyebrow">Phụ lục · Danh sách ứng dụng</p><h3>${stLibEscape(pkg.name)}</h3><p class="s">${apps.length} ứng dụng · ${stLibEscape(summary)}</p>${limits?`<p class="s">${stLibEscape(limits)}</p>`:''}<table class="app-list"><colgroup><col style="width:7%"><col style="width:18%"><col style="width:75%"></colgroup><thead><tr><th>STT</th><th>Ứng dụng</th><th>Mô tả</th></tr></thead><tbody>${apps.map((a,i)=>`<tr><td>${i+1}</td><td>${stLibEscape(a)}</td><td>${stLibEscape(stAppBenefit(a))}</td></tr>`).join('')}</tbody></table>`;
 }
 // Mẫu nội dung để người soạn điền. Không tự đặt pain, kết quả, cam kết hay điều khoản.
 const ST_PRESETS=[
@@ -993,6 +1669,9 @@ const ST_PRESETS=[
   {id:'goals',group:'Tư vấn',name:'Tiêu chí thành công',type:'table',html:'<h3>Tiêu chí thành công</h3><table><thead><tr><th>Tiêu chí</th><th>Hiện tại</th><th>Mục tiêu</th><th>Cách đo</th></tr></thead><tbody><tr><td>[Tiêu chí đã thống nhất]</td><td>[Số liệu]</td><td>[Mục tiêu]</td><td>[Nguồn / cách đo]</td></tr></tbody></table>'},
   {id:'solution',group:'Tư vấn',name:'Pain → giải pháp',type:'table',html:'<h3>Giải pháp đề xuất</h3><table><thead><tr><th>Vấn đề</th><th>Cách giải quyết</th><th>Ứng dụng / phạm vi</th></tr></thead><tbody><tr><td>[Pain đã xác nhận]</td><td>[Cách làm đã kiểm chứng]</td><td>[App / phạm vi]</td></tr></tbody></table>'},
   {id:'value',group:'Tư vấn',name:'Giá trị & giả định',type:'metric',html:'<p class="k">[Chỉ số giá trị]</p><p class="v">[Giá trị]</p><p class="s">[Nguồn · Cách tính · Giả định cần xác nhận]</p>'},
+  {id:'need-benefit',group:'Tư vấn',name:'Nhu cầu → Giải pháp → Lợi ích',type:'needBenefit'},
+  {id:'problem-funnel',group:'Tư vấn',name:'Phễu vấn đề',type:'problemFunnel'},
+  {id:'cost-of-delay',group:'Tư vấn',name:'Chi phí của việc chờ đợi',type:'costOfDelay'},
   {id:'scope',group:'Triển khai',name:'Phạm vi & giới hạn',type:'list',html:'<h3>Phạm vi triển khai</h3><ul><li>[Hạng mục bao gồm]</li><li>[Hạng mục ngoài phạm vi]</li><li>[Điều kiện cần từ khách hàng]</li></ul>'},
   {id:'roadmap',group:'Triển khai',name:'Lộ trình & PIC',type:'steps',html:'<h3>Lộ trình triển khai</h3><ol class="steps"><li><b>[Mốc đã thống nhất]</b><span class="s">[PIC · Ngày · Đầu ra]</span></li><li><b>[Mốc tiếp theo]</b><span class="s">[PIC · Ngày · Đầu ra]</span></li></ol>'},
   {id:'acceptance',group:'Triển khai',name:'Nghiệm thu',type:'table',html:'<h3>Tiêu chí nghiệm thu</h3><table><thead><tr><th>Đầu ra</th><th>Tiêu chí</th><th>Người xác nhận</th></tr></thead><tbody><tr><td>[Đầu ra]</td><td>[Tiêu chí đã thống nhất]</td><td>[PIC]</td></tr></tbody></table>'},
@@ -1002,6 +1681,9 @@ const ST_PRESETS=[
   {id:'comparison',group:'Thương mại',name:'So sánh phương án',type:'table',html:'<h3>Lựa chọn phương án</h3><table><thead><tr><th>Tiêu chí</th><th>Phương án 1</th><th>Phương án 2</th></tr></thead><tbody><tr><td>Phạm vi</td><td>[Phạm vi]</td><td>[Phạm vi]</td></tr><tr><td>Mức đầu tư</td><td>[Số liệu từ Quote Lab]</td><td>[Số liệu từ Quote Lab]</td></tr><tr><td>Phù hợp khi</td><td>[Điều kiện]</td><td>[Điều kiện]</td></tr></tbody></table>'},
   {id:'terms',group:'Thương mại',name:'Điều kiện báo giá',type:'card',html:'<h3>Điều kiện báo giá</h3><p><b>Hiệu lực:</b> [Ngày hết hạn đã xác nhận]</p><p><b>Thanh toán:</b> [Điều khoản đã thống nhất]</p><p><b>Thuế và dịch vụ:</b> [Phạm vi / điều khoản áp dụng]</p>'},
   {id:'next',group:'Thương mại',name:'Bước tiếp theo',type:'steps',html:'<h3>Bước tiếp theo</h3><ol class="steps"><li><b>[Hành động cần thống nhất]</b><span class="s">[PIC · Ngày · Đầu ra cần xác nhận]</span></li></ol>'},
+  {id:'assumptions',group:'Thương mại',name:'Giả định của báo giá',type:'assumptions'},
+  {id:'payment',group:'Thương mại',name:'Điều kiện thanh toán',type:'payment'},
+  {id:'cta',group:'Thương mại',name:'Xác nhận phương án',type:'cta'},
   {id:'contact',group:'Thương mại',name:'Người thực hiện',type:'text',w:6,html:'<p class="k">Người thực hiện</p><h3>[Họ tên]</h3><p>[Chức danh]</p><p class="s">[Điện thoại · Email]</p>'},
   {id:'apps',group:'Phụ lục',name:'App trong gói',type:'appList'},
   {id:'definitions',group:'Phụ lục',name:'Thuật ngữ',type:'table',html:'<h3>Giải thích thuật ngữ</h3><table><thead><tr><th>Thuật ngữ</th><th>Ý nghĩa trong đề xuất</th></tr></thead><tbody><tr><td>[Thuật ngữ]</td><td>[Giải thích]</td></tr></tbody></table>'},
@@ -1012,6 +1694,246 @@ function stPresetBlock(id,data){
   const b=stNewBlock(p.type,{...(p.html?{html:p.html}:{}),...(p.w?{w:p.w}:{})});
   if(p.type==='appList'){const pkg=stPackageChoices(data)[0];b.packageId=pkg?.id;b.html=stAppListHTML(pkg);}
   return b;
+}
+
+const ST_TEMPLATE_KEY='st-document-templates';
+function stInputPayload(input){
+  if(!input?.package)throw new Error('Chưa có file phương án từ Quote Lab.');
+  const pack=qoReadPackage(input.package),profile=input.profile;
+  if(!profile?.text)throw new Error('Chưa có hồ sơ khách hàng.');
+  const report=profileReport(profile.text,profile.name||'ho-so.md');if(report.kind!=='deal'||report.errors.length)throw new Error(report.kind!=='deal'?'File hồ sơ đang là use-case.':report.errors.join(' '));
+  const deal=parseDealFile(profile.text),cases=[],ids=new Set();
+  for(const file of input.useCases||[]){const result=parseUseCaseFile(file.text,file.name);for(const c of result.cases)if(!ids.has(c.id)){cases.push(c);ids.add(c.id);}}
+  const options=pack.options.filter(o=>input.optionEdits?.[o.id]?.include!==false).map(o=>{const e=input.optionEdits?.[o.id]||{};return {...o,label:e.label?.trim()||o.label,why:e.why||'',solves:e.solves||'',valueYear:Math.max(0,+e.valueYear||0),valueCash:Math.max(0,+e.valueCash||0)};});
+  if(!options.length)throw new Error('Cần chọn ít nhất một phương án.');
+  const selected=input.useCaseSelection?new Set(input.useCaseSelection):null;
+  return {kind:'quote-studio-data',version:3,deal,options,recommendedId:options.some(o=>o.id===input.recommendedId)?input.recommendedId:options[0].id,useCases:selected?cases.filter(c=>selected.has(c.id)):cases,scopeNames:pack.scopeNames,policy:pack.policy};
+}
+function stMakeDocumentTemplate(doc,name){
+  if(!name?.trim())throw new Error('Cần đặt tên template.');
+  return {id:stId('tpl'),name:name.trim(),created:Date.now(),updated:Date.now(),version:1,sourceTitle:doc.title,pages:JSON.parse(JSON.stringify(doc.pages)),assets:JSON.parse(JSON.stringify(doc.assets||{})),header:JSON.parse(JSON.stringify(doc.header||{})),footer:JSON.parse(JSON.stringify(doc.footer||{})),sourceIdentity:{customer:doc.data?.deal?.customer||{},quote:doc.data?.deal?.quote||{}},sourcePackages:(doc.data?.options||[]).map(o=>({id:o.id,lines:(o.r?.lines||[]).filter(l=>l.apps?.length).map(l=>({scope:l.scope,id:l.id,addon:!!l.addon}))}))};
+}
+const stSlotKey=b=>b.src?.startsWith('metric:')?b.src:b.src?.startsWith('option:')?'option':b.src||b.type;
+function stApplyDocumentTemplate(fresh,tpl){
+  if(!tpl)return fresh;const roles=[...new Set(fresh.pages.map(p=>p.role))],out=[];
+  for(const role of roles){
+    const generated=fresh.pages.filter(p=>p.role===role),design=tpl.pages.filter(p=>p.role===role);if(!design.length){out.push(...generated);continue;}
+    const pending=generated.flatMap(p=>p.blocks),pages=design.map(p=>({id:stId('p'),role,bg:p.bg,chrome:p.chrome,layout:p.layout,question:ST_ROLE_QUESTIONS[role],blocks:[]}));
+    for(let i=0;i<design.length;i++)for(const old of design[i].blocks){
+      if(old.type==='appList'){
+        const tail=old.packageId?.lastIndexOf(':')??-1,oldOption=old.packageId?.startsWith('quote:')?old.packageId.slice(6,tail):null,index=tpl.sourcePackages?.findIndex(o=>o.id===oldOption)??-1;
+        const binding=index>=0?tpl.sourcePackages[index].lines[+old.packageId.slice(tail+1)]:null,group=old.packageId?.split(':')[0],option=fresh.data.options[index>=0?index:0];
+        if(!option)continue;const scope=binding?.scope||(['work','hrm','combo'].includes(group)?group:group==='crm'?'crm':null);
+        const li=(option?.r.lines||[]).filter(l=>l.apps?.length).findIndex(l=>(!scope||l.scope===scope||scope==='crm'&&l.scope.startsWith('crm-'))&&!!l.addon===!!(binding?.addon||group==='addon'));
+        const targetId=old.packageId?.endsWith(':all')?`quote:${option.id}:all`:old.packageId==='core'?'core':li>=0?`quote:${option.id}:${li}`:null;const pkg=targetId?stPackageChoices(fresh.data).find(p=>p.id===targetId):null;if(pkg)pages[i].blocks.push({...JSON.parse(JSON.stringify(old)),id:stId('b'),packageId:pkg.id,html:stAppListHTML(pkg),focus:false,reusable:false});continue;
+      }
+      if(old.reusable&&!old.src&&!['payment','costOfDelay','assumptions'].includes(old.type)){const b=JSON.parse(JSON.stringify(old));b.id=stId('b');b.focus=false;pages[i].blocks.push(b);continue;}
+      const n=pending.findIndex(b=>stSlotKey(b)===stSlotKey(old));if(n<0)continue;const b=pending.splice(n,1)[0];
+      for(const k of ['w','style','h','logoW','logoH','logoAlign','logoFrame'])if(old[k]!==undefined)b[k]=old[k];b.focus=!!old.focus;pages[i].blocks.push(b);
+    }
+    pages.at(-1).blocks.push(...pending);out.push(...pages.filter(p=>p.blocks.length));
+  }
+  for(const p of tpl.pages.filter(p=>p.role==='custom')){const keep=p.blocks.filter(b=>b.reusable&&!b.src);if(keep.length)out.splice(Math.max(0,out.findIndex(p=>p.role==='appendix')),0,{...JSON.parse(JSON.stringify(p)),id:stId('p'),blocks:keep.map(b=>({...JSON.parse(JSON.stringify(b)),id:stId('b'),focus:false}))});}
+  const identity=tpl.sourceIdentity;if(identity){const substitutions=[[identity.customer.name,fresh.data.deal.customer.name],[identity.customer.short,fresh.data.deal.customer.short],[identity.quote.no,fresh.data.deal.quote.no],[identity.quote.dateText,fresh.data.deal.quote.dateText]].filter(([old])=>typeof old==='string'&&old.length>=3).sort((a,b)=>b[0].length-a[0].length);const fill=s=>{let value=s||'';for(const [old,next] of substitutions)value=value.split(old).join(next||'');return value;};if(tpl.header?.left)fresh.header.left=fill(tpl.header.left);if(tpl.footer?.left)fresh.footer.left=fill(tpl.footer.left);}
+  fresh.pages=out;const available={...tpl.assets,...fresh.assets};fresh.assets={};for(const p of out){stSeedFocus(p);for(const b of p.blocks)for(const match of b.html.matchAll(/data-asset=["']([^"']+)["']/g))if(available[match[1]])fresh.assets[match[1]]=available[match[1]];}fresh.templateId=tpl.id;return fresh;
+}
+function stWorkspaceBuild(input,tpl,{baseLogo=''}={}){
+  const payload=stInputPayload(input),doc=stApplyDocumentTemplate(stBuildDoc(payload,{baseLogo}),tpl);doc.inputs=JSON.parse(JSON.stringify(input));doc.created=Date.now();doc.updated=doc.created;doc.quotationId=stId('q');doc.data.quotationId=doc.quotationId;doc.status='draft';return doc;
+}
+
+// Firebase chỉ khởi tạo sau khi có cấu hình thật và người dùng đăng nhập Google.
+// Metadata nhỏ nghe real-time; ảnh/file tách thành object bất biến theo SHA-256 trong Firestore.
+const ST_CLOUD_EMAIL='dung.le05@base.vn',ST_CLOUD_CONFIG_KEY='st-firebase-config';
+function stCloudConfig(value){
+  let v=value;if(typeof v==='string'){const start=v.indexOf('{'),end=v.lastIndexOf('}');if(start<0||end<start)throw new Error('Dán firebaseConfig của Web app.');v=JSON.parse(v.slice(start,end+1).replace(/([{,]\s*)([a-zA-Z]\w*)\s*:/g,'$1"$2":').replace(/,\s*}/g,'}'));}
+  if(!v||!['apiKey','projectId','authDomain','appId'].every(k=>typeof v[k]==='string'&&v[k].trim()))throw new Error('Cấu hình cần apiKey, projectId, authDomain và appId.');
+  if(!/^[a-z0-9-]+$/i.test(v.projectId)||!/^[a-z0-9.-]+$/i.test(v.authDomain))throw new Error('Project ID hoặc authDomain không hợp lệ.');
+  if(![v.projectId+'.firebaseapp.com',v.projectId+'.web.app'].includes(v.authDomain))throw new Error('Dùng authDomain mặc định của chính project Firebase để đăng nhập Google.');
+  return Object.fromEntries(['apiKey','projectId','authDomain','appId','messagingSenderId'].filter(k=>v[k]).map(k=>[k,v[k]]));
+}
+const stCloudSorted=v=>Array.isArray(v)?v.map(stCloudSorted):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().filter(k=>v[k]!==undefined).map(k=>[k,stCloudSorted(v[k])])):v;
+function stCloudBody(entity){const copy=JSON.parse(JSON.stringify(entity));delete copy.revision;delete copy.updated;delete copy._cloud;return copy;}
+const stCloudString=entity=>JSON.stringify(stCloudSorted(stCloudBody(entity)));
+async function stCloudHash(value){const bytes=typeof value==='string'?new TextEncoder().encode(value):value;return [...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');}
+const stCloudError=e=>({ 'permission-denied':'Firebase chưa cho phép truy cập. Kiểm tra Rules và tài khoản.', 'auth/unauthorized-domain':'Tên miền này chưa được thêm vào Authorized domains của Firebase.', 'auth/operation-not-allowed':'Chưa bật Google Sign-in trong Firebase Authentication.', 'auth/popup-blocked':'Trình duyệt chặn cửa sổ đăng nhập.', 'auth/popup-closed-by-user':'Chưa hoàn tất đăng nhập Google.', 'resource-exhausted':'Đã chạm hạn mức Firebase; bản trên máy vẫn được giữ.', 'unavailable':'Mất kết nối Firebase; bản trên máy vẫn được giữ.' }[e?.code]||e?.message||'Chưa đồng bộ được với Firebase.');
+
+async function stFirebaseTransport(config,{onAuth,onIndex,onError}){
+  const root='https://www.gstatic.com/firebasejs/12.19.0/';
+  const [appSDK,authSDK,dbSDK]=await Promise.all([import(root+'firebase-app.js'),import(root+'firebase-auth.js'),import(root+'firebase-firestore.js')]);
+  const app=appSDK.initializeApp(config,'quote-studio-'+config.projectId),auth=authSDK.getAuth(app),db=dbSDK.initializeFirestore(app,{localCache:dbSDK.memoryLocalCache()});let unsub=null,uid=null;
+  const ref=(...path)=>dbSDK.doc(db,...path),base=()=>['quoteStudioUsers',uid];
+  const offAuth=authSDK.onAuthStateChanged(auth,async user=>{
+    unsub?.();unsub=null;uid=null;await onAuth(null);
+    if(!user)return;
+    if(user.email?.toLowerCase()!==ST_CLOUD_EMAIL||!user.emailVerified||!user.providerData.some(p=>p.providerId==='google.com')){onError(new Error('Chỉ đồng bộ bằng tài khoản Google '+ST_CLOUD_EMAIL));await authSDK.signOut(auth);return;}
+    uid=user.uid;
+    // Fail closed nếu database còn dùng Test mode / cho đọc không cần đăng nhập.
+    const probeApp=appSDK.initializeApp(config,'studio-access-check-'+stQuoteId('probe')),probeDB=dbSDK.getFirestore(probeApp);
+    try{await dbSDK.getDoc(dbSDK.doc(probeDB,'quoteStudioUsers',uid,'entities','__access_check__'));onError(new Error('Firestore đang cho phép đọc không cần đăng nhập. Áp Rules riêng tư của Quote Studio trước khi đồng bộ.'));uid=null;return;}catch(e){if(e.code!=='permission-denied'){onError(e);uid=null;return;}}finally{await dbSDK.terminate(probeDB);await appSDK.deleteApp(probeApp);}
+    await onAuth({uid,email:user.email});
+    unsub=dbSDK.onSnapshot(dbSDK.collection(db,...base(),'entities'),{includeMetadataChanges:true},s=>onIndex(s.docs.map(d=>d.data()),{fromCache:s.metadata.fromCache,pending:s.metadata.hasPendingWrites}),onError);
+  });
+  const partID=i=>String(i).padStart(6,'0');
+  const b64=bytes=>{let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return btoa(s);};
+  const un64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+  return {
+    login:async()=>{const provider=new authSDK.GoogleAuthProvider();provider.setCustomParameters({login_hint:ST_CLOUD_EMAIL,prompt:'select_account'});return authSDK.signInWithPopup(auth,provider);},
+    logout:()=>authSDK.signOut(auth),
+    putObject:async(text,hash)=>{
+      if(!uid)throw new Error('Chưa đăng nhập Firebase.');const meta=ref(...base(),'objects',hash),old=await dbSDK.getDoc(meta);if(old.exists())return;
+      const bytes=new TextEncoder().encode(text),size=256000,count=Math.ceil(bytes.length/size)||1;if(bytes.length>20e6)throw new Error('File đồng bộ vượt 20 MB. Bản trên máy vẫn giữ.');
+      for(let start=0;start<count;start+=20){const batch=dbSDK.writeBatch(db);for(let i=start;i<Math.min(count,start+20);i++)batch.set(ref(...base(),'objects',hash,'parts',partID(i)),{data:b64(bytes.subarray(i*size,(i+1)*size))});await batch.commit();}
+      await dbSDK.setDoc(meta,{hash,bytes:bytes.length,count,createdAt:dbSDK.serverTimestamp()});
+    },
+    getObject:async hash=>{
+      const meta=await dbSDK.getDoc(ref(...base(),'objects',hash));if(!meta.exists())throw new Error('Chưa tải được nội dung file từ Firebase.');const m=meta.data();if(!Number.isInteger(m.count)||m.count<1||m.count>100||m.bytes>20e6)throw new Error('Metadata file Firebase không hợp lệ.');
+      const pieces=await Promise.all(Array.from({length:m.count},(_,i)=>dbSDK.getDoc(ref(...base(),'objects',hash,'parts',partID(i))).then(s=>{if(!s.exists())throw new Error('File Firebase chưa đủ phần.');return un64(s.data().data);})));const bytes=new Uint8Array(pieces.reduce((n,a)=>n+a.length,0));let offset=0;for(const p of pieces){bytes.set(p,offset);offset+=p.length;}if(bytes.length!==m.bytes||await stCloudHash(bytes)!==hash)throw new Error('Nội dung Firebase không khớp kiểm tra SHA-256.');return new TextDecoder().decode(bytes);
+    },
+    commit:async(meta,expected,writer)=>{
+      const key=meta.kind+'_'+encodeURIComponent(meta.id),target=ref(...base(),'entities',key);
+      return dbSDK.runTransaction(db,async tx=>{const old=await tx.get(target),current=old.exists()?old.data():null;if(current?.contentHash===meta.contentHash)return current;
+        if((current?.version||0)!==expected&&current?.writer!==writer){const e=new Error('Bản trên Firebase đã đổi.');e.name='CloudConflict';e.remote=current;throw e;}
+        const next={...meta,ownerUid:uid,version:(current?.version||0)+1,writer,updatedAt:dbSDK.serverTimestamp()};tx.set(target,next);return {...next,updatedAt:Date.now()};});
+    },
+    close:async()=>{unsub?.();offAuth();await dbSDK.terminate(db);await appSDK.deleteApp(app);}
+  };
+}
+
+function stCreateCloud({repo,adapter,transportFactory=stFirebaseTransport,onStatus=()=>{},onRemote=()=>{},onConflict=()=>{}}){
+  const writer=stQuoteId('session');let user=null,config=null,transport=null,ready=false,started=false,flushBusy=false,timer=null,queue=Promise.resolve(),indexQueue=Promise.resolve(),closed=false;
+  const state={connected:false,ready:false,email:null,message:'Đang dùng bản lưu trên máy',pending:0,error:null};
+  const update=(message,extra={})=>{Object.assign(state,extra,{message,email:user?.email||null,connected:!!user,ready});onStatus({...state});};
+  const ns=()=>config.projectId+':'+user.uid,ackKey=(kind,id)=>'cloud-ack:'+ns()+':'+kind+':'+id,prefix=()=> 'cloud-pending:'+ns()+':',pendingKey=(kind,id)=>prefix()+kind+':'+id;
+  const cache=new Map(),hashMemo=new Map(),uploaded=new Set();
+  async function object(text,upload=false){let hash=hashMemo.get(text);if(!hash){hash=await stCloudHash(text);hashMemo.set(text,hash);if(hashMemo.size>120)hashMemo.delete(hashMemo.keys().next().value);}if(upload&&!uploaded.has(ns()+':'+hash)){await transport.putObject(text,hash);uploaded.add(ns()+':'+hash);cache.set(hash,text);}return hash;}
+  async function getObject(hash){if(cache.has(hash))return cache.get(hash);const text=await transport.getObject(hash);cache.set(hash,text);if(cache.size>150)cache.delete(cache.keys().next().value);return text;}
+  async function pack(entity,upload=false){
+    const body=stCloudBody(entity),assets={};for(const [id,text] of Object.entries(body.assets||{})){if(typeof text!=='string'||!text.startsWith('data:image/'))continue;assets[id]=await object(text,upload);}body.assets=assets;
+    const files=[];if(body.inputs?.profile)files.push(body.inputs.profile);files.push(...(body.inputs?.useCases||[]));if(body.workspaceInputs?.profile)files.push(body.workspaceInputs.profile);files.push(...(body.workspaceInputs?.useCases||[]));
+    for(const file of files)if(typeof file.text==='string'){file.textHash=await object(file.text,upload);delete file.text;}
+    const text=JSON.stringify(stCloudSorted(body)),hash=await object(text,upload);return {hash,text};
+  }
+  async function unpack(meta){const body=JSON.parse(await getObject(meta.contentHash));if(body.id!==meta.id)throw new Error('ID báo giá trên Firebase không khớp.');const assets={};for(const [id,hash] of Object.entries(body.assets||{}))assets[id]=await getObject(hash);body.assets=assets;
+    const files=[];if(body.inputs?.profile)files.push(body.inputs.profile);files.push(...(body.inputs?.useCases||[]));if(body.workspaceInputs?.profile)files.push(body.workspaceInputs.profile);files.push(...(body.workspaceInputs?.useCases||[]));for(const f of files)if(f.textHash){f.text=await getObject(f.textHash);delete f.textHash;}return body;}
+  async function enqueue(kind,entity){if(!user||closed)return;const me=user.uid;
+    const current=await adapter.get(kind,entity.id);if(current&&(current.revision||0)>(entity.revision||0)&&stCloudString(current)!==stCloudString(entity))return;
+    const packed=await pack(entity),ack=await repo.getKV(ackKey(kind,entity.id));if(user?.uid!==me)return;if(ack?.hash===packed.hash)return;
+    const entry={kind,id:entity.id,entity:JSON.parse(JSON.stringify(entity)),hash:packed.hash,expected:ack?.version||0,token:stQuoteId('session'),localRevision:entity.revision||0};
+    await repo.updateKV(pendingKey(kind,entity.id),old=>old&&old.localRevision>entry.localRevision?old:entry);update('Đã lưu trên máy · chờ đồng bộ',{pending:(await repo.listKV(prefix())).length,error:null});schedule();
+  }
+  function schedule(){clearTimeout(timer);timer=setTimeout(()=>flush().catch(error),1500);}
+  function error(e){update(stCloudError(e),{error:stCloudError(e)});}
+  async function markAck(meta){await repo.setKV(ackKey(meta.kind,meta.id),{hash:meta.contentHash,version:meta.version});}
+  async function fork(kind,entity,hash){const next=JSON.parse(JSON.stringify(entity));next.id=entity.id+'-copy-'+hash.slice(0,12);next.title=(entity.title||entity.name||'Bản đang soạn')+' · Bản riêng';if(kind==='template')next.name=next.title;if(kind==='doc')next.quotationId=next.id;delete next.revision;delete next.updated;
+    let saved=await adapter.get(kind,next.id);if(!saved)saved=await adapter.put(kind,next);onConflict({kind,fromId:entity.id,entity:saved});await enqueue(kind,saved);return saved;}
+  async function receive(index,metadata){if(!user||closed||metadata.fromCache)return;const me=user.uid;
+    for(const meta of index){if(meta.ownerUid!==user.uid||!['doc','template','draft','library'].includes(meta.kind))continue;const ack=await repo.getKV(ackKey(meta.kind,meta.id));if(ack?.version>=meta.version)continue;
+      if(meta.writer===writer){await markAck(meta);continue;}
+      const local=await adapter.get(meta.kind,meta.id),pending=await repo.getKV(pendingKey(meta.kind,meta.id));
+      if(local){const packed=await pack(local);if(packed.hash===meta.contentHash){await markAck(meta);continue;}if(pending||!ack||packed.hash!==ack.hash)await fork(meta.kind,local,packed.hash);}
+      const body=await unpack(meta);if(user?.uid!==me)return;const saved=await adapter.put(meta.kind,body,{remote:true});await markAck(meta);if(pending)await repo.updateKV(pendingKey(meta.kind,meta.id),v=>v?.token===pending.token?null:v);onRemote({kind:meta.kind,entity:saved});
+    }
+    if(!ready){ready=true;for(const kind of ['doc','template','draft','library'])for(const local of await adapter.all(kind))await enqueue(kind,local);}
+    update('Đã kết nối Firebase',{error:null});schedule();
+  }
+  async function flush(){if(!user||!ready||!transport||flushBusy||closed)return;if(typeof navigator!=='undefined'&&navigator.onLine===false){update('Mất mạng · đã giữ trên máy, chờ đồng bộ');return;}flushBusy=true;const me=user.uid;
+    try{const entries=await repo.listKV(prefix());state.pending=entries.length;if(entries.length)update('Đang đồng bộ '+entries.length+' mục…');
+      for(const [key,entry] of entries){if(!entry||user?.uid!==me)return;const latest=await repo.getKV(key);if(latest?.token!==entry.token)continue;const packed=await pack(entry.entity,true);
+        const meta={kind:entry.kind,id:entry.id,title:String(entry.entity.title||entry.entity.name||'Báo giá'),contentHash:packed.hash,archived:!!entry.entity.archivedAt};
+        try{const saved=await transport.commit(meta,entry.expected,writer);await markAck(saved);await repo.updateKV(key,v=>v?.token===entry.token?null:v);}catch(e){if(e.name!=='CloudConflict')throw e;await fork(entry.kind,entry.entity,packed.hash);if(e.remote){const remote=await unpack(e.remote),saved=await adapter.put(entry.kind,remote,{remote:true});await markAck(e.remote);onRemote({kind:entry.kind,entity:saved});}await repo.updateKV(key,v=>v?.token===entry.token?null:v);}
+      }
+      const remaining=(await repo.listKV(prefix())).length;update(remaining?'Chờ đồng bộ '+remaining+' mục':'Đã đồng bộ Firebase',{pending:remaining,error:null});if(remaining)schedule();
+    }catch(e){error(e);}finally{flushBusy=false;}
+  }
+  async function start(value){if(started)return;if(value)config=stCloudConfig(value);else{const stored=await repo.getKV(ST_CLOUD_CONFIG_KEY);if(stored)config=stCloudConfig(stored);else if(typeof location!=='undefined'&&location.protocol!=='file:'){try{const r=await fetch(new URL('firebase-config.json',location.href));if(r.ok){const shared=await r.json();if(shared.projectId)config=stCloudConfig(shared);}}catch{}}}if(!config){update('Firebase chưa được cấu hình');return;}started=true;closed=false;update('Đang mở kết nối Firebase…');
+    try{transport=await transportFactory(config,{onAuth:async u=>{ready=false;user=u;update(u?'Đang tải dữ liệu Firebase…':'Chưa đăng nhập Firebase',{error:null});},onIndex:(items,meta)=>{indexQueue=indexQueue.then(()=>receive(items,meta)).catch(error);return indexQueue;},onError:error});}catch(e){started=false;error(e);}
+  }
+  if(typeof window!=='undefined'){window.addEventListener('online',()=>{if(!started)start().then(schedule).catch(error);else schedule();});window.addEventListener('offline',()=>update('Mất mạng · đã giữ trên máy, chờ đồng bộ'));}
+  return {state,start,queue:(kind,entity)=>{queue=queue.catch(()=>{}).then(()=>enqueue(kind,entity)).catch(error);return queue;},flush,login:async()=>{if(!started)await start();if(!transport)throw new Error('Cần cấu hình Firebase trước.');try{return await transport.login();}catch(e){error(e);throw e;}},logout:async()=>{ready=false;clearTimeout(timer);await transport?.logout();},configure:async value=>{const next=stCloudConfig(value);await repo.setKV(ST_CLOUD_CONFIG_KEY,next);await transport?.close();started=false;user=null;ready=false;transport=null;await start(next);},wait:()=>Promise.all([queue,indexQueue]),stop:async()=>{closed=true;clearTimeout(timer);await transport?.close();}};
+}
+
+const stHEsc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const stHTime=n=>new Date(n||Date.now()).toLocaleString('vi-VN',{dateStyle:'short',timeStyle:'short'});
+const stHMoney=n=>new Intl.NumberFormat('vi-VN').format(n)+' đ';
+function stWorkspaceAdapter(repo,{sanitizeDoc=d=>d}={}){
+  const templates=async()=>await repo.getKV(ST_TEMPLATE_KEY)||[];
+  return {
+    get:async(kind,id)=>kind==='doc'?repo.getDoc(id):kind==='draft'?repo.getDraft(id):kind==='template'?(await templates()).find(x=>x.id===id):kind==='library'?{id:'block-library',name:'Thư viện khối',blocks:await repo.getKV('st-library')||[]}:null,
+    all:async kind=>kind==='doc'?repo.allDocs():kind==='draft'?(await repo.allDrafts()).filter(x=>x.workspaceInputs):kind==='template'?templates():kind==='library'?((await repo.getKV('st-library'))?.length?[{id:'block-library',name:'Thư viện khối',blocks:await repo.getKV('st-library')}]:[]):[],
+    put:async(kind,entity)=>{
+      if(kind==='doc'){const old=await repo.getDoc(entity.id),copy=sanitizeDoc(JSON.parse(JSON.stringify(entity)));delete copy.revision;return repo.saveDoc(copy,old?.revision||0);}
+      if(kind==='draft')return repo.putDraft(entity);
+      if(kind==='template'){let saved;await repo.updateKV(ST_TEMPLATE_KEY,list=>{const all=list||[],i=all.findIndex(t=>t.id===entity.id);saved={...entity,revision:(all[i]?.revision||0)+1,updated:Date.now()};if(i<0)all.push(saved);else all[i]=saved;return all;});return saved;}
+      if(kind==='library'){await repo.setKV('st-library',entity.blocks||[]);return entity;}
+      throw new Error('Loại dữ liệu đồng bộ không hợp lệ.');
+    }
+  };
+}
+function setupStudioHome({repo,adapter,cloud,openDoc,createDoc,updateDoc,backFromEditor,toast,askTemplateName=async name=>prompt('Tên template:',name)}){
+  const root=document.getElementById('st-home');let tab='documents',query='',trash=false,templates=[],docs=[],drafts=[],input={},draftId=null,editingDocId=null,saveTimer=null,createBusy=false;
+  const mode=()=>root.dataset.mode||'list';
+  const download=(text,type,name)=>{const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);};
+  const isMatch=item=>[item.title,item.name,item.data?.deal?.customer?.name,item.data?.deal?.quote?.no].filter(Boolean).join(' ').toLowerCase().includes(query.toLowerCase());
+  async function refresh(){docs=await repo.allDocs();templates=await repo.getKV(ST_TEMPLATE_KEY)||[];drafts=(await repo.allDrafts()).filter(d=>!d.studioDocId);if(mode()==='list')renderList();syncStatus();}
+  function syncStatus(){const s=cloud.state;for(const el of document.querySelectorAll('[data-cloud-status]')){el.textContent=s.message;el.dataset.sync=s.error?'error':s.ready&&s.pending===0&&s.message==='Đã đồng bộ Firebase'?'synced':'local';}const el=root.querySelector('#sh-account');if(el)el.textContent=s.email||ST_CLOUD_EMAIL;}
+  function renderList(){
+    root.dataset.mode='list';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><a href="index.html">← Quote Lab</a><div class="sh-account"><span id="sh-account"></span><span data-cloud-status></span><button data-home-act="firebase">Firebase</button></div></header>
+<div class="sh-content"><div class="sh-heading"><div><p class="sh-eyebrow">KHÔNG GIAN BÁO GIÁ</p><h1>Mỗi khách hàng, một bộ hồ sơ.</h1><p>Nhập phương án từ Quote Lab, hồ sơ khách hàng và use-case. Soạn, lưu template và mở lại từng báo giá riêng.</p></div><button class="primary sh-new" data-home-act="create">＋ Tạo báo giá</button></div>
+<div class="sh-toolbar"><div class="sh-tabs"><button data-home-tab="documents" class="${tab==='documents'?'on':''}">Báo giá (${docs.filter(d=>!d.archivedAt).length})</button><button data-home-tab="templates" class="${tab==='templates'?'on':''}">Templates (${templates.filter(t=>!t.archivedAt).length})</button><button data-home-tab="inputs" class="${tab==='inputs'?'on':''}">Bộ đầu vào (${drafts.length})</button></div><label><input type="search" id="sh-search" placeholder="Tìm khách hàng / tên báo giá" value="${stHEsc(query)}"></label><label class="sh-trash"><input type="checkbox" id="sh-trash"${trash?' checked':''}> Thùng rác</label></div>
+<div id="sh-list"></div><div class="sh-help"><b>Luồng soạn báo giá</b><span>1. Quote Lab → xuất file phương án</span><span>2. Studio → đính kèm hồ sơ & use-case</span><span>3. Chọn template → soạn → xuất PDF</span></div></div>`;
+    renderCards();syncStatus();
+  }
+  function renderCards(){const list=root.querySelector('#sh-list');if(!list)return;
+    if(tab==='inputs'){const visible=drafts.filter(isMatch);list.innerHTML=visible.length?`<div class="sh-cards">${visible.map(d=>`<article class="sh-card"><span class="sh-tag">${d.workspaceInputs?'Đang chuẩn bị':'Dữ liệu cũ từ Lab'}</span><h3>${stHEsc(d.name||'Bộ hồ sơ chưa đặt tên')}</h3><p>${stHEsc(d.workspaceInputs?.profile?.name||d.state?.fileName||'Chưa có hồ sơ khách')}</p><small>${stHTime(d.updated)}</small><div class="sh-card-actions"><button data-resume-input="${stHEsc(d.id)}">Tiếp tục nhập</button><button data-backup-input="${stHEsc(d.id)}">Tải bản lưu</button></div></article>`).join('')}</div>`:'<div class="sh-empty"><h3>Chưa có bộ hồ sơ đang nhập.</h3><p>Bộ đầu vào được lưu riêng khi tạo báo giá, có thể tiếp tục sau.</p></div>';return;}
+    const visible=(tab==='templates'?templates:docs).filter(d=>!!d.archivedAt===trash&&isMatch).sort((a,b)=>(b.updated||0)-(a.updated||0));
+    list.innerHTML=visible.length?`<div class="sh-cards">${visible.map(d=>`<article class="sh-card"><div class="sh-card-title"><span class="sh-tag">${d.archivedAt?'Trong thùng rác':tab==='templates'?'Template':d.status==='complete'?'Đã hoàn thành':'Đang soạn'}</span><span>${d.pages?.length||0} trang</span></div><h3>${stHEsc(tab==='templates'?d.name:d.title)}</h3><p>${stHEsc(tab==='templates'?'Bố cục theo mẫu · điền lại từ hồ sơ mới':d.data?.deal?.customer?.name||'Tài liệu độc lập')}</p><small>${stHTime(d.updated)}</small><div class="sh-card-actions">${d.archivedAt?`<button data-restore="${stHEsc(d.id)}">Khôi phục</button>`:tab==='templates'?`<button class="primary" data-template-create="${stHEsc(d.id)}">Dùng template</button><button data-archive="${stHEsc(d.id)}">Cất vào thùng rác</button>`:`<button class="primary" data-open-doc="${stHEsc(d.id)}">Mở báo giá</button><button data-open-tab="${stHEsc(d.id)}">Tab riêng ↗</button><button data-save-template="${stHEsc(d.id)}">Lưu template</button><button data-complete="${stHEsc(d.id)}">${d.status==='complete'?'Soạn tiếp':'Hoàn thành'}</button><button data-archive="${stHEsc(d.id)}">Cất vào thùng rác</button>`}</div></article>`).join('')}</div>`:`<div class="sh-empty"><h3>${trash?'Thùng rác trống.':tab==='templates'?'Chưa có template.':'Chưa có báo giá trong danh sách.'}</h3><p>${tab==='templates'?'Mở một bản đã soạn và chọn “Lưu thành template”.':'Tạo báo giá từ các file đầu vào, hoặc mở file dự án đã lưu.'}</p><button data-home-act="create" class="primary">Tạo báo giá</button> <button data-home-act="project">Mở file dự án</button></div>`;
+  }
+  async function saveInput(){if(!draftId)return;const record=await repo.getDraft(draftId),d=await repo.putDraft({id:draftId,name:input.profile?.text?parseDealFile(input.profile.text).customer.name||'Bộ đầu vào mới':'Bộ đầu vào mới',created:record?.created||Date.now(),updated:Date.now(),revision:(record?.revision||0)+1,workspaceInputs:JSON.parse(JSON.stringify(input)),studioDocId:null});await cloud.queue('draft',d);}
+  function inputChanged(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveInput().catch(e=>toast(e.message)),350);}
+  async function showCreate(templateId='',resume){
+    draftId=resume?.id||'q-'+stQuoteId('session');input=resume?.workspaceInputs||{useCases:[],optionEdits:{},templateId};
+    if(resume&&!resume.workspaceInputs){const s=resume.state||{},selected=resume.selected||[];input={profile:s.fileText?{name:s.fileName||'ho-so-cu.md',text:s.fileText}:null,useCases:[],optionEdits:s.opts||{},recommendedId:s.rec,templateId};try{input.package=qoReadPackage({kind:'quote-lab-options',version:1,options:selected.map(r=>({r,label:s.opts?.[r.id]?.label})),policy:{effective:'01/10/2026'}});}catch{}try{input.useCases=JSON.parse(localStorage.getItem('base-quote-usecases-v1')||'{}').files||[];}catch{}}
+    root.dataset.mode='create';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><button data-home-act="home">← Danh sách báo giá</button><span data-cloud-status></span></header><main class="sh-content sh-create"><h1>Tạo báo giá từ hồ sơ</h1><p class="sh-lead">Mỗi bộ đầu vào được lưu riêng. Có thể bổ sung rồi quay lại soạn sau.</p>
+<div class="sh-form"><section class="sh-input-card"><span class="sh-step">1</span><div><h3>Phương án từ Quote Lab</h3><p>File .json giữ giá và phạm vi tại thời điểm chọn gói.</p><input type="file" id="sh-options-file" accept=".json,application/json"><div id="sh-options-info"></div></div></section>
+<section class="sh-input-card"><span class="sh-step">2</span><div><h3>Hồ sơ khách hàng</h3><p>File theo mẫu .md / .txt: thông tin doanh nghiệp, pain, giải pháp, phạm vi, next step.</p><input type="file" id="sh-profile-file" accept=".md,.txt,.markdown,text/plain,text/markdown"><div class="sh-samples"><button data-sample="profile-blank">Tải mẫu trống</button><button data-sample="profile-sample">Tải mẫu minh hoạ</button></div><details><summary>Dán hoặc sửa nội dung hồ sơ</summary><textarea id="sh-profile-text" rows="10" placeholder="# KHÁCH HÀNG…"></textarea></details><div id="sh-profile-info"></div></div></section>
+<section class="sh-input-card"><span class="sh-step">3</span><div><h3>Use-case / bằng chứng</h3><p>Chỉ dùng case có nguồn; case chưa được phép công khai sẽ ẩn tên trong báo giá.</p><input type="file" id="sh-usecase-files" multiple accept=".md,.txt,.markdown,text/plain,text/markdown"><button data-sample="usecase">Tải mẫu use-case</button><div id="sh-usecase-info"></div></div></section>
+<section class="sh-input-card"><span class="sh-step">4</span><div><h3>Template</h3><select id="sh-template"><option value="">Mẫu tư vấn chuẩn</option>${templates.filter(t=>!t.archivedAt).map(t=>`<option value="${stHEsc(t.id)}">${stHEsc(t.name)}</option>`).join('')}</select><p>Bố cục và kiểu khối theo template; giá và nội dung khách hàng lấy từ hồ sơ mới. Các khối đã đánh dấu giữ nội dung sẽ được tái sử dụng.</p></div></section></div><div class="sh-create-actions"><span id="sh-create-status" role="status"></span><button type="button" class="primary" id="sh-build">Tạo và mở trình soạn →</button></div></main>`;
+    root.querySelector('#sh-template').value=input.templateId||'';if(input.profile)root.querySelector('#sh-profile-text').value=input.profile.text;renderInputs();syncStatus();inputChanged();
+    const url=new URL(location.href);url.searchParams.delete('doc');url.searchParams.delete('quotation');url.searchParams.set('home','1');url.searchParams.set('draft',draftId);history.replaceState(null,'',url);
+  }
+  function renderInputs(){
+    const p=input.package;root.querySelector('#sh-options-info').innerHTML=p?`<p class="sh-file-name">${stHEsc(input.packageFile?.name||'File phương án đã nhập')} · ${p.options.length} phương án</p>${p.options.map((o,i)=>{const e=input.optionEdits?.[o.id]||{};return `<div class="sh-option" data-option-id="${stHEsc(o.id)}"><div class="sh-option-head"><label><input type="checkbox" data-option-include="${stHEsc(o.id)}"${e.include!==false?' checked':''}> Phương án ${i+1}</label><label><input type="radio" name="sh-recommended" data-recommended="${stHEsc(o.id)}"${(input.recommendedId||p.recommendedId)===o.id?' checked':''}> Khuyến nghị</label></div><b>${stHEsc(o.label)}</b><p>${o.r.years} năm · ${stHMoney(o.r.total)}${o.r.feeKnown===false?' · phí chưa xác nhận':''}</p><label>Tên phương án<input data-option-field="label" value="${stHEsc(e.label||o.label)}"></label><label>Lý do khuyến nghị / đánh đổi<input data-option-field="why" value="${stHEsc(e.why||'')}"></label><div class="sh-value-fields"><label>Hiệu quả/năm · triệu đ<input type="number" min="0" data-option-field="valueYear" value="${stHEsc(e.valueYear||'')}"></label><label>Trong đó tiền mặt · triệu đ<input type="number" min="0" data-option-field="valueCash" value="${stHEsc(e.valueCash||'')}"></label></div></div>`;}).join('')}`:'<p class="sh-muted">Chưa có file phương án.</p>';
+    const report=input.profile?.text?profileReport(input.profile.text,input.profile.name):null;root.querySelector('#sh-profile-info').innerHTML=report?`<p class="sh-file-name">${stHEsc(report.deal?.customer?.name||input.profile.name)}</p>${report.errors.map(e=>`<p class="sh-error">${stHEsc(e)}</p>`).join('')}${report.warnings.length?`<details><summary>${report.warnings.length} lưu ý của hồ sơ</summary><ul>${report.warnings.map(e=>`<li>${stHEsc(e)}</li>`).join('')}</ul></details>`:''}`:'<p class="sh-muted">Chưa có hồ sơ khách hàng.</p>';
+    const cases=(input.useCases||[]).flatMap(f=>parseUseCaseFile(f.text,f.name).cases),selected=new Set(input.useCaseSelection??cases.map(c=>c.id));root.querySelector('#sh-usecase-info').innerHTML=(input.useCases||[]).map((f,i)=>`<span class="sh-file-chip">${stHEsc(f.name)} <button data-remove-usecase="${i}">✕</button></span>`).join('')+cases.map(c=>`<label class="sh-case"><input type="checkbox" data-usecase="${stHEsc(c.id)}"${selected.has(c.id)?' checked':''}><span><b>${stHEsc(c.name)}</b><small>${stHEsc(c.industry||'')}${c.public?' · được công khai':' · ẩn tên'}${c.sample?' · mẫu minh hoạ':''}</small></span></label>`).join('');
+    root.querySelector('#sh-build').textContent=editingDocId?'Cập nhật các khối liên kết →':'Tạo và mở trình soạn →';root.querySelector('#sh-build').disabled=!p||!report||report.kind!=='deal'||report.errors.length>0||createBusy;
+  }
+  async function readTextFile(file,max=500000){if(!file||file.size>max)throw new Error('File tối đa '+Math.round(max/1e6*10)/10+' MB.');return {name:file.name,text:await file.text(),size:file.size,addedAt:Date.now()};}
+  async function saveTemplate(doc,name){const template=stMakeDocumentTemplate(doc,name),saved=await adapter.put('template',template);await cloud.queue('template',saved);await refresh();toast('Đã lưu template. Nội dung khách mới sẽ được điền lại khi sử dụng.');return saved;}
+  async function promptTemplate(doc){const name=await askTemplateName(doc.title+' · Template');if(name?.trim())await saveTemplate(doc,name);}
+  async function showFirebase(){const stored=await repo.getKV(ST_CLOUD_CONFIG_KEY);root.dataset.mode='firebase';root.innerHTML=`<header class="sh-top"><div class="st-brand">Quote <span>Studio</span></div><button data-home-act="home">← Danh sách</button></header><main class="sh-content sh-firebase"><h1>Đồng bộ Firebase</h1><p>Tài khoản Google: <b>${ST_CLOUD_EMAIL}</b>. Báo giá, bộ đầu vào, template và thư viện khối được đồng bộ theo tài khoản.</p><div class="sh-cloud-state" data-cloud-status></div><div class="sh-card-actions"><button class="primary" data-home-act="login">Đăng nhập Google</button><button data-home-act="sync">Đồng bộ lại</button><button data-home-act="logout">Đăng xuất</button></div><details${stored?'':' open'}><summary>Cấu hình Firebase Web app</summary><p>Dán firebaseConfig từ Web app. Cần bật Google Sign-in, tạo Firestore và áp bộ Rules của Quote Studio trước khi đăng nhập.</p><textarea id="sh-firebase-config" rows="9" placeholder='{"apiKey":"…","authDomain":"…","projectId":"…","appId":"…"}'>${stored?stHEsc(JSON.stringify(stored,null,2)):''}</textarea><button data-home-act="configure">Lưu cấu hình</button></details><p class="sh-muted">Bản trên máy được giữ khi mất mạng hoặc Firebase chưa sẵn sàng. Chỉ báo “Đã đồng bộ” khi Firebase xác nhận; chỉnh sửa cùng bản ở nhiều nơi được giữ thành bản riêng nếu xung đột.</p></main>`;syncStatus();}
+  async function home(){clearTimeout(saveTimer);if(draftId&&mode()==='create')await saveInput();draftId=null;editingDocId=null;tab='documents';query='';trash=false;await backFromEditor();const url=new URL(location.href);url.searchParams.delete('doc');url.searchParams.delete('quotation');url.searchParams.delete('draft');url.searchParams.set('home','1');history.replaceState(null,'',url);root.hidden=false;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode');root.dataset.mode='list';await refresh();}
+  root.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;try{
+    if(b.dataset.homeTab){tab=b.dataset.homeTab;renderList();return;}if(b.dataset.sample){const type=b.dataset.sample;download(type==='profile-blank'?DEAL_BLANK:type==='profile-sample'?DEAL_SAMPLE:USE_CASE_SAMPLE,'text/markdown',type+'.md');return;}
+    if(b.dataset.openDoc){await openDoc(await repo.getDoc(b.dataset.openDoc));return;}if(b.dataset.openTab){const url=new URL(location.href);url.search='?doc='+encodeURIComponent(b.dataset.openTab);window.open(url.href,'_blank','noopener');return;}
+    if(b.dataset.templateCreate){editingDocId=null;await showCreate(b.dataset.templateCreate);return;}if(b.dataset.saveTemplate){await promptTemplate(await repo.getDoc(b.dataset.saveTemplate));return;}
+    if(b.dataset.complete){const doc=await repo.getDoc(b.dataset.complete);doc.status=doc.status==='complete'?'draft':'complete';const saved=await repo.saveDoc(doc,doc.revision);await cloud.queue('doc',saved);await refresh();return;}
+    if(b.dataset.archive||b.dataset.restore){const kind=tab==='templates'?'template':'doc',id=b.dataset.archive||b.dataset.restore,entity=await adapter.get(kind,id);if(b.dataset.archive)entity.archivedAt=Date.now();else delete entity.archivedAt;const saved=await adapter.put(kind,entity);await cloud.queue(kind,saved);await refresh();return;}
+    if(b.dataset.resumeInput){await showCreate('',await repo.getDraft(b.dataset.resumeInput));return;}if(b.dataset.backupInput){download(JSON.stringify(await repo.getDraft(b.dataset.backupInput),null,2),'application/json','bo-dau-vao-cu.json');return;}
+    if(b.dataset.removeUsecase!==undefined){input.useCases.splice(+b.dataset.removeUsecase,1);input.useCaseSelection=undefined;inputChanged();renderInputs();return;}
+    if(b.id==='sh-build'){createBusy=true;b.disabled=true;await saveInput();const tpl=templates.find(t=>t.id===input.templateId);if(editingDocId)await updateDoc(JSON.parse(JSON.stringify(input)),editingDocId);else await createDoc(JSON.parse(JSON.stringify(input)),tpl,{draftId});draftId=null;editingDocId=null;return;}
+    const act=b.dataset.homeAct;if(act==='home')return home();if(act==='create'){editingDocId=null;return showCreate();}if(act==='firebase')return showFirebase();if(act==='project')return document.getElementById('st-file-json').click();if(act==='login')return cloud.login();if(act==='logout')return cloud.logout();if(act==='sync')return cloud.flush();if(act==='configure'){const value=stCloudConfig(root.querySelector('#sh-firebase-config').value);await cloud.configure(value);toast('Đã lưu cấu hình. Đăng nhập Google để bắt đầu đồng bộ.');return;}
+  }catch(error){toast(error.message);const status=root.querySelector('#sh-create-status');if(status)status.textContent=error.message;}finally{createBusy=false;if(mode()==='create')renderInputs();}});
+  root.addEventListener('change',async e=>{const t=e.target;try{
+    if(t.id==='sh-trash'){trash=t.checked;renderCards();return;}if(t.id==='sh-template'){input.templateId=t.value;inputChanged();return;}
+    if(t.id==='sh-options-file'){const file=await readTextFile(t.files[0],10e6);input.package=qoReadPackage(file.text);input.packageFile={name:file.name,addedAt:file.addedAt,size:file.size};input.recommendedId=input.package.recommendedId;input.optionEdits={};inputChanged();renderInputs();return;}
+    if(t.id==='sh-profile-file'){const f=await readTextFile(t.files[0]);input.profile=f;root.querySelector('#sh-profile-text').value=f.text;inputChanged();renderInputs();return;}
+    if(t.id==='sh-usecase-files'){for(const file of t.files){const f=await readTextFile(file),report=profileReport(f.text,f.name);if(report.kind!=='usecase'||!report.cases.length)throw new Error(f.name+' chưa có # USE-CASE đúng mẫu.');input.useCases??=[];input.useCases.push(f);}input.useCaseSelection=undefined;inputChanged();renderInputs();return;}
+    if(t.dataset.recommended){input.recommendedId=t.dataset.recommended;inputChanged();return;}
+    if(t.dataset.optionInclude){input.optionEdits??={};(input.optionEdits[t.dataset.optionInclude]??={}).include=t.checked;inputChanged();return;}
+    if(t.dataset.usecase){input.useCaseSelection=[...root.querySelectorAll('[data-usecase]:checked')].map(x=>x.dataset.usecase);inputChanged();return;}
+  }catch(error){toast(error.message);}});
+  root.addEventListener('input',e=>{const t=e.target;if(t.id==='sh-search'){query=t.value;renderCards();return;}if(t.id==='sh-profile-text'){input.profile={name:input.profile?.name||'ho-so-da-dan.md',text:t.value,addedAt:Date.now()};inputChanged();const report=profileReport(t.value,input.profile.name);root.querySelector('#sh-profile-info').textContent=report.errors.join(' ')||report.deal?.customer?.name||'Đang nhập hồ sơ';root.querySelector('#sh-build').disabled=!input.package||report.errors.length>0;return;}if(t.dataset.optionField){const id=t.closest('[data-option-id]').dataset.optionId;input.optionEdits??={};(input.optionEdits[id]??={})[t.dataset.optionField]=t.value;inputChanged();}});
+  return {home,refresh,syncStatus,showCreate,showFirebase,promptTemplate,saveTemplate,hide:()=>{root.hidden=true;document.getElementById('st-app').hidden=false;document.body.classList.remove('st-home-mode');},editInputs:async doc=>{if(!doc)return;const d=await repo.getDraft(doc.quotationId);const inputs=doc.inputs||d?.workspaceInputs;if(!inputs){toast('Bản cũ chưa có file đầu vào gắn kèm. Có thể tạo báo giá mới từ hồ sơ hoặc mở bộ đầu vào cũ trên trang chủ.');return;}editingDocId=doc.id;root.hidden=false;document.getElementById('st-app').hidden=true;document.body.classList.add('st-home-mode');await showCreate(inputs.templateId,{id:doc.quotationId,workspaceInputs:JSON.parse(JSON.stringify(inputs))});},activeDraft:()=>draftId,onDraftConflict:(from,id)=>{if(draftId===from){draftId=id;inputChanged();}},resume:async id=>showCreate('',await repo.getDraft(id))};
 }
 
 
@@ -1072,7 +1994,7 @@ function stToast(msg){const t=st$('#st-toast');t.textContent=msg;t.hidden=false;
 function stDialog(title,html,buttons){return new Promise(res=>{const d=st$('#st-dialog');d.innerHTML=`<div class="st-dlg" role="dialog" aria-modal="true"><h3>${title}</h3><div class="st-dlg-body">${html}</div><div class="st-dlg-b">${buttons.map((b,i)=>`<button type="button" data-i="${i}" class="${b.primary?'primary':''}${b.danger?' danger':''}">${b.label}</button>`).join('')}</div></div>`;d.hidden=false;d.onclick=e=>{const b=e.target.closest('[data-i]');if(b||e.target===d){d.hidden=true;d.onclick=null;res(b?(/^\d+$/.test(b.dataset.i)?buttons[+b.dataset.i]?.value:b.dataset.i):null);}};});}
 
 // ---------- Lịch sử: chụp trạng thái sau mỗi thao tác; gõ chữ gom theo nhịp nghỉ. ----------
-const stSnap=()=>JSON.stringify({title:stDoc.title,header:stDoc.header,footer:stDoc.footer,pages:stDoc.pages,dismissed:stDoc.dismissed||[],data:stDoc.data||null,sourceSignature:stDoc.sourceSignature||null});
+const stSnap=()=>JSON.stringify({title:stDoc.title,header:stDoc.header,footer:stDoc.footer,pages:stDoc.pages,dismissed:stDoc.dismissed||[],data:stDoc.data||null,sourceSignature:stDoc.sourceSignature||null,inputs:stDoc.inputs||null,status:stDoc.status||'draft'});
 function stHistReset(){stHist={undo:[],redo:[],last:stDoc?stSnap():null};stHistUI();}
 function stCommit(){clearTimeout(stTyping);stTyping=0;if(!stDoc)return;const s=stSnap();if(s===stHist.last)return;stHist.undo.push(stHist.last);if(stHist.undo.length>120)stHist.undo.shift();stHist.redo=[];stHist.last=s;stHistUI();stScheduleSave();}
 function stTypingCommit(){clearTimeout(stTyping);stTyping=setTimeout(stCommit,700);}
@@ -1094,8 +2016,8 @@ async function stSaveNow(){
       let saved;
       try{saved=await stQuoteRepo.saveDoc(copy,active.revision||0);}catch(e){if(e.name!=='QuotationConflict')throw e;copy={...stQuoteClone(active),id:stQuoteId('d'),quotationId:stQuoteId('q'),title:active.title+' · Bản riêng',created:Date.now(),revision:0};const original=active.quotationId&&await stQuoteRepo.getDraft(active.quotationId);if(original)await stQuoteRepo.putDraft({...original,id:copy.quotationId,studioDocId:null,created:copy.created,state:original.state?{...original.state,quotationId:copy.quotationId,studioDocId:null}:undefined});saved=await stQuoteRepo.saveDoc(copy,0);Object.assign(active,{id:saved.id,quotationId:saved.quotationId,title:saved.title});if(stDoc===active){stRememberDoc(active);stRender();stToast('Tab khác đã cập nhật bản gốc. Nội dung vừa sửa được giữ trong một bản riêng.');}}
       stSavedSnapshots.set(active,stQuoteDocSignature(saved));active.revision=saved.revision;active.quotationId=saved.quotationId;active.updated=saved.updated;
-      if(stDoc===active){stRememberDoc(active);stSaveStatus('Đã lưu '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}));}
-      stSendSaved(saved);
+      if(stDoc===active){stRememberDoc(active);stSaveStatus('Đã lưu trên máy '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}));}
+      stSendSaved(saved);await stCloudService?.queue('doc',saved);stHomeUI?.refresh();
     }catch(e){if(stDoc===active)stSaveStatus('Chưa lưu được · dùng Tệp → Lưu file dự án');}
   });return stSaveQueue;
 }
@@ -1167,6 +2089,7 @@ function stPanel(){
     const i=stDoc.pages.indexOf(p);
     h+=stSection('page',`Trang ${i+1} · nền & bố cục`,`
 <p class="st-lbl">Nền trang</p><div class="st-bgs">${[['dark','Tối'],['light','Sáng']].map(([v,l])=>`<button type="button" data-bg="${v}" class="${p.bg===v?'on':''}"><i class="st-bgthumb" data-bg="${v}"></i><span>${l}</span></button>`).join('')}</div>
+<label class="st-field"><span>Câu hỏi chính của trang · không in</span><input data-page-question value="${stEsc(p.question??ST_ROLE_QUESTIONS[p.role]??ST_ROLE_QUESTIONS.custom)}"></label>
 <p class="st-lbl">Bố cục <span class="st-muted">· đổi độ rộng, giữ nội dung</span></p><div class="st-layouts">${ST_LAYOUTS.map(L=>`<button type="button" data-layout="${L.id}" class="${p.layout===L.id?'on':''}" title="${L.name}">${stLayoutThumb(L)}<span>${L.name}</span></button>`).join('')}</div>
 <div class="st-row st-sep"><button type="button" data-act="page-add">＋ Trang sau</button><button type="button" data-act="page-dup">⧉ Nhân bản</button><button type="button" data-act="page-del" class="danger">✕ Xoá trang</button></div>`,!r);
     h+=stSection('chrome','Đầu trang & chân trang',`<label class="st-check"><input type="checkbox" data-act="chrome"${p.chrome!==false?' checked':''}> Hiện trên trang ${i+1}</label><p class="st-hint">Nội dung dưới đây dùng chung cho toàn bộ tài liệu.</p>
@@ -1179,14 +2102,15 @@ function stPanel(){
     const b=r.b,bg=r.p.bg,hasTable=/<table/.test(b.html),hasImg=/class="img/.test(b.html),logo=stIsLogo(b),size=stLogoSize(b);
     h+=stSection('block',`Khối · ${stEsc(ST_TYPES[b.type]?.name||'Nội dung')}`,`
 <div class="st-row"><button type="button" data-act="dup">⧉ Nhân bản</button><button type="button" data-act="del" class="danger">✕ Xoá khối</button><button type="button" data-act="library-save">Lưu vào thư viện</button></div>
-<p class="st-lbl">Độ rộng <span class="st-muted">· kéo cạnh phải</span></p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${b.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div>
+<label class="st-check"><input type="checkbox" data-reusable${b.reusable?' checked':''}${b.src?' disabled':''}> Giữ nội dung này khi dùng template</label><p class="st-lbl">Độ rộng <span class="st-muted">· kéo cạnh phải</span></p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${b.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div>
 <p class="st-lbl">Kiểu khối</p><div class="st-styles">${ST_STYLES.map(([s,l])=>`<button type="button" data-style="${s}" class="${b.style===s?'on':''}"><i class="st-swatch" data-bg="${bg}"><b class="st-s-${s}"></b></i><span>${l}</span></button>`).join('')}</div>
 <div class="st-focus-controls"><button type="button" data-act="focus" aria-pressed="${!!b.focus}">${b.focus?'Đang là tiêu điểm · bỏ tiêu điểm':'Đặt làm tiêu điểm trang'}</button><button type="button" data-act="style-all">Áp kiểu này cho mọi khối ${stEsc(ST_TYPES[b.type]?.name||b.type)}</button></div>
 <p class="st-lbl">Chiều cao khối</p><div class="st-row">${b.h?`<span>${b.h} mm</span><button type="button" data-act="h-auto">Về tự động</button>`:'<span class="st-muted">Tự động theo nội dung · kéo cạnh dưới để đặt</span>'}</div>
 ${b.src?'<p class="st-hint">Khối có số liệu liên kết Quote Lab. Cập nhật số liệu sẽ thay nội dung khối này.</p>':''}`,true);
+    if(ST_P2_TYPES[b.type])h+=stSection('phase2','Dữ liệu của khối',`<p class="st-hint">Lấy nội dung từ hồ sơ / phương án của quotation này. Thiếu dữ liệu thì giữ khối để điền tay; thao tác có hoàn tác.</p><div class="st-row"><button type="button" data-act="phase2-fill">Điền từ hồ sơ / phương án</button>${b.src?.startsWith('phase2:')?'<button type="button" data-act="phase2-detach">Giữ nội dung độc lập</button>':''}</div>${b.type==='assumptions'?'<p class="st-hint">Ghi chú riêng ở cuối khối được giữ khi cập nhật dữ liệu.</p>':''}${b.type==='cta'?`<label class="st-field"><span>Link xác nhận / trao đổi · tuỳ chọn</span><input type="url" data-cta-url value="${stEsc(b.ctaLink??stBlockEl(b.id)?.querySelector('.st-cta-link')?.getAttribute('href')??'')}" placeholder="https://…"></label><p class="st-hint">Chỉ dùng link được nhập; không tự tạo link thanh toán.</p>`:''}`,true);
     if(b.type==='appList'){
       const choices=stPackageChoices(stDoc.data),current=choices.find(x=>x.id===b.packageId),groups=[...new Set(choices.map(x=>x.group))];
-      h+=stSection('package','Phụ lục · chọn gói',`<label class="st-field"><span>Gói giải pháp</span><select data-package><option value="">Chọn gói…</option>${!current&&b.packageId?'<option value="'+stEsc(b.packageId)+'" selected>Gói đã lưu · giữ nội dung hiện tại</option>':''}${groups.map(g=>`<optgroup label="${stEsc(g)}">${choices.filter(x=>x.group===g).map(x=>`<option value="${stEsc(x.id)}"${x.id===b.packageId?' selected':''}>${stEsc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label><p class="st-hint">Chọn gói sẽ tạo lại bảng app của khối này. Có thể sửa chữ sau đó hoặc hoàn tác.</p>`,true);
+      h+=stSection('package','Phụ lục · chọn gói',`<label class="st-field"><span>Gói giải pháp</span><select data-package><option value="">Chọn gói…</option>${!current&&b.packageId?'<option value="'+stEsc(b.packageId)+'" selected>Gói đã lưu · giữ nội dung hiện tại</option>':''}${groups.map(g=>`<optgroup label="${stEsc(g)}">${choices.filter(x=>x.group===g).map(x=>`<option value="${stEsc(x.id)}"${x.id===b.packageId?' selected':''}>${stEsc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label>${current?'<button type="button" data-act="apps-rebuild">Tạo lại bảng đầy đủ</button>':''}<p class="st-hint">Chọn “Toàn bộ phương án” để gom app của các bộ đi kèm. Các gói chính đã gồm Base Core dùng chung; add-on chỉ liệt kê app mua thêm. Tạo lại bảng sẽ thay chữ đã sửa trong khối này; có thể hoàn tác.</p>`,true);
     }
     const typography=stSection('text','Chữ & màu sắc',`
 <p class="st-hint">Bôi đen để định dạng một đoạn. Chọn màu khi chưa bôi đen sẽ đổi màu chữ toàn khối.</p><div class="st-fmt">${[['bold','<b>B</b>','Đậm'],['italic','<i>I</i>','Nghiêng'],['underline','<u>U</u>','Gạch chân'],['insertUnorderedList','•≡','Danh sách chấm'],['insertOrderedList','1≡','Danh sách số'],['justifyLeft','⇤','Căn trái'],['justifyCenter','↔','Căn giữa'],['justifyRight','⇥','Căn phải'],['removeFormat','⌫','Bỏ định dạng']].map(([c,l,title])=>`<button type="button" data-cmd="${c}" title="${title}">${l}</button>`).join('')}</div>
@@ -1258,6 +2182,10 @@ function stInsert(type,at,prepared){
 }
 function stSelectAllIn(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);}
 function stInsertPreset(id,at){const b=stPresetBlock(id,stDoc?.data);if(b)stInsert(b.type,at,b);}
+function stApplyAppPackage(bid,packageId){
+  const r=stFind(bid),pkg=stPackageChoices(stDoc?.data).find(x=>x.id===packageId);if(!r||!pkg||r.b.type!=='appList')return;
+  stFlush();r.b.packageId=pkg.id;r.b.html=stAppListHTML(pkg);stRenderPage(r.p.id);stPanel();stCommit();
+}
 async function stSaveLibrary(){
   stFlush();const b=stSel?.bid&&stFind(stSel.bid)?.b;if(!b)return;
   if(b.src){stToast('Khối số liệu liên kết lấy theo từng quotation. Dùng mẫu trong thư viện để tránh mang giá của khách cũ sang bản mới.');return;}
@@ -1265,7 +2193,7 @@ async function stSaveLibrary(){
   if(!v)return;const name=st$('#st-library-name').value.trim();if(!name){stToast('Cần đặt tên cho mẫu.');return;}
   const block=stQuoteClone(b);delete block.id;delete block.src;block.focus=false;if(block.style==='accent')block.style='card';block.html=stSanitize(block.html);
   const assets={};const box=document.createElement('template');box.innerHTML=block.html;box.content.querySelectorAll('img[data-asset]').forEach(i=>{if(stDoc.assets[i.dataset.asset])assets[i.dataset.asset]=stDoc.assets[i.dataset.asset];i.removeAttribute('src');});block.html=box.innerHTML;
-  try{const all=await stStore.getKV('st-library')||[];all.push({id:stQuoteId('tpl'),name,block,assets});await stStore.setKV('st-library',all);stLibrary=all;stPanelOpen.library=true;stPanelOpen['lib-saved']=true;st$('[data-section="library"]').open=true;st$('[data-section="lib-saved"]').open=true;stPanel();stToast('Đã lưu mẫu trên trình duyệt này.');}catch{stToast('Chưa lưu được mẫu vào thư viện.');}
+  try{const all=await stStore.getKV('st-library')||[];all.push({id:stQuoteId('tpl'),name,block,assets});await stStore.setKV('st-library',all);await stCloudService?.queue('library',{id:'block-library',name:'Thư viện khối',blocks:all});stLibrary=all;stPanelOpen.library=true;stPanelOpen['lib-saved']=true;st$('[data-section="library"]').open=true;st$('[data-section="lib-saved"]').open=true;stPanel();stToast('Đã lưu mẫu trên trình duyệt này.');}catch{stToast('Chưa lưu được mẫu vào thư viện.');}
 }
 function stInsertLibrary(id){
   const x=stLibrary.find(x=>x.id===id);if(!x)return;const b=stQuoteClone(x.block);b.id=stId('b');b.html=stSanitize(b.html);delete b.src;b.focus=false;
@@ -1298,6 +2226,14 @@ function stMove(bid,pid,index){
   stSel={pid,bid};if(from!==to)stRenderPage(from.id);stRenderPage(pid);stPanel();stCommit();
 }
 function stSetProp(bid,prop,val){stFlush();const r=stFind(bid);if(!r)return;r.b[prop]=val;stRenderPage(r.p.id);stPanel();stCommit();}
+function stFillPhase2(bid){
+  stFlush();const r=stFind(bid);if(!r)return;
+  const extra={...r.b,...(r.b.type==='costOfDelay'?{variant:r.p.role==='investment'?'investment':undefined}:{})};let html=stPhase2HTML(r.b.type,stDoc.data,extra);
+  if(!html){stToast('Hồ sơ / phương án chưa đủ dữ liệu cho khối này. Điền tay hoặc bổ sung hồ sơ.');return;}
+  if(r.b.type==='assumptions'){const notes=r.b.html.match(/<!--st-assumption-extra-->[\s\S]*?<!--\/st-assumption-extra-->/)?.[0];if(notes)html=html.replace(/<!--st-assumption-extra-->[\s\S]*?<!--\/st-assumption-extra-->/,()=>notes);}
+  r.b.html=html;if(r.b.type==='costOfDelay')r.b.variant=extra.variant;if(['costOfDelay','assumptions','payment','cta'].includes(r.b.type))r.b.src='phase2:'+r.b.type;stRenderPage(r.p.id);stPanel();stCommit();
+}
+function stSetCTALink(bid,value){const url=value.trim()?stP2URL(value):'';if(value.trim()&&!url){stToast('Link cần bắt đầu bằng http:// hoặc https:// và không chứa thông tin đăng nhập.');stPanel();return;}stFlush();const r=stFind(bid),el=stBlockEl(bid);if(!r||!el)return;const c=el.querySelector('.st-c');c.querySelectorAll('.st-cta-link').forEach(a=>a.closest('p')?.remove());if(url){const p=document.createElement('p'),a=document.createElement('a');a.className='st-cta-link';a.href=url;a.target='_blank';a.rel='noopener';a.textContent='Mở link xác nhận / trao đổi';p.append(a);const sign=c.querySelector('.st-cta-sign');if(sign)sign.before(p);else c.append(p);}r.b.ctaLink=url;stFromDOM(el);stCommit();stScheduleMeasure();}
 function stAddPage(afterIndex,bg){stFlush();const ref=stDoc.pages[afterIndex];const p=stNewPage(bg||ref?.bg||'light',[stNewBlock('heading')]);stDoc.pages.splice(afterIndex+1,0,p);stSel={pid:p.id};stRender();stCommit();stScrollTo(stPageEl(p.id));}
 function stDupPage(pid){stFlush();const p=stPage(pid),i=stDoc.pages.indexOf(p),c=JSON.parse(JSON.stringify(p));c.id=stId('p');c.blocks.forEach(b=>b.id=stId('b'));stDoc.pages.splice(i+1,0,c);stSel={pid:c.id};stRender();stCommit();stScrollTo(stPageEl(c.id));}
 async function stDelPage(pid){
@@ -1324,7 +2260,7 @@ function stMeasure(){
   stChecks();
 }
 // Chuyển các hàng khối nằm ngoài khổ A4 sang một trang mới ngay sau. Khối đầu trang quá cao: tách bảng theo dòng nếu có.
-function stContinuedPage(source,blocks){const p=stNewPage(source.bg,blocks,{chrome:source.chrome,role:source.role||'custom'});stSeedFocus(source);stSeedFocus(p);return p;}
+function stContinuedPage(source,blocks){const p=stNewPage(source.bg,blocks,{chrome:source.chrome,role:source.role||'custom',question:source.question});stSeedFocus(source);stSeedFocus(p);return p;}
 function stFixOverflow(pid){
   const p=stPage(pid),el=stPageEl(pid);if(!p||!el)return false;
   const grid=el.querySelector('.st-grid'),limit=stLimit(grid),kids=[...grid.querySelectorAll(':scope > .st-b')];
@@ -1341,6 +2277,7 @@ function stFixOverflow(pid){
       if(keepFirst){let n=t.nextSibling;while(n){const nx=n.nextSibling;n.remove();n=nx;}}else{let n=t.previousSibling;while(n){const pv=n.previousSibling;n.remove();n=pv;}t.insertAdjacentHTML('beforebegin','<p class="s">(tiếp theo)</p>');}
       c.querySelectorAll('img[data-asset]').forEach(i=>i.removeAttribute('src'));return c.innerHTML;};
     const rest={...JSON.parse(JSON.stringify(b)),id:stId('b'),html:make(false),src:undefined};
+    if(b.src==='phase2:payment'){const start=b.sourceRows?.[0]||0,end=b.sourceRows?.[1]??null;b.sourceRows=[start,start+s];rest.sourceRows=[start+s,end];rest.src=b.src;}
     b.html=make(true);const moved=[rest,...p.blocks.splice(idx+1)];
     stDoc.pages.splice(stDoc.pages.indexOf(p)+1,0,stContinuedPage(p,moved));
     return 'split';
@@ -1501,7 +2438,7 @@ function stBlankDoc(){
     pages:[stNewPage('dark',[stNewBlock('cover'),stNewBlock('spacer',{h:30}),{...stNewBlock('logo'),html:'<div class="img logo" contenteditable="false"><img alt="" data-asset="base-logo"></div>'}],{role:'cover'})]};
 }
 async function stOpenDoc(d,{forceSave=false}={}){
-  stFlush();if(stDoc&&stDoc.id!==d.id)await stSaveNow();
+  stFlush();if(stDoc&&stDoc.id!==d.id)await stSaveNow();stHomeUI?.hide();
   d.assets??={};d.notes??=[];d.header??={left:'',right:''};d.footer??={left:''};
   stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRememberDoc(stDoc);stRender();stHistReset();if(forceSave||!d.revision||!d.quotationId)await stSaveNow();else{stSavedSnapshots.set(stDoc,stQuoteDocSignature(stDoc));stSaveStatus('Đã mở bản đã lưu');stSendSaved(stDoc);}
 }
@@ -1509,11 +2446,11 @@ async function stNewFromPayload(p){
   let d;try{d=stBuildDoc(p,{baseLogo:QD_BASE_LOGO});}catch(e){stToast(e.message);return;}
   stFlush();if(stDoc)await stSaveNow();
   d.quotationId=p.quotationId||stQuoteId('q');d.sourceSignature=stQuoteSignature(p);
-  stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRememberDoc(stDoc);stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();
+  stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stHomeUI?.hide();stRememberDoc(stDoc);stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();
   stToast(`Đã dựng báo giá ${stDoc.pages.length} trang từ Quote Lab`);
 }
 async function stAskSource(p){
-  const v=await stDialog('Cập nhật số liệu từ Quote Lab',`Bản đã sửa trong Studio được giữ. Chỉ các khối số liệu liên kết sẽ được thay; có thể hoàn tác.`,[{label:'Giữ bản đang soạn',value:null},{label:'Tạo quotation riêng',value:'new'},{label:'Cập nhật số liệu',value:'refresh',primary:true}]);
+  const v=await stDialog('Cập nhật số liệu từ Quote Lab',`Bản đã sửa trong Studio được giữ. Các khối liên kết sẽ được cập nhật: số liệu, chi phí hiện trạng, giả định, thanh toán và CTA. Nội dung độc lập được giữ; có thể hoàn tác.`,[{label:'Giữ bản đang soạn',value:null},{label:'Tạo quotation riêng',value:'new'},{label:'Cập nhật số liệu',value:'refresh',primary:true}]);
   if(v==='refresh'){stFlush();const n=stRefreshDoc(stDoc,p);stDoc.sourceSignature=stQuoteSignature(p);stPendingSource=null;st$('#st-source-update').hidden=true;stRender();stCommit();await stSaveNow();stToast(n?`Đã cập nhật ${n} khối số liệu; nội dung khác giữ nguyên`:'Số liệu không đổi');}
   if(v==='new'){const old=p.quotationId,qid=stQuoteId('q'),draft=old&&await stQuoteRepo.getDraft(old);if(draft)await stQuoteRepo.putDraft({...draft,id:qid,studioDocId:null,created:Date.now(),state:{...draft.state,quotationId:qid,studioDocId:null}});await stNewFromPayload({...p,quotationId:qid});}
 }
@@ -1619,11 +2556,14 @@ function stWire(){
   panel.addEventListener('change',e=>{
     const t=e.target,bid=stSel?.bid,r=bid&&stFind(bid);
     if(t.hasAttribute('data-custom-color')){stColor(t.value);return;}
+    if(t.hasAttribute('data-page-question')){const pid=stSel?.pid||panel.dataset.pid,p=stPage(pid);if(p){stFlush();p.question=t.value;stCommit();}return;}
     if(!r)return;
+    if(t.hasAttribute('data-reusable')){stSetProp(bid,'reusable',t.checked);return;}
+    if(t.hasAttribute('data-cta-url')){stSetCTALink(bid,t.value);return;}
     if(t.dataset.logo){const v=+t.value,max=t.dataset.logo==='w'?180:100;if(!Number.isFinite(v)||v<8||v>max){stToast(`Kích thước logo từ 8 đến ${max} mm.`);stPanel();return;}stSetProp(bid,t.dataset.logo==='w'?'logoW':'logoH',v);}
     if(t.hasAttribute('data-logo-align'))stSetProp(bid,'logoAlign',t.value);
     if(t.hasAttribute('data-logo-frame'))stSetProp(bid,'logoFrame',t.checked);
-    if(t.hasAttribute('data-package')){const pkg=stPackageChoices(stDoc.data).find(x=>x.id===t.value);if(!pkg)return;stFlush();r.b.packageId=pkg.id;r.b.html=stAppListHTML(pkg);stRenderPage(r.p.id);stPanel();stCommit();}
+    if(t.hasAttribute('data-package'))stApplyAppPackage(bid,t.value);
   });
   panel.addEventListener('pointerdown',e=>{
     const lib=e.target.closest('.st-libi');if(lib&&e.button===0){const preset=ST_PRESETS.find(p=>p.id===lib.dataset.preset),type=preset?.type||lib.dataset.type;stStartDrag(e,{kind:'new',type,preset:preset?.id},'Thêm: '+(preset?.name||ST_TYPES[type].name));return;}
@@ -1642,10 +2582,12 @@ function stWire(){
     if(t.dataset.layout)return stApplyLayout(pid,t.dataset.layout);
     if(t.dataset.color)return stColor(t.dataset.color);
     if(t.dataset.library)return stInsertLibrary(t.dataset.library);
-    if(t.dataset.libraryDel){try{stLibrary=(await stStore.getKV('st-library')||[]).filter(x=>x.id!==t.dataset.libraryDel);await stStore.setKV('st-library',stLibrary);stPanel();stToast('Đã xoá mẫu khỏi thư viện; khối đã chèn vẫn được giữ.');}catch{stToast('Chưa xoá được mẫu.');}return;}
+    if(t.dataset.libraryDel){try{stLibrary=(await stStore.getKV('st-library')||[]).filter(x=>x.id!==t.dataset.libraryDel);await stStore.setKV('st-library',stLibrary);await stCloudService?.queue('library',{id:'block-library',name:'Thư viện khối',blocks:stLibrary});stPanel();stToast('Đã xoá mẫu khỏi thư viện; khối đã chèn vẫn được giữ.');}catch{stToast('Chưa xoá được mẫu.');}return;}
     if(t.dataset.cmd){const b=bid&&stBlockEl(bid);if(b){stRestoreTextSelection(b);document.execCommand(t.dataset.cmd,false,null);stFromDOM(b);stCommit();stScheduleMeasure();}return;}
     const act=t.dataset.act;if(!act)return;
-    if(act==='docs')return stManageDocs();if(act==='library-save')return stSaveLibrary();if(act==='logo-all')return stSyncLogo();if(act==='color-reset')return stResetColor();
+    if(act==='apps-rebuild')return stApplyAppPackage(bid,stFind(bid)?.b.packageId);
+    if(act==='docs')return stHomeUI.home();if(act==='library-save')return stSaveLibrary();if(act==='logo-all')return stSyncLogo();if(act==='color-reset')return stResetColor();
+    if(act==='phase2-fill')return stFillPhase2(bid);if(act==='phase2-detach')return stSetProp(bid,'src',undefined);
     if(act==='focus')return stSetFocus(bid);if(act==='style-all')return stSyncTypeStyle(bid);
     if(act==='checks-restore'){stFlush();stDoc.dismissed=[];stCommit();stChecks();return;}
     if(act==='chrome'){stFlush();stPage(pid).chrome=t.checked;stRender();stCommit();return;}
@@ -1666,7 +2608,7 @@ function stWire(){
   list.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(!li||e.button!==0)return;stStartDrag(e,{kind:'page',pid:li.dataset.pid},'Trang '+(stDoc.pages.findIndex(p=>p.id===li.dataset.pid)+1));});
   list.addEventListener('click',e=>{const li=e.target.closest('li');if(!li)return;stSetSel({pid:li.dataset.pid});stScrollTo(stPageEl(li.dataset.pid));});
 
-  st$('#st-docs').addEventListener('click',stManageDocs);
+  st$('#st-docs').addEventListener('click',()=>stHomeUI.home());st$('#st-home-button').addEventListener('click',()=>stHomeUI.home());st$('#st-inputs').addEventListener('click',async()=>{stFlush();await stSaveNow();await stHomeUI.editInputs(stDoc);});
   st$('#st-source-update').addEventListener('click',()=>stPendingSource&&stAskSource(stPendingSource));
   st$('#st-title').addEventListener('input',e=>{if(!stDoc)return;stDoc.title=e.target.value;stTypingCommit();});
   st$('#st-undo').addEventListener('click',stUndo);st$('#st-redo').addEventListener('click',stRedo);
@@ -1680,7 +2622,7 @@ function stWire(){
     else if(k==='open')st$('#st-file-json').click();
     else if(k==='save'&&stDoc)stSaveFile();
     else if(k==='html'&&stDoc)stExportHTML();
-    else if(k==='docs')await stManageDocs();
+    else if(k==='docs')await stHomeUI.home();else if(k==='template'&&stDoc){stFlush();await stSaveNow();await stHomeUI.promptTemplate(stDoc);}else if(k==='firebase'){await stHomeUI.home();await stHomeUI.showFirebase();}
   });
   st$('#st-file-img').addEventListener('change',e=>stLoadImage(e.target.files[0]));
   st$('#st-file-json').addEventListener('change',e=>{const f=e.target.files[0];e.target.value='';if(f)stOpenFile(f);});
@@ -1699,17 +2641,35 @@ function stWire(){
 }
 
 async function stStart(){
-  if(!stReadonly)stWire();else window.addEventListener('message',e=>{if(e.source===window.parent&&stQuoteOriginOK(e.origin)&&e.data?.kind==='quote-studio-preview-data')stReadPreview(e.data.doc);});
+  stSetupWorkspace();if(!stReadonly)stWire();else window.addEventListener('message',e=>{if(e.source===window.parent&&stQuoteOriginOK(e.origin)&&e.data?.kind==='quote-studio-preview-data')stReadPreview(e.data.doc);});
   stQuoteEvents.subscribe(async event=>{if(event.type==='doc-saved'&&stReadonly&&event.docId===stRoute.searchParams.get('doc')){const doc=await stStore.get(event.docId);if((doc?.revision||0)>(stDoc?.revision||0))await stReadPreview(doc);}});
   if(stReadonly){document.body.classList.add('st-preview-readonly','st-preview');const d=await stStore.get(stRoute.searchParams.get('doc')).catch(()=>null);if(d)await stReadPreview(d);else st$('#st-pages').innerHTML='<p>Đang tải bản Studio đã lưu…</p>';stPreviewHeight();window.addEventListener('resize',stPreviewHeight);return;}
-  let d=null;const id=stRoute.searchParams.get('doc')||stQuoteSession.get('quote-studio-current');
-  try{if(id)d=await stStore.get(id);else if(stRoute.searchParams.get('quotation'))d=await stQuoteRepo.findDoc(stRoute.searchParams.get('quotation'));else{const current=await stStore.getKV('current'),all=await stStore.all();if(all.length===1)d=all[0];else if(current&&!stQuoteSession.get('quote-studio-seen'))d=await stStore.get(current);}}catch{}
+  let d=null;const id=stRoute.searchParams.get('doc');
+  try{if(id)d=await stStore.get(id);else if(stRoute.searchParams.get('quotation'))d=await stQuoteRepo.findDoc(stRoute.searchParams.get('quotation'));}catch{}
   if(d&&!stQuoteMatches(d,stRoute.searchParams.get('quotation')))d=null;
   try{stLibrary=await stStore.getKV('st-library')||[];}catch{}
-  stQuoteSession.set('quote-studio-seen','1');if(d)await stOpenDoc(d);else stRender();
+  stQuoteSession.set('quote-studio-seen','1');if(d)await stOpenDoc(d);else{await stHomeUI.home();const draft=stRoute.searchParams.get('draft');if(draft)await stHomeUI.resume(draft);}
   const qid=stRoute.searchParams.get('quotation');
   try{const key=qid?'quote-studio-inbox:'+qid:'quote-studio-inbox',raw=localStorage.getItem(key);if(raw){localStorage.removeItem(key);const p=JSON.parse(raw);if(Date.now()-(p.sentAt||0)<15*60e3)await stOnPayload(p);}}catch{}
   if(window.opener)try{window.opener.postMessage({kind:'quote-studio-ready',quotationId:qid},stQuoteTargetOrigin());}catch{}
+}
+let stCloudService=null,stHomeUI=null;
+function stSanitizeDoc(d){d.assets??={};d.pages=(d.pages||[]).map(p=>({...p,blocks:(p.blocks||[]).map(b=>({...b,html:stSanitize(b.html)}))}));return d;}
+function stSetupWorkspace(){
+  const adapter=stWorkspaceAdapter(stQuoteRepo,{sanitizeDoc:stSanitizeDoc});
+  stCloudService=stCreateCloud({repo:stQuoteRepo,adapter,onStatus:()=>stHomeUI?.syncStatus(),onRemote:async event=>{
+    if(event.kind==='doc'&&stDoc?.id===event.entity.id&&!stReadonly&&!document.body.classList.contains('st-home-mode')){stFlush();if(stSavedSnapshots.get(stDoc)===stQuoteDocSignature(stDoc))await stOpenDoc(event.entity);else await stSaveNow();}
+    if(event.kind==='library'){stLibrary=event.entity.blocks||[];if(stDoc)stPanel();}stHomeUI?.refresh();
+  },onConflict:async event=>{
+    if(event.kind==='doc'&&stDoc?.id===event.fromId){stFlush();Object.assign(stDoc,{id:event.entity.id,quotationId:event.entity.quotationId,title:event.entity.title,revision:event.entity.revision});stRememberDoc(stDoc);stCommit();await stSaveNow();stToast('Có chỉnh sửa ở nơi khác. Đã giữ phần của bạn trong một báo giá riêng.');}
+    if(event.kind==='draft')stHomeUI?.onDraftConflict(event.fromId,event.entity.id);
+  }});
+  stHomeUI=setupStudioHome({repo:stQuoteRepo,adapter,cloud:stCloudService,openDoc:stOpenDoc,backFromEditor:async()=>{stFlush();await stSaveNow();stDoc=null;stSel=null;},toast:stToast,
+    askTemplateName:async name=>{const ok=await stDialog('Lưu thành template','<label class="st-field"><span>Tên template</span><input id="st-template-name" value="'+stEsc(name)+'"></label><p>Khách hàng và giá sẽ được điền lại từ hồ sơ mới. Khối đã đánh dấu giữ nội dung được tái sử dụng.</p>',[{label:'Huỷ',value:false},{label:'Lưu template',value:true,primary:true}]);return ok?st$('#st-template-name').value:null;},
+    createDoc:async(input,tpl,context={})=>{stFlush();if(stDoc)await stSaveNow();const d=stWorkspaceBuild(input,tpl,{baseLogo:QD_BASE_LOGO});if(context.draftId){d.quotationId=context.draftId;d.data.quotationId=d.quotationId;}d.sourceSignature=stQuoteSignature(d.data);stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stHomeUI.hide();stRememberDoc(d);stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();const draft=await stQuoteRepo.getDraft(d.quotationId);if(draft)await stCloudService.queue('draft',draft);stToast('Đã tạo báo giá độc lập từ bộ hồ sơ.');},
+    updateDoc:async(input,id)=>{const target=await stQuoteRepo.getDoc(id);if(!target)throw new Error('Không tìm thấy báo giá.');const payload=stInputPayload(input);if(payload.deal.customer.name!==target.data?.deal?.customer?.name)throw new Error('Hồ sơ thuộc khách hàng khác. Chọn tạo báo giá mới để giữ bản đang có.');await stOpenDoc(target);stFlush();payload.quotationId=target.quotationId;stRefreshDoc(stDoc,payload);stDoc.inputs=input;stDoc.sourceSignature=stQuoteSignature(payload);stRender();stCommit();await stSaveNow();stToast('Đã cập nhật bộ đầu vào và các khối liên kết. Nội dung độc lập giữ nguyên.');}
+  });
+  stCloudService.start().catch(e=>stToast(e.message));
 }
 if(document.getElementById('st-app'))stBoot=stStart();
 </script>
