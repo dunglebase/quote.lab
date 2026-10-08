@@ -88,8 +88,15 @@
 .st-t-image .st-c .img{justify-content:center;border-radius:2.5mm;overflow:hidden}
 .st-t-image .st-c .img img{width:100%}
 .st-c .img.cover img{width:100%;height:100%;object-fit:cover}
-.st-c .img.logo img{max-height:15mm;width:auto}
-.st-b[style*="--h"] .st-c .img img{max-height:calc(var(--h) - 10mm)}
+.st-b[style*="--h"] .st-c .img:not(.logo) img{max-height:calc(var(--h) - 10mm)}
+/* Khung chung, độc lập với kích thước file ảnh gốc. */
+.st-c .img.logo{box-sizing:border-box;width:min(100%,var(--logo-w,32mm));height:var(--logo-h,22mm);min-height:var(--logo-h,22mm);flex:0 0 auto;align-self:var(--logo-align,start);justify-content:center;border-radius:0;overflow:hidden}
+.st-logo-frame .st-c .img.logo{background:#fff;border:1px solid #E3E7F1;border-radius:2mm;padding:2mm}
+.st-c .img.logo img{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+.st-c .img.logo.cover img{object-fit:cover}
+.st-c table.st-edit-table{table-layout:fixed}
+.st-c table.st-edit-table th,.st-c table.st-edit-table td{width:auto;white-space:normal;overflow-wrap:anywhere}
+.st-c table.app-list th:first-child,.st-c table.app-list td:first-child{width:12mm}
 .st-c .img.is-empty{border:1.5px dashed var(--line);border-radius:3mm;min-height:16mm;justify-content:center}
 .st-c .img.is-empty::after{content:'Bấm đúp để chọn ảnh';font:500 11px/1.4 var(--f-ui);color:var(--ink-3)}
 .st-c .img.is-empty img{display:none}
@@ -119,6 +126,7 @@ button.primary{background:var(--st-accent);border-color:var(--st-accent);color:#
 button.primary:hover:not(:disabled){background:#4A7BF0;border-color:#4A7BF0}
 button.danger{color:#C4313A}
 input{font:inherit;border:1px solid #D9DDE8;border-radius:8px;padding:7px 9px;width:100%;background:#fff;color:inherit}
+select{font:inherit;border:1px solid #D9DDE8;border-radius:8px;padding:7px;width:100%;background:#fff;color:inherit}
 #st-app{display:grid;grid-template-columns:210px minmax(0,1fr) 312px;grid-template-rows:56px minmax(0,1fr);height:100vh}
 .st-top{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:0 14px;background:#fff;border-bottom:1px solid #E1E4EE}
 .st-brand{font:800 15px/1 var(--f-display);white-space:nowrap}
@@ -149,6 +157,33 @@ input{font:inherit;border:1px solid #D9DDE8;border-radius:8px;padding:7px 9px;wi
 #st-canvas{grid-column:2;grid-row:2;overflow:auto;padding:30px 24px 120px;position:relative}
 .st-right{grid-column:3;grid-row:2;overflow:auto;background:#fff;border-left:1px solid #E1E4EE}
 .st-sec{padding:14px 14px 16px;border-bottom:1px solid #EEF0F5}
+.st-toggle{padding:0}
+.st-toggle>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:6px;padding:13px 14px;font:700 12px/1.4 var(--f-display);user-select:none}
+.st-toggle>summary::-webkit-details-marker,.st-library-group>summary::-webkit-details-marker{display:none}
+.st-toggle>summary::after,.st-library-group>summary::after{content:'⌄';color:#6B7393}
+.st-toggle[open]>summary::after,.st-library-group[open]>summary::after{transform:rotate(180deg)}
+.st-toggle[open]>summary{background:#F7F9FD}
+.st-section-body{padding:0 14px 14px}
+.st-section-body>.st-hint:first-child{margin-top:10px}
+.st-library-group{border:1px solid #E3E7F1;border-radius:8px;margin-top:8px;padding:0 8px 8px}
+.st-library-group:not([open]){padding-bottom:0}
+.st-library-group>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;padding:9px 0;font-weight:600;font-size:12px}
+.st-presets{grid-template-columns:repeat(2,1fr)}
+.st-panel-hint{padding:0 14px;color:#6B7393;font-size:12px}
+.st-saved-row{display:flex;gap:4px;margin:5px 0}.st-saved-row button:first-child{flex:1;text-align:left;overflow-wrap:anywhere}
+.st-colors{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.st-colors button{height:29px;background:var(--color)!important;border:2px solid #D9DDE8;border-radius:6px;box-shadow:inset 0 0 0 2px #fff}
+.st-colors button:hover{outline:2px solid var(--st-accent);outline-offset:1px}
+.st-color-custom{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.st-color-custom label{display:flex;align-items:center;gap:6px;font-size:12px}
+.st-color-custom input{width:36px;height:30px;padding:2px}
+.st-dimensions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.st-full{width:100%;margin-top:10px}
+/* Đường biên và gợi ý nhập chỉ hiện khi chỉnh sửa. */
+@media screen{
+ body:not(.st-preview):not(.st-export) .st-b.is-sel .st-c th,body:not(.st-preview):not(.st-export) .st-b.is-sel .st-c td{box-shadow:inset 0 0 0 1px #BFD0FF;min-width:24px;position:relative}
+ body:not(.st-preview):not(.st-export) .st-b.is-sel .st-c td:empty,body:not(.st-preview):not(.st-export) .st-b.is-sel .st-c td:has(>br:only-child){background:rgba(91,140,255,.07)}
+ body:not(.st-preview):not(.st-export) .st-b.is-sel .st-c td:empty::after,body:not(.st-preview):not(.st-export) .st-b.is-sel .st-c td:has(>br:only-child)::after{content:'Nhập…';position:absolute;left:2mm;top:2mm;color:#6B7393;font-size:10px;pointer-events:none}
+}
 .st-sec h4{margin:0 0 10px;font:700 13px/1.3 var(--f-display);display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .st-muted{color:#8A91AD;font:500 11.5px/1.3 var(--f-ui)}
 .st-lbl{margin:12px 0 6px;font:600 11.5px/1.3 var(--f-ui);color:#454E70}
@@ -252,6 +287,7 @@ body.st-preview .img.is-empty{visibility:hidden}
   .st-top,.st-left,.st-right,.st-ptools,.st-handle,.st-rw,.st-rh,.st-mini,.st-a4line,.st-emptyhint,.st-addpage,#st-dialog,#st-toast,#st-drop,#st-ghost,#st-tip{display:none!important}
   #st-canvas{overflow:visible;padding:0}
   .st-b{outline:none!important}
+  .st-c{caret-color:transparent!important}
   .st-t-spacer .st-c{background:none!important}
   body.st-preview #st-app{display:block}
 }
@@ -264,6 +300,10 @@ body.st-preview .img.is-empty{visibility:hidden}
 .st-check-link{background:none!important;border:0!important;padding:0!important;color:inherit;text-align:left;font:inherit;line-height:1.45}
 .st-check-link .st-check-level{display:block;font-size:10.5px;font-weight:700;margin-bottom:2px}
 .st-dismiss{padding:2px 5px;font-size:10.5px;white-space:nowrap}.st-check-options{margin-top:10px;font-size:11px;color:#6B7393}.st-check-options button{padding:4px 7px;font-size:11px}
+.st-docrow{grid-template-columns:minmax(0,1fr) auto auto}
+.st-preview-readonly #st-app{display:block;height:auto}.st-preview-readonly .st-top,.st-preview-readonly .st-left,.st-preview-readonly .st-right,.st-preview-readonly .st-ptools,.st-preview-readonly .st-addpage{display:none!important}
+.st-preview-readonly #st-canvas{overflow:visible;padding:12px 0;height:auto}.st-preview-readonly #st-pages{width:210mm;margin:0 auto}.st-preview-readonly .st-page{zoom:1;margin-bottom:18px}.st-preview-readonly .st-sheet{min-height:297mm;height:auto}
+html:has(.st-preview-readonly),body.st-preview-readonly{height:auto;overflow:visible}.st-preview-readonly .img.is-empty{display:none}.st-preview-readonly .st-c{cursor:default}
 </style>
 </head>
 <body>
@@ -271,11 +311,11 @@ body.st-preview .img.is-empty{visibility:hidden}
   <header class="st-top">
     <div class="st-brand">Quote <span>Studio</span></div>
     <input id="st-title" aria-label="Tên tài liệu" placeholder="Tên tài liệu">
-    <span id="st-save" aria-live="polite"></span>
+    <span id="st-save" aria-live="polite"></span><button type="button" id="st-source-update" hidden>Số liệu mới từ Lab</button>
     <div class="st-top-actions">
       <button type="button" id="st-undo" title="Hoàn tác (⌘Z / Ctrl+Z)" aria-label="Hoàn tác" disabled>↶</button>
       <button type="button" id="st-redo" title="Làm lại (⇧⌘Z / Ctrl+Y)" aria-label="Làm lại" disabled>↷</button>
-      <button type="button" id="st-preview">Xem trước</button>
+      <button type="button" id="st-docs">Các quotation</button><button type="button" id="st-preview">Xem trước</button>
       <details class="st-menu" id="st-menu"><summary>Tệp</summary><div>
         <button type="button" data-file="docs">Tài liệu đã lưu…</button>
         <button type="button" data-file="new">Tài liệu trống</button>
@@ -295,7 +335,147 @@ body.st-preview .img.is-empty{visibility:hidden}
 <div id="st-dialog" hidden></div>
 <input type="file" id="st-file-img" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden>
 <input type="file" id="st-file-json" accept="application/json,.json" hidden>
-<script type="module">// Logo gốc lấy từ form báo giá Base do người dùng cung cấp ngày 07/10/2026.
+<script type="module">// Nguồn: Chính sách giá Base 2.0, hiệu lực 01/10/2026, mục II và III.
+const plan = (id, name, price, apps, extra = {}) => ({ id, name, price, apps: apps.split('|'), ...extra });
+const WORK = [
+  plan('wp','Starter · Work Project',59000,'Project|Request'),
+  plan('wf','Starter · Work Process',59000,'Workflow|Request'),
+  plan('wb','Basic',99000,'Task|Request|Workflow|Project'),
+  plan('wa','Advance',119000,'Task|Request|Workflow|Project|E-Sign|Automation|Form|Meeting|Booking|Townhall|Work rules'),
+  plan('wm','Premium',149000,'Task|Request|Workflow|Project|E-Sign|Automation|Form|Meeting|Booking|Townhall|Work rules|BPM|E-Office|Expense'),
+  plan('wg','Agentic',169000,'Task|Request|Workflow|Project|E-Sign|Automation|Form|Meeting|Booking|Townhall|Work rules|BPM|E-Office|Expense|Agents|Studio',{ ai:true }),
+];
+const HRM = [
+  plan('hb','Basic',35000,'HRIS|Timesheet|Payroll|Career'),
+  plan('ha','Advance',55000,'HRIS|Timesheet|Payroll|Career|Townhall|Work rules|E-Sign|Automation|Form'),
+  plan('hm','Premium',95000,'HRIS|Timesheet|Payroll|Career|Townhall|Work rules|E-Sign|Automation|Form|Task|Review|Goal|ESOPs'),
+  plan('hg','Agentic',115000,'HRIS|Timesheet|Payroll|Career|Townhall|Work rules|E-Sign|Automation|Form|Task|Review|Goal|ESOPs|Agents|Studio',{ ai:true }),
+];
+const CRM = [
+  plan('cs','Service Suite',149000,'Prospect|Lead|Sales|Contract|Success|Meeting',{ role:'suite' }),
+  plan('ct','Trade Suite',149000,'Prospect|Lead|Sales|Commerce|Inventory|Contract|Fieldwork|Meeting',{ role:'suite' }),
+  plan('cc','Complete Suite',249000,'Sales|Commerce|Inventory|Contract|Success|Lead|Ads manager|Event|Prospect|Fieldwork|Radar|Automation|Form|E-Sign|Meeting',{ role:'suite' }),
+  plan('mb','MKT · Basic',79000,'Prospect',{ role:'mkt' }),
+  plan('ma','MKT · Advance',149000,'Prospect|Lead|Ads manager|Meeting',{ role:'mkt' }),
+  plan('mp','MKT · Premium',199000,'Prospect|Lead|Ads manager|Meeting|Event|Radar',{ role:'mkt' }),
+  plan('sb','Sale · Basic',79000,'Sales|Fieldwork|Meeting',{ role:'sale' }),
+  plan('sa','Sale · Advance',149000,'Sales|Fieldwork|Meeting|Commerce|Inventory',{ role:'sale' }),
+  plan('sp','Sale · Premium',199000,'Sales|Fieldwork|Meeting|Commerce|Inventory|Contract|Success',{ role:'sale' }),
+];
+const ADDONS = [
+  plan('ai','Base AI Suite',30000,'Agents|Studio',{ ai:true }),
+  plan('common','Base Common',30000,'Automation|Form|E-Sign'),
+  ...[['Task',10000],['Project',40000],['Request',20000],['Workflow',40000],['BPM',70000],['E-Office',40000],['Meeting',15000],['Booking',15000],['Townhall',15000],['Work rules',15000],['Review',15000],['ESOPs',15000]].map(([name,price])=>plan(name,name,price,name)),
+];
+const COMBOS = [
+  {id:'one',name:'Base One',price:179000,work:WORK[4].apps,hrm:HRM[2].apps,ai:false},
+  {id:'agentic',name:'Base Agentic OS',price:199000,work:[...WORK[4].apps,'Agents','Studio'],hrm:[...HRM[2].apps,'Agents','Studio'],ai:true},
+];
+const HIRING = [
+  {id:'e1',name:'Starter',price:850000,seats:5,cvs:3000},
+  {id:'e2',name:'Basic',price:2490000,seats:20,cvs:10000},
+  {id:'e3',name:'Advanced',price:5250000,seats:60,cvs:50000},
+  {id:'e4',name:'Enterprise 1',price:10000000,seats:100,cvs:120000},
+  {id:'e5',name:'Enterprise 2',price:12000000,seats:150,cvs:200000},
+  {id:'e6',name:'Enterprise 3',price:15000000,seats:200,cvs:300000},
+  {id:'e7',name:'Enterprise 4',price:17500000,seats:250,cvs:400000},
+];
+const CREDITS = [
+  {id:'u1',name:'Starter Agent',credits:50000,price:3700000},
+  {id:'u2',name:'Growth Agent',credits:150000,price:11000000},
+  {id:'u3',name:'Enterprise Agent',credits:250000,price:18000000},
+];
+const SCOPE_APPS = {
+  work: [...new Set([...WORK.flatMap(p=>p.apps),...ADDONS.flatMap(p=>p.apps)])],
+  hrm: [...new Set([...HRM.flatMap(p=>p.apps),...ADDONS.flatMap(p=>p.apps)])],
+  suite: [...new Set([...CRM.filter(p=>p.role==='suite').flatMap(p=>p.apps),...ADDONS.flatMap(p=>p.apps)])],
+  mkt: [...new Set([...CRM.filter(p=>p.role==='mkt').flatMap(p=>p.apps),...ADDONS.flatMap(p=>p.apps)])],
+  sale: [...new Set([...CRM.filter(p=>p.role==='sale').flatMap(p=>p.apps),...ADDONS.flatMap(p=>p.apps)])],
+};
+// Professional Service — Chính sách giá Base 2.0 mục 4.2: mặc định đi kèm CRM OS và mọi gói có Base AI Suite (Agentic, add-on).
+// Giá PS CRM: Chính sách Base CRM & dịch vụ PS v2.0 (mục 2, 3.2, phụ lục). Giá PS with AI: Chính sách giá Base AI Agent v2.0, hiệu lực 15/06/2026 (mục C.2.1).
+// Giá chưa VAT. PS CRM ghi VAT 8%; PS with AI chỉ ghi "chưa VAT", công cụ áp cùng 8%.
+const PS_VAT = 0.08;
+const PS_CRM = [
+  {id:'qs',name:'Quick Start',price:12000000,sessions:3,fit:'Nhu cầu thiết lập cơ bản',scope:['Lộ trình triển khai và khảo sát vận hành kinh doanh','Khởi tạo hệ thống, phân quyền, cấu trúc dữ liệu Lead/Deal/Account/Contact/Pipeline','Tích hợp Email, tổng đài, số điện thoại cá nhân','01 quy trình bán hàng theo khảo sát','Kiểm thử và đào tạo đội Sales']},
+  {id:'lite',name:'Lite',price:30000000,sessions:5,fit:'Cần đồng bộ Marketing & Sales',scope:['Toàn bộ hạng mục Quick Start','Làm sạch, chuẩn hoá dữ liệu CRM','Đồng bộ Leads từ Facebook, Google, Website · 02 Router · 02 SLA','02 quy trình bán hàng · 04 Automation','04 Dashboard / 32 Reports · kênh CSKH Facebook, WhatsApp, Zalo','Tài liệu hướng dẫn cho Sales và Sales Manager']},
+  {id:'adv',name:'Advanced',price:120000000,sessions:10,fit:'Vận hành phức tạp, tuỳ biến cao',scope:['Toàn bộ hạng mục Lite','05 Router · 05 SLA · 05 quy trình bán hàng','10 Automation · 08 Dashboard / 64 Reports','02 quy trình vệ tinh hỗ trợ bán hàng','Thêm Customer Onboarding Executive (Associate)']},
+];
+// Mua thêm theo gói tối thiểu; chỉ khi đã mua Quick Start / Lite / Advanced (mục 2.2).
+const PS_CRM_EXTRAS = [
+  {id:'process',name:'Xây dựng quy trình bán hàng',pack:'02 quy trình',price:18500000},
+  {id:'dashboard',name:'Xây dựng Sales Dashboard',pack:'02 Dashboard, tối đa 8 Reports mỗi Dashboard',price:14500000},
+  {id:'router',name:'Thiết lập Router',pack:'02 Router',price:3000000},
+  {id:'sla',name:'Thiết lập SLA',pack:'02 SLA',price:3000000},
+  {id:'automation',name:'Thiết lập Automation',pack:'02 Automation',price:5000000},
+  {id:'survey',name:'Buổi khảo sát',pack:'02 buổi',price:5000000},
+  {id:'training',name:'Buổi đào tạo',pack:'02 buổi',price:2000000},
+];
+// Add-on tuỳ chọn, không bắt buộc đi kèm phần mềm CRM hay gói PS (mục 2.3).
+const PS_CONSULTING = {
+  rac:{id:'rac',name:'Revenue Architecture Consulting',price:216000000,sessions:6,scope:['Revenue Diagnostic: đánh giá hiện trạng hệ thống doanh thu','Revenue Model Design: mô hình tạo doanh thu, Go-to-Market','Revenue Operating Model: tổ chức Sales, quy trình bán hàng chuẩn, Customer Journey','Revenue Performance Framework: KPI, dự báo doanh thu, báo cáo quản trị','02 buổi Sales Capability Development Workshop']},
+  workshop:{id:'workshop',name:'Sales Capability Development Workshop',price:22000000},
+};
+// Miễn PS CRM → Standard Service, cần RC Head duyệt (mục 3). Số buổi theo số user: [ngưỡng, Starter [năm 1, năm 2+], Standard [năm 1, năm 2+]].
+const PS_STANDARD = { extraSession:1000000, sessions:[[19,[3,1],[4,2]],[50,[4,2],[6,3]],[100,[5,3],[7,4]],[Infinity,[7,4],[9,5]]] };
+const PS_AI = [
+  {id:'u1',name:'Starter Agent',price:30000000,agents:10,sessions:5},
+  {id:'u2',name:'Growth Agent',price:75000000,agents:30,sessions:8},
+  {id:'u3',name:'Enterprise Agent',price:100000000,agents:50,sessions:15},
+].map(p=>({...p,scope:['Tư vấn ứng dụng AI Agent vào vận hành và quản trị',`Hỗ trợ cấu hình tối đa ${p.agents} Agents`]}));
+const POLICY = { effective:'01/10/2026', workMin:30, hrmMin:30, comboMin:30, block:10, crmMin:5, crmBlock:5, liteSeats:15, liteFactor:18, directPrice:18000, years:[1,2,3,4,5] };
+
+// Kho chung của Lab và Studio; giữ nguyên store docs/kv cũ khi nâng lên v2.
+const stQuoteId=p=>p+'-'+(globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2));
+const stQuoteClone=x=>JSON.parse(JSON.stringify(x));
+function stQuoteSignature(p){
+  const value=JSON.stringify({deal:p.deal,options:p.options,recommendedId:p.recommendedId,useCases:p.useCases,scopeNames:p.scopeNames,policy:p.policy,mode:p.mode});
+  let a=2166136261,b=5381;for(let i=0;i<value.length;i++){a=Math.imul(a^value.charCodeAt(i),16777619);b=(b*33)^value.charCodeAt(i);}return (a>>>0).toString(36)+'-'+(b>>>0).toString(36);
+}
+const stQuoteSession={get:k=>{try{return sessionStorage.getItem(k);}catch{return null;}},set:(k,v)=>{try{sessionStorage.setItem(k,v);}catch{}}};
+const stQuoteRepo=(()=>{
+  let dbp;
+  const open=()=>dbp??=new Promise((resolve,reject)=>{
+    const req=indexedDB.open('quote-studio',2);
+    req.onupgradeneeded=()=>{for(const name of ['docs','drafts'])if(!req.result.objectStoreNames.contains(name))req.result.createObjectStore(name,{keyPath:'id'});if(!req.result.objectStoreNames.contains('kv'))req.result.createObjectStore('kv');};
+    req.onblocked=()=>{if(typeof window!=='undefined')window.dispatchEvent(new Event('quote-store-blocked'));};
+    req.onsuccess=()=>{req.result.onversionchange=()=>{req.result.close();dbp=null;};resolve(req.result);};req.onerror=()=>{dbp=null;reject(req.error);};
+  });
+  const run=async(names,mode,action)=>{const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction(names,mode);let result,error;tx.oncomplete=()=>resolve(result);tx.onerror=tx.onabort=()=>reject(error||tx.error||new Error('Không lưu được dữ liệu.'));const done=x=>result=x,fail=e=>{error=e;tx.abort();};action(tx,done,fail);});};
+  const get=(store,id)=>run(store,'readonly',(tx,done)=>{const r=tx.objectStore(store).get(id);r.onsuccess=()=>done(r.result);});
+  const all=store=>run(store,'readonly',(tx,done)=>{const r=tx.objectStore(store).getAll();r.onsuccess=()=>done(r.result||[]);});
+  const bind=(tx,doc,previous)=>{
+    if(previous?.quotationId&&previous.quotationId!==doc.quotationId){tx.objectStore('kv').delete('quotation:'+previous.quotationId);const old=tx.objectStore('drafts').get(previous.quotationId);old.onsuccess=()=>{if(old.result)tx.objectStore('drafts').put({...old.result,redirect:doc.quotationId,studioDocId:null});};}
+    if(!doc.quotationId)return;
+    tx.objectStore('kv').put(doc.id,'quotation:'+doc.quotationId);
+    const store=tx.objectStore('drafts'),r=store.get(doc.quotationId);
+    r.onsuccess=()=>store.put({...r.result,id:doc.quotationId,name:doc.title,created:r.result?.created||doc.created||Date.now(),updated:doc.updated,studioDocId:doc.id,studioRevision:doc.revision||0});
+  };
+  return {
+    getDoc:id=>get('docs',id),allDocs:()=>all('docs'),getDraft:id=>get('drafts',id),allDrafts:async()=> (await all('drafts')).filter(d=>!d.redirect),getKV:k=>get('kv',k),
+    setKV:(k,v)=>run('kv','readwrite',(tx,done)=>{tx.objectStore('kv').put(v,k);done(v);}),
+    putDraft:d=>run('drafts','readwrite',(tx,done)=>{const store=tx.objectStore('drafts'),r=store.get(d.id);r.onsuccess=()=>{const next={...r.result,...d,studioDocId:r.result&&'studioDocId' in r.result?r.result.studioDocId:d.studioDocId,studioRevision:r.result?.studioRevision||d.studioRevision||0};store.put(next);done(next);};}),
+    saveDoc:(doc,expected=doc.revision||0)=>run(['docs','drafts','kv'],'readwrite',(tx,done,fail)=>{const store=tx.objectStore('docs'),r=store.get(doc.id);r.onsuccess=()=>{const actual=r.result?.revision||0;if(actual!==expected){const e=new Error('Bản này đã được cập nhật ở tab khác.');e.name='QuotationConflict';fail(e);return;}const next={...doc,revision:actual+1,updated:Date.now()};store.put(next);bind(tx,next,r.result);done(next);};}),
+    acceptDoc:doc=>run(['docs','drafts','kv'],'readwrite',(tx,done)=>{const store=tx.objectStore('docs'),r=store.get(doc.id);r.onsuccess=()=>{const next=r.result&&(r.result.revision||0)>=(doc.revision||0)?r.result:doc;store.put(next);bind(tx,next,r.result);done(next);};}),
+    deleteDoc:id=>run(['docs','drafts','kv'],'readwrite',(tx,done)=>{const store=tx.objectStore('docs'),r=store.get(id);r.onsuccess=()=>{const doc=r.result;store.delete(id);if(doc?.quotationId){tx.objectStore('kv').delete('quotation:'+doc.quotationId);const drafts=tx.objectStore('drafts'),d=drafts.get(doc.quotationId);d.onsuccess=()=>{if(d.result?.studioDocId===id)drafts.put({...d.result,studioDocId:null,updated:Date.now()});};}done(doc);};}),
+    findDoc:async(qid,id)=>{if(id){const doc=await get('docs',id);if(doc&&(!qid||doc.quotationId===qid||!doc.quotationId))return doc;}const bound=qid&&await get('kv','quotation:'+qid);if(bound){const doc=await get('docs',bound);if(doc&&doc.quotationId===qid)return doc;}return (await all('docs')).find(d=>d.quotationId===qid)||null;}
+  };
+})();
+const stQuoteEvents=(()=>{
+  let channel=null,wired=false;const listeners=new Set(),seen=new Set();
+  const receive=e=>{const v=e?.data||e;if(!v?.eventId||seen.has(v.eventId))return;seen.add(v.eventId);if(seen.size>500)seen.delete(seen.values().next().value);for(const fn of listeners)Promise.resolve(fn(v)).catch(()=>{});};
+  const wire=()=>{if(wired||typeof window==='undefined')return;wired=true;try{channel=new BroadcastChannel('quote-workspace-v2');channel.onmessage=receive;}catch{}window.addEventListener('storage',e=>{if(e.key==='quote-workspace-event'&&e.newValue)try{receive(JSON.parse(e.newValue));}catch{}});};
+  return {subscribe:fn=>{wire();listeners.add(fn);return()=>listeners.delete(fn);},emit:event=>{wire();const v={...event,eventId:stQuoteId('event'),at:Date.now()};receive(v);try{channel?.postMessage(v);}catch{}try{localStorage.setItem('quote-workspace-event',JSON.stringify(v));}catch{}return v;}};
+})();
+const stQuoteDocSignature=d=>{const {revision,updated,...body}=d;return JSON.stringify(body);};
+const stQuoteTargetOrigin=()=>location.protocol==='file:'?'*':location.origin;
+const stQuoteOriginOK=origin=>location.protocol==='file:'?origin==='null':origin===location.origin;
+
+function stQuoteDisplayName(item,list,key='name'){const name=item[key]||'Quotation mới',same=list.filter(x=>x[key]===item[key]).sort((a,b)=>(a.created||0)-(b.created||0)||a.id.localeCompare(b.id));return same.length>1?name+' · Bản '+(same.findIndex(x=>x.id===item.id)+1):name;}
+
+const stQuoteMatches=(doc,qid)=>!!doc&&(!qid||!doc.quotationId||doc.quotationId==='studio-'+doc.id||doc.quotationId===qid);
+
+// Logo gốc lấy từ form báo giá Base do người dùng cung cấp ngày 07/10/2026.
 const QD_BASE_LOGO="data:image/png;base64,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";
 
 // Quote Studio — dữ liệu tài liệu: loại block, bố cục, dựng tài liệu từ Quote Lab. Không dùng DOM; chạy được trong test.
@@ -312,11 +492,12 @@ const ST_TYPES={
   table:{name:'Bảng',w:12,style:'white',html:'<table><thead><tr><th>Cột 1</th><th>Cột 2</th><th>Cột 3</th></tr></thead><tbody><tr><td>Nội dung</td><td>Nội dung</td><td>Nội dung</td></tr><tr><td>Nội dung</td><td>Nội dung</td><td>Nội dung</td></tr></tbody></table>'},
   image:{name:'Ảnh',w:6,style:'plain',html:'<div class="img" contenteditable="false"><img alt=""></div><p class="s">Chú thích ảnh</p>'},
   logo:{name:'Logo',w:4,style:'plain',html:'<div class="img logo" contenteditable="false"><img alt=""></div>'},
+  appList:{name:'App trong gói',w:12,style:'plain',html:'<h3>Phụ lục · Danh sách ứng dụng</h3><p>Chọn gói giải pháp ở bảng công cụ bên phải.</p>'},
   note:{name:'Ghi chú nổi bật',w:12,style:'line',html:'<p><b>Lưu ý:</b> nội dung cần nhấn mạnh.</p>'},
   steps:{name:'Các bước',w:12,style:'plain',html:'<ol class="steps"><li><b>Việc cần làm</b> <span class="s">Người phụ trách · Ngày</span></li><li><b>Việc tiếp theo</b> <span class="s">Người phụ trách · Ngày</span></li></ol>'},
   sign:{name:'Chữ ký',w:6,style:'plain',html:'<p class="k">Đại diện</p><p class="sign-space"><br></p><p><b>Họ tên</b></p><p class="s">Chức danh</p>'},
   divider:{name:'Đường kẻ',w:12,style:'plain',html:'<hr>'},
-  spacer:{name:'Khoảng trống',w:12,style:'plain',html:'',h:12},
+  spacer:{name:'Chừa chỗ',w:12,style:'plain',html:'',h:12},
 };
 const ST_STYLES=[['plain','Trơn'],['card','Thẻ'],['white','Thẻ sáng'],['accent','Nổi bật'],['line','Viền nhấn']];
 const ST_WIDTHS=[[3,'¼'],[4,'⅓'],[6,'½'],[8,'⅔'],[9,'¾'],[12,'Cả hàng']];
@@ -737,6 +918,53 @@ function stNotes(payload){
 }
 
 
+// Chỉ dùng danh sách app trong catalog / phương án đã được Quote Lab tính.
+const ST_PACKAGES=[
+  ...WORK.map(p=>({id:'work:'+p.id,name:'Work OS · '+p.name,apps:p.apps,group:'Work OS'})),
+  ...HRM.map(p=>({id:'hrm:'+p.id,name:'HRM OS · '+p.name,apps:p.apps,group:'HRM OS'})),
+  ...CRM.map(p=>({id:'crm:'+p.id,name:'CRM OS · '+p.name,apps:p.apps,group:'CRM OS'})),
+  ...COMBOS.map(p=>({id:'combo:'+p.id,name:p.name,apps:[...new Set([...p.work,...p.hrm])],group:'Base Combo'})),
+  ...ADDONS.map(p=>({id:'addon:'+p.id,name:'Add-on · '+p.name,apps:p.apps,group:'Add-on'})),
+];
+const stLibEscape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function stPackageChoices(data){
+  const selected=(data?.options||[]).flatMap((o,oi)=>(o.r?.lines||[]).filter(l=>l.apps?.length).map((l,li)=>({id:`quote:${o.id}:${li}`,name:`${o.label||'Phương án '+(oi+1)} · ${data.scopeNames?.[l.scope]||l.scope} · ${l.name}${l.lite?' Lite':''}`,apps:[...new Set(l.apps)],group:'Trong báo giá'})));
+  return [...selected,...ST_PACKAGES];
+}
+function stAppListHTML(pkg){
+  if(!pkg)return '<h3>Phụ lục · Danh sách ứng dụng</h3><p>Chọn gói giải pháp ở bảng công cụ bên phải.</p>';
+  const apps=[...new Set(pkg.apps)];
+  return `<p class="eyebrow">Phụ lục · Danh sách ứng dụng</p><h3>${stLibEscape(pkg.name)}</h3><p class="s">${apps.length} ứng dụng · Danh sách thuộc gói được chọn</p><table class="app-list"><thead><tr><th>STT</th><th>Ứng dụng</th></tr></thead><tbody>${apps.map((a,i)=>`<tr><td>${i+1}</td><td>${stLibEscape(a)}</td></tr>`).join('')}</tbody></table>`;
+}
+// Mẫu nội dung để người soạn điền. Không tự đặt pain, kết quả, cam kết hay điều khoản.
+const ST_PRESETS=[
+  {id:'summary',group:'Tư vấn',name:'Tóm tắt đề xuất',type:'card',w:12,html:'<h3>Đề xuất cho [Khách hàng]</h3><p><b>Ưu tiên:</b> [Vấn đề đã xác nhận]</p><p><b>Cách làm:</b> [Giải pháp đề xuất]</p><p><b>Quyết định cần thống nhất:</b> [Phạm vi / phương án]</p>'},
+  {id:'pain',group:'Tư vấn',name:'Hiện trạng & pain',type:'card',html:'<h3>[Vấn đề cần giải quyết]</h3><p>[Hiện trạng và tác động tới hoạt động kinh doanh]</p><p class="s">Nguồn: [Người xác nhận · Ngày]</p>'},
+  {id:'goals',group:'Tư vấn',name:'Tiêu chí thành công',type:'table',html:'<h3>Tiêu chí thành công</h3><table><thead><tr><th>Tiêu chí</th><th>Hiện tại</th><th>Mục tiêu</th><th>Cách đo</th></tr></thead><tbody><tr><td>[Tiêu chí đã thống nhất]</td><td>[Số liệu]</td><td>[Mục tiêu]</td><td>[Nguồn / cách đo]</td></tr></tbody></table>'},
+  {id:'solution',group:'Tư vấn',name:'Pain → giải pháp',type:'table',html:'<h3>Giải pháp đề xuất</h3><table><thead><tr><th>Vấn đề</th><th>Cách giải quyết</th><th>Ứng dụng / phạm vi</th></tr></thead><tbody><tr><td>[Pain đã xác nhận]</td><td>[Cách làm đã kiểm chứng]</td><td>[App / phạm vi]</td></tr></tbody></table>'},
+  {id:'value',group:'Tư vấn',name:'Giá trị & giả định',type:'metric',html:'<p class="k">[Chỉ số giá trị]</p><p class="v">[Giá trị]</p><p class="s">[Nguồn · Cách tính · Giả định cần xác nhận]</p>'},
+  {id:'scope',group:'Triển khai',name:'Phạm vi & giới hạn',type:'list',html:'<h3>Phạm vi triển khai</h3><ul><li>[Hạng mục bao gồm]</li><li>[Hạng mục ngoài phạm vi]</li><li>[Điều kiện cần từ khách hàng]</li></ul>'},
+  {id:'roadmap',group:'Triển khai',name:'Lộ trình & PIC',type:'steps',html:'<h3>Lộ trình triển khai</h3><ol class="steps"><li><b>[Mốc đã thống nhất]</b><span class="s">[PIC · Ngày · Đầu ra]</span></li><li><b>[Mốc tiếp theo]</b><span class="s">[PIC · Ngày · Đầu ra]</span></li></ol>'},
+  {id:'acceptance',group:'Triển khai',name:'Nghiệm thu',type:'table',html:'<h3>Tiêu chí nghiệm thu</h3><table><thead><tr><th>Đầu ra</th><th>Tiêu chí</th><th>Người xác nhận</th></tr></thead><tbody><tr><td>[Đầu ra]</td><td>[Tiêu chí đã thống nhất]</td><td>[PIC]</td></tr></tbody></table>'},
+  {id:'risks',group:'Triển khai',name:'Rủi ro & điều kiện',type:'note',html:'<h3>Rủi ro và điều kiện thực hiện</h3><p><b>Rủi ro:</b> [Rủi ro đã xác định]</p><p><b>Cách xử lý:</b> [Biện pháp · PIC]</p><p><b>Cần xác nhận:</b> [Điều kiện còn thiếu]</p>'},
+  {id:'case',group:'Bằng chứng',name:'Case study',type:'card',html:'<h3>[Tên khách hàng được phép công khai]</h3><p><b>Bài toán:</b> [Bài toán tương đồng]</p><p><b>Cách làm:</b> [Giải pháp đã dùng]</p><p><b>Kết quả:</b> [Kết quả có nguồn]</p><p class="s">Nguồn: [Link · Ngày]</p>'},
+  {id:'testimonial',group:'Bằng chứng',name:'Lời khách hàng',type:'quote',html:'<p class="q">“[Trích dẫn đã xác minh]”</p><p class="s">[Người nói · Chức danh · Doanh nghiệp]</p><p class="s">Nguồn: [Link · Ngày]</p>'},
+  {id:'comparison',group:'Thương mại',name:'So sánh phương án',type:'table',html:'<h3>Lựa chọn phương án</h3><table><thead><tr><th>Tiêu chí</th><th>Phương án 1</th><th>Phương án 2</th></tr></thead><tbody><tr><td>Phạm vi</td><td>[Phạm vi]</td><td>[Phạm vi]</td></tr><tr><td>Mức đầu tư</td><td>[Số liệu từ Quote Lab]</td><td>[Số liệu từ Quote Lab]</td></tr><tr><td>Phù hợp khi</td><td>[Điều kiện]</td><td>[Điều kiện]</td></tr></tbody></table>'},
+  {id:'terms',group:'Thương mại',name:'Điều kiện báo giá',type:'card',html:'<h3>Điều kiện báo giá</h3><p><b>Hiệu lực:</b> [Ngày hết hạn đã xác nhận]</p><p><b>Thanh toán:</b> [Điều khoản đã thống nhất]</p><p><b>Thuế và dịch vụ:</b> [Phạm vi / điều khoản áp dụng]</p>'},
+  {id:'next',group:'Thương mại',name:'Bước tiếp theo',type:'steps',html:'<h3>Bước tiếp theo</h3><ol class="steps"><li><b>[Hành động cần thống nhất]</b><span class="s">[PIC · Ngày · Đầu ra cần xác nhận]</span></li></ol>'},
+  {id:'contact',group:'Thương mại',name:'Người thực hiện',type:'text',w:6,html:'<p class="k">Người thực hiện</p><h3>[Họ tên]</h3><p>[Chức danh]</p><p class="s">[Điện thoại · Email]</p>'},
+  {id:'apps',group:'Phụ lục',name:'App trong gói',type:'appList'},
+  {id:'definitions',group:'Phụ lục',name:'Thuật ngữ',type:'table',html:'<h3>Giải thích thuật ngữ</h3><table><thead><tr><th>Thuật ngữ</th><th>Ý nghĩa trong đề xuất</th></tr></thead><tbody><tr><td>[Thuật ngữ]</td><td>[Giải thích]</td></tr></tbody></table>'},
+  {id:'sign',group:'Phụ lục',name:'Xác nhận / chữ ký',type:'sign'},
+];
+function stPresetBlock(id,data){
+  const p=ST_PRESETS.find(p=>p.id===id);if(!p)return null;
+  const b=stNewBlock(p.type,{...(p.html?{html:p.html}:{}),...(p.w?{w:p.w}:{})});
+  if(p.type==='appList'){const pkg=stPackageChoices(data)[0];b.packageId=pkg?.id;b.html=stAppListHTML(pkg);}
+  return b;
+}
+
+
 // Quote Studio — trình soạn báo giá theo trang A4. Mọi chữ sửa trực tiếp; kéo tay nắm để đổi chỗ, kéo cạnh để đổi kích thước.
 // Không tự chia lại trang khi đang sửa: chỉ báo tràn và chuyển phần tràn khi người dùng bấm (hoặc một lần khi mới dựng từ Quote Lab).
 
@@ -762,12 +990,18 @@ const stEsc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':
 const st$=s=>document.querySelector(s),st$$=s=>[...document.querySelectorAll(s)];
 
 // Lưu trữ: IndexedDB (đủ chỗ cho ảnh); mỗi tài liệu một bản ghi.
-const stStore=(()=>{
-  let dbp=null;
-  const open=()=>dbp??=new Promise((res,rej)=>{try{const r=indexedDB.open('quote-studio',1);r.onupgradeneeded=()=>{r.result.createObjectStore('docs',{keyPath:'id'});r.result.createObjectStore('kv');};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}catch(e){rej(e);}});
-  const run=async(store,mode,fn)=>{const db=await open();return new Promise((res,rej)=>{const t=db.transaction(store,mode),req=fn(t.objectStore(store));t.oncomplete=()=>res(req?.result);t.onerror=()=>rej(t.error);t.onabort=()=>rej(t.error);});};
-  return {put:d=>run('docs','readwrite',s=>s.put(d)),get:id=>run('docs','readonly',s=>s.get(id)),del:id=>run('docs','readwrite',s=>s.delete(id)),all:()=>run('docs','readonly',s=>s.getAll()),setKV:(k,v)=>run('kv','readwrite',s=>s.put(v,k)),getKV:k=>run('kv','readonly',s=>s.get(k))};
-})();
+const stStore={put:d=>stQuoteRepo.saveDoc(d),get:stQuoteRepo.getDoc,del:async id=>{const old=await stQuoteRepo.deleteDoc(id);stQuoteEvents.emit({type:'doc-deleted',docId:id,quotationId:old?.quotationId});},all:stQuoteRepo.allDocs,setKV:stQuoteRepo.setKV,getKV:stQuoteRepo.getKV};
+const stRoute=new URL(location.href),stReadonly=stRoute.searchParams.get('preview')==='1',stWriter=stQuoteId('tab');
+let stBoot=Promise.resolve(),stSaveQueue=Promise.resolve(),stRequestQueue=Promise.resolve(),stPendingSource=null;
+const stChildWindows=new Set(),stSavedSnapshots=new WeakMap();
+function stRememberDoc(d){if(stReadonly)return;stQuoteSession.set('quote-studio-current',d.id);try{const url=new URL(location.href);url.searchParams.set('doc',d.id);if(d.quotationId)url.searchParams.set('quotation',d.quotationId);else url.searchParams.delete('quotation');history.replaceState(null,'',url);}catch{}}
+function stSendSaved(d){
+  stQuoteEvents.emit({type:'doc-saved',docId:d.id,quotationId:d.quotationId,revision:d.revision,writer:stWriter});
+  try{window.opener?.postMessage({kind:'quote-studio-saved',doc:d,docId:d.id,quotationId:d.quotationId,revision:d.revision},stQuoteTargetOrigin());}catch{}
+}
+function stPreviewHeight(){if(!stReadonly)return;const pages=st$('#st-pages');if(!pages)return;pages.style.zoom=String(Math.min(1,Math.max(.2,(innerWidth-24)/793.7)));requestAnimationFrame(()=>{try{window.parent.postMessage({kind:'quote-studio-preview-ready',docId:stDoc?.id||stRoute.searchParams.get('doc'),quotationId:stRoute.searchParams.get('quotation'),height:Math.ceil(pages.getBoundingClientRect().bottom+20),revision:stDoc?.revision||0,needsData:!stDoc},stQuoteTargetOrigin());}catch{}});}
+async function stReadPreview(d){if(!d||d.id!==stRoute.searchParams.get('doc')||!stQuoteMatches(d,stRoute.searchParams.get('quotation')))return;if(stDoc?.id===d.id&&stDoc?.revision===d.revision&&stQuoteDocSignature(stDoc)===stQuoteDocSignature(d))return;stDoc=stPrepareDoc(d);stSel=null;document.body.classList.add('st-preview-readonly','st-preview');stRender();await stSettle();stPreviewHeight();}
+
 
 // Làm sạch HTML khi mở file dự án: bỏ script, sự kiện, link javascript.
 function stSanitize(html){
@@ -785,10 +1019,10 @@ const stBlockEl=bid=>st$(`.st-b[data-bid="${bid}"]`);
 const stPageEl=pid=>st$(`.st-page[data-pid="${pid}"]`);
 
 function stToast(msg){const t=st$('#st-toast');t.textContent=msg;t.hidden=false;clearTimeout(stToast.t);stToast.t=setTimeout(()=>t.hidden=true,3200);}
-function stDialog(title,html,buttons){return new Promise(res=>{const d=st$('#st-dialog');d.innerHTML=`<div class="st-dlg" role="dialog" aria-modal="true"><h3>${title}</h3><div class="st-dlg-body">${html}</div><div class="st-dlg-b">${buttons.map((b,i)=>`<button type="button" data-i="${i}" class="${b.primary?'primary':''}${b.danger?' danger':''}">${b.label}</button>`).join('')}</div></div>`;d.hidden=false;d.onclick=e=>{const b=e.target.closest('[data-i]');if(b||e.target===d){d.hidden=true;d.onclick=null;res(b?buttons[+b.dataset.i].value:null);}};});}
+function stDialog(title,html,buttons){return new Promise(res=>{const d=st$('#st-dialog');d.innerHTML=`<div class="st-dlg" role="dialog" aria-modal="true"><h3>${title}</h3><div class="st-dlg-body">${html}</div><div class="st-dlg-b">${buttons.map((b,i)=>`<button type="button" data-i="${i}" class="${b.primary?'primary':''}${b.danger?' danger':''}">${b.label}</button>`).join('')}</div></div>`;d.hidden=false;d.onclick=e=>{const b=e.target.closest('[data-i]');if(b||e.target===d){d.hidden=true;d.onclick=null;res(b?(/^\d+$/.test(b.dataset.i)?buttons[+b.dataset.i]?.value:b.dataset.i):null);}};});}
 
 // ---------- Lịch sử: chụp trạng thái sau mỗi thao tác; gõ chữ gom theo nhịp nghỉ. ----------
-const stSnap=()=>JSON.stringify({title:stDoc.title,header:stDoc.header,footer:stDoc.footer,pages:stDoc.pages,dismissed:stDoc.dismissed||[]});
+const stSnap=()=>JSON.stringify({title:stDoc.title,header:stDoc.header,footer:stDoc.footer,pages:stDoc.pages,dismissed:stDoc.dismissed||[],data:stDoc.data||null,sourceSignature:stDoc.sourceSignature||null});
 function stHistReset(){stHist={undo:[],redo:[],last:stDoc?stSnap():null};stHistUI();}
 function stCommit(){clearTimeout(stTyping);stTyping=0;if(!stDoc)return;const s=stSnap();if(s===stHist.last)return;stHist.undo.push(stHist.last);if(stHist.undo.length>120)stHist.undo.shift();stHist.redo=[];stHist.last=s;stHistUI();stScheduleSave();}
 function stTypingCommit(){clearTimeout(stTyping);stTyping=setTimeout(stCommit,700);}
@@ -800,13 +1034,28 @@ function stHistUI(){st$('#st-undo').disabled=!stHist.undo.length;st$('#st-redo')
 
 // ---------- Lưu ----------
 function stSaveStatus(t){st$('#st-save').textContent=t;}
+window.addEventListener('quote-store-blocked',()=>stSaveStatus('Lưu rồi tải lại tab Studio phiên bản cũ để mở kho.'));
 function stScheduleSave(){clearTimeout(stSaveT);stSaveStatus('Đang lưu…');stSaveT=setTimeout(stSaveNow,500);}
-async function stSaveNow(){clearTimeout(stSaveT);if(!stDoc)return;stDoc.updated=Date.now();try{await stStore.put(stDoc);await stStore.setKV('current',stDoc.id);stSaveStatus('Đã lưu '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}));}catch(e){stSaveStatus('Chưa lưu được trên trình duyệt · dùng Tệp → Lưu file dự án');}}
+async function stSaveNow(){
+  clearTimeout(stSaveT);if(!stDoc||stReadonly)return;const active=stDoc,snapshot=stQuoteClone(active);if(stSavedSnapshots.get(active)===stQuoteDocSignature(snapshot)){stSendSaved(snapshot);return stSaveQueue;}
+  stSaveQueue=stSaveQueue.catch(()=>{}).then(async()=>{
+    let copy={...snapshot,id:active.id,quotationId:active.quotationId||'studio-'+active.id,revision:active.revision||0};if(snapshot.id!==active.id)copy.title=active.title;
+    try{
+      let saved;
+      try{saved=await stQuoteRepo.saveDoc(copy,active.revision||0);}catch(e){if(e.name!=='QuotationConflict')throw e;copy={...stQuoteClone(active),id:stQuoteId('d'),quotationId:stQuoteId('q'),title:active.title+' · Bản riêng',created:Date.now(),revision:0};const original=active.quotationId&&await stQuoteRepo.getDraft(active.quotationId);if(original)await stQuoteRepo.putDraft({...original,id:copy.quotationId,studioDocId:null,created:copy.created,state:original.state?{...original.state,quotationId:copy.quotationId,studioDocId:null}:undefined});saved=await stQuoteRepo.saveDoc(copy,0);Object.assign(active,{id:saved.id,quotationId:saved.quotationId,title:saved.title});if(stDoc===active){stRememberDoc(active);stRender();stToast('Tab khác đã cập nhật bản gốc. Nội dung vừa sửa được giữ trong một bản riêng.');}}
+      stSavedSnapshots.set(active,stQuoteDocSignature(saved));active.revision=saved.revision;active.quotationId=saved.quotationId;active.updated=saved.updated;
+      if(stDoc===active){stRememberDoc(active);stSaveStatus('Đã lưu '+new Date().toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}));}
+      stSendSaved(saved);
+    }catch(e){if(stDoc===active)stSaveStatus('Chưa lưu được · dùng Tệp → Lưu file dự án');}
+  });return stSaveQueue;
+}
+
 
 // ---------- Vẽ ----------
 function stBlockHTML(b){
-  const editable=!['spacer','divider'].includes(b.type);
-  return `<div class="st-b st-t-${b.type} st-s-${b.style}${stSel?.bid===b.id?' is-sel':''}${b.focus?' is-focus':''}" data-bid="${b.id}" style="--w:${b.w}${b.h?`;--h:${b.h}mm`:''}"><div class="st-c"${editable?' contenteditable="true"':''} spellcheck="false">${b.html}</div><button type="button" class="st-handle" title="Kéo để di chuyển khối" aria-label="Kéo để di chuyển khối" tabindex="-1">⠿</button><span class="st-rw" title="Kéo để đổi độ rộng"></span><span class="st-rh" title="Kéo để đổi chiều cao · bấm đúp để về tự động"></span><div class="st-mini"><button type="button" data-act="dup" title="Nhân bản khối" tabindex="-1">⧉</button><button type="button" data-act="del" title="Xoá khối" tabindex="-1">✕</button></div></div>`;
+  const editable=!stReadonly&&!['spacer','divider'].includes(b.type);
+  const size=stLogoSize(b),logo=stIsLogo(b)?`;--logo-w:${size.w}mm;--logo-h:${size.h}mm;--logo-align:${['start','center','end'].includes(b.logoAlign)?b.logoAlign:'start'}`:'';
+  return `<div class="st-b st-t-${b.type} st-s-${b.style}${logo&&b.logoFrame!==false?' st-logo-frame':''}${stSel?.bid===b.id?' is-sel':''}${b.focus?' is-focus':''}" data-bid="${b.id}" style="--w:${b.w}${b.h?`;--h:${b.h}mm`:''}${logo}"><div class="st-c"${editable?' contenteditable="true"':''} spellcheck="false">${b.html}</div><button type="button" class="st-handle" title="Kéo để di chuyển khối" aria-label="Kéo để di chuyển khối" tabindex="-1">⠿</button><span class="st-rw" title="Kéo để đổi độ rộng"></span><span class="st-rh" title="Kéo để đổi chiều cao · bấm đúp để về tự động"></span><div class="st-mini"><button type="button" data-act="dup" title="Nhân bản khối" tabindex="-1">⧉</button><button type="button" data-act="del" title="Xoá khối" tabindex="-1">✕</button></div></div>`;
 }
 function stPageHTML(p,i){
   const n=stDoc.pages.length,chrome=p.chrome!==false;
@@ -822,7 +1071,7 @@ function stRender(){
   st$('#st-title').value=stDoc.title||'';
   const pages=st$('#st-pages');
   pages.innerHTML=stDoc.pages.map(stPageHTML).join('')+`<div class="st-addpage"><button type="button" data-act="page-add-end">＋ Thêm trang</button></div>`;
-  stHydrate(pages);stPageList();stPanel();stScheduleMeasure();
+  stHydrate(pages);stPageList();if(!stReadonly){stPanel();stScheduleMeasure();}else stPreviewHeight();
 }
 function stRenderPage(pid){
   const p=stPage(pid),el=stPageEl(pid);if(!p||!el){stRender();return;}
@@ -842,41 +1091,64 @@ function stRenderEmpty(){
   document.body.classList.add('st-empty');
   st$('#st-title').value='';st$('#st-pagelist').innerHTML='';st$('#st-panel').innerHTML='';
   st$('#st-pages').innerHTML=`<div class="st-welcome"><h1>Quote Studio</h1><p>Soạn báo giá theo trang A4: sửa chữ trực tiếp, kéo thả khối, chọn bố cục bằng hình.</p><ol><li>Trong <b>Quote Lab</b>, mở <b>Soạn báo giá</b>, chọn phương án, tải hồ sơ khách hàng và use-case.</li><li>Bấm <b>Mở trong Quote Studio</b>. Studio tự dựng bản báo giá.</li></ol><div class="st-row"><button type="button" class="primary" data-act="doc-new">Tài liệu trống</button><button type="button" data-act="doc-open-file">Mở file dự án (.json)</button></div><div id="st-recent"></div></div>`;
-  stStore.all().then(list=>{const el=st$('#st-recent');if(!el||!list?.length)return;el.innerHTML='<h4>Mở lại</h4>'+list.sort((a,b)=>b.updated-a.updated).slice(0,8).map(d=>`<button type="button" class="st-recent" data-open="${d.id}"><b>${stEsc(d.title||'Không tên')}</b><span>${new Date(d.updated).toLocaleString('vi-VN')}</span></button>`).join('');}).catch(()=>{});
+  stStore.all().then(list=>{const el=st$('#st-recent');if(!el||!list?.length)return;el.innerHTML='<h4>Mở lại</h4>'+list.sort((a,b)=>b.updated-a.updated).slice(0,8).map(d=>`<button type="button" class="st-recent" data-open="${d.id}"><b>${stEsc(stQuoteDisplayName(d,list,'title'))}</b><span>${new Date(d.updated).toLocaleString('vi-VN')}</span></button>`).join('');}).catch(()=>{});
 }
 
 // ---------- Bảng thuộc tính bên phải ----------
+const stPanelOpen={};
+let stLibrary=[],stTextRange=null;
+const ST_COLORS=[['#0E1430','Mực đậm'],['#FFFFFF','Trắng'],['#454E70','Xám đậm'],['#BCC4E8','Xám sáng'],['#3563E9','Xanh Base'],['#8FB0FF','Xanh sáng'],['#15803D','Xanh lá'],['#B45309','Cam'],['#C4313A','Đỏ'],['#7C3AED','Tím']];
+const stIsLogo=b=>b.type==='logo'||/class=["'][^"']*\blogo\b/.test(b.html);
+const stLogoSize=b=>({w:Math.max(8,Math.min(180,+b.logoW||32)),h:Math.max(8,Math.min(100,+b.logoH||22))});
+function stSection(key,title,body,open=false){return `<details class="st-sec st-toggle" data-section="${key}"${(stPanelOpen[key]??open)?' open':''}><summary>${title}</summary><div class="st-section-body">${body}</div></details>`;}
+function stLibraryHTML(){
+  const groups=[...new Set(ST_PRESETS.map(p=>p.group))];
+  return `<p class="st-hint">Bấm để thêm sau khối đang chọn, hoặc kéo mẫu vào vị trí cần đặt.</p>${groups.map(g=>`<details class="st-library-group" data-section="lib-${g}"${stPanelOpen['lib-'+g]?' open':''}><summary>${g}</summary><div class="st-lib st-presets">${ST_PRESETS.filter(p=>p.group===g).map(p=>`<button type="button" class="st-libi" data-preset="${p.id}" title="${stEsc(p.name)}">${ST_ICONS[p.type]||ST_ICONS.table}<span>${p.name}</span></button>`).join('')}</div></details>`).join('')}
+<details class="st-library-group" data-section="lib-basic"${stPanelOpen['lib-basic']?' open':''}><summary>Tạo khối cơ bản</summary><div class="st-lib">${Object.entries(ST_TYPES).filter(([k])=>!['spacer','divider','appList'].includes(k)).map(([k,t])=>`<button type="button" class="st-libi" data-type="${k}">${ST_ICONS[k]||''}<span>${t.name}</span></button>`).join('')}</div></details>
+<details class="st-library-group" data-section="lib-saved"${stPanelOpen['lib-saved']?' open':''}><summary>Khối đã lưu (${stLibrary.length})</summary>${stLibrary.length?stLibrary.map(x=>`<div class="st-saved-row"><button type="button" data-library="${stEsc(x.id)}">＋ ${stEsc(x.name)}</button><button type="button" data-library-del="${stEsc(x.id)}" aria-label="Xoá mẫu ${stEsc(x.name)}">✕</button></div>`).join(''):'<p class="st-hint">Chọn một khối rồi bấm “Lưu vào thư viện” để dùng lại trong quotation khác.</p>'}</details>
+<details class="st-library-group" data-section="lib-layout"${stPanelOpen['lib-layout']?' open':''}><summary>Bố cục nâng cao</summary><p class="st-hint">“Chừa chỗ” là vùng trắng có chiều cao cố định để đẩy nội dung phía sau xuống. Dùng khi cần chừa chỗ ký hoặc canh vị trí; khoảng cách giữa các khối đã được xử lý sẵn.</p><div class="st-lib">${['divider','spacer'].map(k=>`<button type="button" class="st-libi" data-type="${k}">${ST_ICONS[k]}<span>${ST_TYPES[k].name}</span></button>`).join('')}</div></details>`;
+}
 function stPanel(){
   const el=st$('#st-panel');if(!stDoc){el.innerHTML='';return;}
-  let h=`<section class="st-sec"><h4>Thêm khối <span class="st-muted">bấm hoặc kéo vào trang</span></h4><div class="st-lib">${Object.entries(ST_TYPES).map(([k,t])=>`<button type="button" class="st-libi" data-type="${k}" title="${t.name}">${ST_ICONS[k]||''}<span>${t.name}</span></button>`).join('')}</div></section>`;
-  const r=stSel?.bid&&stFind(stSel.bid);
-  if(r){
-    const b=r.b,bg=r.p.bg,hasTable=/<table/.test(b.html),hasImg=/class="img/.test(b.html);
-    h+=`<section class="st-sec"><h4>${stEsc(ST_TYPES[b.type]?.name||'Khối')} <span class="st-muted">trang ${stDoc.pages.indexOf(r.p)+1}</span></h4>
-<p class="st-lbl">Độ rộng <span class="st-muted">· hoặc kéo cạnh phải của khối</span></p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${b.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div>
-<p class="st-lbl">Kiểu khối</p><div class="st-styles">${ST_STYLES.map(([s,l])=>`<button type="button" data-style="${s}" class="${b.style===s?'on':''}"><i class="st-swatch" data-bg="${bg}"><b class="st-s-${s}"></b></i><span>${l}</span></button>`).join('')}</div>
-<div class="st-focus-controls"><button type="button" data-act="focus" aria-pressed="${!!b.focus}">${b.focus?'Đang là tiêu điểm · bỏ tiêu điểm':'Đặt làm tiêu điểm trang'}</button><button type="button" data-act="style-all">Áp kiểu này cho mọi khối ${stEsc(ST_TYPES[b.type]?.name||b.type)}</button></div>
-<p class="st-lbl">Chiều cao</p><div class="st-row">${b.h?`<span>${b.h} mm</span><button type="button" data-act="h-auto">Về tự động</button>`:'<span class="st-muted">Tự động theo nội dung · kéo cạnh dưới để đặt</span>'}</div>
-<p class="st-lbl">Chữ <span class="st-muted">· bôi đen rồi bấm</span></p><div class="st-fmt"><button type="button" data-cmd="bold" title="Đậm"><b>B</b></button><button type="button" data-cmd="italic" title="Nghiêng"><i>I</i></button><button type="button" data-cmd="underline" title="Gạch chân"><u>U</u></button><button type="button" data-cmd="hl" title="Màu nhấn"><span class="st-hlbtn">A</span></button><button type="button" data-cmd="insertUnorderedList" title="Danh sách chấm">•≡</button><button type="button" data-cmd="insertOrderedList" title="Danh sách số">1≡</button><button type="button" data-cmd="justifyLeft" title="Căn trái">⇤</button><button type="button" data-cmd="justifyCenter" title="Căn giữa">↔</button><button type="button" data-cmd="justifyRight" title="Căn phải">⇥</button><button type="button" data-cmd="removeFormat" title="Bỏ định dạng">⌫</button></div>
-${hasTable?`<p class="st-lbl">Bảng <span class="st-muted">· đặt con trỏ vào một ô</span></p><div class="st-row"><button type="button" data-act="row-add">＋ Dòng</button><button type="button" data-act="col-add">＋ Cột</button><button type="button" data-act="row-del">− Dòng</button><button type="button" data-act="col-del">− Cột</button></div>`:''}
-${hasImg||b.type==='image'||b.type==='logo'?`<p class="st-lbl">Ảnh</p><div class="st-row"><button type="button" data-act="img-pick">Chọn ảnh…</button><button type="button" data-act="img-fit">Vừa khung / Lấp đầy</button><button type="button" data-act="img-clear">Bỏ ảnh</button></div>`:''}
-<div class="st-row st-sep"><button type="button" data-act="dup">⧉ Nhân bản</button><button type="button" data-act="del" class="danger">✕ Xoá khối</button></div>
-${b.src?'<p class="st-hint">Khối lấy số liệu từ Quote Lab. Gửi lại từ Quote Lab và chọn “Cập nhật số liệu” sẽ thay nội dung khối này.</p>':''}</section>`;
-  }else if(stSel?.pid&&stPage(stSel.pid)){
-    const p=stPage(stSel.pid),i=stDoc.pages.indexOf(p);
-    h+=`<section class="st-sec"><h4>Trang ${i+1}</h4>
+  el.querySelectorAll('details[data-section][data-user-toggle]').forEach(d=>stPanelOpen[d.dataset.section]=d.open);
+  const r=stSel?.bid&&stFind(stSel.bid),p=r?.p||stPage(stSel?.pid||stCurrentPage());
+  let h=stSection('document','Tài liệu',`<p class="st-hint">Các quotation được lưu riêng. Tên và thao tác lưu / xuất nằm trên thanh trên cùng.</p><button type="button" data-act="docs">Các quotation…</button>`);
+  if(p){
+    const i=stDoc.pages.indexOf(p);
+    h+=stSection('page',`Trang ${i+1} · nền & bố cục`,`
 <p class="st-lbl">Nền trang</p><div class="st-bgs">${[['dark','Tối'],['light','Sáng']].map(([v,l])=>`<button type="button" data-bg="${v}" class="${p.bg===v?'on':''}"><i class="st-bgthumb" data-bg="${v}"></i><span>${l}</span></button>`).join('')}</div>
-<p class="st-lbl">Bố cục <span class="st-muted">· xếp lại độ rộng các khối, giữ nguyên nội dung</span></p><div class="st-layouts">${ST_LAYOUTS.map(L=>`<button type="button" data-layout="${L.id}" class="${p.layout===L.id?'on':''}" title="${L.name}">${stLayoutThumb(L)}<span>${L.name}</span></button>`).join('')}</div>
-<label class="st-check"><input type="checkbox" data-act="chrome"${p.chrome!==false?' checked':''}> Hiện đầu trang và chân trang</label>
-<div class="st-row st-sep"><button type="button" data-act="page-add">＋ Trang sau</button><button type="button" data-act="page-dup">⧉ Nhân bản trang</button><button type="button" data-act="page-del" class="danger">✕ Xoá trang</button></div></section>`;
-  }else{
-    h+=`<section class="st-sec"><h4>Tài liệu</h4><p class="st-hint">Bấm vào một khối để sửa, hoặc bấm vào vùng trống của trang để đổi nền và bố cục.</p>
+<p class="st-lbl">Bố cục <span class="st-muted">· đổi độ rộng, giữ nội dung</span></p><div class="st-layouts">${ST_LAYOUTS.map(L=>`<button type="button" data-layout="${L.id}" class="${p.layout===L.id?'on':''}" title="${L.name}">${stLayoutThumb(L)}<span>${L.name}</span></button>`).join('')}</div>
+<div class="st-row st-sep"><button type="button" data-act="page-add">＋ Trang sau</button><button type="button" data-act="page-dup">⧉ Nhân bản</button><button type="button" data-act="page-del" class="danger">✕ Xoá trang</button></div>`,!r);
+    h+=stSection('chrome','Đầu trang & chân trang',`<label class="st-check"><input type="checkbox" data-act="chrome"${p.chrome!==false?' checked':''}> Hiện trên trang ${i+1}</label><p class="st-hint">Nội dung dưới đây dùng chung cho toàn bộ tài liệu.</p>
 <label class="st-field"><span>Đầu trang · trái</span><input data-doc="header.left" value="${stEsc(stDoc.header.left)}"></label>
 <label class="st-field"><span>Đầu trang · phải</span><input data-doc="header.right" value="${stEsc(stDoc.header.right)}"></label>
-<label class="st-field"><span>Chân trang</span><input data-doc="footer.left" value="${stEsc(stDoc.footer.left)}"></label></section>`;
+<label class="st-field"><span>Chân trang</span><input data-doc="footer.left" value="${stEsc(stDoc.footer.left)}"></label>`);
   }
-  h+=`<section class="st-sec" id="st-checks"></section>`;
-  el.innerHTML=h;stChecks();
+  h+=stSection('library','＋ Thêm khối · thư viện mẫu',stLibraryHTML());
+  if(r){
+    const b=r.b,bg=r.p.bg,hasTable=/<table/.test(b.html),hasImg=/class="img/.test(b.html),logo=stIsLogo(b),size=stLogoSize(b);
+    h+=stSection('block',`Khối · ${stEsc(ST_TYPES[b.type]?.name||'Nội dung')}`,`
+<div class="st-row"><button type="button" data-act="dup">⧉ Nhân bản</button><button type="button" data-act="del" class="danger">✕ Xoá khối</button><button type="button" data-act="library-save">Lưu vào thư viện</button></div>
+<p class="st-lbl">Độ rộng <span class="st-muted">· kéo cạnh phải</span></p><div class="st-widths">${ST_WIDTHS.map(([w,l])=>`<button type="button" data-w="${w}" class="${b.w===w?'on':''}" title="${w}/12 cột"><i style="--f:${w/12}"></i><span>${l}</span></button>`).join('')}</div>
+<p class="st-lbl">Kiểu khối</p><div class="st-styles">${ST_STYLES.map(([s,l])=>`<button type="button" data-style="${s}" class="${b.style===s?'on':''}"><i class="st-swatch" data-bg="${bg}"><b class="st-s-${s}"></b></i><span>${l}</span></button>`).join('')}</div>
+<div class="st-focus-controls"><button type="button" data-act="focus" aria-pressed="${!!b.focus}">${b.focus?'Đang là tiêu điểm · bỏ tiêu điểm':'Đặt làm tiêu điểm trang'}</button><button type="button" data-act="style-all">Áp kiểu này cho mọi khối ${stEsc(ST_TYPES[b.type]?.name||b.type)}</button></div>
+<p class="st-lbl">Chiều cao khối</p><div class="st-row">${b.h?`<span>${b.h} mm</span><button type="button" data-act="h-auto">Về tự động</button>`:'<span class="st-muted">Tự động theo nội dung · kéo cạnh dưới để đặt</span>'}</div>
+${b.src?'<p class="st-hint">Khối có số liệu liên kết Quote Lab. Cập nhật số liệu sẽ thay nội dung khối này.</p>':''}`,true);
+    if(b.type==='appList'){
+      const choices=stPackageChoices(stDoc.data),current=choices.find(x=>x.id===b.packageId),groups=[...new Set(choices.map(x=>x.group))];
+      h+=stSection('package','Phụ lục · chọn gói',`<label class="st-field"><span>Gói giải pháp</span><select data-package><option value="">Chọn gói…</option>${!current&&b.packageId?'<option value="'+stEsc(b.packageId)+'" selected>Gói đã lưu · giữ nội dung hiện tại</option>':''}${groups.map(g=>`<optgroup label="${stEsc(g)}">${choices.filter(x=>x.group===g).map(x=>`<option value="${stEsc(x.id)}"${x.id===b.packageId?' selected':''}>${stEsc(x.name)}</option>`).join('')}</optgroup>`).join('')}</select></label><p class="st-hint">Chọn gói sẽ tạo lại bảng app của khối này. Có thể sửa chữ sau đó hoặc hoàn tác.</p>`,true);
+    }
+    const typography=stSection('text','Chữ & màu sắc',`
+<p class="st-hint">Bôi đen để định dạng một đoạn. Chọn màu khi chưa bôi đen sẽ đổi màu chữ toàn khối.</p><div class="st-fmt">${[['bold','<b>B</b>','Đậm'],['italic','<i>I</i>','Nghiêng'],['underline','<u>U</u>','Gạch chân'],['insertUnorderedList','•≡','Danh sách chấm'],['insertOrderedList','1≡','Danh sách số'],['justifyLeft','⇤','Căn trái'],['justifyCenter','↔','Căn giữa'],['justifyRight','⇥','Căn phải'],['removeFormat','⌫','Bỏ định dạng']].map(([c,l,title])=>`<button type="button" data-cmd="${c}" title="${title}">${l}</button>`).join('')}</div>
+<p class="st-lbl">Màu chữ</p><div class="st-colors">${ST_COLORS.map(([c,n])=>`<button type="button" data-color="${c}" style="--color:${c}" aria-label="Màu chữ · ${n}" title="${n}"></button>`).join('')}</div><div class="st-color-custom"><label>Màu khác <input type="color" data-custom-color value="#3563e9" aria-label="Màu chữ tuỳ chọn"></label><button type="button" data-act="color-reset">Màu theo mẫu</button></div>`,true);
+    if(hasTable)h+=stSection('table','Bảng · dòng & cột',`<p class="st-hint">Đặt con trỏ vào ô cần sửa. Cột mới được chia đều chiều rộng và tự chọn để nhập.</p><div class="st-row"><button type="button" data-act="row-add">＋ Dòng</button><button type="button" data-act="col-add">＋ Cột</button><button type="button" data-act="row-del">− Dòng</button><button type="button" data-act="col-del">− Cột</button></div>`,true);
+    if(hasImg||['image','logo'].includes(b.type))h+=stSection('image',logo?'Logo · kích thước ảnh':'Ảnh',`
+<div class="st-row"><button type="button" data-act="img-pick">Chọn ảnh…</button>${logo?'':'<button type="button" data-act="img-logo">Dùng như logo</button>'}<button type="button" data-act="img-fit">Vừa khung / Lấp đầy</button><button type="button" data-act="img-clear">Bỏ ảnh</button></div>
+${logo?`<div class="st-dimensions"><label class="st-field"><span>Rộng logo (mm)</span><input type="number" data-logo="w" min="8" max="180" value="${size.w}"></label><label class="st-field"><span>Cao logo (mm)</span><input type="number" data-logo="h" min="8" max="100" value="${size.h}"></label></div><label class="st-field"><span>Vị trí trong khối</span><select data-logo-align>${[['start','Trái'],['center','Giữa'],['end','Phải']].map(([v,l])=>`<option value="${v}"${(b.logoAlign||'start')===v?' selected':''}>${l}</option>`).join('')}</select></label><label class="st-check"><input type="checkbox" data-logo-frame${b.logoFrame!==false?' checked':''}> Nền trắng chung cho khung logo</label><button type="button" data-act="logo-all" class="st-full">Áp kích thước này cho tất cả logo</button><p class="st-hint">Khung mặc định 32 × 22 mm. Ảnh giữ tỷ lệ khi chọn “Vừa khung”. Độ rộng khối trên lưới được chỉnh riêng.</p>`:''}`,true);
+    h+=typography;
+  }else h+='<p class="st-panel-hint">Chọn một khối trên trang để sửa nội dung, bảng, ảnh và màu chữ.</p>';
+  h+=stSection('checks','Kiểm tra trước khi gửi','<div id="st-checks"></div>',true);
+  el.innerHTML=h;el.dataset.pid=p?.id||'';el.querySelectorAll('details[data-section]').forEach(d=>{if(d.dataset.section in stPanelOpen)d.dataset.userToggle='1';});stChecks();
 }
 // Kiểm tra thuần nhận dữ liệu và số đo; giao diện chỉ hiển thị và dẫn tới nội dung.
 function stChecks(){
@@ -884,7 +1156,7 @@ function stChecks(){
   const all=stLint(stDoc,stMeasurements),dismissed=new Set(stDoc.dismissed||[]),visible=all.filter(x=>x.level!=='suggestion'||!dismissed.has(x.id));
   const counts={error:0,warning:0,suggestion:0};visible.forEach(x=>counts[x.level]++);
   const groups=[['layout','Bố cục'],['content','Nội dung'],['source','Lưu ý từ Quote Lab']],names={error:'Lỗi',warning:'Cảnh báo',suggestion:'Gợi ý'};
-  el.innerHTML=`<h4>Kiểm tra trước khi gửi</h4><p class="st-check-summary" aria-live="polite">${counts.error} lỗi · ${counts.warning} cảnh báo · ${counts.suggestion} gợi ý</p>${groups.map(([group,name])=>{
+  el.innerHTML=`<p class="st-check-summary" aria-live="polite">${counts.error} lỗi · ${counts.warning} cảnh báo · ${counts.suggestion} gợi ý</p>${groups.map(([group,name])=>{
     const items=visible.filter(x=>x.group===group);if(!items.length)return '';
     return `<div class="st-check-group"><h5>${name}</h5><ul class="st-checks">${items.map(x=>`<li class="${x.level==='error'?'bad':x.level}" data-check-code="${x.code}"><button type="button" class="st-check-link"${x.bid?` data-goto-block="${stEsc(x.bid)}"`:x.pid?` data-goto-page="${stEsc(x.pid)}"`:''}><span class="st-check-level">${names[x.level]}</span>${stEsc(x.message)}</button>${x.level==='suggestion'?`<button type="button" class="st-dismiss" data-dismiss="${stEsc(x.id)}" aria-label="Ẩn gợi ý">Ẩn</button>`:''}</li>`).join('')}</ul></div>`;
   }).join('')}${visible.length?'':'<p class="st-hint">Không có gì cần xem thêm.</p>'}${all.some(x=>x.level==='suggestion'&&dismissed.has(x.id))?'<div class="st-check-options"><button type="button" data-act="checks-restore">Hiện lại gợi ý đã ẩn</button></div>':''}`;
@@ -899,6 +1171,7 @@ function stSyncTypeStyle(bid){
 
 // ---------- Chọn ----------
 function stSetSel(s,{panel=true}={}){
+  if(stSel?.bid!==s?.bid)stTextRange=null;
   stSel=s;
   st$$('.st-b.is-sel,.st-page.is-sel').forEach(e=>e.classList.remove('is-sel'));
   if(s?.bid)stBlockEl(s.bid)?.classList.add('is-sel');else if(s?.pid)stPageEl(s.pid)?.classList.add('is-sel');
@@ -922,17 +1195,51 @@ function stFromDOM(bEl){
 }
 
 // ---------- Thao tác khối & trang ----------
-function stInsert(type,at){
+function stInsert(type,at,prepared){
   stFlush();if(!stDoc.pages.length)stDoc.pages.push(stNewPage('light'));
-  const b=stNewBlock(type);let pid,index;
+  const b=prepared||stNewBlock(type);let pid,index;
+  if(type==='appList'&&!prepared){const pkg=stPackageChoices(stDoc.data)[0];b.packageId=pkg?.id;b.html=stAppListHTML(pkg);}
   if(at){pid=at.pid;index=at.index;}
   else if(stSel?.bid&&stFind(stSel.bid)){const r=stFind(stSel.bid);pid=r.p.id;index=r.i+1;}
   else{pid=stSel?.pid&&stPage(stSel.pid)?stSel.pid:stCurrentPage();index=stPage(pid).blocks.length;}
   stPage(pid).blocks.splice(index,0,b);stSel={pid,bid:b.id};stRenderPage(pid);stPanel();stCommit();
   const el=stBlockEl(b.id);el?.scrollIntoView({block:'nearest',behavior:'smooth'});
-  if(type==='image'||type==='logo')stPickImage(b.id);else{const c=el?.querySelector('[contenteditable]'),first=c&&[...c.querySelectorAll('h1,h2,h3,p,li,td,th')].find(x=>x.textContent.trim()&&!x.querySelector('p,li,td'));if(c){c.focus();if(first)stSelectAllIn(first);}}
+  if(!prepared&&(type==='image'||type==='logo'))stPickImage(b.id);else{const c=el?.querySelector('[contenteditable]'),first=c&&[...c.querySelectorAll('h1,h2,h3,p,li,td,th')].find(x=>x.textContent.trim()&&!x.querySelector('p,li,td'));if(c){c.focus();if(first)stSelectAllIn(first);}}
 }
 function stSelectAllIn(el){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);}
+function stInsertPreset(id,at){const b=stPresetBlock(id,stDoc?.data);if(b)stInsert(b.type,at,b);}
+async function stSaveLibrary(){
+  stFlush();const b=stSel?.bid&&stFind(stSel.bid)?.b;if(!b)return;
+  if(b.src){stToast('Khối số liệu liên kết lấy theo từng quotation. Dùng mẫu trong thư viện để tránh mang giá của khách cũ sang bản mới.');return;}
+  const v=await stDialog('Lưu khối vào thư viện','<label class="st-field"><span>Tên mẫu</span><input id="st-library-name" maxlength="80" value="'+stEsc(ST_TYPES[b.type]?.name||'Khối nội dung')+'"></label>',[{label:'Huỷ',value:false},{label:'Lưu mẫu',value:true,primary:true}]);
+  if(!v)return;const name=st$('#st-library-name').value.trim();if(!name){stToast('Cần đặt tên cho mẫu.');return;}
+  const block=stQuoteClone(b);delete block.id;delete block.src;block.focus=false;if(block.style==='accent')block.style='card';block.html=stSanitize(block.html);
+  const assets={};const box=document.createElement('template');box.innerHTML=block.html;box.content.querySelectorAll('img[data-asset]').forEach(i=>{if(stDoc.assets[i.dataset.asset])assets[i.dataset.asset]=stDoc.assets[i.dataset.asset];i.removeAttribute('src');});block.html=box.innerHTML;
+  try{const all=await stStore.getKV('st-library')||[];all.push({id:stQuoteId('tpl'),name,block,assets});await stStore.setKV('st-library',all);stLibrary=all;stPanelOpen.library=true;stPanelOpen['lib-saved']=true;st$('[data-section="library"]').open=true;st$('[data-section="lib-saved"]').open=true;stPanel();stToast('Đã lưu mẫu trên trình duyệt này.');}catch{stToast('Chưa lưu được mẫu vào thư viện.');}
+}
+function stInsertLibrary(id){
+  const x=stLibrary.find(x=>x.id===id);if(!x)return;const b=stQuoteClone(x.block);b.id=stId('b');b.html=stSanitize(b.html);delete b.src;b.focus=false;
+  const box=document.createElement('template');box.innerHTML=b.html;box.content.querySelectorAll('img[data-asset]').forEach(i=>{const src=x.assets?.[i.dataset.asset];i.removeAttribute('src');if(src&&/^data:image\//.test(src)){const aid=stId('a');stDoc.assets[aid]=src;i.dataset.asset=aid;}else i.removeAttribute('data-asset');});b.html=box.innerHTML;stInsert(b.type,null,b);
+}
+function stRestoreTextSelection(bEl,whole=false){
+  const c=bEl?.querySelector('.st-c');if(!c)return false;
+  const saved=stTextRange?.bid===bEl.dataset.bid&&c.contains(stTextRange.range.commonAncestorContainer)?stTextRange.range:null;
+  c.focus();const selection=getSelection();selection.removeAllRanges();
+  if(saved&&!saved.collapsed)selection.addRange(saved.cloneRange());else if(whole){const range=document.createRange();range.selectNodeContents(c);selection.addRange(range);}else{const range=document.createRange();range.selectNodeContents(c);range.collapse(false);selection.addRange(range);}
+  return true;
+}
+function stColor(color){
+  if(!/^#[0-9a-f]{6}$/i.test(color))return;const b=stSel?.bid&&stBlockEl(stSel.bid);if(!b)return;
+  stFlush();stRestoreTextSelection(b,true);document.execCommand('foreColor',false,color);stFromDOM(b);stCommit();stScheduleMeasure();
+}
+function stResetColor(){
+  const b=stSel?.bid&&stBlockEl(stSel.bid);if(!b)return;stFlush();b.querySelectorAll('.st-c [color],.st-c [style]').forEach(n=>{n.removeAttribute('color');n.style.removeProperty('color');if(!n.getAttribute('style'))n.removeAttribute('style');});stFromDOM(b);stCommit();stToast('Đã trả màu chữ toàn khối về mẫu; giữ định dạng khác.');
+}
+function stSyncLogo(){
+  stFlush();const selected=stSel?.bid&&stFind(stSel.bid)?.b;if(!selected)return;const size=stLogoSize(selected);let n=0;
+  for(const p of stDoc.pages){let changed=false;for(const b of p.blocks)if(stIsLogo(b)){b.logoW=size.w;b.logoH=size.h;b.logoFrame=selected.logoFrame!==false;b.h=0;changed=true;n++;}if(changed)stRenderPage(p.id);}
+  stPanel();stCommit();stToast(`Đã áp khung ${size.w} × ${size.h} mm cho ${n} logo · hoàn tác một bước`);
+}
 function stDup(bid){stFlush();const r=stFind(bid);if(!r)return;const c=JSON.parse(JSON.stringify(r.b));c.id=stId('b');if(c.focus&&c.style==='accent')c.style='card';c.focus=false;r.p.blocks.splice(r.i+1,0,c);stSel={pid:r.p.id,bid:c.id};stRenderPage(r.p.id);stPanel();stCommit();}
 function stDel(bid){stFlush();const r=stFind(bid);if(!r)return;r.p.blocks.splice(r.i,1);stSel={pid:r.p.id};stRenderPage(r.p.id);stPanel();stCommit();stToast('Đã xoá khối · ⌘Z / Ctrl+Z để hoàn tác');}
 function stMove(bid,pid,index){
@@ -1038,13 +1345,26 @@ function stTableOp(op){
   const bEl=stSel?.bid&&stBlockEl(stSel.bid);if(!bEl)return;
   const cell=stCell&&bEl.contains(stCell)?stCell:null,tbl=cell?.closest('table')||bEl.querySelector('table');
   if(!tbl){stToast('Khối này chưa có bảng.');return;}
-  const body=tbl.tBodies[0],row=cell?.closest('tr')||body?.rows[body.rows.length-1],ci=cell?cell.cellIndex:(row?.cells.length||1)-1;
-  stFlush();
-  if(op==='row-add'){const base=row.parentElement.tagName==='THEAD'?body.rows[0]:row,nr=base.cloneNode(true);[...nr.cells].forEach(c=>c.innerHTML='<br>');if(row.parentElement.tagName==='THEAD')body.prepend(nr);else row.after(nr);}
-  else if(op==='row-del'){if(row.parentElement.tagName!=='TBODY'||body.rows.length<2){stToast('Bảng cần ít nhất một dòng.');return;}row.remove();}
-  else if(op==='col-add'){for(const r of tbl.rows){const ref=r.cells[Math.min(ci,r.cells.length-1)];if(!ref)continue;const c=document.createElement(ref.tagName);c.innerHTML='<br>';ref.after(c);}}
-  else if(op==='col-del'){if((tbl.rows[0]?.cells.length||0)<2){stToast('Bảng cần ít nhất một cột.');return;}for(const r of tbl.rows){if(r.cells.length<2)continue;r.cells[Math.min(ci,r.cells.length-1)].remove();}}
-  stCell=null;stFromDOM(bEl);stCommit();stScheduleMeasure();
+  const body=tbl.tBodies[0],row=cell?.closest('tr')||body?.rows[body.rows.length-1]||tbl.rows[0],ci=cell?cell.cellIndex:(row?.cells.length||1)-1;
+  if(!row){stToast('Bảng chưa có dòng để sửa.');return;}
+  if(op.startsWith('col-')&&[...tbl.querySelectorAll('td,th')].some(c=>c.colSpan>1||c.rowSpan>1)){stToast('Bảng có ô gộp. Dùng khối Bảng cơ bản để thêm hoặc xoá cột.');return;}
+  stFlush();let next=null;
+  if(op==='row-add'){
+    const base=row.parentElement.tagName==='THEAD'?(body?.rows[0]||row):row,nr=document.createElement('tr');
+    [...base.cells].forEach(c=>{const nc=document.createElement('td');nc.innerHTML='<br>';nr.append(nc);});
+    if(row.parentElement.tagName==='THEAD')(body||tbl.createTBody()).prepend(nr);else row.after(nr);next=nr.cells[Math.min(ci,nr.cells.length-1)];
+  }else if(op==='row-del'){
+    if(row.parentElement.tagName!=='TBODY'||body.rows.length<2){stToast('Bảng cần ít nhất một dòng.');return;}next=row.previousElementSibling?.cells[ci]||row.nextElementSibling?.cells[ci];row.remove();
+  }else if(op==='col-add'){
+    if(row.cells.length>=12){stToast('Tối đa 12 cột trong một bảng A4.');return;}
+    for(const r of tbl.rows){const ref=r.cells[Math.min(ci,r.cells.length-1)];if(!ref)continue;const c=document.createElement(ref.tagName);c.innerHTML=r.parentElement.tagName==='THEAD'?'Cột '+(ci+2):'<br>';ref.after(c);if(r===row)next=c;}
+    tbl.classList.add('st-edit-table');tbl.querySelectorAll('colgroup').forEach(n=>n.remove());tbl.querySelectorAll('[width]').forEach(n=>n.removeAttribute('width'));
+  }else if(op==='col-del'){
+    if((tbl.rows[0]?.cells.length||0)<2){stToast('Bảng cần ít nhất một cột.');return;}
+    for(const r of tbl.rows){if(r.cells.length<2)continue;const i=Math.min(ci,r.cells.length-1);r.cells[i].remove();if(r===row)next=r.cells[Math.min(i,r.cells.length-1)];}tbl.classList.add('st-edit-table');
+  }
+  stCell=next;stFromDOM(bEl);stCommit();stScheduleMeasure();
+  if(next){bEl.querySelector('.st-c').focus();stSelectAllIn(next);next.scrollIntoView({block:'nearest',inline:'nearest'});}
 }
 
 // ---------- Kéo thả: khối, khối mới từ thư viện, trang trong danh sách ----------
@@ -1101,11 +1421,11 @@ function stDragMove(e){
 function stDragEnd(){
   const d=stDrag;stDrag=null;window.removeEventListener('pointermove',stDragMove);if(!d)return;
   clearInterval(d.scroll);document.body.classList.remove('st-dragging-on');st$('#st-ghost').hidden=true;stShowDrop(null);st$$('.st-dragging').forEach(x=>x.classList.remove('st-dragging'));
-  if(!d.moved){if(d.src.kind==='new')stInsert(d.src.type);return;}
+  if(!d.moved){if(d.src.kind==='new')d.src.preset?stInsertPreset(d.src.preset):stInsert(d.src.type);return;}
   const t=d.target;if(!t)return;
   if(d.src.kind==='page'&&t.kind==='page')stMovePage(d.src.pid,t.index);
   else if(d.src.kind==='block'&&t.pid)stMove(d.src.bid,t.pid,t.index);
-  else if(d.src.kind==='new'&&t.pid)stInsert(d.src.type,{pid:t.pid,index:t.index});
+  else if(d.src.kind==='new'&&t.pid)d.src.preset?stInsertPreset(d.src.preset,{pid:t.pid,index:t.index}):stInsert(d.src.type,{pid:t.pid,index:t.index});
 }
 
 // ---------- Đổi kích thước ----------
@@ -1130,40 +1450,56 @@ function stBlankDoc(){
   return {id:stId('d'),version:1,created:Date.now(),updated:Date.now(),title:'Báo giá mới',header:{left:'BASE.VN · ĐỀ XUẤT GIẢI PHÁP VÀ BÁO GIÁ',right:''},footer:{left:'Base 2.0 · Đề xuất giải pháp và báo giá'},assets:{'base-logo':QD_BASE_LOGO},notes:[],
     pages:[stNewPage('dark',[stNewBlock('cover'),stNewBlock('spacer',{h:30}),{...stNewBlock('logo'),html:'<div class="img logo" contenteditable="false"><img alt="" data-asset="base-logo"></div>'}],{role:'cover'})]};
 }
-async function stOpenDoc(d){
+async function stOpenDoc(d,{forceSave=false}={}){
   stFlush();if(stDoc&&stDoc.id!==d.id)await stSaveNow();
   d.assets??={};d.notes??=[];d.header??={left:'',right:''};d.footer??={left:''};
-  stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRender();stHistReset();await stSaveNow();
+  stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRememberDoc(stDoc);stRender();stHistReset();if(forceSave||!d.revision||!d.quotationId)await stSaveNow();else{stSavedSnapshots.set(stDoc,stQuoteDocSignature(stDoc));stSaveStatus('Đã mở bản đã lưu');stSendSaved(stDoc);}
 }
 async function stNewFromPayload(p){
   let d;try{d=stBuildDoc(p,{baseLogo:QD_BASE_LOGO});}catch(e){stToast(e.message);return;}
   stFlush();if(stDoc)await stSaveNow();
-  stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();
+  d.quotationId=p.quotationId||stQuoteId('q');d.sourceSignature=stQuoteSignature(p);
+  stDoc=stPrepareDoc(d);stSel=null;stMeasurements={};stRememberDoc(stDoc);stRender();await stSettle();await stAutoPaginate();stHistReset();await stSaveNow();
   stToast(`Đã dựng báo giá ${stDoc.pages.length} trang từ Quote Lab`);
 }
-async function stOnPayload(p){
-  if(!p||p.kind!=='quote-studio-data'||!p.deal||!Array.isArray(p.options))return;
-  const key=String(p.sentAt||'');if(key&&stHandled.has(key))return;stHandled.add(key);
-  if(stDoc&&stDoc.dealKey===stDealKey(p)){
-    const v=await stDialog('Quote Lab gửi số liệu mới',`Bản đang mở là báo giá của cùng khách hàng (<b>${stEsc(stDoc.title)}</b>).`,[{label:'Bỏ qua',value:null},{label:'Tạo bản mới',value:'new'},{label:'Cập nhật số liệu trong bản này',value:'refresh',primary:true}]);
-    if(v==='refresh'){stFlush();const n=stRefreshDoc(stDoc,p);stRender();stCommit();stToast(n?`Đã cập nhật ${n} khối số liệu; chữ ở khối khác giữ nguyên`:'Số liệu không đổi');}
-    else if(v==='new')stNewFromPayload(p);
-    return;
-  }
-  stNewFromPayload(p);
+async function stAskSource(p){
+  const v=await stDialog('Cập nhật số liệu từ Quote Lab',`Bản đã sửa trong Studio được giữ. Chỉ các khối số liệu liên kết sẽ được thay; có thể hoàn tác.`,[{label:'Giữ bản đang soạn',value:null},{label:'Tạo quotation riêng',value:'new'},{label:'Cập nhật số liệu',value:'refresh',primary:true}]);
+  if(v==='refresh'){stFlush();const n=stRefreshDoc(stDoc,p);stDoc.sourceSignature=stQuoteSignature(p);stPendingSource=null;st$('#st-source-update').hidden=true;stRender();stCommit();await stSaveNow();stToast(n?`Đã cập nhật ${n} khối số liệu; nội dung khác giữ nguyên`:'Số liệu không đổi');}
+  if(v==='new'){const old=p.quotationId,qid=stQuoteId('q'),draft=old&&await stQuoteRepo.getDraft(old);if(draft)await stQuoteRepo.putDraft({...draft,id:qid,studioDocId:null,created:Date.now(),state:{...draft.state,quotationId:qid,studioDocId:null}});await stNewFromPayload({...p,quotationId:qid});}
 }
+async function stOnPayload(p){
+  if(!p||!['quote-studio-data','quote-studio-open'].includes(p.kind))return;
+  const key=String(p.requestId||p.sentAt||'');if(key&&stHandled.has(key))return;stHandled.add(key);
+  try{const name=p.quotationId?'quote-studio-inbox:'+p.quotationId:'quote-studio-inbox',pending=JSON.parse(localStorage.getItem(name)||'null');if(pending&&(pending.requestId===p.requestId||pending.sentAt===p.sentAt))localStorage.removeItem(name);}catch{}
+  try{window.opener?.postMessage({kind:'quote-studio-opened',quotationId:p.quotationId,requestId:p.requestId},stQuoteTargetOrigin());}catch{}
+  let existing=p.quotationId?await stQuoteRepo.findDoc(p.quotationId,p.docId):null;
+  if(!existing&&p.docId){const candidate=await stStore.get(p.docId);if(candidate&&(!p.quotationId||!candidate.quotationId||candidate.quotationId==='studio-'+candidate.id))existing=candidate;}
+  if(!existing&&p.deal){const legacy=(await stStore.all()).filter(d=>(!d.quotationId||d.quotationId==='studio-'+d.id)&&d.dealKey===stDealKey(p));
+    if(legacy.length===1)existing=legacy[0];else if(legacy.length>1){const chosen=await stDialog('Chọn bản đã soạn của khách này',`<div class="st-doclist">${legacy.map(d=>`<button type="button" data-i="legacy:${stEsc(d.id)}">${stEsc(d.title)} · ${new Date(d.updated).toLocaleString('vi-VN')}</button>`).join('')}</div>`,[{label:'Tạo quotation riêng',value:'new',primary:true}]);existing=legacy.find(d=>'legacy:'+d.id===chosen);if(!existing&&chosen!=='new')return;}
+  }
+  if(existing){
+    if(stDoc?.id===existing.id){stFlush();if(p.quotationId)stDoc.quotationId=p.quotationId;await stSaveNow();}
+    else{const relink=existing.quotationId!==p.quotationId;existing.quotationId=p.quotationId||existing.quotationId||stQuoteId('q');existing.sourceSignature||=existing.data?stQuoteSignature(existing.data):'';await stOpenDoc(existing,{forceSave:relink});}
+    if(p.deal&&p.options?.length){const changed=stDoc.sourceSignature!==stQuoteSignature(p);stPendingSource=changed?p:null;st$('#st-source-update').hidden=!changed;if(p.action==='refresh'&&changed)await stAskSource(p);}
+    stToast('Đã mở bản đang soạn; nội dung giữ nguyên.');return;
+  }
+  if(!p.deal||!Array.isArray(p.options)||!p.options.length){stToast('Chưa có bản đã lưu hoặc dữ liệu để tạo quotation này.');return;}
+  await stNewFromPayload(p);
+}
+function stQueuePayload(p){stRequestQueue=stRequestQueue.catch(()=>{}).then(async()=>{await stBoot;return stOnPayload(p);});return stRequestQueue;}
+
 function stDownload(text,type,name){const url=URL.createObjectURL(new Blob([text],{type:type+';charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);}
 const stSlug=s=>String(s||'bao-gia').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'bao-gia';
 function stSaveFile(){stFlush();stDownload(JSON.stringify({kind:'quote-studio-doc',...stDoc}),'application/json',stSlug(stDoc.title)+'.quote.json');}
 async function stOpenFile(file){
   try{
     const d=JSON.parse(await file.text());
-    if(d.kind==='quote-studio-data'){stOnPayload({...d,sentAt:Date.now()});return;}
+    if(d.kind==='quote-studio-data'){stQueuePayload({...d,sentAt:Date.now()});return;}
     if(!Array.isArray(d.pages))throw new Error('File không phải dự án Quote Studio.');
     d.pages.forEach(p=>{p.id||=stId('p');p.bg=p.bg==='dark'?'dark':'light';p.blocks=(p.blocks||[]).map(b=>({...b,id:b.id||stId('b'),w:Math.max(1,Math.min(12,+b.w||12)),h:Math.max(0,+b.h||0),type:ST_TYPES[b.type]?b.type:'text',style:ST_STYLES.some(s=>s[0]===b.style)?b.style:'plain',html:stSanitize(b.html)}));});
     for(const [k,v] of Object.entries(d.assets||{}))if(!/^data:image\//.test(v))delete d.assets[k];
-    delete d.kind;d.id||=stId('d');
-    await stOpenDoc(d);stToast('Đã mở '+(d.title||file.name));
+    delete d.kind;d.id||=stId('d');const stored=await stStore.get(d.id);if(stored&&JSON.stringify(stored.pages)!==JSON.stringify(d.pages)){d.id=stQuoteId('d');d.quotationId=stQuoteId('q');d.revision=0;}else d.revision=stored?.revision||0;
+    await stOpenDoc(d,{forceSave:true});stToast('Đã mở '+(d.title||file.name));
   }catch(e){stToast('Không mở được file: '+e.message);}
 }
 function stExportHTML(){
@@ -1181,10 +1517,12 @@ async function stPrint(){
   stSetSel(null);const old=document.title;document.title=stDoc.title||'Bao gia';
   setTimeout(()=>{window.print();document.title=old;},50);
 }
+function stOpenTab(doc){const url=new URL(location.href);url.searchParams.delete('preview');url.searchParams.set('doc',doc.id);if(doc.quotationId)url.searchParams.set('quotation',doc.quotationId);const w=window.open(url.href,'studio-doc-'+doc.id);if(w)stChildWindows.add(w);else stToast('Trình duyệt chặn tab mới. Có thể chọn Mở trong danh sách.');}
+async function stManageDocs(){const v=await stDocsDialog();if(!v)return;const [op,id]=v.split(':');const d=await stStore.get(id);if(op==='open'&&d)await stOpenDoc(d);if(op==='tab'&&d)stOpenTab(d);if(op==='del'&&d&&await stDialog('Xoá tài liệu?','Tài liệu được xoá khỏi trình duyệt này. Thao tác không hoàn tác được.',[{label:'Huỷ',value:false},{label:'Xoá',value:true,danger:true}])){await stStore.del(id);if(stDoc?.id===id){stDoc=null;stRender();}stToast('Đã xoá tài liệu');}}
 async function stDocsDialog(){
   let list=[];try{list=(await stStore.all())||[];}catch{}
   list.sort((a,b)=>b.updated-a.updated);
-  const v=await stDialog('Tài liệu đã lưu trên trình duyệt này',list.length?`<div class="st-doclist">${list.map(d=>`<div class="st-docrow${d.id===stDoc?.id?' cur':''}"><button type="button" data-i="open:${d.id}" class="st-docopen"><b>${stEsc(d.title||'Không tên')}</b><span>${d.pages?.length||0} trang · ${new Date(d.updated).toLocaleString('vi-VN')}</span></button><button type="button" data-i="del:${d.id}" class="danger" title="Xoá">✕</button></div>`).join('')}</div>`:'<p>Chưa có tài liệu nào.</p>',[{label:'Đóng',value:null}]);
+  const v=await stDialog('Tài liệu đã lưu trên trình duyệt này',list.length?`<div class="st-doclist">${list.map(d=>`<div class="st-docrow${d.id===stDoc?.id?' cur':''}"><button type="button" data-i="open:${d.id}" class="st-docopen"><b>${stEsc(stQuoteDisplayName(d,list,'title'))}</b><span>${d.pages?.length||0} trang · ${new Date(d.updated).toLocaleString('vi-VN')}</span></button><button type="button" data-i="tab:${d.id}">Tab riêng ↗</button><button type="button" data-i="del:${d.id}" class="danger" title="Xoá">✕</button></div>`).join('')}</div>`:'<p>Chưa có tài liệu nào.</p>',[{label:'Đóng',value:null}]);
   return v;
 }
 
@@ -1223,17 +1561,28 @@ function stWire(){
     (e.clipboardData?.getData('text/plain')??'').replace(/\r/g,'').split('\n').forEach((line,i)=>{if(i)document.execCommand('insertLineBreak');if(line)document.execCommand('insertText',false,line);});
   });
   pages.addEventListener('drop',e=>e.preventDefault());
-  document.addEventListener('selectionchange',()=>{const n=getSelection().anchorNode,el=n&&(n.nodeType===1?n:n.parentElement);const c=el?.closest?.('td,th');if(c&&c.closest('#st-pages'))stCell=c;});
+  document.addEventListener('selectionchange',()=>{const selection=getSelection(),n=selection.anchorNode,el=n&&(n.nodeType===1?n:n.parentElement),b=el?.closest?.('#st-pages .st-b');if(!b)return;const c=el.closest('td,th');if(c)stCell=c;if(selection.rangeCount){const range=selection.getRangeAt(0);if(b.querySelector('.st-c').contains(range.commonAncestorContainer))stTextRange={bid:b.dataset.bid,range:range.cloneRange()};}});
 
   const panel=st$('#st-panel');
-  panel.addEventListener('pointerdown',e=>{
-    const lib=e.target.closest('.st-libi');if(lib&&e.button===0){stStartDrag(e,{kind:'new',type:lib.dataset.type},'Thêm: '+ST_TYPES[lib.dataset.type].name);return;}
-    if(e.target.closest('[data-cmd]'))e.preventDefault();
+  panel.addEventListener('click',e=>{const summary=e.target.closest('summary'),d=summary?.parentElement;if(d?.dataset.section)d.dataset.userToggle='1';});
+  panel.addEventListener('toggle',e=>{if(e.target.dataset.userToggle)stPanelOpen[e.target.dataset.section]=e.target.open;},true);
+  panel.addEventListener('change',e=>{
+    const t=e.target,bid=stSel?.bid,r=bid&&stFind(bid);
+    if(t.hasAttribute('data-custom-color')){stColor(t.value);return;}
+    if(!r)return;
+    if(t.dataset.logo){const v=+t.value,max=t.dataset.logo==='w'?180:100;if(!Number.isFinite(v)||v<8||v>max){stToast(`Kích thước logo từ 8 đến ${max} mm.`);stPanel();return;}stSetProp(bid,t.dataset.logo==='w'?'logoW':'logoH',v);}
+    if(t.hasAttribute('data-logo-align'))stSetProp(bid,'logoAlign',t.value);
+    if(t.hasAttribute('data-logo-frame'))stSetProp(bid,'logoFrame',t.checked);
+    if(t.hasAttribute('data-package')){const pkg=stPackageChoices(stDoc.data).find(x=>x.id===t.value);if(!pkg)return;stFlush();r.b.packageId=pkg.id;r.b.html=stAppListHTML(pkg);stRenderPage(r.p.id);stPanel();stCommit();}
   });
-  panel.addEventListener('mousedown',e=>{if(e.target.closest('[data-cmd]'))e.preventDefault();});
+  panel.addEventListener('pointerdown',e=>{
+    const lib=e.target.closest('.st-libi');if(lib&&e.button===0){const preset=ST_PRESETS.find(p=>p.id===lib.dataset.preset),type=preset?.type||lib.dataset.type;stStartDrag(e,{kind:'new',type,preset:preset?.id},'Thêm: '+(preset?.name||ST_TYPES[type].name));return;}
+    if(e.target.closest('[data-cmd],[data-color],[data-act="color-reset"]'))e.preventDefault();
+  });
+  panel.addEventListener('mousedown',e=>{if(e.target.closest('[data-cmd],[data-color],[data-act="color-reset"]'))e.preventDefault();});
   panel.addEventListener('click',async e=>{
-    const t=e.target.closest('button,[data-goto-page],[data-goto-block],input');if(!t||t.classList.contains('st-libi'))return;
-    const bid=stSel?.bid,pid=stSel?.pid;
+    const t=e.target.closest('button,[data-goto-page],[data-goto-block],input');if(!t)return;if(t.classList.contains('st-libi')){if(e.detail===0)t.dataset.preset?stInsertPreset(t.dataset.preset):stInsert(t.dataset.type);return;}
+    const bid=stSel?.bid,pid=stSel?.pid||panel.dataset.pid;
     if(t.dataset.dismiss){stFlush();stDoc.dismissed??=[];if(!stDoc.dismissed.includes(t.dataset.dismiss))stDoc.dismissed.push(t.dataset.dismiss);stCommit();stChecks();return;}
     if(t.dataset.gotoPage){stSetSel({pid:t.dataset.gotoPage});stScrollTo(stPageEl(t.dataset.gotoPage));return;}
     if(t.dataset.gotoBlock){const f=stFind(t.dataset.gotoBlock);if(f){stSetSel({pid:f.p.id,bid:f.b.id});stBlockEl(f.b.id)?.scrollIntoView({behavior:'smooth',block:'center'});}return;}
@@ -1241,8 +1590,12 @@ function stWire(){
     if(t.dataset.style)return stSetProp(bid,'style',t.dataset.style);
     if(t.dataset.bg){stFlush();stPage(pid).bg=t.dataset.bg;stRenderPage(pid);stPanel();stCommit();return;}
     if(t.dataset.layout)return stApplyLayout(pid,t.dataset.layout);
-    if(t.dataset.cmd){const c=t.dataset.cmd;if(c==='hl')document.execCommand('foreColor',false,'#5B8CFF');else document.execCommand(c,false,null);const b=bid&&stBlockEl(bid);if(b){stFromDOM(b);stCommit();}return;}
+    if(t.dataset.color)return stColor(t.dataset.color);
+    if(t.dataset.library)return stInsertLibrary(t.dataset.library);
+    if(t.dataset.libraryDel){try{stLibrary=(await stStore.getKV('st-library')||[]).filter(x=>x.id!==t.dataset.libraryDel);await stStore.setKV('st-library',stLibrary);stPanel();stToast('Đã xoá mẫu khỏi thư viện; khối đã chèn vẫn được giữ.');}catch{stToast('Chưa xoá được mẫu.');}return;}
+    if(t.dataset.cmd){const b=bid&&stBlockEl(bid);if(b){stRestoreTextSelection(b);document.execCommand(t.dataset.cmd,false,null);stFromDOM(b);stCommit();stScheduleMeasure();}return;}
     const act=t.dataset.act;if(!act)return;
+    if(act==='docs')return stManageDocs();if(act==='library-save')return stSaveLibrary();if(act==='logo-all')return stSyncLogo();if(act==='color-reset')return stResetColor();
     if(act==='focus')return stSetFocus(bid);if(act==='style-all')return stSyncTypeStyle(bid);
     if(act==='checks-restore'){stFlush();stDoc.dismissed=[];stCommit();stChecks();return;}
     if(act==='chrome'){stFlush();stPage(pid).chrome=t.checked;stRender();stCommit();return;}
@@ -1250,6 +1603,7 @@ function stWire(){
     if(act==='h-auto')return stSetProp(bid,'h',0);
     if(/^(row|col)-/.test(act))return stTableOp(act);
     if(act==='img-pick')return stPickImage(bid);
+    if(act==='img-logo'){const b=stBlockEl(bid),r=stFind(bid),box=b?.querySelector('.img');if(box){stFlush();box.classList.add('logo');box.classList.remove('cover');r.b.logoW=32;r.b.logoH=22;r.b.h=0;stFromDOM(b);stRenderPage(r.p.id);stPanel();stCommit();}return;}
     if(act==='img-fit'){const b=stBlockEl(bid),box=b?.querySelector('.img');if(box){box.classList.toggle('cover');stFromDOM(b);stCommit();}return;}
     if(act==='img-clear'){const b=stBlockEl(bid),img=b?.querySelector('.img img');if(img){img.removeAttribute('data-asset');img.removeAttribute('src');stFromDOM(b);stHydrate(b);stCommit();}return;}
     if(act==='page-add')return stAddPage(stDoc.pages.indexOf(stPage(pid)));
@@ -1262,6 +1616,8 @@ function stWire(){
   list.addEventListener('pointerdown',e=>{const li=e.target.closest('li');if(!li||e.button!==0)return;stStartDrag(e,{kind:'page',pid:li.dataset.pid},'Trang '+(stDoc.pages.findIndex(p=>p.id===li.dataset.pid)+1));});
   list.addEventListener('click',e=>{const li=e.target.closest('li');if(!li)return;stSetSel({pid:li.dataset.pid});stScrollTo(stPageEl(li.dataset.pid));});
 
+  st$('#st-docs').addEventListener('click',stManageDocs);
+  st$('#st-source-update').addEventListener('click',()=>stPendingSource&&stAskSource(stPendingSource));
   st$('#st-title').addEventListener('input',e=>{if(!stDoc)return;stDoc.title=e.target.value;stTypingCommit();});
   st$('#st-undo').addEventListener('click',stUndo);st$('#st-redo').addEventListener('click',stRedo);
   st$('#st-add-page').addEventListener('click',()=>{if(!stDoc)stOpenDoc(stBlankDoc());else stAddPage(stSel?.pid?stDoc.pages.indexOf(stPage(stSel.pid)):stDoc.pages.length-1);});
@@ -1274,9 +1630,7 @@ function stWire(){
     else if(k==='open')st$('#st-file-json').click();
     else if(k==='save'&&stDoc)stSaveFile();
     else if(k==='html'&&stDoc)stExportHTML();
-    else if(k==='docs'){const v=await stDocsDialog();if(!v)return;const [op,id]=v.split(':');
-      if(op==='open'){const d=await stStore.get(id);if(d)stOpenDoc(d);}
-      else if(op==='del'&&await stDialog('Xoá tài liệu?','Tài liệu sẽ bị xoá khỏi trình duyệt này. Thao tác không hoàn tác được.',[{label:'Huỷ',value:false},{label:'Xoá',value:true,danger:true}])){await stStore.del(id);if(stDoc?.id===id){stDoc=null;stRender();}stToast('Đã xoá tài liệu');}}
+    else if(k==='docs')await stManageDocs();
   });
   st$('#st-file-img').addEventListener('change',e=>stLoadImage(e.target.files[0]));
   st$('#st-file-json').addEventListener('change',e=>{const f=e.target.files[0];e.target.value='';if(f)stOpenFile(f);});
@@ -1290,18 +1644,24 @@ function stWire(){
       {e.preventDefault();stDel(stSel.bid);}
   });
   window.addEventListener('beforeprint',()=>{stFlush();stSetSel(null,{panel:false});});
-  window.addEventListener('message',e=>{if(e.source&&e.source===window.opener)stOnPayload(e.data);});
+  window.addEventListener('message',e=>{if(!stQuoteOriginOK(e.origin))return;if(stReadonly&&e.source===window.parent&&e.data?.kind==='quote-studio-preview-data'){stReadPreview(e.data.doc);return;}if(e.source===window.opener&&['quote-studio-data','quote-studio-open'].includes(e.data?.kind))stQueuePayload(e.data);if(stChildWindows.has(e.source)&&e.data?.kind==='quote-studio-saved')try{window.opener?.postMessage(e.data,stQuoteTargetOrigin());}catch{}});
   document.addEventListener('visibilitychange',()=>{if(document.hidden){stFlush();stSaveNow();}});
 }
 
 async function stStart(){
-  stWire();
-  let d=null;try{const id=await stStore.getKV('current');if(id)d=await stStore.get(id);}catch{}
-  if(d)await stOpenDoc(d);else stRender();
-  try{const raw=localStorage.getItem('quote-studio-inbox');if(raw){localStorage.removeItem('quote-studio-inbox');const p=JSON.parse(raw);if(Date.now()-(p.sentAt||0)<15*60e3)await stOnPayload(p);}}catch{}
-  if(window.opener)try{window.opener.postMessage({kind:'quote-studio-ready'},'*');}catch{}
+  if(!stReadonly)stWire();else window.addEventListener('message',e=>{if(e.source===window.parent&&stQuoteOriginOK(e.origin)&&e.data?.kind==='quote-studio-preview-data')stReadPreview(e.data.doc);});
+  stQuoteEvents.subscribe(async event=>{if(event.type==='doc-saved'&&stReadonly&&event.docId===stRoute.searchParams.get('doc')){const doc=await stStore.get(event.docId);if((doc?.revision||0)>(stDoc?.revision||0))await stReadPreview(doc);}});
+  if(stReadonly){document.body.classList.add('st-preview-readonly','st-preview');const d=await stStore.get(stRoute.searchParams.get('doc')).catch(()=>null);if(d)await stReadPreview(d);else st$('#st-pages').innerHTML='<p>Đang tải bản Studio đã lưu…</p>';stPreviewHeight();window.addEventListener('resize',stPreviewHeight);return;}
+  let d=null;const id=stRoute.searchParams.get('doc')||stQuoteSession.get('quote-studio-current');
+  try{if(id)d=await stStore.get(id);else if(stRoute.searchParams.get('quotation'))d=await stQuoteRepo.findDoc(stRoute.searchParams.get('quotation'));else{const current=await stStore.getKV('current'),all=await stStore.all();if(all.length===1)d=all[0];else if(current&&!stQuoteSession.get('quote-studio-seen'))d=await stStore.get(current);}}catch{}
+  if(d&&!stQuoteMatches(d,stRoute.searchParams.get('quotation')))d=null;
+  try{stLibrary=await stStore.getKV('st-library')||[];}catch{}
+  stQuoteSession.set('quote-studio-seen','1');if(d)await stOpenDoc(d);else stRender();
+  const qid=stRoute.searchParams.get('quotation');
+  try{const key=qid?'quote-studio-inbox:'+qid:'quote-studio-inbox',raw=localStorage.getItem(key);if(raw){localStorage.removeItem(key);const p=JSON.parse(raw);if(Date.now()-(p.sentAt||0)<15*60e3)await stOnPayload(p);}}catch{}
+  if(window.opener)try{window.opener.postMessage({kind:'quote-studio-ready',quotationId:qid},stQuoteTargetOrigin());}catch{}
 }
-if(document.getElementById('st-app'))stStart();
+if(document.getElementById('st-app'))stBoot=stStart();
 </script>
 </body>
 </html>
